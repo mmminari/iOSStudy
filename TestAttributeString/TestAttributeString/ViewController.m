@@ -17,6 +17,74 @@
 
 
 
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    if(textField == self.inputName)
+    {
+        if(self.inputName.text.length>10)
+        {
+            
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                               message:@"exceed the input limit"
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction * action) {}];
+                
+                [alert addAction:defaultAction];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+                self.inputName.text = @"";
+        }
+        
+        
+    }
+        if(textField == self.inputAge)
+        {
+            if(self.inputAge.text.length>2)
+            {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                   message:@"exceed the input limit"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                    self.inputAge.text = @"";
+            }
+            
+            
+        }
+        if(textField == self.inputHobby)
+        {
+            if(self.inputHobby.text.length >10)
+            {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                   message:@"exceed the input limit"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                    
+                    self.inputHobby.text = @"";
+                
+            }
+        }
+    
+    
+    return YES;
+    
+    
+}
+
 - (IBAction)show:(UIButton *)sender {
     
     self.userName = self.inputName.text;
@@ -60,46 +128,47 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
-    if(self.inputName.text.length > 10 ){
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                       message:@"exceed the input limit"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
+    if(textField == self.inputHobby){
+        self.userName = self.inputName.text;
+        self.userAge = self.inputAge.text;
+        self.userHobby  = self.inputHobby.text;
         
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
         
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
         
-        self.inputName.text = @"";
+        NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
+        
+        
+        introduction = [introduction stringByReplacingOccurrencesOfString:@"%s1" withString:self.userName];
+        introduction = [introduction stringByReplacingOccurrencesOfString:@"%s2" withString:self.userAge];
+        introduction = [introduction stringByReplacingOccurrencesOfString:@"%s3" withString:self.userHobby];
+        
+        
+        self.finalIntro = [[NSMutableAttributedString alloc] initWithString:introduction];
+        
+        NSLog(@"final %@", self.finalIntro);
+        
+        NSRange nameRange = [introduction rangeOfString:self.userName];
+        NSRange ageRange = [introduction rangeOfString:self.userAge];
+        NSRange hobbyRange = [introduction rangeOfString:self.userHobby];
+        
+        
+        [self.finalIntro addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(nameRange.location, self.userName.length)];
+        [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:20.0f] range:NSMakeRange(nameRange.location, self.userName.length)];
+        
+        [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16.0f] range:NSMakeRange(ageRange.location, self.userAge.length)];
+        
+        [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16.0f] range:NSMakeRange(hobbyRange.location, self.userHobby.length)];
+        
+        
+        self.showLabel.attributedText = self.finalIntro;
+        NSLog( @"%@", self.finalIntro);
+        
     }
     
-    if(self.inputHobby.text.length > 10 ){
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                       message:@"exceed the input limit"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        self.inputHobby.text = @"";
-    }
-    if(self.inputAge.text.length > 2 ){
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                       message:@"exceed the input limit"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        self.inputAge.text = @"";
-    }
+    
+    
+    
+    
     
     
     
