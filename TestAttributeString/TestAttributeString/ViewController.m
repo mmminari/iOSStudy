@@ -19,6 +19,10 @@
 
 - (IBAction)show:(UIButton *)sender {
     
+    self.userName = self.inputName.text;
+    self.userAge = self.inputAge.text;
+    self.userHobby  = self.inputHobby.text;
+    
     
     
     NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
@@ -99,9 +103,8 @@
     
     
     
-    self.userName = self.inputName.text;
-    self.userAge = self.inputAge.text;
-    self.userHobby  = self.inputHobby.text;
+    
+    
     
     
     return YES;
