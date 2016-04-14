@@ -35,42 +35,40 @@ shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
     
-    if(textField == self.inputName)
+    self.inputName.tag = 0;
+    self.inputAge.tag = 1;
+    self.inputHobby.tag = 2;
+    
+    
+    if(textField.tag == 0)
     {
-        
-        if(range.length != 1)
+        if((range.length != 1) && (self.inputName.text.length> 10 - 1))
         {
-            if(self.inputName.text.length> 10 - 1)
-            {
-                [self showErrorMessageWithtextField:self.inputName];
-            }
+           
+            [self showErrorMessageWithtextField:self.inputName];
+            
         }
     
     }
     
-    if(textField == self.inputAge)
+    if(textField.tag == 1)
     {
-        if(range.length != 1)
+        if((range.length != 1) && (self.inputAge.text.length>2 -1))
         {
-            if(self.inputAge.text.length>2 -1)
-            {
-                [self showErrorMessageWithtextField:self.inputAge];
-            }
+            
+            [self showErrorMessageWithtextField:self.inputAge];
       
         }
     }
     
-    if(textField == self.inputHobby)
+    if(textField.tag == 2)
     {
-        if(range.length != 1)
+        if((range.length != 1) && (self.inputHobby.text.length >10 -1))
         {
-            if(self.inputHobby.text.length >10 -1)
-            {
-                [self showErrorMessageWithtextField:self.inputHobby];
-            }
+            [self showErrorMessageWithtextField:self.inputHobby];
+            
         }
     }
-    
     
     
     return YES;
