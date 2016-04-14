@@ -15,69 +15,62 @@
 @implementation ViewController
 
 
-
+-(void)showErrorMessageWithtextField:(UITextField *)textField{
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:@"exceed the input limit"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) { textField.text = @""; }];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+}
 
 - (BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
+    
     if(textField == self.inputName)
     {
-        if(self.inputName.text.length>10)
+        
+        if(range.length != 1)
         {
-            
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:@"exceed the input limit"
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
-                
-                self.inputName.text = @"";
+            if(self.inputName.text.length> 10 - 1)
+            {
+                [self showErrorMessageWithtextField:self.inputName];
+            }
         }
-        
-        
+    
     }
-        if(textField == self.inputAge)
+    
+    if(textField == self.inputAge)
+    {
+        if(range.length != 1)
         {
-            if(self.inputAge.text.length>2)
+            if(self.inputAge.text.length>2 -1)
             {
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                   message:@"exceed the input limit"
-                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                          handler:^(UIAlertAction * action) {}];
-                    
-                    [alert addAction:defaultAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                    
-                    self.inputAge.text = @"";
+                [self showErrorMessageWithtextField:self.inputAge];
             }
-            
-            
+      
         }
-        if(textField == self.inputHobby)
+    }
+    
+    if(textField == self.inputHobby)
+    {
+        if(range.length != 1)
         {
-            if(self.inputHobby.text.length >10)
+            if(self.inputHobby.text.length >10 -1)
             {
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                   message:@"exceed the input limit"
-                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                          handler:^(UIAlertAction * action) {}];
-                    
-                    [alert addAction:defaultAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                    
-                    self.inputHobby.text = @"";
-                
+                [self showErrorMessageWithtextField:self.inputHobby];
             }
         }
+    }
+    
     
     
     return YES;
