@@ -10,9 +10,36 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabelEng;
+
+@property (strong, nonatomic) IBOutlet UITextField *inputName;
+@property (strong, nonatomic) IBOutlet UITextField *inputAge;
+@property (strong, nonatomic) IBOutlet UITextField *inputHobby;
+
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *userAge;
+@property (strong, nonatomic) NSString *userHobby;
+
+@property (strong, nonatomic) IBOutlet UILabel *showLabel;
+
+
+@property( strong, nonatomic) NSMutableAttributedString *finalIntro;
+
+@property (strong, nonatomic) ContainerView *CV;
+
+
 @end
 
 @implementation ViewController
+
+typedef NS_ENUM(NSInteger, textFieldTagNumber){
+    textFieldTagNumberName = 1000,
+    textFieldTagNumberAge,
+    textFieldTagNumberHobby,
+    textFieldTagNumberPhoneNumber,
+    textFieldTagNumberEmail,
+};
 
 
 -(void)showErrorMessageWithtextField:(UITextField *)textField{
@@ -35,12 +62,8 @@ shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
     
-    self.inputName.tag = 0;
-    self.inputAge.tag = 1;
-    self.inputHobby.tag = 2;
     
-    
-    if(textField.tag == 0)
+    if(textField.tag == textFieldTagNumberName)
     {
         if((range.length != 1) && (self.inputName.text.length> 10 - 1))
         {
@@ -51,7 +74,7 @@ replacementString:(NSString *)string
     
     }
     
-    if(textField.tag == 1)
+    if(textField.tag == textFieldTagNumberAge)
     {
         if((range.length != 1) && (self.inputAge.text.length>2 -1))
         {
@@ -61,7 +84,7 @@ replacementString:(NSString *)string
         }
     }
     
-    if(textField.tag == 2)
+    if(textField.tag == textFieldTagNumberHobby)
     {
         if((range.length != 1) && (self.inputHobby.text.length >10 -1))
         {
@@ -69,6 +92,8 @@ replacementString:(NSString *)string
             
         }
     }
+    
+    
     
     
     return YES;
@@ -154,24 +179,47 @@ replacementString:(NSString *)string
         self.showLabel.attributedText = self.finalIntro;
         NSLog( @"%@", self.finalIntro);
         
+        self.CV.view.frame = CGRectMake(0, 0, self.CV.view.frame.size.width, self.CV.view.frame.size.height );
+        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     return YES;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.inputName isFirstResponder] && [touch view] != self.inputName) {
+        [self.inputName resignFirstResponder];
+    }
+    if ([self.inputAge isFirstResponder] && [touch view] != self.inputAge) {
+        [self.inputAge resignFirstResponder];
+    }
+    if ([self.inputHobby isFirstResponder] && [touch view] != self.inputHobby) {
+        [self.inputHobby resignFirstResponder];
+    }
+  
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.userInteractionEnabled = YES;
+
+    
+    self.inputName.tag = textFieldTagNumberName;
+    self.inputAge.tag = textFieldTagNumberAge;
+    self.inputHobby.tag = textFieldTagNumberHobby;
+    self.CV.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
+    self.CV.inputEmail.tag = textFieldTagNumberEmail;
+    
+    
+    
+    
+    
+    
+
     
     self.showLabel.text = @" "  ;
     
