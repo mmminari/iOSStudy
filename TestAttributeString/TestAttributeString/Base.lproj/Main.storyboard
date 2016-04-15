@@ -147,14 +147,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htP-x3-eho">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <state key="normal" title=" "/>
+                                <connections>
+                                    <action selector="hideKeyboard:withTextField:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GY3-t0-pRX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K71-hJ-12c" firstAttribute="top" secondItem="sdM-w9-3C5" secondAttribute="bottom" id="0xH-KJ-azN"/>
+                            <constraint firstAttribute="trailing" secondItem="htP-x3-eho" secondAttribute="trailing" id="M9s-Di-wHW"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="htP-x3-eho" secondAttribute="bottom" id="PHh-yF-yOr"/>
+                            <constraint firstItem="htP-x3-eho" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WUn-5f-dNi"/>
                             <constraint firstItem="K71-hJ-12c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="gHq-sH-nQl"/>
                             <constraint firstItem="sdM-w9-3C5" firstAttribute="top" secondItem="Vgj-AN-wy0" secondAttribute="bottom" id="hMF-wW-8Ie"/>
                             <constraint firstAttribute="trailing" secondItem="Vgj-AN-wy0" secondAttribute="trailing" constant="20" id="mKA-Ca-Lhw"/>
                             <constraint firstAttribute="trailing" secondItem="sdM-w9-3C5" secondAttribute="trailing" constant="20" id="mfo-Jd-Iy0"/>
+                            <constraint firstItem="htP-x3-eho" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oJa-fl-vhG"/>
                             <constraint firstItem="Vgj-AN-wy0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qQH-Tt-9Wd"/>
                             <constraint firstItem="sdM-w9-3C5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="vUY-tJ-tmE"/>
                             <constraint firstItem="Vgj-AN-wy0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="wKn-sK-kWE"/>
@@ -163,7 +174,9 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="alcBottomOfHideButton" destination="PHh-yF-yOr" id="23f-ws-wCY"/>
                         <outlet property="alcTopOfSubContainer" destination="qQH-Tt-9Wd" id="b5X-ZR-JFL"/>
+                        <outlet property="hideButton" destination="htP-x3-eho" id="LaM-j9-hv2"/>
                         <outlet property="inputAge" destination="iLO-sg-Bp1" id="abH-nT-qc7"/>
                         <outlet property="inputEmail" destination="1Pt-HC-wfg" id="wO2-sO-xZe"/>
                         <outlet property="inputHobby" destination="ysc-CA-ldG" id="r34-zZ-5Dw"/>

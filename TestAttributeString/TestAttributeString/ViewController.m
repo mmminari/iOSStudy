@@ -31,8 +31,10 @@
 @property( strong, nonatomic) NSMutableAttributedString *finalIntro;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfSubContainer;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfHideButton;
 
 @property (strong, nonatomic) IBOutlet UIView *subView;
+@property (strong, nonatomic) IBOutlet UIButton *hideButton;
 
 @end
 
@@ -144,6 +146,39 @@ replacementString:(NSString *)string
 
 }
 
+- (IBAction)hideKeyboard:(UIButton *)sender withTextField:(UITextField *)textField {
+    
+    
+    if ([self.inputName isFirstResponder] ) {
+        [self.inputName resignFirstResponder];
+    }
+    if ([self.inputAge isFirstResponder]) {
+        [self.inputAge resignFirstResponder];
+    }
+    if ([self.inputHobby isFirstResponder]) {
+        [self.inputHobby resignFirstResponder];
+    }
+    if ([self.inputPhoneNumber isFirstResponder]) {
+        [self.inputPhoneNumber resignFirstResponder];
+    }
+    if ([self.inputEmail isFirstResponder] ) {
+        [self.inputEmail resignFirstResponder];
+        self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
+        
+    }
+    /*
+    if([textField isFirstResponder])
+        [textField resignFirstResponder];
+    */
+    
+    
+    [self.hideButton setHidden:YES];
+    
+
+    
+
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
@@ -184,18 +219,8 @@ replacementString:(NSString *)string
         
     }
     
-    if(textField.tag == textFieldTagNumberPhoneNumber) {
-        
-        [self.subView setFrame:CGRectMake(0, 0, self.subView.frame.size.width, self.subView.frame.size.height)];        
-        [UIView commitAnimations];
-        
-        
-    }
-    if (textField.tag == textFieldTagNumberEmail){
-        
-        self.subView.bounds = CGRectMake(0, 0, self.subView.frame.size.width, self.subView.frame.size.height);
-        
-    }
+    [self.hideButton setHidden:YES];
+    
 
     return YES;
 }
@@ -203,24 +228,15 @@ replacementString:(NSString *)string
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     
-//    if(textField.tag == textFieldTagNumberPhoneNumber)
-//    {
-//        
-//        self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
-//        [UIView commitAnimations];
-//        
-//    }
     if (textField.tag == textFieldTagNumberEmail)
     {
-//        CGRect f = self.subView.bounds  ;
-//        f.origin.x = 0; // new x
-//        f.origin.y = 150; // new y
-//        self.subView.bounds= f;
-        
-        
-       // self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
+
         self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -1;
     }
+    
+    [self.hideButton setHidden:NO];
+    self.alcBottomOfHideButton.constant = KEYBOARD_HEIGHT *-1;
+    
     
     return YES  ;
     
@@ -228,6 +244,7 @@ replacementString:(NSString *)string
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    /*
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [[event allTouches] anyObject];
     
@@ -246,6 +263,8 @@ replacementString:(NSString *)string
     if ([self.inputEmail isFirstResponder] && [touch view] != self.inputEmail) {
         [self.inputEmail resignFirstResponder];
     }
+    */
+    
     
     self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
 }
@@ -253,6 +272,8 @@ replacementString:(NSString *)string
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [self.hideButton setHidden:YES];
+    
 
     
     self.view.userInteractionEnabled = YES;
