@@ -12,8 +12,6 @@
 
 @interface ViewController ()
 
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabelEng;
 
 @property (strong, nonatomic) IBOutlet UITextField *inputName;
 @property (strong, nonatomic) IBOutlet UITextField *inputAge;
@@ -31,7 +29,6 @@
 @property( strong, nonatomic) NSMutableAttributedString *finalIntro;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfSubContainer;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfHideButton;
 
 @property (strong, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) IBOutlet UIButton *hideButton;
@@ -235,7 +232,6 @@ replacementString:(NSString *)string
     }
     
     [self.hideButton setHidden:NO];
-    self.alcBottomOfHideButton.constant = KEYBOARD_HEIGHT *-1;
     
     
     return YES  ;
