@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define KEYBOARD_HEIGHT                                         250.0f
+
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
@@ -28,6 +30,7 @@
 
 @property( strong, nonatomic) NSMutableAttributedString *finalIntro;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfSubContainer;
 
 @property (strong, nonatomic) IBOutlet UIView *subView;
 
@@ -200,23 +203,23 @@ replacementString:(NSString *)string
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     
-    if(textField.tag == textFieldTagNumberPhoneNumber)
-    {
-        
-        self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
-        [UIView commitAnimations];
-        
-    }
+//    if(textField.tag == textFieldTagNumberPhoneNumber)
+//    {
+//        
+//        self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
+//        [UIView commitAnimations];
+//        
+//    }
     if (textField.tag == textFieldTagNumberEmail)
     {
-        CGRect f = self.subView.bounds  ;
-        f.origin.x = 0; // new x
-        f.origin.y = 150; // new y
-        self.subView.bounds= f;
+//        CGRect f = self.subView.bounds  ;
+//        f.origin.x = 0; // new x
+//        f.origin.y = 150; // new y
+//        self.subView.bounds= f;
         
         
        // self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
-        
+        self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -1;
     }
     
     return YES  ;
@@ -243,7 +246,8 @@ replacementString:(NSString *)string
     if ([self.inputEmail isFirstResponder] && [touch view] != self.inputEmail) {
         [self.inputEmail resignFirstResponder];
     }
-  
+    
+    self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
 }
 
 - (void)viewDidLoad {
