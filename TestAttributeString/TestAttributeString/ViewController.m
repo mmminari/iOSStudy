@@ -16,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *inputName;
 @property (strong, nonatomic) IBOutlet UITextField *inputAge;
 @property (strong, nonatomic) IBOutlet UITextField *inputHobby;
+@property (strong, nonatomic) IBOutlet UITextField *inputPhoneNumber;
+@property (strong, nonatomic) IBOutlet UITextField *inputEmail;
 
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *userAge;
@@ -26,8 +28,8 @@
 
 @property( strong, nonatomic) NSMutableAttributedString *finalIntro;
 
-@property (strong, nonatomic) ContainerView *CV;
 
+@property (strong, nonatomic) IBOutlet UIView *subView;
 
 @end
 
@@ -92,9 +94,7 @@ replacementString:(NSString *)string
             
         }
     }
-    
-    
-    
+
     
     return YES;
     
@@ -144,13 +144,11 @@ replacementString:(NSString *)string
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
-    if(textField == self.inputHobby){
+    if(textField.tag == textFieldTagNumberHobby){
         self.userName = self.inputName.text;
         self.userAge = self.inputAge.text;
         self.userHobby  = self.inputHobby.text;
-        
-        
-        
+   
         NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
         
         
@@ -178,18 +176,58 @@ replacementString:(NSString *)string
         
         self.showLabel.attributedText = self.finalIntro;
         NSLog( @"%@", self.finalIntro);
-        
-        self.CV.view.frame = CGRectMake(0, 0, self.CV.view.frame.size.width, self.CV.view.frame.size.height );
+
+
         
     }
     
+    if(textField.tag == textFieldTagNumberPhoneNumber) {
+        
+        [self.subView setFrame:CGRectMake(0, 0, self.subView.frame.size.width, self.subView.frame.size.height)];        
+        [UIView commitAnimations];
+        
+        
+    }
+    if (textField.tag == textFieldTagNumberEmail){
+        
+        self.subView.bounds = CGRectMake(0, 0, self.subView.frame.size.width, self.subView.frame.size.height);
+        
+    }
 
     return YES;
 }
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    if(textField.tag == textFieldTagNumberPhoneNumber)
+    {
+        
+        self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
+        [UIView commitAnimations];
+        
+    }
+    if (textField.tag == textFieldTagNumberEmail)
+    {
+        CGRect f = self.subView.bounds  ;
+        f.origin.x = 0; // new x
+        f.origin.y = 150; // new y
+        self.subView.bounds= f;
+        
+        
+       // self.subView.frame = CGRectMake(0, -150, self.subView.frame.size.width, self.subView.frame.size.height);
+        
+    }
+    
+    return YES  ;
+    
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [[event allTouches] anyObject];
+    
     if ([self.inputName isFirstResponder] && [touch view] != self.inputName) {
         [self.inputName resignFirstResponder];
     }
@@ -199,11 +237,19 @@ replacementString:(NSString *)string
     if ([self.inputHobby isFirstResponder] && [touch view] != self.inputHobby) {
         [self.inputHobby resignFirstResponder];
     }
+    if ([self.inputPhoneNumber isFirstResponder] && [touch view] != self.inputPhoneNumber) {
+        [self.inputPhoneNumber resignFirstResponder];
+    }
+    if ([self.inputEmail isFirstResponder] && [touch view] != self.inputEmail) {
+        [self.inputEmail resignFirstResponder];
+    }
   
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+
     
     self.view.userInteractionEnabled = YES;
 
@@ -211,17 +257,12 @@ replacementString:(NSString *)string
     self.inputName.tag = textFieldTagNumberName;
     self.inputAge.tag = textFieldTagNumberAge;
     self.inputHobby.tag = textFieldTagNumberHobby;
-    self.CV.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
-    self.CV.inputEmail.tag = textFieldTagNumberEmail;
-    
-    
-    
-    
-    
-    
+    self.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
+    self.inputEmail.tag = textFieldTagNumberEmail;
+
 
     
-    self.showLabel.text = @" "  ;
+    self.showLabel.text = @" ";
     
     
 

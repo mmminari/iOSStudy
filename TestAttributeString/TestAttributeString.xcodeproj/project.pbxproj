@@ -13,7 +13,6 @@
 		6D0148581CBCA55700106866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D0148561CBCA55700106866 /* Main.storyboard */; };
 		6D01485A1CBCA55800106866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D0148591CBCA55800106866 /* Assets.xcassets */; };
 		6D01485D1CBCA55800106866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D01485B1CBCA55800106866 /* LaunchScreen.storyboard */; };
-		6D42B9A51CBF815400324934 /* ContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D42B9A41CBF815400324934 /* ContainerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +26,6 @@
 		6D0148591CBCA55800106866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D01485C1CBCA55800106866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D01485E1CBCA55800106866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D42B9A41CBF815400324934 /* ContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerView.m; sourceTree = "<group>"; };
-		6D42B9A71CBF832000324934 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +60,6 @@
 			children = (
 				6D0148501CBCA55700106866 /* AppDelegate.h */,
 				6D0148511CBCA55700106866 /* AppDelegate.m */,
-				6D42B9A71CBF832000324934 /* Header.h */,
-				6D42B9A41CBF815400324934 /* ContainerView.m */,
 				6D0148531CBCA55700106866 /* ViewController.h */,
 				6D0148541CBCA55700106866 /* ViewController.m */,
 				6D0148561CBCA55700106866 /* Main.storyboard */,
@@ -154,7 +149,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D42B9A51CBF815400324934 /* ContainerView.m in Sources */,
 				6D0148551CBCA55700106866 /* ViewController.m in Sources */,
 				6D0148521CBCA55700106866 /* AppDelegate.m in Sources */,
 				6D01484F1CBCA55700106866 /* main.m in Sources */,

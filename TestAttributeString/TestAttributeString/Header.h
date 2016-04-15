@@ -13,8 +13,7 @@
 
 
 
-@property (strong, nonatomic) IBOutlet UITextField *inputPhoneNumber;
-@property (strong, nonatomic) IBOutlet UITextField *inputEmail;
+
 
 - (IBAction)showData:(UIButton *)sender;
 
