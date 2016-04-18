@@ -49,6 +49,144 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
 };
 
 
+
+#pragma mark - View Cycle
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    [self.hideButton setHidden:YES];
+    
+    self.view.userInteractionEnabled = YES;
+    
+    self.inputName.tag = textFieldTagNumberName;
+    self.inputAge.tag = textFieldTagNumberAge;
+    self.inputHobby.tag = textFieldTagNumberHobby;
+    self.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
+    self.inputEmail.tag = textFieldTagNumberEmail;
+    
+    self.showLabel.text = @" ";
+    
+    /*
+     NSString *userName = @"김민아11111";
+     NSString *templetSentence = @"내이름은 %s1 입니다.";
+     
+     templetSentence = [templetSentence stringByReplacingOccurrencesOfString:@"%s1" withString:userName];
+     
+     NSMutableAttributedString *korName = [[NSMutableAttributedString alloc] initWithString:templetSentence];
+     NSRange nameRange = [templetSentence rangeOfString:userName];
+     NSLog(@"name.length : %lu",(unsigned long)nameRange.location);
+     
+     [korName addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(nameRange.location, userName.length)];
+     
+     
+     // 내이름은 %s1 입니다. - 한
+     // My Name is %s1. - 영
+     
+     
+     NSString *userNameEng = @"Mina";
+     NSString *templetSentenceEng = @"My name is %s1";
+     
+     templetSentenceEng = [templetSentenceEng stringByReplacingOccurrencesOfString:@"%s1" withString:userNameEng];
+     
+     
+     
+     NSMutableAttributedString *engName = [[NSMutableAttributedString alloc]initWithString:templetSentenceEng];
+     
+     NSRange nameRangeEng = [templetSentenceEng rangeOfString:userNameEng];
+     
+     [engName addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(nameRangeEng.location, userNameEng.length)];
+     
+     self.nameLabel.attributedText = korName;
+     self.nameLabelEng.attributedText = engName;
+     
+     */
+    
+    
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+
+#pragma mark - KeyBoard Notification
+
+
+- (void)adjustTextFieldByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info
+{
+    if (showKeyboard)
+    {
+        self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -0.5;
+    }
+    else
+    {
+        self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
+   
+    }
+    
+    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    NSLog(@"%f",animationDuration)  ;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+    
+    
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    
+    NSDictionary *userInfo = [notification userInfo];
+    [self adjustTextFieldByKeyboardState:YES keyboardInfo:userInfo];
+    
+}
+- (void)keyboardWillHide:(NSNotification *)notification {
+    
+    NSDictionary *userInfo = [notification userInfo];
+    [self adjustTextFieldByKeyboardState:NO keyboardInfo:userInfo];
+}
+
+
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+
+    [self.hideButton setHidden:NO];
+    
+    return YES  ;
+    
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [self.hideButton setHidden:YES];
+
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
+}
+
+
+
+#pragma mark - Input Action
+
 -(void)showErrorMessageWithtextField:(UITextField *)textField{
     
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
@@ -160,14 +298,8 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     }
     if ([self.inputEmail isFirstResponder] ) {
         [self.inputEmail resignFirstResponder];
-        self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
-        
     }
     
-    /*
-    if([textField isFirstResponder])
-        [textField resignFirstResponder];
-    */
     
     [self.hideButton setHidden:YES];
 
@@ -213,12 +345,22 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
 
         
     }
-    if(textField.tag == textFieldTagNumberEmail)
-    {
+    
         
-        self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
-
-    }
+    NSTimeInterval animationDuration = [[self.keyBoardInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        [UIView animateWithDuration:animationDuration
+                         animations:^{
+                             self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
+                             
+                         }];
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+    
+    
     
     [self.hideButton setHidden:YES];
     
@@ -226,130 +368,9 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     return YES;
 }
 
-- (void)adjustTextViewByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info
-{
-    if (showKeyboard) {
-        self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -0.5;
-    }
-
-    self.keyBoardInfo = info;
-    
-        NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        NSLog(@"%f",animationDuration)  ;
-        
-        UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-        [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
-            [self.view layoutIfNeeded];
-
-        } completion:nil];
-
-    
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    
-
-    NSDictionary *userInfo = [notification userInfo];
-    [self adjustTextViewByKeyboardState:YES keyboardInfo:userInfo];
-    
-}
-- (void)viewDidAppear:(BOOL)animated {
-    
-    // observe keyboard hide and show notifications to resize the text view appropriately
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    // start editing the UITextView (makes the keyboard appear when the application launches)
-    //[self editAction:self];
-}
 
 
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-
-    
-    if (textField.tag == textFieldTagNumberEmail)
-    {
-
-        NSTimeInterval animationDuration = [[self.keyBoardInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-
-        [UIView animateWithDuration:animationDuration
-                         animations:^{
-                             self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -0.5;
-                             
-                         }];
-
-    }
-    
-    [self.hideButton setHidden:NO];
-    
-    
-    return YES  ;
-    
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
-}
-
-
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    [self.hideButton setHidden:YES];
-
-    self.view.userInteractionEnabled = YES;
-
-    self.inputName.tag = textFieldTagNumberName;
-    self.inputAge.tag = textFieldTagNumberAge;
-    self.inputHobby.tag = textFieldTagNumberHobby;
-    self.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
-    self.inputEmail.tag = textFieldTagNumberEmail;
-    
-    self.showLabel.text = @" ";
-    
-    /*
-    NSString *userName = @"김민아11111";
-    NSString *templetSentence = @"내이름은 %s1 입니다.";
-    
-    templetSentence = [templetSentence stringByReplacingOccurrencesOfString:@"%s1" withString:userName];
-    
-    NSMutableAttributedString *korName = [[NSMutableAttributedString alloc] initWithString:templetSentence];
-    NSRange nameRange = [templetSentence rangeOfString:userName];
-    NSLog(@"name.length : %lu",(unsigned long)nameRange.location);
-    
-    [korName addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(nameRange.location, userName.length)];
-
-    
-    // 내이름은 %s1 입니다. - 한
-    // My Name is %s1. - 영
-    
-
-    NSString *userNameEng = @"Mina";
-    NSString *templetSentenceEng = @"My name is %s1";
-    
-    templetSentenceEng = [templetSentenceEng stringByReplacingOccurrencesOfString:@"%s1" withString:userNameEng];
-
-    
-    
-    NSMutableAttributedString *engName = [[NSMutableAttributedString alloc]initWithString:templetSentenceEng];
-    
-    NSRange nameRangeEng = [templetSentenceEng rangeOfString:userNameEng];
-
-    [engName addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(nameRangeEng.location, userNameEng.length)];
-    
-    self.nameLabel.attributedText = korName;
-    self.nameLabelEng.attributedText = engName;
-    
-    */
-
-    
- 
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
