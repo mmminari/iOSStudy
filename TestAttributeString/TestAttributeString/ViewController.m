@@ -33,6 +33,9 @@
 @property (strong, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) IBOutlet UIButton *hideButton;
 
+@property (weak, nonatomic) NSDictionary *keyBoardInfo;
+
+
 @end
 
 @implementation ViewController
@@ -61,10 +64,7 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     
 }
 
-- (BOOL)textField:(UITextField *)textField
-shouldChangeCharactersInRange:(NSRange)range
-replacementString:(NSString *)string
-{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     
     if(textField.tag == textFieldTagNumberName)
@@ -163,23 +163,21 @@ replacementString:(NSString *)string
         self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
         
     }
+    
     /*
     if([textField isFirstResponder])
         [textField resignFirstResponder];
     */
     
-    
     [self.hideButton setHidden:YES];
-    
-
-    
 
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
-    if(textField.tag == textFieldTagNumberHobby){
+    if(textField.tag == textFieldTagNumberHobby)
+    {
         self.userName = self.inputName.text;
         self.userAge = self.inputAge.text;
         self.userHobby  = self.inputHobby.text;
@@ -215,6 +213,12 @@ replacementString:(NSString *)string
 
         
     }
+    if(textField.tag == textFieldTagNumberEmail)
+    {
+        
+        self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
+
+    }
     
     [self.hideButton setHidden:YES];
     
@@ -222,13 +226,61 @@ replacementString:(NSString *)string
     return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (void)adjustTextViewByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info
 {
+    if (showKeyboard) {
+        self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -0.5;
+    }
+
+    self.keyBoardInfo = info;
+    
+        NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        NSLog(@"%f",animationDuration)  ;
+        
+        UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+        [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+            [self.view layoutIfNeeded];
+
+        } completion:nil];
+
+    
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    
+
+    NSDictionary *userInfo = [notification userInfo];
+    [self adjustTextViewByKeyboardState:YES keyboardInfo:userInfo];
+    
+}
+- (void)viewDidAppear:(BOOL)animated {
+    
+    // observe keyboard hide and show notifications to resize the text view appropriately
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    // start editing the UITextView (makes the keyboard appear when the application launches)
+    //[self editAction:self];
+}
+
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+
     
     if (textField.tag == textFieldTagNumberEmail)
     {
 
-        self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -1;
+        NSTimeInterval animationDuration = [[self.keyBoardInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+
+        [UIView animateWithDuration:animationDuration
+                         animations:^{
+                             self.alcTopOfSubContainer.constant = KEYBOARD_HEIGHT * -0.5;
+                             
+                         }];
+
     }
     
     [self.hideButton setHidden:NO];
@@ -240,55 +292,24 @@ replacementString:(NSString *)string
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    /*
-    [super touchesBegan:touches withEvent:event];
-    UITouch *touch = [[event allTouches] anyObject];
-    
-    if ([self.inputName isFirstResponder] && [touch view] != self.inputName) {
-        [self.inputName resignFirstResponder];
-    }
-    if ([self.inputAge isFirstResponder] && [touch view] != self.inputAge) {
-        [self.inputAge resignFirstResponder];
-    }
-    if ([self.inputHobby isFirstResponder] && [touch view] != self.inputHobby) {
-        [self.inputHobby resignFirstResponder];
-    }
-    if ([self.inputPhoneNumber isFirstResponder] && [touch view] != self.inputPhoneNumber) {
-        [self.inputPhoneNumber resignFirstResponder];
-    }
-    if ([self.inputEmail isFirstResponder] && [touch view] != self.inputEmail) {
-        [self.inputEmail resignFirstResponder];
-    }
-    */
-    
-    
     self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
 }
+
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     [self.hideButton setHidden:YES];
-    
 
-    
     self.view.userInteractionEnabled = YES;
 
-    
     self.inputName.tag = textFieldTagNumberName;
     self.inputAge.tag = textFieldTagNumberAge;
     self.inputHobby.tag = textFieldTagNumberHobby;
     self.inputPhoneNumber.tag = textFieldTagNumberPhoneNumber;
     self.inputEmail.tag = textFieldTagNumberEmail;
-
-
     
     self.showLabel.text = @" ";
-    
-    
-
-    
-    // Do any additional setup after loading the view, typically from a nib.
     
     /*
     NSString *userName = @"김민아11111";
