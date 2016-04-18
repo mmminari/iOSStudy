@@ -100,10 +100,7 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
      self.nameLabelEng.attributedText = engName;
      
      */
-    
-    
-    
-    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -112,8 +109,9 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
                                                object:nil];
-
-    [[NSNotificationCenter defaultCenter] removeObserver:self
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                selector:@selector(keyboardWillHide:)
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
 }
@@ -149,13 +147,16 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
 - (void)keyboardWillShow:(NSNotification *)notification {
     
     NSDictionary *userInfo = [notification userInfo];
+
     [self adjustTextFieldByKeyboardState:YES keyboardInfo:userInfo];
     
 }
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     NSDictionary *userInfo = [notification userInfo];
-    [self adjustTextFieldByKeyboardState:NO keyboardInfo:userInfo];
+    self.keyBoardInfo = userInfo    ;
+    
+    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
 }
 
 
@@ -176,14 +177,6 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
 
     return YES;
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    
-    self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
-}
-
-
 
 #pragma mark - Input Action
 
@@ -300,7 +293,8 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         [self.inputEmail resignFirstResponder];
     }
     
-    
+    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
+
     [self.hideButton setHidden:YES];
 
 }
@@ -341,28 +335,14 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         
         self.showLabel.attributedText = self.finalIntro;
         NSLog( @"%@", self.finalIntro);
-
-
         
     }
     
-        
-    NSTimeInterval animationDuration = [[self.keyBoardInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
-        [UIView animateWithDuration:animationDuration
-                         animations:^{
-                             self.alcTopOfSubContainer.constant = CGFLOAT_MIN;
-                             
-                         }];
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
-    
-    
+
     
     [self.hideButton setHidden:YES];
+    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
+    
     
 
     return YES;
