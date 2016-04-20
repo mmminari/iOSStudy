@@ -99,5 +99,26 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     return result;
 }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"sgMainToTextView"]){
+        ViewController *vc = [segue destinationViewController];
+        vc.title = sender;
+        
+        
+    }
+}
+    
+
+
+
+
+
+
 
 @end
+
+
+
+
+
