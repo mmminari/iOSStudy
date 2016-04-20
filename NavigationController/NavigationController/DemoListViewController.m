@@ -8,10 +8,13 @@
 
 #import "DemoListViewController.h"
 #import "ViewController.h"
+#import "WebViewController.h"
+
 
 typedef NS_ENUM(NSInteger, DemoType)
 {
     DemoTypeTextAttributedString = 0,
+    DemoTypeWebView,
 };
 
 @interface DemoListViewController ()
@@ -71,7 +74,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView"];
     
     return listInfo;
 }
@@ -93,26 +96,37 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         case DemoTypeTextAttributedString:
             result = @"sgMainToTextView";
             break;
+        case DemoTypeWebView:
+            result = @"sgMainToWebView";
+            break;
         default:
             break;
     }
     
     return result;
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgMainToTextView"]){
         ViewController *vc = [segue destinationViewController];
         vc.title = sender;
+    }
+    
+    if([[segue identifier] isEqualToString:@"sgMainToWebView"]){
+        WebViewController *wc = [segue destinationViewController];
+        
+        wc.title = sender;
+
+        
+
         
         
     }
-}
+    
     
 
-
-
-
+}
 
 
 
