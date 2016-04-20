@@ -33,7 +33,6 @@
 @property (strong, nonatomic) IBOutlet UIView *subView;
 @property (strong, nonatomic) IBOutlet UIButton *hideButton;
 
-@property (weak, nonatomic) NSDictionary *keyBoardInfo;
 
 
 @end
@@ -115,7 +114,9 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
 }
-
+-(void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark - KeyBoard Notification
 
@@ -154,9 +155,8 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     NSDictionary *userInfo = [notification userInfo];
-    self.keyBoardInfo = userInfo    ;
     
-    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
+    [self adjustTextFieldByKeyboardState:NO keyboardInfo:userInfo];
 }
 
 
@@ -191,45 +191,6 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
-    
-    
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    
-    if(textField.tag == textFieldTagNumberName)
-    {
-        if((range.length != 1) && (self.inputName.text.length> 10 - 1))
-        {
-           
-            [self showErrorMessageWithtextField:self.inputName];
-            
-        }
-    
-    }
-    
-    if(textField.tag == textFieldTagNumberAge)
-    {
-        if((range.length != 1) && (self.inputAge.text.length>2 -1))
-        {
-            
-            [self showErrorMessageWithtextField:self.inputAge];
-      
-        }
-    }
-    
-    if(textField.tag == textFieldTagNumberHobby)
-    {
-        if((range.length != 1) && (self.inputHobby.text.length >10 -1))
-        {
-            [self showErrorMessageWithtextField:self.inputHobby];
-            
-        }
-    }
-
-    
-    return YES;
     
     
 }
@@ -293,11 +254,13 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         [self.inputEmail resignFirstResponder];
     }
     
-    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
-
     [self.hideButton setHidden:YES];
 
 }
+
+
+
+#pragma mark - TextFieldDelegate
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
@@ -307,7 +270,7 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         self.userName = self.inputName.text;
         self.userAge = self.inputAge.text;
         self.userHobby  = self.inputHobby.text;
-   
+        
         NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
         
         
@@ -327,9 +290,7 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         
         [self.finalIntro addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(nameRange.location, self.userName.length)];
         [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:20.0f] range:NSMakeRange(nameRange.location, self.userName.length)];
-        
         [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16.0f] range:NSMakeRange(ageRange.location, self.userAge.length)];
-        
         [self.finalIntro addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:16.0f] range:NSMakeRange(hobbyRange.location, self.userHobby.length)];
         
         
@@ -338,19 +299,51 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         
     }
     
-
-    
     [self.hideButton setHidden:YES];
-    [self adjustTextFieldByKeyboardState:NO keyboardInfo:self.keyBoardInfo];
     
     
-
     return YES;
 }
 
-
-
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    if(textField.tag == textFieldTagNumberName)
+    {
+        if((range.length != 1) && (self.inputName.text.length> 10 - 1))
+        {
+            
+            [self showErrorMessageWithtextField:self.inputName];
+            
+        }
+        
+    }
+    
+    if(textField.tag == textFieldTagNumberAge)
+    {
+        if((range.length != 1) && (self.inputAge.text.length>2 -1))
+        {
+            
+            [self showErrorMessageWithtextField:self.inputAge];
+            
+        }
+    }
+    
+    if(textField.tag == textFieldTagNumberHobby)
+    {
+        if((range.length != 1) && (self.inputHobby.text.length >10 -1))
+        {
+            
+            [self showErrorMessageWithtextField:self.inputHobby];
+            
+        }
+    }
+    
+    
+    return YES;
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
