@@ -14,6 +14,7 @@
 		6D4C8A931CC71FDB006AEEBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */; };
 		6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C8AA01CC72740006AEEBE /* ViewController.m */; };
 		6D4C8AA81CC732ED006AEEBE /* UITableView+TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C8AA71CC732ED006AEEBE /* UITableView+TableViewController.m */; };
+		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		6D4C8AA01CC72740006AEEBE /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../TestAttributeString/TestAttributeString/ViewController.m; sourceTree = "<group>"; };
 		6D4C8AA61CC732ED006AEEBE /* UITableView+TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+TableViewController.h"; sourceTree = "<group>"; };
 		6D4C8AA71CC732ED006AEEBE /* UITableView+TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TableViewController.m"; sourceTree = "<group>"; };
+		ACF79B771CC7488300B89C4E /* DemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
+		ACF79B781CC7488300B89C4E /* DemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				6D4C8AA01CC72740006AEEBE /* ViewController.m */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
 				6D4C8A871CC71FDB006AEEBE /* AppDelegate.m */,
+				ACF79B771CC7488300B89C4E /* DemoListViewController.h */,
+				ACF79B781CC7488300B89C4E /* DemoListViewController.m */,
 				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
 				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
 				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8AA81CC732ED006AEEBE /* UITableView+TableViewController.m in Sources */,
@@ -306,6 +312,7 @@
 				6D4C8A991CC71FDB006AEEBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
