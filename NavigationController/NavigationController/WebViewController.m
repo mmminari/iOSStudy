@@ -11,55 +11,64 @@
 @interface WebViewController ()
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIWebView *showWebSite;
 
-- (IBAction)backButton:(UIButton *)sender;
-- (IBAction)forwardButton:(UIButton *)sender;
-- (IBAction)refreshButton:(UIButton *)sender;
 
 @end
 
 @implementation WebViewController
 
+#pragma mark - View lifecycle
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-    
-    [self.showWebSite reload];
+
 
     self.activityIndicator.hidesWhenStopped = YES;
     [self.activityIndicator startAnimating];
     
-    NSString *urlString = @"http://www.smtown.com";
+    [self urlRequestwithURL:@"http://www.smtown.com"];
+
+}
+
+#pragma mark - User Action
+
+- (IBAction)touchedBackButton:(UIButton *)sender {
+    
+    [self.showWebSite goBack];
+    
+}
+
+- (IBAction)touchedForwardButton:(UIButton *)sender {
+    
+    [self.showWebSite goForward];
+    
+}
+
+- (IBAction)touchedRefreshButton:(UIButton *)sender {
+    
+    [self.showWebSite reload];
+    
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    [self.activityIndicator stopAnimating];
+    
+}
+
+#pragma mark - UIWebView
+
+-(void)urlRequestwithURL:(NSString *)urlString{
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self.showWebSite loadRequest:request];
     
-    
-    if(self.showWebSite.loading)
-        NSLog(@"loadinggg");
-     else
-        [self.activityIndicator stopAnimating];
-    
-
-    
 }
 
-- (IBAction)backButton:(UIButton *)sender {
-    [self.showWebSite goBack];
-    
-    
-}
 
-- (IBAction)forwardButton:(UIButton *)sender {
-    [self.showWebSite goForward];
-    
-    
-}
-
-- (IBAction)refreshButton:(UIButton *)sender {
-    [self.showWebSite reload];
-    
-    
-}
 @end

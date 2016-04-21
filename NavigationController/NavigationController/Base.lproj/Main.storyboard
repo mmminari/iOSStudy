@@ -279,8 +279,8 @@
                                 <rect key="frame" x="282" y="282" width="37" height="37"/>
                                 <color key="color" red="1" green="0.068035001390000002" blue="0.66279647429999999" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrl-vI-sB8">
-                                <rect key="frame" x="-9" y="556" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wrl-vI-sB8">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
                                     <navigationItem id="mT4-kD-G2B">
                                         <nil key="title"/>
@@ -290,19 +290,16 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt;"/>
                                                 <connections>
-                                                    <action selector="backButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="Wsu-iP-iQ1"/>
+                                                    <action selector="touchedBackButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="9C5-9o-Ohk"/>
                                                 </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="backButton:" destination="tOP-G0-5Lw" id="Zof-7z-f35"/>
-                                            </connections>
                                         </barButtonItem>
                                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HOw-JW-u9G">
                                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&gt;"/>
                                             <connections>
-                                                <action selector="forwardButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="aAe-8I-MMZ"/>
+                                                <action selector="touchedForwardButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="ic8-kw-c3v"/>
                                             </connections>
                                         </button>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="gsn-A9-z6y">
@@ -311,7 +308,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="refresh"/>
                                                 <connections>
-                                                    <action selector="refreshButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="rhh-tq-PTa"/>
+                                                    <action selector="touchedRefreshButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="KIh-xC-FXd"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>

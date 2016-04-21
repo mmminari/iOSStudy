@@ -12,7 +12,6 @@
 
 @interface WebViewController : UIViewController <UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *showWebSite;
 
 
 @end
