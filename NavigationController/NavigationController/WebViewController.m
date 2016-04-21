@@ -63,8 +63,28 @@
 shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType{
     
-    NSLog(@"%@", request.URL);
+    NSLog(@"URL: %@", request.URL.absoluteString);
+    
+    NSLog(@"CachePolicy : %lu", (unsigned long)request.cachePolicy);
+    
 
+    NSLog(@"TimeOutInterval : %f", request.timeoutInterval);
+    
+    NSLog(@"%@", request.mainDocumentURL.absoluteString);
+    NSLog(@"NetworkServiceType : %lu", (unsigned long)request.networkServiceType);
+    
+    NSLog(@"HTTPBody : %lu", request.HTTPBody.length);
+    NSLog(@"HTTPBody : %@", request.HTTPBodyStream);
+    
+
+    
+    NSLog(@"HTTPMethod : %@", request.HTTPMethod);
+    
+    
+    
+    
+    
+    
     return YES;
     
 }
