@@ -91,9 +91,11 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     NSLog(@"Value : %@ ", [self getValueFromUrlWithRequest:request]);
 
     
-   
+    NSString *testURLString = @"https://memberbeta.smtown.com/Account/SignIn?returnUrl=%2fMy%2fPassport&key1=value1&key2=value2";
+    NSURL *testURL = [NSURL URLWithString:testURLString];
     
-
+    
+    [self getValueFromURL:testURL withKey:@"key2"];
     
     
     return YES;
@@ -113,18 +115,48 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 #pragma mark - Get Value From Url
 
--(NSString *)getValueFromUrlWithRequest:(NSURLRequest *)request{
-    NSString *result;
+-(NSString *)getValueFromUrlWithRequest:(NSURLRequest *)request
+{
+    NSString *queryString = @"returnUrl=%2fMy%2fPassport";
     
+    NSString *result = nil;
     
     NSString *query = request.URL.query;
+    
     NSArray *queryArr = [query componentsSeparatedByString:@"="];
     
-    result = queryArr[1]    ;
+    result = queryArr[1];
     
     return result;
+}
+
+- (NSString *)getValueFromURL:(NSURL *)url withKey:(NSString *)key
+{
+    NSString *result = nil;
     
+    NSString *queryString = url.query;
     
+    NSArray *keyAndValues = [queryString componentsSeparatedByString:@"&"];
+    
+    NSMutableDictionary *dicKeyAndValues = [NSMutableDictionary dictionary];
+    
+    NSInteger index = 0;
+    for (NSString *keyAndValue in keyAndValues)
+    {
+        NSLog(@"keyAndValue[%zd] : %@",index, keyAndValue);
+        
+        NSArray *tempKV = [keyAndValue componentsSeparatedByString:@"="];
+        
+        [dicKeyAndValues setObject:[tempKV lastObject] forKey:[tempKV firstObject]];
+        NSLog(@"dicKeyAndValues[%zd] : %@",index, dicKeyAndValues);
+        
+        index++;
+    }
+    
+    result = [dicKeyAndValues valueForKey:key];
+    NSLog(@"result : %@",result);
+    
+    return result;
 }
 
 
