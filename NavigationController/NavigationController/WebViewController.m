@@ -27,25 +27,25 @@
     self.activityIndicator.hidesWhenStopped = YES;
     [self.activityIndicator startAnimating];
     
-    [self urlRequestwithURL:@"http://www.smtown.com"];
+    [self urlRequestWithURL:@"http://www.smtown.com"];
 
 }
 
 #pragma mark - User Action
 
-- (IBAction)touchedBackButton:(UIButton *)sender {
+- (IBAction)touchedBackButton:(id)sender {
     
     [self.showWebSite goBack];
     
 }
 
-- (IBAction)touchedForwardButton:(UIButton *)sender {
+- (IBAction)touchedForwardButton:(id)sender {
     
     [self.showWebSite goForward];
     
 }
 
-- (IBAction)touchedRefreshButton:(UIButton *)sender {
+- (IBAction)touchedRefreshButton:(id)sender {
     
     [self.showWebSite reload];
     
@@ -59,9 +59,19 @@
     
 }
 
+- (BOOL)webView:(UIWebView *)webView
+shouldStartLoadWithRequest:(NSURLRequest *)request
+ navigationType:(UIWebViewNavigationType)navigationType{
+    
+    NSLog(@"%@", request.URL);
+
+    return YES;
+    
+}
+
 #pragma mark - UIWebView
 
--(void)urlRequestwithURL:(NSString *)urlString{
+-(void)urlRequestWithURL:(NSString *)urlString{
     
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

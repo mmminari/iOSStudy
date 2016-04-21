@@ -290,7 +290,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="&lt;"/>
                                                 <connections>
-                                                    <action selector="touchedBackButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="9C5-9o-Ohk"/>
+                                                    <action selector="touchedBackButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="kUY-6N-qrD"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -299,7 +299,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="&gt;"/>
                                             <connections>
-                                                <action selector="touchedForwardButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="ic8-kw-c3v"/>
+                                                <action selector="touchedForwardButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="OjC-mT-sdr"/>
                                             </connections>
                                         </button>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="gsn-A9-z6y">
@@ -308,7 +308,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="refresh"/>
                                                 <connections>
-                                                    <action selector="touchedRefreshButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="KIh-xC-FXd"/>
+                                                    <action selector="touchedRefreshButton:" destination="tOP-G0-5Lw" eventType="touchUpInside" id="v2B-fM-oQg"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
