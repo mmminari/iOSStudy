@@ -27,7 +27,9 @@
     self.activityIndicator.hidesWhenStopped = YES;
     [self.activityIndicator startAnimating];
     
-    [self urlRequestWithURL:@"http://www.smtown.com"];
+    // https://memberbeta.smtown.com/Account/SignIn?returnUrl=%2fMy%2fPassport
+    // https://memberbeta.smtown.com
+    [self urlRequestWithURL:@"https://memberbeta.smtown.com/Account/SignIn?returnUrl=%2fMy%2fPassport"];
 
 }
 
@@ -81,8 +83,13 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     NSLog(@"HTTPMethod : %@", request.HTTPMethod);
     
     
+    // 도메인
     
+    // 상대경로
     
+    // Query (Parameters)
+    
+    // returnUrl value?
     
     
     return YES;
