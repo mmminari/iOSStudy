@@ -428,14 +428,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="LogoImage" destination="Pnf-os-AGA" id="BlO-9C-eCd"/>
-                        <outlet property="bottomImage" destination="w6L-h4-G7P" id="Exv-Nq-EUS"/>
-                        <outlet property="detailLabel" destination="rjJ-9n-rhG" id="dBT-iF-nMa"/>
-                        <outlet property="inputCommentLabel" destination="smw-zW-IPm" id="z2h-YA-SO9"/>
-                        <outlet property="inputTextfield" destination="3G3-B1-fE5" id="oVR-EQ-IaX"/>
-                        <outlet property="mainView" destination="1Yf-ZX-0aV" id="r7F-NN-Yc7"/>
-                        <outlet property="okButton" destination="91t-ze-bGJ" id="SEQ-5W-9pd"/>
-                        <outlet property="privateServLabel" destination="eRT-nh-53w" id="rOC-1R-wxR"/>
+                        <outlet property="btnOk" destination="91t-ze-bGJ" id="22j-3a-8AG"/>
+                        <outlet property="ivBottomImage" destination="w6L-h4-G7P" id="SxM-cE-Ucc"/>
+                        <outlet property="ivLogoImage" destination="Pnf-os-AGA" id="Odd-IX-Q2N"/>
+                        <outlet property="lbDetail" destination="rjJ-9n-rhG" id="hbP-hb-ef2"/>
+                        <outlet property="lbInputComment" destination="smw-zW-IPm" id="eJx-zg-8B7"/>
+                        <outlet property="lbPrivateService" destination="eRT-nh-53w" id="7TT-Vb-jlQ"/>
+                        <outlet property="mainContainerView" destination="1Yf-ZX-0aV" id="zgl-Hb-bWj"/>
+                        <outlet property="tfInput" destination="3G3-B1-fE5" id="Xdf-0J-Vwp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5p9-eG-zmW" userLabel="First Responder" sceneMemberID="firstResponder"/>

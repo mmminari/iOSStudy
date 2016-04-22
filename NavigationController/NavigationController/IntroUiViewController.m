@@ -10,15 +10,15 @@
 
 @interface IntroUiViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *LogoImage;
-@property (weak, nonatomic) IBOutlet UIButton *okButton;
-@property (weak, nonatomic) IBOutlet UITextField *inputTextfield;
+@property (weak, nonatomic) IBOutlet UIImageView *ivLogoImage;
+@property (weak, nonatomic) IBOutlet UIButton *btnOk;
+@property (weak, nonatomic) IBOutlet UITextField *tfInput;
 
-@property (weak, nonatomic) IBOutlet UILabel *inputCommentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *privateServLabel;
-@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
-@property (strong, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIImageView *bottomImage;
+@property (weak, nonatomic) IBOutlet UILabel *lbInputComment;
+@property (weak, nonatomic) IBOutlet UILabel *lbPrivateService;
+@property (weak, nonatomic) IBOutlet UILabel *lbDetail;
+@property (strong, nonatomic) IBOutlet UIView *mainContainerView;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBottomImage;
 
 @end
 
@@ -28,15 +28,15 @@
     [super viewDidLoad];
     
     
-    self.mainView.backgroundColor = [UIColor colorWithRed:1 green:0.709 blue:0.749 alpha:1];
-    self.okButton.backgroundColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
-    self.inputCommentLabel.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
-    self.privateServLabel.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
-    self.detailLabel.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
+    self.mainContainerView.backgroundColor = [UIColor colorWithRed:1 green:0.709 blue:0.749 alpha:1];
+    self.btnOk.backgroundColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
+    self.lbInputComment.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
+    self.lbPrivateService.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
+    self.lbDetail.textColor = [UIColor colorWithRed:0.294 green:0.294 blue:0.294 alpha:1];
     
-    self.bottomImage.image = [UIImage imageNamed:@"SM_logos.png"];
-    self.inputTextfield.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
-    self.LogoImage.image = [UIImage imageNamed:@"smtownmembership_logo@3x.png"];
+    self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos.png"];
+    self.tfInput.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+    self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo@3x.png"];
     
     
     
