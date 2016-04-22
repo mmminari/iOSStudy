@@ -117,7 +117,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
 -(NSString *)getValueFromUrlWithRequest:(NSURLRequest *)request
 {
-    NSString *queryString = @"returnUrl=%2fMy%2fPassport";
     
     NSString *result = nil;
     
@@ -155,6 +154,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     
     result = [dicKeyAndValues valueForKey:key];
     NSLog(@"result : %@",result);
+    
     
     return result;
 }
