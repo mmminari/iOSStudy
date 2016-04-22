@@ -15,8 +15,8 @@
 		6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C8AA01CC72740006AEEBE /* ViewController.m */; };
 		6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C8AB31CC76BB9006AEEBE /* WebViewController.m */; };
 		6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */; };
-		6DB010791CCA0A6400C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010781CCA0A6400C06A5E /* SM_logos.png */; };
-		6DB0107B1CCA0B3200C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107A1CCA0B3200C06A5E /* smtownmembership_logo@3x.png */; };
+		6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107E1CCA0FE800C06A5E /* SM_logos.png */; };
+		6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */; };
 		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -35,8 +35,8 @@
 		6D4C8AB31CC76BB9006AEEBE /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		6DB010751CC9F31C00C06A5E /* IntroUiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroUiViewController.h; sourceTree = "<group>"; };
 		6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroUiViewController.m; sourceTree = "<group>"; };
-		6DB010781CCA0A6400C06A5E /* SM_logos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SM_logos.png; path = ../../../../../Desktop/SM_logos.png; sourceTree = "<group>"; };
-		6DB0107A1CCA0B3200C06A5E /* smtownmembership_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "smtownmembership_logo@3x.png"; path = "../../../../../Desktop/smtownmembership_logo@3x.png"; sourceTree = "<group>"; };
+		6DB0107E1CCA0FE800C06A5E /* SM_logos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SM_logos.png; sourceTree = "<group>"; };
+		6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smtownmembership_logo@3x.png"; sourceTree = "<group>"; };
 		ACF79B771CC7488300B89C4E /* DemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
 		ACF79B781CC7488300B89C4E /* DemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +71,8 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */,
+				6DB0107E1CCA0FE800C06A5E /* SM_logos.png */,
 				6D4C8A9F1CC72740006AEEBE /* ViewController.h */,
 				6D4C8AA01CC72740006AEEBE /* ViewController.m */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
@@ -93,8 +95,6 @@
 		6D4C8A831CC71FDB006AEEBE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6DB0107A1CCA0B3200C06A5E /* smtownmembership_logo@3x.png */,
-				6DB010781CCA0A6400C06A5E /* SM_logos.png */,
 				6D4C8A841CC71FDB006AEEBE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -157,10 +157,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DB0107B1CCA0B3200C06A5E /* smtownmembership_logo@3x.png in Resources */,
+				6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */,
 				6D4C8A931CC71FDB006AEEBE /* LaunchScreen.storyboard in Resources */,
 				6D4C8A901CC71FDB006AEEBE /* Assets.xcassets in Resources */,
-				6DB010791CCA0A6400C06A5E /* SM_logos.png in Resources */,
+				6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */,
 				6D4C8A8E1CC71FDB006AEEBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

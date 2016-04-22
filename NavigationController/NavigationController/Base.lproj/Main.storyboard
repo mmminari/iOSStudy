@@ -432,7 +432,7 @@
                         <outlet property="bottomImage" destination="w6L-h4-G7P" id="Exv-Nq-EUS"/>
                         <outlet property="detailLabel" destination="rjJ-9n-rhG" id="dBT-iF-nMa"/>
                         <outlet property="inputCommentLabel" destination="smw-zW-IPm" id="z2h-YA-SO9"/>
-                        <outlet property="inputTextfield" destination="3G3-B1-fE5" id="KUM-8Q-QuE"/>
+                        <outlet property="inputTextfield" destination="3G3-B1-fE5" id="oVR-EQ-IaX"/>
                         <outlet property="mainView" destination="1Yf-ZX-0aV" id="r7F-NN-Yc7"/>
                         <outlet property="okButton" destination="91t-ze-bGJ" id="SEQ-5W-9pd"/>
                         <outlet property="privateServLabel" destination="eRT-nh-53w" id="rOC-1R-wxR"/>
