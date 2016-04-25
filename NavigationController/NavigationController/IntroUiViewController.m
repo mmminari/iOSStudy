@@ -68,7 +68,7 @@
     self.tfInput.backgroundColor = [self getColorWithRGBCode:@"ffffff"];
 
     self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
-    self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo@3x"];
+    self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];
 
 }
 
