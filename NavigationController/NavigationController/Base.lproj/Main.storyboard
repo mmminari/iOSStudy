@@ -452,7 +452,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AlcLbPrivateServiceHeight" destination="o85-Jl-3mc" id="OXL-Jn-izS"/>
                         <outlet property="alcBottomMarginFromIvLogoToLbInput" destination="9MO-Kg-JsH" id="jCH-eX-Wla"/>
                         <outlet property="alcBottomMarginFromLbDetailToIvBottom" destination="SCi-rl-3zo" id="KNN-QF-t4q"/>
                         <outlet property="alcBottomMarginFromLbInputToTf" destination="ubz-3A-l2U" id="0or-DY-WLu"/>
@@ -470,6 +469,7 @@
                         <outlet property="alcLbDetailWidth" destination="nJc-t5-5XC" id="rcF-Xb-5lZ"/>
                         <outlet property="alcLbInputCommentHeight" destination="ob0-D3-hWa" id="pXa-Mh-b9N"/>
                         <outlet property="alcLbInputCommentWidth" destination="2to-w2-2pK" id="i0R-O3-pRv"/>
+                        <outlet property="alcLbPrivateServiceHeight" destination="o85-Jl-3mc" id="POD-6j-ZbN"/>
                         <outlet property="alcLbPrivateServiceWidth" destination="nhn-Aj-flK" id="Xgq-1a-6Kr"/>
                         <outlet property="alcTfInputHeight" destination="Jd8-qH-HMa" id="CEw-69-79S"/>
                         <outlet property="alcTfInputWidth" destination="PEb-md-VPw" id="L2O-JC-b1n"/>
