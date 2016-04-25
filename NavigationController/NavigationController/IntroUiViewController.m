@@ -8,6 +8,12 @@
 
 #import "IntroUiViewController.h"
 
+
+#define DEVICE_WIDTH                                        [UIScreen mainScreen].bounds.size.width
+#define STANDARD_DEVICE_WIDTH                               414.0f
+#define WRATIO_WIDTH(w)                                     (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
+
+
 @interface IntroUiViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivLogoImage;
@@ -97,7 +103,8 @@
 -(void)setRatioOfDevicewithDevieWidth:(int)width
 {
     
-    self.alcLbDetailWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcLbDetailWidth.constant andDevieWidth:width];
+//    self.alcLbDetailWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcLbDetailWidth.constant andDevieWidth:width];
+    self.alcLbDetailWidth.constant = WRATIO_WIDTH(540.0f);
     self.alcLbDetailHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcLbDetailHeight.constant andDevieWidth:width];
     self.alcIvLogoWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcIvLogoWidth.constant andDevieWidth:width];
     self.alcIvLogoHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcIvLogoHeight.constant andDevieWidth:width];
@@ -176,12 +183,17 @@
     [rgbDictionary setObject:[code substringWithRange:NSMakeRange(2, 2)] forKey:@"Green"];
     [rgbDictionary setObject:[code substringWithRange:NSMakeRange(4, 2)] forKey:@"Blue"];
     
+    NSInteger totalValue = 0;
+    CGFloat finalColorValue = 0;
+    
     for (NSString *colorKey in rgbDictionary.allKeys)
     {
         NSString *colorValue = [rgbDictionary objectForKey:colorKey];
         NSString *color, *color1, *color2 = nil;
         
-        for(int i = 0; i<2;i++)
+        
+        
+        for(int i = 0; i<[colorValue length];i++)
         {
             
             color = [colorValue substringWithRange:NSMakeRange(i, 1)];
@@ -199,23 +211,36 @@
             else if([color isEqualToString:@"f"])
                 color = @"15";
             
-            if(i == 0)
-                color1 = color;
-            else
-                color2 = color;
+//            if(i == 0)
+//                color1 = color;
+//            else
+//                color2 = color;
+            if (i == 0) {
+                totalValue += color.integerValue * 16;
+            }else
+            {
+                totalValue += color.integerValue;
+            }
+            
             
         }
         
-        CGFloat colorValue1 = color1.floatValue;
-        CGFloat colorValue2 = color2.floatValue;
+//        CGFloat colorValue1 = color1.floatValue;
+//        CGFloat colorValue2 = color2.floatValue;
 
-        colorValue1 = (colorValue2+colorValue1*16)/255;
+//        colorValue1 = (colorValue2+colorValue1*16)/255;
+        finalColorValue = totalValue / 255.0f;
         
-        [rgbDictionary setObject:[NSString stringWithFormat:@"%f",colorValue1] forKey:colorKey];
+        [rgbDictionary setObject:[NSNumber numberWithFloat:finalColorValue] forKey:colorKey];
+        
+        finalColorValue = 0.0f;
+        totalValue = 0.0f;
 
     }
     
-    color = [UIColor colorWithRed:[[rgbDictionary valueForKey:@"Red"] floatValue] green:[[rgbDictionary valueForKey:@"Green"] floatValue] blue:[[rgbDictionary valueForKey:@"Blue"] floatValue] alpha:1];
+    color = [UIColor colorWithRed:[[rgbDictionary valueForKey:@"Red"] floatValue]
+                            green:[[rgbDictionary valueForKey:@"Green"] floatValue]
+                             blue:[[rgbDictionary valueForKey:@"Blue"] floatValue] alpha:1];
     
     return color;
   
