@@ -352,8 +352,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="멤버쉽 인증번호를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smw-zW-IPm">
-                                <rect key="frame" x="202" y="185" width="198" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="멤버쉽 인증번호를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smw-zW-IPm">
+                                <rect key="frame" x="201" y="185" width="198" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="198" id="2to-w2-2pK"/>
                                     <constraint firstAttribute="height" constant="20" id="ob0-D3-hWa"/>
@@ -362,8 +362,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="프라이빗 서비스 입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-nh-53w">
-                                <rect key="frame" x="231" y="351" width="140" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프라이빗 서비스 입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRT-nh-53w">
+                                <rect key="frame" x="230" y="351" width="140" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="nhn-Aj-flK"/>
                                     <constraint firstAttribute="height" constant="17" id="o85-Jl-3mc"/>

@@ -58,23 +58,17 @@
     [self.btnHide setHidden:YES];
     
     int screenWidth = [UIScreen mainScreen].bounds.size.width;
-
-    NSLog(@"%d", screenWidth);
-    
     [self setRatioOfDevicewithDevieWidth:screenWidth];
     
-    
+    self.mainContainerView.backgroundColor = [self setColorWithRGBCode:@"ffb5bf"];
+    self.btnOk.backgroundColor = [self setColorWithRGBCode:@"4b4b4b"];
+    self.lbInputComment.textColor = [self setColorWithRGBCode:@"4b4b4b"];
+    self.lbPrivateService.textColor = [self setColorWithRGBCode:@"4b4b4b"];
+    self.lbDetail.textColor = [self setColorWithRGBCode:@"4b4b4b"];
+    self.tfInput.backgroundColor = [self setColorWithRGBCode:@"ffffff"];
 
-    self.mainContainerView.backgroundColor = [self setColorWithRGBCode:@"#ffb5bf"];
-    
-    self.btnOk.backgroundColor = [self setColorWithRGBCode:@"#4b4b4b"];
-    self.lbInputComment.textColor = [self setColorWithRGBCode:@"#4b4b4b"];
-    self.lbPrivateService.textColor = [self setColorWithRGBCode:@"#4b4b4b"];
-    self.lbDetail.textColor = [self setColorWithRGBCode:@"#4b4b4b"];
-    self.tfInput.backgroundColor = [self setColorWithRGBCode:@"#ffffff"];
-
-    self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos.png"];
-    self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo@3x.png"];
+    self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
+    self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo@3x"];
 
 }
 
@@ -103,50 +97,71 @@
 -(void)setRatioOfDevicewithDevieWidth:(int)width
 {
     
-    self.alcLbDetailWidth.constant = (self.alcLbDetailWidth.constant)/414*width;
-    self.alcLbDetailHeight.constant= self.alcLbDetailHeight.constant/414*width;
-    self.alcIvLogoWidth.constant = self.alcIvLogoWidth.constant/414*width;
-    self.alcIvLogoHeight.constant = self.alcIvLogoHeight.constant/414*width;
-    self.alcTfInputWidth.constant = self.alcTfInputWidth.constant/414*width;
-    self.alcTfInputHeight.constant = self.alcTfInputHeight.constant/414*width;
-    self.alcBtnOkWidth.constant = self.alcBtnOkWidth.constant/414*width;
-    self.alcBtnOkheight.constant = self.alcBtnOkheight.constant/414*width;
-    self.alcIvBottmWidth.constant = self.alcIvBottmWidth.constant/414*width;
-    self.alcIvBottomHeight.constant = self.alcIvBottomHeight.constant/414*width;
-    self.alcLbInputCommentWidth.constant = self.alcLbInputCommentWidth.constant/414*width;
-    self.alcLbInputCommentHeight.constant = self.alcLbInputCommentHeight.constant/414*width;
-    self.alcLbPrivateServiceWidth.constant = self.alcLbPrivateServiceWidth.constant/414*width;
-    self.AlcLbPrivateServiceHeight.constant = self.AlcLbPrivateServiceHeight.constant/414*width;
-    self.alcBottomMarginOfIvBottom.constant = self.alcBottomMarginOfIvBottom.constant/414*width;
+    [self setWidthOfTargetWithTargetValue:self.alcLbDetailWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcLbDetailHeight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcIvLogoWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcIvLogoHeight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcTfInputWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcTfInputHeight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBtnOkWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBtnOkheight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcIvBottmWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcIvBottomHeight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcLbInputCommentWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcLbInputCommentHeight.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcLbPrivateServiceWidth.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.AlcLbPrivateServiceHeight.constant andDevieWidth:width];
     
-    self.alcBottomMarginFromLbDetailToIvBottom.constant = self.alcBottomMarginFromLbDetailToIvBottom.constant/414*width;
-    self.alcBottomMarginFromLbPrivateToLbDetail.constant = self.alcBottomMarginFromLbPrivateToLbDetail.constant/414*width;
-    self.alcBottomMarginFrombtnOkToLbPrivate.constant = self.alcBottomMarginFrombtnOkToLbPrivate.constant/414*width;
-    self.alcBottomMarginFromTfTobtnOk.constant = self.alcBottomMarginFromTfTobtnOk.constant/414*width;
-    self.alcBottomMarginFromLbInputToTf.constant = self.alcBottomMarginFromLbInputToTf.constant/414*width;
-    self.alcBottomMarginFromIvLogoToLbInput.constant = self.alcBottomMarginFromIvLogoToLbInput.constant/414*width;
-    self.alcBottomMarginOfIvBottom.constant = self.alcBottomMarginOfIvBottom.constant/414*width;
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginOfIvBottom.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbDetailToIvBottom.constant  andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbPrivateToLbDetail.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFrombtnOkToLbPrivate.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFromTfTobtnOk.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbInputToTf.constant andDevieWidth:width];
+    [self setWidthOfTargetWithTargetValue:self.alcBottomMarginFromIvLogoToLbInput.constant andDevieWidth:width];
     
-    self.lbInputComment.font = [UIFont systemFontOfSize:(float)16/414*width];
-    self.lbPrivateService.font = [UIFont boldSystemFontOfSize:(float)14/414*width];
-    self.lbDetail.font = [UIFont systemFontOfSize:(float)14/414*width];
-    self.btnOk.titleLabel.font = [UIFont boldSystemFontOfSize:(float)15/414*width];
     
+    self.lbInputComment.font = [UIFont systemFontOfSize: [self setWidthOfTargetWithTargetValue:16 andDevieWidth:width]];
+    self.lbPrivateService.font = [UIFont boldSystemFontOfSize: [self setWidthOfTargetWithTargetValue:14 andDevieWidth:width]];
+    self.lbDetail.font = [UIFont systemFontOfSize:[self setWidthOfTargetWithTargetValue:14 andDevieWidth:width]];
+    self.btnOk.titleLabel.font = [UIFont boldSystemFontOfSize:[self setWidthOfTargetWithTargetValue:15 andDevieWidth:width]];
     
     int screenHeight = [UIScreen mainScreen].bounds.size.height;
 
     if(screenHeight == 480)
     {
-        self.alcBottomMarginFromLbDetailToIvBottom.constant = self.alcBottomMarginFromLbDetailToIvBottom.constant/736*screenHeight;
-        self.alcBottomMarginFromLbPrivateToLbDetail.constant = self.alcBottomMarginFromLbPrivateToLbDetail.constant/736*screenHeight;
-        self.alcBottomMarginFrombtnOkToLbPrivate.constant = self.alcBottomMarginFrombtnOkToLbPrivate.constant/736*screenHeight;
-        self.alcBottomMarginFromTfTobtnOk.constant = self.alcBottomMarginFromTfTobtnOk.constant/736*screenHeight;
-        self.alcBottomMarginFromLbInputToTf.constant = self.alcBottomMarginFromLbInputToTf.constant/736*screenHeight;
-        self.alcBottomMarginFromIvLogoToLbInput.constant = self.alcBottomMarginFromIvLogoToLbInput.constant/736*screenHeight;
-        self.alcBottomMarginOfIvBottom.constant = self.alcBottomMarginOfIvBottom.constant/736*screenHeight;
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbDetailToIvBottom.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbPrivateToLbDetail.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFrombtnOkToLbPrivate.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFromTfTobtnOk.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbInputToTf.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginFromIvLogoToLbInput.constant andDeviceHeight:screenHeight];
+        [self setHeightOfTargetWithTargetValue:self.alcBottomMarginOfIvBottom.constant  andDeviceHeight:screenHeight];
+
 
     }
 
+}
+
+-(CGFloat)setWidthOfTargetWithTargetValue:(CGFloat)width andDevieWidth:(CGFloat)dvWidth
+{
+    CGFloat result;
+    
+    result = width/414*dvWidth;
+    
+    return result;
+    
+    
+}
+
+-(CGFloat)setHeightOfTargetWithTargetValue:(CGFloat)height andDeviceHeight:(CGFloat)dvHeight
+{
+    CGFloat result;
+    
+    result = height/736*dvHeight;
+    
+    return result;
+    
 }
 
 
@@ -156,42 +171,52 @@
 {
     UIColor *color = nil;
     
+    NSMutableDictionary *rgbDictionary = [[NSMutableDictionary alloc]init];
+    [rgbDictionary setObject:[code substringWithRange:NSMakeRange(0, 2)] forKey:@"Red"];
+    [rgbDictionary setObject:[code substringWithRange:NSMakeRange(2, 2)] forKey:@"Green"];
+    [rgbDictionary setObject:[code substringWithRange:NSMakeRange(4, 2)] forKey:@"Blue"];
     
-    NSMutableArray *numberMutableArr = [[NSMutableArray alloc]init];
-    
-    for(int i= 1; i < 7; i++){
-        [numberMutableArr addObject:[code substringWithRange:NSMakeRange(i, 1)]];
-    }
-
-    for (int i = 0; i < numberMutableArr.count; i++){
-        if([numberMutableArr[i] isEqualToString:@"a"])
-            numberMutableArr[i] = @"10";
-        else if([numberMutableArr[i] isEqualToString:@"b"])
-            numberMutableArr[i] = @"11";
-        else if([numberMutableArr[i] isEqualToString:@"c"])
-            numberMutableArr[i] = @"12";
-        else if([numberMutableArr[i] isEqualToString:@"d"])
-            numberMutableArr[i] = @"13";
-        else if([numberMutableArr[i] isEqualToString:@"e"])
-            numberMutableArr[i] = @"14";
-        else if([numberMutableArr[i] isEqualToString:@"f"])
-            numberMutableArr[i] = @"15";
+    for (NSString *colorKey in rgbDictionary.allKeys) {
+        NSString *colorValue = [rgbDictionary objectForKey:colorKey];
+        NSString *color1 = [colorValue substringWithRange:NSMakeRange(0, 1)];
+        NSString *color2 = [colorValue substringWithRange:NSMakeRange(1, 1)];
+  
+        if([color1 isEqualToString:@"a"])
+            color1 = @"10";
+        else if([color1 isEqualToString:@"b"])
+            color1 = @"11";
+        else if([color1 isEqualToString:@"c"])
+            color1 = @"12";
+        else if([color1 isEqualToString:@"d"])
+            color1 = @"13";
+        else if([color1 isEqualToString:@"e"])
+            color1 = @"14";
+        else if([color1 isEqualToString:@"f"])
+            color1 = @"15";
         
+        if([color2 isEqualToString:@"a"])
+            color2 = @"10";
+        else if([color2 isEqualToString:@"b"])
+            color2 = @"11";
+        else if([color2 isEqualToString:@"c"])
+            color2 = @"12";
+        else if([color2 isEqualToString:@"d"])
+            color2 = @"13";
+        else if([color2 isEqualToString:@"e"])
+            color2 = @"14";
+        else if([color2 isEqualToString:@"f"])
+            color2 = @"15";
+        
+        CGFloat colorValue1 = color1.floatValue;
+        CGFloat colorValue2 = color2.floatValue;
+
+        colorValue1 = (colorValue2+colorValue1*16)/255;
+        
+        [rgbDictionary setObject:[NSString stringWithFormat:@"%f",colorValue1] forKey:colorKey];
+
     }
     
-    for(int i = 0; i<numberMutableArr.count-1; i=i+2){
-        float a = [numberMutableArr[i] floatValue];
-        float b = [numberMutableArr[i+1] floatValue];
-
-        a = (a*16+b)/255;
-        numberMutableArr[i] = [NSString stringWithFormat:@"%f", a];
-    }
-    
-    float red = [numberMutableArr[0] floatValue];
-    float green = [numberMutableArr[2] floatValue];
-    float blue = [numberMutableArr[4] floatValue];
-
-    color = [UIColor colorWithRed:red green:green blue:blue alpha:1];
+    color = [UIColor colorWithRed:[[rgbDictionary valueForKey:@"Red"] floatValue] green:[[rgbDictionary valueForKey:@"Green"] floatValue] blue:[[rgbDictionary valueForKey:@"Blue"] floatValue] alpha:1];
     
     return color;
   
