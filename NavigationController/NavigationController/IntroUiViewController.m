@@ -59,6 +59,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomMarginFromIvLogoToLbInput;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomMarginFromLbInputToTf;
 
+@property (strong, nonatomic) NSDictionary *jsonDic;
+
+
 
 
 
@@ -84,6 +87,8 @@
 
     self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
     self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];
+    
+    
 
 }
 
@@ -104,6 +109,9 @@
         [self presentViewController:alert animated:YES completion:nil];
         
     }
+    
+    [self startUrlSession];
+    
 }
 
 
@@ -201,8 +209,6 @@
         NSString *colorValue = [rgbDictionary objectForKey:colorKey];
         NSString *color = nil;
         
-        
-        
         for(int i = 0; i<[colorValue length];i++)
         {
             
@@ -246,6 +252,34 @@
   
 }
 
+#pragma mark - Request
+
+-(void)startUrlSession
+{
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURL *url = [NSURL URLWithString:CELEB_AUTHORIZE_API];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+ 
+    
+    
+    
+    [[session dataTaskWithRequest:request
+                        completionHandler:^(NSData *data, NSURLResponse *response,
+                                            NSError *error) {
+                            
+                            self.jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                            for (NSString *key in self.jsonDic.allKeys) {
+                                NSLog(@"%@,,,", key);
+                            }
+                            
+                            
+                                                                               }] resume];
+    
+}
+
+
 
 #pragma mark - Hide TextField Keyboard
 
@@ -284,5 +318,8 @@
 }
 
 
-#pragma mark - Request
+
+
+
+
 @end
