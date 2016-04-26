@@ -103,29 +103,30 @@
 -(void)setRatioOfDevicewithDevieWidth:(int)width
 {
     
-//    self.alcLbDetailWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcLbDetailWidth.constant andDevieWidth:width];
-    self.alcLbDetailWidth.constant = WRATIO_WIDTH(540.0f);
-    self.alcLbDetailHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcLbDetailHeight.constant andDevieWidth:width];
-    self.alcIvLogoWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcIvLogoWidth.constant andDevieWidth:width];
-    self.alcIvLogoHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcIvLogoHeight.constant andDevieWidth:width];
-    self.alcTfInputWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcTfInputWidth.constant andDevieWidth:width];
-    self.alcTfInputHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcTfInputHeight.constant andDevieWidth:width];
-    self.alcBtnOkWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcBtnOkWidth.constant andDevieWidth:width];
-    self.alcBtnOkheight.constant = [self getWidthOfTargetWithTargetValue:self.alcBtnOkheight.constant andDevieWidth:width];
-    self.alcIvBottmWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcIvBottmWidth.constant andDevieWidth:width];
-    self.alcIvBottomHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcIvBottomHeight.constant andDevieWidth:width];
-    self.alcLbInputCommentWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcLbInputCommentWidth.constant andDevieWidth:width];
-    self.alcLbInputCommentHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcLbInputCommentHeight.constant andDevieWidth:width];
-    self.alcLbPrivateServiceWidth.constant = [self getWidthOfTargetWithTargetValue:self.alcLbPrivateServiceWidth.constant andDevieWidth:width];
-    self.alcLbPrivateServiceHeight.constant = [self getWidthOfTargetWithTargetValue:self.alcLbPrivateServiceHeight.constant andDevieWidth:width];
     
-    self.alcBottomMarginOfIvBottom.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginOfIvBottom.constant andDevieWidth:width];
-    self.alcBottomMarginFromLbDetailToIvBottom.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbDetailToIvBottom.constant  andDevieWidth:width];
-    self.alcBottomMarginFromLbPrivateToLbDetail.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbPrivateToLbDetail.constant andDevieWidth:width];
-    self.alcBottomMarginFrombtnOkToLbPrivate.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFrombtnOkToLbPrivate.constant andDevieWidth:width];
-    self.alcBottomMarginFromTfTobtnOk.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFromTfTobtnOk.constant andDevieWidth:width];
-    self.alcBottomMarginFromLbInputToTf.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFromLbInputToTf.constant andDevieWidth:width];
-    self.alcBottomMarginFromIvLogoToLbInput.constant = [self getWidthOfTargetWithTargetValue:self.alcBottomMarginFromIvLogoToLbInput.constant andDevieWidth:width];
+    self.alcIvLogoWidth.constant = WRATIO_WIDTH(664.0f);
+    self.alcIvLogoHeight.constant = WRATIO_WIDTH(190.0f);
+    self.alcTfInputWidth.constant = WRATIO_WIDTH(855.0f);
+    self.alcTfInputHeight.constant = WRATIO_WIDTH(120.0f);
+    self.alcBtnOkWidth.constant = WRATIO_WIDTH(850);
+    self.alcBtnOkheight.constant = WRATIO_WIDTH(120);
+    self.alcIvBottmWidth.constant = WRATIO_WIDTH(1009);
+    self.alcIvBottomHeight.constant = WRATIO_WIDTH(86);
+    
+    self.alcLbDetailWidth.constant = [self getWidthOfTargetWithTargetValue:185.0f andDevieWidth:width];
+    self.alcLbDetailHeight.constant = [self getWidthOfTargetWithTargetValue:34.0f andDevieWidth:width];
+    self.alcLbInputCommentWidth.constant = [self getWidthOfTargetWithTargetValue:198.0f andDevieWidth:width];
+    self.alcLbInputCommentHeight.constant = [self getWidthOfTargetWithTargetValue:20.0f andDevieWidth:width];
+    self.alcLbPrivateServiceWidth.constant = [self getWidthOfTargetWithTargetValue:140.0f andDevieWidth:width];
+    self.alcLbPrivateServiceHeight.constant = [self getWidthOfTargetWithTargetValue:17.0f andDevieWidth:width];
+    
+    self.alcBottomMarginOfIvBottom.constant = WRATIO_WIDTH(112.0f);
+    self.alcBottomMarginFromLbDetailToIvBottom.constant = WRATIO_WIDTH(366);
+    self.alcBottomMarginFromLbPrivateToLbDetail.constant = WRATIO_WIDTH(40.0f);
+    self.alcBottomMarginFrombtnOkToLbPrivate.constant = WRATIO_WIDTH(130.0f);
+    self.alcBottomMarginFromTfTobtnOk.constant = WRATIO_WIDTH(16.0f);
+    self.alcBottomMarginFromLbInputToTf.constant = WRATIO_WIDTH(55.0f);
+    self.alcBottomMarginFromIvLogoToLbInput.constant = WRATIO_WIDTH(317.0f);
     
     
     self.lbInputComment.font = [UIFont systemFontOfSize: [self getWidthOfTargetWithTargetValue:16 andDevieWidth:width]];
@@ -137,13 +138,13 @@
 
     if(screenHeight == 480)
     {
-        self.alcBottomMarginFromLbDetailToIvBottom.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbDetailToIvBottom.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginFromLbPrivateToLbDetail.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbPrivateToLbDetail.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginFrombtnOkToLbPrivate.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFrombtnOkToLbPrivate.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginFromTfTobtnOk.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFromTfTobtnOk.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginFromLbInputToTf.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFromLbInputToTf.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginFromIvLogoToLbInput.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginFromIvLogoToLbInput.constant andDeviceHeight:screenHeight];
-        self.alcBottomMarginOfIvBottom.constant = [self getHeightOfTargetWithTargetValue:self.alcBottomMarginOfIvBottom.constant  andDeviceHeight:screenHeight];
+        self.alcBottomMarginFromLbDetailToIvBottom.constant = [self getHeightOfTargetWithTargetValue:366.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginFromLbPrivateToLbDetail.constant = [self getHeightOfTargetWithTargetValue:40.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginFrombtnOkToLbPrivate.constant = [self getHeightOfTargetWithTargetValue:130.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginFromTfTobtnOk.constant = [self getHeightOfTargetWithTargetValue:16.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginFromLbInputToTf.constant = [self getHeightOfTargetWithTargetValue:55.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginFromIvLogoToLbInput.constant = [self getHeightOfTargetWithTargetValue:317.0f andDeviceHeight:screenHeight];
+        self.alcBottomMarginOfIvBottom.constant = [self getHeightOfTargetWithTargetValue:112.0f  andDeviceHeight:screenHeight];
 
 
     }
@@ -165,7 +166,7 @@
 {
     CGFloat result;
     
-    result = height/736*dvHeight;
+    result = height/736*dvHeight/3;
     
     return result;
     
@@ -189,7 +190,7 @@
     for (NSString *colorKey in rgbDictionary.allKeys)
     {
         NSString *colorValue = [rgbDictionary objectForKey:colorKey];
-        NSString *color, *color1, *color2 = nil;
+        NSString *color = nil;
         
         
         
@@ -210,25 +211,15 @@
                 color = @"14";
             else if([color isEqualToString:@"f"])
                 color = @"15";
-            
-//            if(i == 0)
-//                color1 = color;
-//            else
-//                color2 = color;
+
             if (i == 0) {
                 totalValue += color.integerValue * 16;
             }else
             {
                 totalValue += color.integerValue;
             }
-            
-            
         }
         
-//        CGFloat colorValue1 = color1.floatValue;
-//        CGFloat colorValue2 = color2.floatValue;
-
-//        colorValue1 = (colorValue2+colorValue1*16)/255;
         finalColorValue = totalValue / 255.0f;
         
         [rgbDictionary setObject:[NSNumber numberWithFloat:finalColorValue] forKey:colorKey];
@@ -276,7 +267,10 @@
 - (IBAction)touchedHideKeyBoard:(id)sender withTextField:(UITextField *)textField
 {
     if([self.tfInput isFirstResponder])
+    {
         [self.tfInput resignFirstResponder];
+        
+    }
 
 }
 

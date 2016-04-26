@@ -66,7 +66,7 @@
                         <outlet property="tvList" destination="Vck-0H-zRL" id="7ol-NJ-Yis"/>
                         <segue destination="jVb-G6-QVe" kind="show" identifier="sgMainToTextView" id="Utk-La-Tc2"/>
                         <segue destination="tOP-G0-5Lw" kind="show" identifier="sgMainToWebView" id="vso-6p-u34"/>
-                        <segue destination="Slx-Ac-jnu" kind="show" identifier="sgMainToUIView" id="sKI-tL-FCg"/>
+                        <segue destination="Slx-Ac-jnu" kind="presentation" identifier="sgMainToUIView" id="sKI-tL-FCg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQ6-aE-0C4" userLabel="First Responder" sceneMemberID="firstResponder"/>
