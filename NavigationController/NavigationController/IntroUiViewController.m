@@ -13,6 +13,15 @@
 #define STANDARD_DEVICE_WIDTH                               414.0f
 #define WRATIO_WIDTH(w)                                     (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
 
+/*
+ * @params
+ * deviceType : NSString
+ * version : NSInteter
+ * lang : NSString
+ * authCode : NSString
+ */
+#define CELEB_AUTHORIZE_API                                 @"http://pointapibeta.smtown.com/api/v1/introAuthCode"
+
 
 @interface IntroUiViewController ()
 
@@ -275,4 +284,5 @@
 }
 
 
+#pragma mark - Request
 @end
