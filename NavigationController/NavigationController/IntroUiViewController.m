@@ -23,6 +23,22 @@
 #define CELEB_AUTHORIZE_API                                 @"http://pointapibeta.smtown.com/api/v1/introAuthCode"
 
 
+@interface celebAuth : NSObject
+
+@property (assign, nonatomic) int code;
+@property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *data;
+@property (assign, nonatomic) BOOL result;
+
+
+@end
+
+@implementation celebAuth
+
+
+
+@end
+
 @interface IntroUiViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivLogoImage;
@@ -61,7 +77,7 @@
 
 @property (strong, nonatomic) NSDictionary *jsonDic;
 
-
+@property (strong, nonatomic) celebAuth *ca;
 
 
 
@@ -111,6 +127,22 @@
     }
     
     [self startUrlSession];
+    
+    if(self.ca.result == false)
+    {
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"wrong authorization code" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        NSLog(@"working");
+
+        
+    }
+
     
 }
 
@@ -256,26 +288,52 @@
 
 -(void)startUrlSession
 {
-    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSession *session = [NSURLSession sharedSession];
+    
     NSURL *url = [NSURL URLWithString:CELEB_AUTHORIZE_API];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
  
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     
+    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [urlRequest setHTTPMethod:@"POST"];
     
+    NSDictionary *HTTPBodyDic = @{@"deviceType":@"ios",
+                                  @"version" : @2,
+                                  @"lang" : @"ko",
+                                  @"authCode": self.tfInput.text };
+    NSError *error;
     
-    [[session dataTaskWithRequest:request
+    [urlRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:HTTPBodyDic options:0 error:&error]];
+    
+    [[session dataTaskWithRequest:urlRequest
                         completionHandler:^(NSData *data, NSURLResponse *response,
                                             NSError *error) {
                             
-                            self.jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                            for (NSString *key in self.jsonDic.allKeys) {
-                                NSLog(@"%@,,,", key);
+                            id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                            
+                            if ([sentData isKindOfClass:[NSArray class]])
+                            {
+                                NSLog(@"잘못된 정보임.");
                             }
-                            
-                            
-                                                                               }] resume];
+                            if([sentData isKindOfClass:[NSDictionary class]])
+                            {
+                                NSDictionary *resultDic;
+                                resultDic = sentData;
+                                NSLog(@"dic: %@", resultDic);
+                                [self processOfRequestWithParam:resultDic];
+                                
+                            }
+                                                                                               }] resume];
+    
+}
+
+-(void)processOfRequestWithParam:(id)param
+{
+    self.ca = [[celebAuth alloc]init];
+    self.ca.code = [[param objectForKey:@"code"] intValue];
+    self.ca.message = [param objectForKey:@"message"];
+    self.ca.result = [[param objectForKey:@"result"] boolValue];
     
 }
 
