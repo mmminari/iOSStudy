@@ -64,54 +64,39 @@
 
 -(void)startSession
 {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:MEMBERINFO_API];
+ 
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setHTTPMethod:@"GET"];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        NSURL *url = [NSURL URLWithString:MEMBERINFO_API];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSDictionary *HTTPBodyDic = @{@"lang" : @"ko" };
-    
-    NSError *error;
-    
-    [urlRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:HTTPBodyDic options:0 error:&error]];
-    
-    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
-        id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-        
-        if([sentData isKindOfClass:[NSArray class]])
-        {
-            NSLog(@"erorr");
-        }
-        if([sentData isKindOfClass:[NSDictionary class]])
-        {
-            NSDictionary *sentDataDic;
-            sentDataDic = sentData;
-            [self processingUrlRequestWithParam:sentDataDic ];
-            
-            
-        }
-    }] resume];
+        [[session dataTaskWithRequest:request
+                                   completionHandler:^(NSData *data, NSURLResponse *response,NSError *error) {
+                                       
+                                       NSDictionary *sentData;
+                                       sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                                       NSLog(@"%@", sentData);
+                                       
+                                       [self processingUrlRequestWithParam:sentData];
+                                       
+                
+                                       
+                                       
+                                                                                              }] resume];
     
     
 }
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    NSDictionary *userInfo = [param objectForKey:@"userInfo"];
-    NSDictionary *pointInfo = [param objectForKey:@"pointInfo"];
-    
-    NSString *userId = [userInfo objectForKey:@"userId"];
-    
-    NSLog(@"%@", userId);
     
     
-    if([self.userData isEqualToString:userId]){
-        self.lbUserName = [userInfo objectForKey:@"userName"];
-        self.lbUserEmail.text = [userInfo objectForKey:@"userId"];
-        self.lbPoint.text = [pointInfo objectForKey:@"point"];
+    if([self.userData isEqualToString:[[param objectForKey:@"userInfo"] objectForKey:@"userId"]]){
+        NSLog(@"성공");
+        
+        
         
         
     }

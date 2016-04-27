@@ -11,6 +11,13 @@
 #import "HomeViewController.h"
 
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/push/login"
+#define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
+#define STANDARD_DEVICE_WIDTH                                       414.0f
+#define WRATIO_WIDTH(w)                                             w / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
+
+#define DEVICE_HEIGHT                                               [UIScreen mainScreen].bounds.size.height
+#define STANDARD_DEVICE_HEIGHT                                      736.0f
+#define HRATIO_HEIGHT(h)                                            h / STANDARD_DEVICE_HEIGHT * DEVICE_HEIGHT
 
 @interface LogIn : NSObject
 
@@ -45,7 +52,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbBottom;
 @property (weak, nonatomic) IBOutlet UISwitch *swcAutoLogIn;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTopLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbEmail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTfEmail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbPassword;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTfPassword;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbAutoLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnFindInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbBottom;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTfEmail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTfPassword;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnFindInfo;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfSwc;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfSwc;
 
 
 
@@ -62,26 +85,15 @@
     
     self.navigationItem.title = @"로그인 정보"   ;
     
-    int width = [UIScreen mainScreen].bounds.size.width;
     
-    self.view.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f7f0"];
-    self.btnLogIn.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
-    self.swcAutoLogIn.onTintColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
-    self.tfEmail.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
-    self.tfPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
-
+    [self setColor];
+    [self setAutoLayout];
     
-    self.lbEmail.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbBottom.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    
-    self.btnLogIn.titleLabel.font = [UIFont boldSystemFontOfSize:[self.IntroVC getWidthOfTargetWithTargetValue:16 andDevieWidth:width]];
-    self.btnLogIn.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
-    
-    self.btnFindInfo.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
 
     
 }
+
+#pragma mark - User Touched Event
 
 - (IBAction)touchedLogIn:(id)sender {
     [self startSession];
@@ -89,6 +101,77 @@
     
 }
 
+#pragma mark - Set UI
+
+-(void)setAutoLayout
+{
+    self.alcTopOfTopLine.constant = WRATIO_WIDTH(26);
+    self.alcTopOfLbEmail.constant = WRATIO_WIDTH(19);
+    self.alcTopOfTfEmail.constant = WRATIO_WIDTH(17);
+    self.alcTopOfLbPassword.constant = WRATIO_WIDTH(26);
+    self.alcTopOfTfPassword.constant = WRATIO_WIDTH(17);
+    self.alcTopOfLbAutoLogIn.constant = WRATIO_WIDTH(20);
+    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(26);
+    self.alcTopOfBtnFindInfo.constant = WRATIO_WIDTH(25);
+    self.alcTopOfLbBottom.constant = WRATIO_WIDTH(25);
+    
+    self.alcHeightOfTfEmail.constant = WRATIO_WIDTH(35);
+    self.alcHeightOfTfPassword.constant = WRATIO_WIDTH(35);
+    self.alcHeightOfBtnLogIn.constant = WRATIO_WIDTH(40);
+    self.alcHeightOfBtnFindInfo.constant = WRATIO_WIDTH(52);
+    
+    self.lbEmail.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
+    self.lbPassWord.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
+    self.lbAutoLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
+    self.lbBottom.font = [UIFont systemFontOfSize:WRATIO_WIDTH(12)];
+    
+    
+    self.alcWidthOfSwc.constant = WRATIO_WIDTH(40);
+    self.alcHeightOfSwc.constant = WRATIO_WIDTH(15);
+    
+    self.btnLogIn.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
+    self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(17)];
+    
+    
+    float screenHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    if(screenHeight == 480)
+    {
+        self.alcTopOfTopLine.constant = HRATIO_HEIGHT(26);
+        self.alcTopOfLbEmail.constant = HRATIO_HEIGHT(19);
+        self.alcTopOfTfEmail.constant = HRATIO_HEIGHT(17);
+        self.alcTopOfLbPassword.constant = HRATIO_HEIGHT(26);
+        self.alcTopOfTfPassword.constant = HRATIO_HEIGHT(17);
+        self.alcTopOfLbAutoLogIn.constant = HRATIO_HEIGHT(20);
+        self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(26);
+        self.alcTopOfBtnFindInfo.constant = HRATIO_HEIGHT(25);
+        self.alcTopOfLbBottom.constant = HRATIO_HEIGHT(25);
+        
+    }
+
+}
+
+-(void)setColor
+{
+    self.view.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f7f0"];
+    self.btnLogIn.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
+    self.swcAutoLogIn.onTintColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
+    self.tfEmail.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    self.tfPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    
+    
+    self.lbEmail.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.lbPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.lbBottom.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    
+    self.btnLogIn.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
+    
+    self.btnFindInfo.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    
+}
+
+
+#pragma mark - URLSession
 
 -(void)startSession
 {
@@ -129,7 +212,7 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    self.LogInClass.result = [param objectForKey:@"result"];
+    self.LogInClass.result = [[param objectForKey:@"result"] boolValue];
     self.LogInClass.message = [param objectForKey:@"message"];
     
     if(self.LogInClass.result){
@@ -145,11 +228,15 @@
     
 }
 
+#pragma mark - TextField Keyboard
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     return YES;
 }
+
+#pragma mark - Segue Event
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
