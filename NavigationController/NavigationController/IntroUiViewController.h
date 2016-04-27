@@ -10,4 +10,11 @@
 
 @interface IntroUiViewController : UIViewController<NSURLSessionDataDelegate>
 
+
+-(CGFloat)getWidthOfTargetWithTargetValue:(CGFloat)width andDevieWidth:(CGFloat)dvWidth;
+-(CGFloat)getHeightOfTargetWithTargetValue:(CGFloat)height andDeviceHeight:(CGFloat)dvHeight;
+-(UIColor *)getColorWithRGBCode:(NSString *)code;
+
+
+
 @end

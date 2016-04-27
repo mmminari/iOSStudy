@@ -104,6 +104,7 @@
     self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
     self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];
     
+    NSLog(@"%@", [self getColorWithRGBCode:@"ffb5bf"]);
     
 
 }
@@ -128,22 +129,7 @@
     
     [self startUrlSession];
     
-    if(self.ca.result == false)
-    {
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"wrong authorization code" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-        NSLog(@"working");
 
-        
-    }
-
-    
 }
 
 
@@ -334,6 +320,29 @@
     self.ca.code = [[param objectForKey:@"code"] intValue];
     self.ca.message = [param objectForKey:@"message"];
     self.ca.result = [[param objectForKey:@"result"] boolValue];
+    
+    if (self.ca.result) {
+        NSLog(@"인증됨!");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *sgId = @"sgUIViewtoLogInView";
+            [self performSegueWithIdentifier:sgId sender:self];        });
+        
+        
+    }
+    else{
+        NSLog(@"꼬져!");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"wrong authorization code" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        });
+    }
     
 }
 
