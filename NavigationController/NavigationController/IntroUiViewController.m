@@ -129,6 +129,23 @@
     
     [self startUrlSession];
     
+<<<<<<< HEAD
+=======
+//    if(self.ca.result == false)
+//    {
+//        
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"wrong authorization code" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+//        
+//        [alert addAction:defaultAction];
+//        [self presentViewController:alert animated:YES completion:nil];
+//        
+//        NSLog(@"working");
+//
+//        
+//    }
+>>>>>>> e40a7bc9666676632c5fb391d6dff124b18f38fb
 
 }
 
@@ -322,6 +339,7 @@
     self.ca.result = [[param objectForKey:@"result"] boolValue];
     
     if (self.ca.result) {
+<<<<<<< HEAD
         NSLog(@"인증됨!");
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -329,6 +347,9 @@
             [self performSegueWithIdentifier:sgId sender:self];        });
         
         
+=======
+        NSLog(@"인증됨!");        
+>>>>>>> e40a7bc9666676632c5fb391d6dff124b18f38fb
     }
     else{
         NSLog(@"꼬져!");
