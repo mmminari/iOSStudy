@@ -594,6 +594,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Gyk-me-4sA" secondAttribute="trailing" id="Cur-Pq-nMU"/>
                             <constraint firstItem="2rm-v0-nxL" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="Gph-lU-3Vt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2rm-v0-nxL" secondAttribute="trailing" id="HJX-rH-wRM"/>
+                            <constraint firstItem="01p-CB-LTg" firstAttribute="top" secondItem="HM6-7B-Rxf" secondAttribute="bottom" constant="26" id="HZP-w1-sZN"/>
                             <constraint firstItem="5Fh-YW-xAf" firstAttribute="top" secondItem="Gyk-me-4sA" secondAttribute="bottom" constant="25" id="JxC-lB-IMQ"/>
                             <constraint firstItem="oKl-Om-2UC" firstAttribute="top" secondItem="YE7-Mi-zMx" secondAttribute="bottom" constant="17" id="Nks-FY-4C9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fxI-kF-C9B" secondAttribute="trailing" id="Oav-PG-60Z"/>
@@ -602,7 +603,6 @@
                             <constraint firstItem="Z0Q-18-r1W" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="R30-Jr-hMX"/>
                             <constraint firstItem="HiX-6E-7T5" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="SHq-qy-CdB"/>
                             <constraint firstItem="Gyk-me-4sA" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="Tpl-wK-Tce"/>
-                            <constraint firstItem="01p-CB-LTg" firstAttribute="top" secondItem="HM6-7B-Rxf" secondAttribute="bottom" constant="26" id="W4x-uz-pwo"/>
                             <constraint firstItem="5Fh-YW-xAf" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="YMl-pQ-Qw9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Z0Q-18-r1W" secondAttribute="trailing" id="dUx-ei-ksl"/>
                             <constraint firstItem="01p-CB-LTg" firstAttribute="leading" secondItem="hru-bc-88J" secondAttribute="leadingMargin" id="fWo-ac-96s"/>
@@ -630,7 +630,6 @@
                         <outlet property="alcTopOfLbPassword" destination="oGR-HE-EZ9" id="V6l-AO-Y5N"/>
                         <outlet property="alcTopOfTfEmail" destination="BLm-Vd-EUV" id="emZ-GH-jld"/>
                         <outlet property="alcTopOfTfPassword" destination="Nks-FY-4C9" id="Hcq-F3-1GB"/>
-                        <outlet property="alcTopOfTopLine" destination="W4x-uz-pwo" id="Uyj-6t-Nhq"/>
                         <outlet property="alcWidthOfSwc" destination="AZ9-qD-Oe4" id="TsJ-6r-Csl"/>
                         <outlet property="btnFindInfo" destination="5Fh-YW-xAf" id="SvE-mf-tfe"/>
                         <outlet property="btnLogIn" destination="Gyk-me-4sA" id="eYg-gQ-dhc"/>
