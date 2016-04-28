@@ -11,13 +11,14 @@
 #import "HomeViewController.h"
 
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
+
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
 #define STANDARD_DEVICE_WIDTH                                       414.0f
-#define WRATIO_WIDTH(w)                                             w / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
+#define WRATIO_WIDTH(w)                                             (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
 
 #define DEVICE_HEIGHT                                               [UIScreen mainScreen].bounds.size.height
 #define STANDARD_DEVICE_HEIGHT                                      736.0f
-#define HRATIO_HEIGHT(h)                                            h / STANDARD_DEVICE_HEIGHT * DEVICE_HEIGHT
+#define HRATIO_HEIGHT(h)                                            (h/3.0f) / STANDARD_DEVICE_HEIGHT * DEVICE_HEIGHT
 
 @interface LogIn : NSObject
 
@@ -114,48 +115,48 @@
 
 -(void)setAutoLayout
 {
-    self.alcTopOfTopLine.constant = WRATIO_WIDTH(26);
-    self.alcTopOfLbEmail.constant = WRATIO_WIDTH(19);
-    self.alcTopOfTfEmail.constant = WRATIO_WIDTH(17);
-    self.alcTopOfLbPassword.constant = WRATIO_WIDTH(26);
-    self.alcTopOfTfPassword.constant = WRATIO_WIDTH(17);
-    self.alcTopOfLbAutoLogIn.constant = WRATIO_WIDTH(20);
-    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(26);
-    self.alcTopOfBtnFindInfo.constant = WRATIO_WIDTH(25);
-    self.alcTopOfLbBottom.constant = WRATIO_WIDTH(25);
+    self.alcTopOfTopLine.constant = WRATIO_WIDTH(78);
+    self.alcTopOfLbEmail.constant = WRATIO_WIDTH(57);
+    self.alcTopOfTfEmail.constant = WRATIO_WIDTH(51);
+    self.alcTopOfLbPassword.constant = WRATIO_WIDTH(78);
+    self.alcTopOfTfPassword.constant = WRATIO_WIDTH(51);
+    self.alcTopOfLbAutoLogIn.constant = WRATIO_WIDTH(60);
+    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(78);
+    self.alcTopOfBtnFindInfo.constant = WRATIO_WIDTH(75);
+    self.alcTopOfLbBottom.constant = WRATIO_WIDTH(75);
     
-    self.alcHeightOfTfEmail.constant = WRATIO_WIDTH(35);
-    self.alcHeightOfTfPassword.constant = WRATIO_WIDTH(35);
-    self.alcHeightOfBtnLogIn.constant = WRATIO_WIDTH(40);
-    self.alcHeightOfBtnFindInfo.constant = WRATIO_WIDTH(52);
+    self.alcHeightOfTfEmail.constant = WRATIO_WIDTH(105);
+    self.alcHeightOfTfPassword.constant = WRATIO_WIDTH(105);
+    self.alcHeightOfBtnLogIn.constant = WRATIO_WIDTH(120);
+    self.alcHeightOfBtnFindInfo.constant = WRATIO_WIDTH(156);
     
-    self.lbEmail.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
-    self.lbPassWord.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
-    self.lbAutoLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
-    self.lbBottom.font = [UIFont systemFontOfSize:WRATIO_WIDTH(12)];
+    self.lbEmail.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
+    self.lbPassWord.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46)];
+    self.lbAutoLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46)];
+    self.lbBottom.font = [UIFont systemFontOfSize:WRATIO_WIDTH(36)];
     
     
-    self.alcWidthOfSwc.constant = WRATIO_WIDTH(40);
-    self.alcHeightOfSwc.constant = WRATIO_WIDTH(15);
+    self.alcWidthOfSwc.constant = WRATIO_WIDTH(120);
+    self.alcHeightOfSwc.constant = WRATIO_WIDTH(45);
     
-    self.btnLogIn.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
-    self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(17)];
+    self.btnLogIn.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
+    self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51)];
     
-    self.lbLogInInfo.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(18)];
+    self.lbLogInInfo.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(54)];
     
     float screenHeight = [UIScreen mainScreen].bounds.size.height;
     
     if(screenHeight == 480)
     {
-        self.alcTopOfTopLine.constant = HRATIO_HEIGHT(26);
-        self.alcTopOfLbEmail.constant = HRATIO_HEIGHT(19);
-        self.alcTopOfTfEmail.constant = HRATIO_HEIGHT(17);
-        self.alcTopOfLbPassword.constant = HRATIO_HEIGHT(26);
-        self.alcTopOfTfPassword.constant = HRATIO_HEIGHT(17);
-        self.alcTopOfLbAutoLogIn.constant = HRATIO_HEIGHT(20);
-        self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(26);
-        self.alcTopOfBtnFindInfo.constant = HRATIO_HEIGHT(25);
-        self.alcTopOfLbBottom.constant = HRATIO_HEIGHT(25);
+        self.alcTopOfTopLine.constant = HRATIO_HEIGHT(78);
+        self.alcTopOfLbEmail.constant = HRATIO_HEIGHT(57);
+        self.alcTopOfTfEmail.constant = HRATIO_HEIGHT(51);
+        self.alcTopOfLbPassword.constant = HRATIO_HEIGHT(78);
+        self.alcTopOfTfPassword.constant = HRATIO_HEIGHT(51);
+        self.alcTopOfLbAutoLogIn.constant = HRATIO_HEIGHT(60);
+        self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(78);
+        self.alcTopOfBtnFindInfo.constant = HRATIO_HEIGHT(75);
+        self.alcTopOfLbBottom.constant = HRATIO_HEIGHT(75);
         
     }
 
