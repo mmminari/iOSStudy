@@ -51,6 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnFindInfo;
 @property (weak, nonatomic) IBOutlet UILabel *lbBottom;
 @property (weak, nonatomic) IBOutlet UISwitch *swcAutoLogIn;
+@property (weak, nonatomic) IBOutlet UILabel *lbURL;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTopLine;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbEmail;
@@ -88,6 +89,9 @@
     
     [self setColor];
     [self setAutoLayout];
+    
+   // NSMutableAttributedString *lbUrlSting = [[NSMutableAttributedString alloc] init];
+   // [lbUrlSting addAttribute:NSUnderlineStyleAttributeName value:<#(nonnull id)#> range:<#(NSRange)#>]
     
 
     
@@ -199,9 +203,13 @@
         }
         if([sentData isKindOfClass:[NSDictionary class]])
         {
+            
+            NSLog(@"%@%@", self.tfEmail.text, self.tfPassWord.text);
             NSDictionary *sentDataDic;
             sentDataDic = sentData;
             [self processingUrlRequestWithParam:sentDataDic ];
+            NSLog(@"%@", error);
+            
             
             
         }
@@ -215,17 +223,19 @@
     self.LogInClass.result = [[param objectForKey:@"result"] boolValue];
     self.LogInClass.message = [param objectForKey:@"message"];
     
-    if(self.LogInClass.result){
+    if(self.LogInClass.result)
+    {
         NSLog(@"LogIn");
-     dispatch_async(dispatch_get_main_queue(), ^{
-        [self performSegueWithIdentifier:@"sgLogIntoHomeView" sender:self];
-     });
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self performSegueWithIdentifier:@"sgLogIntoHomeView" sender:self];
+            });
+    }
+    else
+    {
+        NSLog(@"fail");
         
-        
-                    }
-    
-    
-    
+    }
+
 }
 
 #pragma mark - TextField Keyboard
@@ -246,14 +256,9 @@
         
         HomeVC.userData= self.tfEmail.text;
         NSLog(@"%@", HomeVC.userData);
-        
-        
-        
-        
+
     }
 }
-
-
 
 
 

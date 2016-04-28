@@ -53,19 +53,16 @@
     
     self.MemberInfo = [[MemberInfo alloc] init];
     
-    
     self.ivUser.image = [UIImage imageNamed:@"img_main_profile"];
     self.ivCard.image = [UIImage imageNamed:@"img_card_main"];
     
     [self startSession];
     
-    
 }
 
 -(void)startSession
 {
- 
-    
+
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     
         NSURLSession *session = [NSURLSession sessionWithConfiguration:config  delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -73,35 +70,24 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
         [[session dataTaskWithRequest:request
-                                   completionHandler:^(NSData *data, NSURLResponse *response,NSError *error) {
-                                       
+                                   completionHandler:^(NSData *data, NSURLResponse *response,NSError *error)
+          {
                                        NSDictionary *sentData;
                                        sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
                                        NSLog(@"%@", sentData);
                                        
                                        [self processingUrlRequestWithParam:sentData];
-                                       
-                
-                                       
-                                       
-                                                                                              }] resume];
-    
-    
+          }] resume];
+
 }
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    
-    
-    if([self.userData isEqualToString:[[param objectForKey:@"userInfo"] objectForKey:@"userId"]]){
+    if([self.userData isEqualToString:[[param objectForKey:@"userInfo"] objectForKey:@"userId"]])
+    {
         NSLog(@"성공");
-        
-        
-        
-        
     }
-    
-    
+
 }
 
 @end
