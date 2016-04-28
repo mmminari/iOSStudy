@@ -10,6 +10,7 @@
 
 @interface HomeViewController : UIViewController
 
-@property (strong, nonatomic) NSString *userData;
+@property (strong, nonatomic) NSDictionary *userInfoDic;
+
 
 @end

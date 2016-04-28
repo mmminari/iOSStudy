@@ -104,7 +104,7 @@
     self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
     self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];
     
-    NSLog(@"%@", [self getColorWithRGBCode:@"ffb5bf"]);
+    [self.navigationController setNavigationBarHidden:YES];
     
 
 }

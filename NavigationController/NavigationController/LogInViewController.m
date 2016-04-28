@@ -10,7 +10,7 @@
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
 
-#define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/push/login"
+#define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
 #define STANDARD_DEVICE_WIDTH                                       414.0f
 #define WRATIO_WIDTH(w)                                             w / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
@@ -71,7 +71,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfSwc;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfSwc;
 
+@property (weak, nonatomic) NSDictionary *sentDataDic;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ivButton;
+@property (weak, nonatomic) IBOutlet UILabel *lbLogInInfo;
 
 @end
 
@@ -81,17 +84,19 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    [self.navigationController setNavigationBarHidden:YES];
+
     self.IntroVC = [[IntroUiViewController alloc] init];
     self.LogInClass = [[LogIn alloc]init];
     
-    self.navigationItem.title = @"로그인 정보"   ;
+    self.lbLogInInfo.text = @"로그인 정보";
+    self.ivButton.image = [UIImage imageNamed:@"btn_back"];
+    
     
     
     [self setColor];
     [self setAutoLayout];
-    
-   // NSMutableAttributedString *lbUrlSting = [[NSMutableAttributedString alloc] init];
-   // [lbUrlSting addAttribute:NSUnderlineStyleAttributeName value:<#(nonnull id)#> range:<#(NSRange)#>]
+  
     
 
     
@@ -136,6 +141,7 @@
     self.btnLogIn.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(16)];
     self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(17)];
     
+    self.lbLogInInfo.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(18)];
     
     float screenHeight = [UIScreen mainScreen].bounds.size.height;
     
@@ -172,6 +178,9 @@
     
     self.btnFindInfo.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
     
+    self.lbLogInInfo.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    
+    
 }
 
 
@@ -187,7 +196,7 @@
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setHTTPMethod:@"POST"];
     
-    NSDictionary *HTTPBodyDic = @{@"username" : self.tfEmail.text,
+    NSDictionary *HTTPBodyDic = @{@"email" : self.tfEmail.text,
                                   @"password" : self.tfPassWord.text };
     
     NSError *error;
@@ -205,9 +214,9 @@
         {
             
             NSLog(@"%@%@", self.tfEmail.text, self.tfPassWord.text);
-            NSDictionary *sentDataDic;
-            sentDataDic = sentData;
-            [self processingUrlRequestWithParam:sentDataDic ];
+            
+            self.sentDataDic = sentData;
+            [self processingUrlRequestWithParam: self.sentDataDic ];
             NSLog(@"%@", error);
             
             
@@ -254,9 +263,13 @@
         HomeViewController *HomeVC = [segue destinationViewController];
         HomeVC = [[HomeViewController alloc]init];
         
-        HomeVC.userData= self.tfEmail.text;
-        NSLog(@"%@", HomeVC.userData);
+        HomeVC.userInfoDic = [[NSDictionary alloc]init];
+        HomeVC.userInfoDic = self.sentDataDic;
 
+    }
+    
+    if([[segue identifier]isEqualToString:@"sgLogIntoIntroView"]){
+        
     }
 }
 
