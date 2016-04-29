@@ -69,13 +69,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnLogIn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnFindInfo;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfSwc;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfSwc;
 
 @property (weak, nonatomic) NSDictionary *sentDataDic;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivButton;
 @property (weak, nonatomic) IBOutlet UILabel *lbLogInInfo;
+@property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
+@property (weak, nonatomic) IBOutlet UIImageView *ivTopLine;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBtnTopLine;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBtnBottomLine;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBottmIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *ivGoButton;
 
 @end
 
@@ -92,23 +96,33 @@
     
     self.lbLogInInfo.text = @"로그인 정보";
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
-    
+    self.ivBottmIcon.image = [UIImage imageNamed:@"icon_info"];
+    self.ivGoButton.image = [UIImage imageNamed:@"btn_menu_go"];
     
     
     [self setColor];
     [self setAutoLayout];
-  
     
-
+    NSString *urlString = @"http://membership.smtown.com/";
+    NSMutableAttributedString *mutableUrlString = [[NSMutableAttributedString alloc]initWithString:urlString];
+    
+    [mutableUrlString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:NSMakeRange(0, urlString.length)];
+    
+    self.lbURL.attributedText = mutableUrlString;
     
 }
 
 #pragma mark - User Touched Event
 
-- (IBAction)touchedLogIn:(id)sender {
+- (IBAction)touchedLogIn:(id)sender
+{
     [self startSession];
-    
-    
+}
+
+- (IBAction)touchedURl:(id)sender
+{
+     NSString *urlString = @"http://membership.smtown.com/";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
 #pragma mark - Set UI
@@ -134,10 +148,6 @@
     self.lbPassWord.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46)];
     self.lbAutoLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46)];
     self.lbBottom.font = [UIFont systemFontOfSize:WRATIO_WIDTH(36)];
-    
-    
-    self.alcWidthOfSwc.constant = WRATIO_WIDTH(120);
-    self.alcHeightOfSwc.constant = WRATIO_WIDTH(45);
     
     self.btnLogIn.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
     self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51)];
@@ -173,13 +183,22 @@
     
     self.lbEmail.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
     self.lbPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbBottom.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.lbBottom.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    self.lbAutoLogIn.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
     
     self.btnLogIn.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
     
     self.btnFindInfo.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
     
     self.lbLogInInfo.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.ivNavigationBottomColor.backgroundColor = [self.IntroVC getColorWithRGBCode:@"e6e6dd"];
+    
+    self.ivTopLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.ivBtnTopLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"c2c0ba"];
+    self.ivBtnBottomLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"c2c0ba"];
+    
+    self.lbURL.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    
     
     
 }
