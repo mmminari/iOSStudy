@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "IntroUiViewcontroller.h"
 
+#define DEVICE_WIDTH                                            [UIScreen mainScreen].bounds.size.width
+#define QUARTER_OF_WIDTH                                        DEVICE_WIDTH/4
 
 @interface HomeViewController ()
 
@@ -27,6 +29,10 @@
 @property (strong, nonatomic) IntroUiViewController *introVC;
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnHome;
+@property (weak, nonatomic) IBOutlet UIButton *btnPoint;
+@property (weak, nonatomic) IBOutlet UIButton *btnCard;
+@property (weak, nonatomic) IBOutlet UIButton *btnStore;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationContainerView;
 @property (weak, nonatomic) IBOutlet UIView *menuContainerView;
@@ -38,6 +44,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivMiddleBell;
 @property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfHomeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfPointView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCardView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfStoreView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIndicator;
 
 @end
 
@@ -46,10 +58,23 @@
 
 @implementation HomeViewController
 
+typedef NS_ENUM(NSInteger, buttonTagNumber){
+    buttonTagNumberHome = 1000,
+    buttonTagNumberPoint,
+    buttonTagNumberCard,
+    buttonTagNumberStore,
+};
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     self.introVC = [[IntroUiViewController alloc] init];
+    
+    self.btnHome.tag = buttonTagNumberHome;
+    self.btnPoint.tag = buttonTagNumberPoint;
+    self.btnCard.tag = buttonTagNumberCard;
+    self.btnStore.tag = buttonTagNumberStore;
+    
     
 
     [self.navigationController setNavigationBarHidden:YES];
@@ -61,6 +86,7 @@
     self.ivTopRight.image = [UIImage imageNamed:@"btn_menu"];
 
     [self setColor];
+    [self setAutoLayout];
     
     self.labelContainerView.layer.cornerRadius = 23.0f;
     
@@ -72,6 +98,33 @@
     
     
 }
+
+#pragma mark - User Touched Event
+
+- (IBAction)touchedMenuButton:(UIButton *)sender
+{
+    if(sender.tag == buttonTagNumberHome)
+    {
+        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*0;
+    }
+    if(sender.tag == buttonTagNumberPoint)
+    {
+        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*1;
+    }
+    if(sender.tag == buttonTagNumberCard)
+    {
+        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*2;
+    }
+    if(sender.tag == buttonTagNumberStore)
+    {
+        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*3;
+    }
+    
+}
+
+
+
+#pragma mark - Set UI
 
 -(void)setColor
 {
@@ -94,9 +147,18 @@
     self.ivMenuBottomPinkColor.backgroundColor = [self.introVC getColorWithRGBCode:@"f386a1"];
     
     self.lbMiddleNotice.textColor = [self.introVC getColorWithRGBCode:@"757575"];
+
+}
+
+-(void)setAutoLayout
+{
+    float screenWidth = [UIScreen mainScreen].bounds.size.width;
     
-    
-    
+    self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;
+    self.alcWidthOfCardView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfStoreView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfIndicator.constant = QUARTER_OF_WIDTH;
     
     
 }
