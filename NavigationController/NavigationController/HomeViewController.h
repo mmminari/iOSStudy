@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogInViewController.h"
 
 @interface HomeViewController : UIViewController
 
 @property (strong, nonatomic) NSDictionary *userInfoDic;
+@property (strong, nonatomic) IBOutlet UILabel *lbUserName;
+@property (strong, nonatomic) IBOutlet UILabel *lbUserEmail;
+
+@property (strong, nonatomic) LogInViewController *logInVC;
 
 
 @end

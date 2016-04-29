@@ -39,8 +39,9 @@
 @interface LogInViewController ()
 
 
-@property(strong, nonatomic) IntroUiViewController *IntroVC;
-@property(strong, nonatomic) LogIn *LogInClass;
+@property(strong, nonatomic) IntroUiViewController *introVC;
+@property(strong, nonatomic) LogIn *logInClass;
+@property(strong, nonatomic) HomeViewController *homeVC;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *tfEmail;
@@ -91,8 +92,9 @@
     
     [self.navigationController setNavigationBarHidden:YES];
 
-    self.IntroVC = [[IntroUiViewController alloc] init];
-    self.LogInClass = [[LogIn alloc]init];
+    self.introVC = [[IntroUiViewController alloc] init];
+    self.logInClass = [[LogIn alloc]init];
+    self.homeVC = [[HomeViewController alloc] init];
     
     self.lbLogInInfo.text = @"로그인 정보";
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
@@ -119,7 +121,7 @@
     [self startSession];
 }
 
-- (IBAction)touchedURl:(id)sender
+- (IBAction)touchedURLStringToSafari:(id)sender
 {
      NSString *urlString = @"http://membership.smtown.com/";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
@@ -174,30 +176,38 @@
 
 -(void)setColor
 {
-    self.view.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f7f0"];
-    self.btnLogIn.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
-    self.swcAutoLogIn.onTintColor = [self.IntroVC getColorWithRGBCode:@"f386a1"];
-    self.tfEmail.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
-    self.tfPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    self.view.backgroundColor = [self.introVC getColorWithRGBCode:@"f9f7f0"];
+    self.btnLogIn.backgroundColor = [self.introVC getColorWithRGBCode:@"f386a1"];
+    self.swcAutoLogIn.onTintColor = [self.introVC getColorWithRGBCode:@"f386a1"];
+    self.tfEmail.textColor = [self.introVC getColorWithRGBCode:@"7d7d7d"];
+    self.tfPassWord.textColor = [self.introVC getColorWithRGBCode:@"7d7d7d"];
     
     
-    self.lbEmail.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbPassWord.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbBottom.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
-    self.lbAutoLogIn.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.lbEmail.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.lbPassWord.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.lbBottom.textColor = [self.introVC getColorWithRGBCode:@"7d7d7d"];
+    self.lbAutoLogIn.textColor = [self.introVC getColorWithRGBCode:@"424242"];
     
-    self.btnLogIn.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
+    self.btnLogIn.titleLabel.textColor = [self.introVC getColorWithRGBCode:@"ffffff"];
     
-    self.btnFindInfo.titleLabel.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
+    self.btnFindInfo.titleLabel.textColor = [self.introVC getColorWithRGBCode:@"424242"];
     
-    self.lbLogInInfo.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.ivNavigationBottomColor.backgroundColor = [self.IntroVC getColorWithRGBCode:@"e6e6dd"];
+    self.lbLogInInfo.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.ivNavigationBottomColor.backgroundColor = [self.introVC getColorWithRGBCode:@"e6e6dd"];
     
-    self.ivTopLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.ivBtnTopLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"c2c0ba"];
-    self.ivBtnBottomLine.backgroundColor = [self.IntroVC getColorWithRGBCode:@"c2c0ba"];
+    self.ivTopLine.backgroundColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.ivBtnTopLine.backgroundColor = [self.introVC getColorWithRGBCode:@"c2c0ba"];
+    self.ivBtnBottomLine.backgroundColor = [self.introVC getColorWithRGBCode:@"c2c0ba"];
     
-    self.lbURL.textColor = [self.IntroVC getColorWithRGBCode:@"7d7d7d"];
+    self.lbURL.textColor = [self.introVC getColorWithRGBCode:@"7d7d7d"];
+    
+    self.tfEmail.layer.borderWidth = 1.0f;
+    self.tfEmail.layer.borderColor = [self.introVC getColorWithRGBCode:@"c2c0ba"].CGColor;
+    
+    self.tfPassWord.layer.borderWidth = 1.0f;
+    self.tfPassWord.layer.borderColor = [self.introVC getColorWithRGBCode:@"c2c0ba"].CGColor;
+    
+    
     
     
     
@@ -238,6 +248,13 @@
             self.sentDataDic = sentData;
             [self processingUrlRequestWithParam: self.sentDataDic ];
             NSLog(@"%@", error);
+            self.homeVC.userInfoDic = [[NSDictionary alloc]init];
+            self.homeVC.userInfoDic = self.sentDataDic;
+            NSLog(@"%@", self.homeVC.userInfoDic);
+            
+            
+            
+            
             
             
             
@@ -249,10 +266,10 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    self.LogInClass.result = [[param objectForKey:@"result"] boolValue];
-    self.LogInClass.message = [param objectForKey:@"message"];
+    self.logInClass.result = [[param objectForKey:@"result"] boolValue];
+    self.logInClass.message = [param objectForKey:@"message"];
     
-    if(self.LogInClass.result)
+    if(self.logInClass.result)
     {
         NSLog(@"LogIn");
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -280,11 +297,15 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"]){
-        HomeViewController *HomeVC = [segue destinationViewController];
-        HomeVC = [[HomeViewController alloc]init];
+        self.homeVC = [segue destinationViewController];
         
-        HomeVC.userInfoDic = [[NSDictionary alloc]init];
-        HomeVC.userInfoDic = self.sentDataDic;
+        self.homeVC.lbUserName = [[self.sentDataDic objectForKey:@"userInfo"] objectForKey:@"userName"];
+        
+        self.homeVC.lbUserEmail = [[self.sentDataDic objectForKey:@"userInfo"] objectForKey:@"userId"];
+        self.homeVC.logInVC = self;
+        
+        
+       
 
     }
     

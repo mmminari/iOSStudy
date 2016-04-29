@@ -14,8 +14,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivUser;
-@property (weak, nonatomic) IBOutlet UILabel *lbUserName;
-@property (weak, nonatomic) IBOutlet UILabel *lbUserEmail;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbAvailablePoint;
 @property (weak, nonatomic) IBOutlet UILabel *lbShowPoint;
@@ -25,14 +23,20 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopRight;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
-@property (strong, nonatomic) IntroUiViewController *IntroVC;
+
+@property (strong, nonatomic) IntroUiViewController *introVC;
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
+
 
 @property (weak, nonatomic) IBOutlet UIView *navigationContainerView;
 @property (weak, nonatomic) IBOutlet UIView *menuContainerView;
 @property (weak, nonatomic) IBOutlet UIView *userInfoContainerView;
 @property (weak, nonatomic) IBOutlet UIView *pointContainerView;
 @property (weak, nonatomic) IBOutlet UIView *labelContainerView;
+@property (weak, nonatomic) IBOutlet UIImageView *ivCenterLine;
+@property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomPinkColor;
+@property (weak, nonatomic) IBOutlet UIImageView *ivMiddleBell;
+@property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
 
 @end
@@ -45,7 +49,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.IntroVC = [[IntroUiViewController alloc] init];
+    self.introVC = [[IntroUiViewController alloc] init];
     
 
     [self.navigationController setNavigationBarHidden:YES];
@@ -53,34 +57,45 @@
     self.ivUser.image = [UIImage imageNamed:@"img_main_profile"];
     self.ivCard.image = [UIImage imageNamed:@"img_card_main"];
     
-    self.lbUserName = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userName"];
-    self.lbUserEmail = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userId"];
-    self.lbPoint = [[self.userInfoDic objectForKey:@"pointInfo"] objectForKey:@"point"];
-    
     self.ivTopLogo.image = [UIImage imageNamed:@"top_logo"];
     self.ivTopRight.image = [UIImage imageNamed:@"btn_menu"];
 
     [self setColor];
+    
+    self.labelContainerView.layer.cornerRadius = 23.0f;
+    
+    self.ivMiddleBell.image = [UIImage imageNamed:@"icon_notice_bell"];
+    
+    self.ivUser.layer.cornerRadius = 32.5f;
+    self.ivUser.layer.masksToBounds = YES;
+    
     
     
 }
 
 -(void)setColor
 {
-    self.ivNavigationBottomColor.backgroundColor = [self.IntroVC getColorWithRGBCode:@"e6e6dd"];
-    self.view.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f9f0"];
-    self.lbUserName.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbUserEmail.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbAvailablePoint.textColor = [self.IntroVC getColorWithRGBCode:@"424242"];
-    self.lbShowPoint.textColor = [self.IntroVC getColorWithRGBCode:@"333333"];
+    self.ivNavigationBottomColor.backgroundColor = [self.introVC getColorWithRGBCode:@"e6e6dd"];
+    self.view.backgroundColor = [self.introVC getColorWithRGBCode:@"f9f9f0"];
+    self.lbUserName.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.lbUserEmail.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.lbAvailablePoint.textColor = [self.introVC getColorWithRGBCode:@"424242"];
+    self.lbShowPoint.textColor = [self.introVC getColorWithRGBCode:@"333333"];
     
-    self.ivMenuBottomColor.backgroundColor = [self.IntroVC getColorWithRGBCode:@"e6e6dd"];
+    self.ivMenuBottomColor.backgroundColor = [self.introVC getColorWithRGBCode:@"e6e6dd"];
     
-    self.navigationContainerView.backgroundColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
-    self.menuContainerView.backgroundColor = [self.IntroVC getColorWithRGBCode:@"ffffff"];
-    self.userInfoContainerView.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f9f0"];
-    self.pointContainerView.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f9f9f0"];
-    self.labelContainerView.backgroundColor = [self.IntroVC getColorWithRGBCode:@"f0f0e4"];
+    self.navigationContainerView.backgroundColor = [self.introVC getColorWithRGBCode:@"ffffff"];
+    self.menuContainerView.backgroundColor = [self.introVC getColorWithRGBCode:@"ffffff"];
+    self.userInfoContainerView.backgroundColor = [self.introVC getColorWithRGBCode:@"f9f9f0"];
+    self.pointContainerView.backgroundColor = [self.introVC getColorWithRGBCode:@"f9f9f0"];
+    self.labelContainerView.backgroundColor = [self.introVC getColorWithRGBCode:@"f0f0e4"];
+    self.ivCenterLine.backgroundColor = [self.introVC getColorWithRGBCode:@"f0f0e4"];
+    
+    self.ivMenuBottomPinkColor.backgroundColor = [self.introVC getColorWithRGBCode:@"f386a1"];
+    
+    self.lbMiddleNotice.textColor = [self.introVC getColorWithRGBCode:@"757575"];
+    
+    
     
     
     
