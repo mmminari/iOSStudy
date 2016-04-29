@@ -152,7 +152,6 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
 -(void)setAutoLayout
 {
-    float screenWidth = [UIScreen mainScreen].bounds.size.width;
     
     self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;

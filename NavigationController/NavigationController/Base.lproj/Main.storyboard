@@ -508,7 +508,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.76078431372549016" green="0.75294117647058822" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="DLH-8X-1xb" id="eK7-Xd-cdm"/>
                                 </connections>
@@ -873,78 +873,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMg-Kx-8oT">
                                 <rect key="frame" x="0.0" y="71" width="600" height="49"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3w-CI-RMc">
-                                        <rect key="frame" x="0.0" y="47" width="600" height="1"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="ori-Ta-jhU"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-dj-V5x">
-                                        <rect key="frame" x="0.0" y="47" width="150" height="2"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="DQe-Z9-OPR"/>
-                                            <constraint firstAttribute="height" constant="2.5" id="fLZ-NN-Soj"/>
-                                        </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-qU-mi0">
-                                        <rect key="frame" x="150" y="0.0" width="150" height="47"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS7-TS-R6x">
-                                                <rect key="frame" x="23" y="13" width="105" height="22"/>
-                                                <state key="normal" image="menu_point.png"/>
-                                                <connections>
-                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="7ai-5W-Bmz"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="IS7-TS-R6x" firstAttribute="centerX" secondItem="iDR-qU-mi0" secondAttribute="centerX" id="Jdh-gW-HNg"/>
-                                            <constraint firstAttribute="width" constant="150" id="PeD-iV-QMZ"/>
-                                            <constraint firstItem="IS7-TS-R6x" firstAttribute="centerY" secondItem="iDR-qU-mi0" secondAttribute="centerY" id="TxX-Is-bad"/>
-                                            <constraint firstAttribute="height" constant="46.5" id="skr-Br-eac"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dar-yl-e8c">
-                                        <rect key="frame" x="300" y="0.0" width="150" height="47"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0E-i9-6Gl">
-                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
-                                                <state key="normal" image="menu_card.png"/>
-                                                <connections>
-                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="a8C-7C-QIo"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="N0E-i9-6Gl" firstAttribute="centerY" secondItem="dar-yl-e8c" secondAttribute="centerY" id="Xfo-Fh-kHN"/>
-                                            <constraint firstAttribute="width" constant="150" id="taU-Pp-S7N"/>
-                                            <constraint firstItem="N0E-i9-6Gl" firstAttribute="centerX" secondItem="dar-yl-e8c" secondAttribute="centerX" id="wjP-0C-aZa"/>
-                                            <constraint firstAttribute="height" constant="46.5" id="xWG-SI-nH4"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-CV-QPu">
-                                        <rect key="frame" x="450" y="0.0" width="150" height="47"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCp-nO-QNY">
-                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
-                                                <state key="normal" image="menu_store.png"/>
-                                                <connections>
-                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="ImE-kY-bSj"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="RCp-nO-QNY" firstAttribute="centerY" secondItem="kxo-CV-QPu" secondAttribute="centerY" id="5eg-OO-IzJ"/>
-                                            <constraint firstAttribute="width" constant="150" id="IBX-H0-s6Y"/>
-                                            <constraint firstAttribute="height" constant="46.5" id="dip-EZ-w9V"/>
-                                            <constraint firstItem="RCp-nO-QNY" firstAttribute="centerX" secondItem="kxo-CV-QPu" secondAttribute="centerX" id="nSr-ls-Eo3"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHb-hL-Fbc">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1t-fi-LkS">
                                                 <rect key="frame" x="27" y="13" width="97" height="22"/>
@@ -959,9 +889,79 @@
                                             <constraint firstItem="r1t-fi-LkS" firstAttribute="centerY" secondItem="wHb-hL-Fbc" secondAttribute="centerY" id="3cR-C5-aaG"/>
                                             <constraint firstAttribute="width" constant="150" id="7rc-Rh-t4c"/>
                                             <constraint firstItem="r1t-fi-LkS" firstAttribute="centerX" secondItem="wHb-hL-Fbc" secondAttribute="centerX" id="VYC-VM-khV"/>
-                                            <constraint firstAttribute="height" constant="46.5" id="g5p-av-EJw"/>
+                                            <constraint firstAttribute="height" constant="49" id="g5p-av-EJw"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-qU-mi0">
+                                        <rect key="frame" x="150" y="0.0" width="150" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS7-TS-R6x">
+                                                <rect key="frame" x="23" y="13" width="105" height="22"/>
+                                                <state key="normal" image="menu_point.png"/>
+                                                <connections>
+                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="7ai-5W-Bmz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="IS7-TS-R6x" firstAttribute="centerX" secondItem="iDR-qU-mi0" secondAttribute="centerX" id="Jdh-gW-HNg"/>
+                                            <constraint firstAttribute="width" constant="150" id="PeD-iV-QMZ"/>
+                                            <constraint firstItem="IS7-TS-R6x" firstAttribute="centerY" secondItem="iDR-qU-mi0" secondAttribute="centerY" id="TxX-Is-bad"/>
+                                            <constraint firstAttribute="height" constant="49" id="skr-Br-eac"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dar-yl-e8c">
+                                        <rect key="frame" x="300" y="0.0" width="150" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0E-i9-6Gl">
+                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
+                                                <state key="normal" image="menu_card.png"/>
+                                                <connections>
+                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="a8C-7C-QIo"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="N0E-i9-6Gl" firstAttribute="centerY" secondItem="dar-yl-e8c" secondAttribute="centerY" id="Xfo-Fh-kHN"/>
+                                            <constraint firstAttribute="width" constant="150" id="taU-Pp-S7N"/>
+                                            <constraint firstItem="N0E-i9-6Gl" firstAttribute="centerX" secondItem="dar-yl-e8c" secondAttribute="centerX" id="wjP-0C-aZa"/>
+                                            <constraint firstAttribute="height" constant="49" id="xWG-SI-nH4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-CV-QPu">
+                                        <rect key="frame" x="450" y="0.0" width="150" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCp-nO-QNY">
+                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
+                                                <state key="normal" image="menu_store.png"/>
+                                                <connections>
+                                                    <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="ImE-kY-bSj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="RCp-nO-QNY" firstAttribute="centerY" secondItem="kxo-CV-QPu" secondAttribute="centerY" id="5eg-OO-IzJ"/>
+                                            <constraint firstAttribute="width" constant="150" id="IBX-H0-s6Y"/>
+                                            <constraint firstAttribute="height" constant="49" id="dip-EZ-w9V"/>
+                                            <constraint firstItem="RCp-nO-QNY" firstAttribute="centerX" secondItem="kxo-CV-QPu" secondAttribute="centerX" id="nSr-ls-Eo3"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l3w-CI-RMc">
+                                        <rect key="frame" x="0.0" y="49" width="600" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ori-Ta-jhU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-dj-V5x">
+                                        <rect key="frame" x="0.0" y="47" width="150" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="DQe-Z9-OPR"/>
+                                            <constraint firstAttribute="height" constant="2.5" id="fLZ-NN-Soj"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78612625838926176" green="0.39290583053691275" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
