@@ -9,8 +9,12 @@
 #import "HomeViewController.h"
 #import "IntroUiViewcontroller.h"
 
-#define DEVICE_WIDTH                                            [UIScreen mainScreen].bounds.size.width
-#define QUARTER_OF_WIDTH                                        DEVICE_WIDTH/4
+#define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
+#define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
+
+#define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
+#define STANDARD_DEVICE_WIDTH                                       414.0f
+#define WRATIO_WIDTH(w)                                             (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
 
 @interface HomeViewController ()
 
@@ -44,12 +48,62 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivMiddleBell;
 @property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviagtionBar;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfHomeView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfPointView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCardView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfStoreView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIndicator;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfNoticeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNoticeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfNoticeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNoticeView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUserInfoView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfUserView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfUserView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfUserView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUsername;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMiddleLine;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfPointView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfPointView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfPointView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfPointViewContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfAvailablePoint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfCard;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCard;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfCard;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCard;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMiddleBell;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMiddleBell;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfUserImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfUserImage;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfTopImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTopImage;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMenuImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMenuImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMenuBar;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfShowPoint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfTopImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfTopMenuImage;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfHomeMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfPointMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCardMenu;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfStoreMenu;
+
+
 
 @end
 
@@ -74,8 +128,6 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.btnPoint.tag = buttonTagNumberPoint;
     self.btnCard.tag = buttonTagNumberCard;
     self.btnStore.tag = buttonTagNumberStore;
-    
-    
 
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -85,17 +137,21 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.ivTopLogo.image = [UIImage imageNamed:@"top_logo"];
     self.ivTopRight.image = [UIImage imageNamed:@"btn_menu"];
 
+    self.ivMiddleBell.image = [UIImage imageNamed:@"icon_notice_bell"];
+
+    self.labelContainerView.layer.cornerRadius = WRATIO_WIDTH(69);
+    
+    self.ivUser.layer.cornerRadius = WRATIO_WIDTH(195)/2;
+    self.ivUser.layer.masksToBounds = YES;
+    
     [self setColor];
     [self setAutoLayout];
     
-    self.labelContainerView.layer.cornerRadius = 23.0f;
+    NSLog(@"home vc :%@", self.userInfoDic);
+
+   // self.lbUserName.text = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userName"];
     
-    self.ivMiddleBell.image = [UIImage imageNamed:@"icon_notice_bell"];
-    
-    self.ivUser.layer.cornerRadius = 32.5f;
-    self.ivUser.layer.masksToBounds = YES;
-    
-    
+    //self.lbUserEmail.text = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userId"];
     
 }
 
@@ -152,12 +208,74 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
 -(void)setAutoLayout
 {
+    self.alcHeightOfNaviagtionBar.constant = WRATIO_WIDTH(213);
     
     self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;
     self.alcWidthOfCardView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfStoreView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfIndicator.constant = QUARTER_OF_WIDTH;
+    
+    self.alcTopOfNoticeView.constant = WRATIO_WIDTH(69);
+    self.alcLeadingOfNoticeView.constant = WRATIO_WIDTH(63);
+    self.alcTrailingOfNoticeView.constant = WRATIO_WIDTH(36);
+    self.alcHeightOfNoticeView.constant = WRATIO_WIDTH(132);
+    
+    self.alcTopOfUserInfoView.constant = WRATIO_WIDTH(108);
+    self.alcLeadingOfUserView.constant = WRATIO_WIDTH(36);
+    self.alcHeightOfUserView.constant = WRATIO_WIDTH(366);
+    self.alcWidthOfUserView.constant = WRATIO_WIDTH(579);
+    
+    self.alcTopOfUsername.constant = WRATIO_WIDTH(54);
+    
+    
+    self.alcTopOfPointView.constant = WRATIO_WIDTH(108);
+    self.alcTrailingOfPointView.constant = WRATIO_WIDTH(63);
+    self.alcHeightOfPointView.constant =   WRATIO_WIDTH(366);
+    self.alcWidthOfPointViewContainer.constant = WRATIO_WIDTH(582);
+    
+    self.alcTopOfAvailablePoint.constant = WRATIO_WIDTH(45);
+    
+    self.alcHeightOfMiddleLine.constant = WRATIO_WIDTH(366);
+    
+    self.alcTopOfCard.constant = WRATIO_WIDTH(129);
+    self.alcLeadingOfCard.constant = WRATIO_WIDTH(39);
+    self.alcTrailingOfCard.constant = WRATIO_WIDTH(39);
+    
+    self.alcWidthOfMiddleBell.constant = WRATIO_WIDTH(57);
+    self.alcHeightOfMiddleBell.constant = WRATIO_WIDTH(63);
+    
+    self.alcHeightOfUserImage.constant = WRATIO_WIDTH(195);
+    self.alcWidthOfUserImage.constant = WRATIO_WIDTH(195);
+    
+    self.alcWidthOfTopImage.constant = WRATIO_WIDTH(729);
+    self.alcHeightOfTopImage.constant  = WRATIO_WIDTH(54);
+    
+    self.alcWidthOfMenuImage.constant = WRATIO_WIDTH(75);
+    self.alcHeightOfMenuImage.constant = WRATIO_WIDTH(51);
+    
+ //   self.alcHeightOfCard.constant = WRATIO_WIDTH(636);
+    
+    self.alcHeightOfMenuBar.constant = WRATIO_WIDTH(147);
+    self.alcHeightOfHomeMenu.constant = WRATIO_WIDTH(147);
+    self.alcHeightOfPointMenu.constant = WRATIO_WIDTH(147);
+    self.alcHeightOfCardMenu.constant = WRATIO_WIDTH(147);
+    self.alcHeightOfStoreMenu.constant = WRATIO_WIDTH(147);
+    
+    
+    self.alcTopOfShowPoint.constant = WRATIO_WIDTH(42);
+    
+    self.alcBottomOfTopImage.constant = WRATIO_WIDTH(54);
+    self.alcBottomOfTopMenuImage.constant = WRATIO_WIDTH(54);
+    
+    self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
+    self.lbUserEmail.font = [UIFont systemFontOfSize:WRATIO_WIDTH(36)];
+    self.lbAvailablePoint.font = [UIFont systemFontOfSize:WRATIO_WIDTH(117)];
+    self.lbShowPoint.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45)];
+    self.lbPoint.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51)];
+    
+    self.lbMiddleNotice.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
+    
     
     
 }

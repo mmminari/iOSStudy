@@ -718,10 +718,14 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="alcBottomOfTopLabel" destination="aV0-Ut-1la" id="bbL-2O-bRm"/>
+                        <outlet property="alcBottomOfTopLeftImage" destination="OSX-QZ-fvj" id="Vqf-lo-hTz"/>
                         <outlet property="alcHeightOfBtnFindInfo" destination="DaD-yx-hEd" id="rWC-c3-zj7"/>
                         <outlet property="alcHeightOfBtnLogIn" destination="C88-FE-Aeh" id="6Dm-qE-3Tm"/>
+                        <outlet property="alcHeightOfNavigationBar" destination="1pJ-qq-Pfj" id="Udh-Tp-5Od"/>
                         <outlet property="alcHeightOfTfEmail" destination="POy-Gb-NS2" id="Dto-WM-XRz"/>
                         <outlet property="alcHeightOfTfPassword" destination="OTL-sn-db9" id="jGg-Xh-Qxe"/>
+                        <outlet property="alcHeightOfTopLeftImage" destination="RHV-ov-yMl" id="pIv-Sf-M29"/>
                         <outlet property="alcTopOfBtnLogIn" destination="lcA-QP-YV2" id="h7g-mt-mRb"/>
                         <outlet property="alcTopOfLbAutoLogIn" destination="gR0-cS-NCZ" id="PM3-zb-lAZ"/>
                         <outlet property="alcTopOfLbPassword" destination="oGR-HE-EZ9" id="V6l-AO-Y5N"/>
@@ -770,9 +774,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="61D-BE-rci">
-                                <rect key="frame" x="13" y="388" width="574" height="212"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9a-7h-Fx7">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                                 <subviews>
@@ -876,8 +877,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHb-hL-Fbc">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1t-fi-LkS">
-                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1t-fi-LkS">
+                                                <rect key="frame" x="51" y="13" width="49" height="22"/>
                                                 <state key="normal" image="menu_home.png"/>
                                                 <connections>
                                                     <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="e6r-Wa-Ci3"/>
@@ -895,8 +896,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDR-qU-mi0">
                                         <rect key="frame" x="150" y="0.0" width="150" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS7-TS-R6x">
-                                                <rect key="frame" x="23" y="13" width="105" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IS7-TS-R6x">
+                                                <rect key="frame" x="50" y="13" width="51" height="22"/>
                                                 <state key="normal" image="menu_point.png"/>
                                                 <connections>
                                                     <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="7ai-5W-Bmz"/>
@@ -914,8 +915,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dar-yl-e8c">
                                         <rect key="frame" x="300" y="0.0" width="150" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0E-i9-6Gl">
-                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0E-i9-6Gl">
+                                                <rect key="frame" x="52" y="13" width="47" height="22"/>
                                                 <state key="normal" image="menu_card.png"/>
                                                 <connections>
                                                     <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="a8C-7C-QIo"/>
@@ -933,8 +934,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-CV-QPu">
                                         <rect key="frame" x="450" y="0.0" width="150" height="49"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCp-nO-QNY">
-                                                <rect key="frame" x="27" y="13" width="97" height="22"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCp-nO-QNY">
+                                                <rect key="frame" x="48" y="13" width="55" height="22"/>
                                                 <state key="normal" image="menu_store.png"/>
                                                 <connections>
                                                     <action selector="touchedMenuButton:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="ImE-kY-bSj"/>
@@ -1022,6 +1023,12 @@
                                     <constraint firstAttribute="height" constant="122" id="VyH-dS-WSG"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="61D-BE-rci">
+                                <rect key="frame" x="13" y="388" width="574" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="Tyb-zn-8UT"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1032,7 +1039,6 @@
                             <constraint firstAttribute="bottomMargin" secondItem="61D-BE-rci" secondAttribute="bottom" id="G2D-6z-Y8d"/>
                             <constraint firstItem="OET-0a-xDh" firstAttribute="top" secondItem="IBJ-wv-il9" secondAttribute="bottom" constant="36" id="Koz-ho-iEk"/>
                             <constraint firstAttribute="trailing" secondItem="IBJ-wv-il9" secondAttribute="trailing" constant="21" id="Lom-0J-zMJ"/>
-                            <constraint firstItem="61D-BE-rci" firstAttribute="top" secondItem="OET-0a-xDh" secondAttribute="bottom" constant="43" id="MqI-KP-EFQ"/>
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="top" secondItem="wMg-Kx-8oT" secondAttribute="bottom" constant="23" id="ObA-l8-GVi"/>
                             <constraint firstItem="61D-BE-rci" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="13" id="RZt-B2-TSN"/>
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="YJb-8Z-o38"/>
@@ -1043,16 +1049,53 @@
                             <constraint firstAttribute="trailing" secondItem="OET-0a-xDh" secondAttribute="trailing" constant="21" id="myg-6e-1Hp"/>
                             <constraint firstAttribute="trailing" secondItem="61D-BE-rci" secondAttribute="trailing" constant="13" id="n0S-ef-fS9"/>
                             <constraint firstItem="Mju-BN-1ph" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="ohp-nI-f6u"/>
+                            <constraint firstItem="61D-BE-rci" firstAttribute="top" secondItem="OET-0a-xDh" secondAttribute="bottom" constant="43" id="vPv-Wj-K3E"/>
                             <constraint firstItem="wMg-Kx-8oT" firstAttribute="top" secondItem="W9a-7h-Fx7" secondAttribute="bottom" id="xx4-91-Yb1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alcBottomOfTopImage" destination="uJF-d9-8ds" id="j8b-Xs-uas"/>
+                        <outlet property="alcBottomOfTopMenuImage" destination="xU9-In-hfu" id="Dr2-lj-d7s"/>
+                        <outlet property="alcHeightOfCard" destination="Tyb-zn-8UT" id="8IL-wf-gql"/>
+                        <outlet property="alcHeightOfCardMenu" destination="xWG-SI-nH4" id="E7i-Dp-yXB"/>
+                        <outlet property="alcHeightOfHomeMenu" destination="g5p-av-EJw" id="gQJ-IM-to4"/>
+                        <outlet property="alcHeightOfMenuBar" destination="78g-zQ-EQP" id="Hfx-ae-NEa"/>
+                        <outlet property="alcHeightOfMenuImage" destination="pza-io-msn" id="ngj-29-69x"/>
+                        <outlet property="alcHeightOfMiddleBell" destination="ySZ-XX-U5B" id="bQ4-Cj-Rtw"/>
+                        <outlet property="alcHeightOfMiddleLine" destination="VyH-dS-WSG" id="rXa-3E-y5g"/>
+                        <outlet property="alcHeightOfNaviagtionBar" destination="23Z-A4-2KG" id="JGa-O2-f4O"/>
+                        <outlet property="alcHeightOfNoticeView" destination="jq9-oK-TfW" id="zTR-U2-ga1"/>
+                        <outlet property="alcHeightOfPointMenu" destination="skr-Br-eac" id="7i5-Mk-E7p"/>
+                        <outlet property="alcHeightOfPointView" destination="CAE-sH-WLk" id="buj-Mx-FS5"/>
+                        <outlet property="alcHeightOfStoreMenu" destination="dip-EZ-w9V" id="G5P-Qt-k26"/>
+                        <outlet property="alcHeightOfTopImage" destination="7Mc-B4-gjD" id="HHa-2i-rAN"/>
+                        <outlet property="alcHeightOfUserImage" destination="Y8o-j2-CnS" id="hmY-9D-cki"/>
+                        <outlet property="alcHeightOfUserView" destination="lMt-TM-lv8" id="QKW-dQ-Vc7"/>
+                        <outlet property="alcLeadingOfCard" destination="RZt-B2-TSN" id="8Wv-3j-gIX"/>
                         <outlet property="alcLeadingOfIndicator" destination="BaT-Ax-OZG" id="zHE-dj-Fsz"/>
+                        <outlet property="alcLeadingOfNoticeView" destination="YJb-8Z-o38" id="CC8-2S-a51"/>
+                        <outlet property="alcLeadingOfUserView" destination="ohp-nI-f6u" id="RRU-qT-frq"/>
+                        <outlet property="alcTopOfAvailablePoint" destination="Uae-2S-JVn" id="qOC-W1-Zuc"/>
+                        <outlet property="alcTopOfCard" destination="vPv-Wj-K3E" id="Nks-sR-b71"/>
+                        <outlet property="alcTopOfNoticeView" destination="ObA-l8-GVi" id="vtD-c7-yKB"/>
+                        <outlet property="alcTopOfPointView" destination="Koz-ho-iEk" id="jyU-ye-NfN"/>
+                        <outlet property="alcTopOfShowPoint" destination="4a7-dk-Ypg" id="yPL-W5-mgr"/>
+                        <outlet property="alcTopOfUserInfoView" destination="Btr-EG-4fW" id="tDE-1R-ddk"/>
+                        <outlet property="alcTopOfUsername" destination="fEx-BY-JRF" id="UHx-xC-Z8l"/>
+                        <outlet property="alcTrailingOfCard" destination="n0S-ef-fS9" id="q9p-7f-Zs8"/>
+                        <outlet property="alcTrailingOfNoticeView" destination="Lom-0J-zMJ" id="ad9-Pp-haL"/>
+                        <outlet property="alcTrailingOfPointView" destination="myg-6e-1Hp" id="HpG-lK-8mO"/>
                         <outlet property="alcWidthOfCardView" destination="taU-Pp-S7N" id="AMW-sp-VyL"/>
                         <outlet property="alcWidthOfHomeView" destination="7rc-Rh-t4c" id="GSS-5Z-i7w"/>
                         <outlet property="alcWidthOfIndicator" destination="DQe-Z9-OPR" id="MfO-Lc-BdW"/>
-                        <outlet property="alcWidthOfPointView" destination="PeD-iV-QMZ" id="Ofo-Le-Stu"/>
+                        <outlet property="alcWidthOfMenuImage" destination="ARh-1i-JXK" id="nVS-9k-GM4"/>
+                        <outlet property="alcWidthOfMiddleBell" destination="47q-eX-CfR" id="m9u-SU-RD1"/>
+                        <outlet property="alcWidthOfPointView" destination="PeD-iV-QMZ" id="eEY-Ej-G6k"/>
+                        <outlet property="alcWidthOfPointViewContainer" destination="2h1-GL-8Th" id="nSb-J3-gsv"/>
                         <outlet property="alcWidthOfStoreView" destination="IBX-H0-s6Y" id="eLL-u3-p0M"/>
+                        <outlet property="alcWidthOfTopImage" destination="QtJ-YZ-erW" id="gAB-5T-OmU"/>
+                        <outlet property="alcWidthOfUserImage" destination="WzD-0F-Jku" id="LLy-OA-O2W"/>
+                        <outlet property="alcWidthOfUserView" destination="ZvK-I5-NEE" id="t0L-20-PaI"/>
                         <outlet property="btnCard" destination="N0E-i9-6Gl" id="7pR-6Z-D0K"/>
                         <outlet property="btnHome" destination="r1t-fi-LkS" id="ahj-Zk-8hj"/>
                         <outlet property="btnPoint" destination="IS7-TS-R6x" id="XHX-v3-P4x"/>
@@ -1082,7 +1125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wtI-If-QBw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="2014"/>
+            <point key="canvasLocation" x="984" y="1968"/>
         </scene>
     </scenes>
     <resources>

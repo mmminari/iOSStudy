@@ -70,6 +70,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnLogIn;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnFindInfo;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNavigationBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfTopLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfTopLeftImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTopLeftImage;
 
 @property (weak, nonatomic) NSDictionary *sentDataDic;
 
@@ -155,6 +159,11 @@
     self.btnFindInfo.titleLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51)];
     
     self.lbLogInInfo.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(54)];
+    self.alcBottomOfTopLeftImage.constant = WRATIO_WIDTH(54);
+    self.alcHeightOfTopLeftImage.constant = WRATIO_WIDTH(63);
+    
+    self.alcHeightOfNavigationBar.constant = WRATIO_WIDTH(213);
+    self.alcBottomOfTopLabel.constant = WRATIO_WIDTH(54);
     
     float screenHeight = [UIScreen mainScreen].bounds.size.height;
     
@@ -250,12 +259,9 @@
             NSLog(@"%@", error);
             self.homeVC.userInfoDic = [[NSDictionary alloc]init];
             self.homeVC.userInfoDic = self.sentDataDic;
-            NSLog(@"%@", self.homeVC.userInfoDic);
+            NSLog(@"login vc : %@", self.homeVC.userInfoDic);
             
-            
-            
-            
-            
+   
             
             
         }
@@ -297,12 +303,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"]){
-        self.homeVC = [segue destinationViewController];
         
-        self.homeVC.lbUserName = [[self.sentDataDic objectForKey:@"userInfo"] objectForKey:@"userName"];
-        
-        self.homeVC.lbUserEmail = [[self.sentDataDic objectForKey:@"userInfo"] objectForKey:@"userId"];
-        self.homeVC.logInVC = self;
+      
         
         
        
