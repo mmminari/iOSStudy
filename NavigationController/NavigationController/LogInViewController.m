@@ -10,6 +10,8 @@
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
 
+#import "UserInformation.h"
+
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
 
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
@@ -20,28 +22,13 @@
 #define STANDARD_DEVICE_HEIGHT                                      736.0f
 #define HRATIO_HEIGHT(h)                                            (h/3.0f) / STANDARD_DEVICE_HEIGHT * DEVICE_HEIGHT
 
-@interface LogIn : NSObject
-
-@property (assign, nonatomic) BOOL result;
-@property (strong, nonatomic) NSString *message;
-@property (strong, nonatomic) NSString *code;
-@property (strong, nonatomic) NSObject *data;
-
-
-@end
-
-@implementation LogIn
-
-
-
-@end
 
 @interface LogInViewController ()
 
 
 @property(strong, nonatomic) IntroUiViewController *introVC;
-@property(strong, nonatomic) LogIn *logInClass;
-@property(strong, nonatomic) HomeViewController *homeVC;
+@property(strong, nonatomic) UserInformation *userInfo;
+
 
 
 @property (weak, nonatomic) IBOutlet UITextField *tfEmail;
@@ -75,7 +62,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfTopLeftImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTopLeftImage;
 
-@property (weak, nonatomic) NSDictionary *sentDataDic;
+@property (strong, nonatomic) NSDictionary *sentDataDic;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivButton;
 @property (weak, nonatomic) IBOutlet UILabel *lbLogInInfo;
@@ -86,6 +73,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivBottmIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *ivGoButton;
 
+@property (weak, nonatomic) NSString *receivedUserName;
+@property (assign, nonatomic) NSInteger receivedUserPoint;
+
 @end
 
 
@@ -93,12 +83,13 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+        
     [self.navigationController setNavigationBarHidden:YES];
 
     self.introVC = [[IntroUiViewController alloc] init];
-    self.logInClass = [[LogIn alloc]init];
-    self.homeVC = [[HomeViewController alloc] init];
+    
+    self.userInfo = [[UserInformation alloc] init];
+    
     
     self.lbLogInInfo.text = @"로그인 정보";
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
@@ -215,10 +206,7 @@
     
     self.tfPassWord.layer.borderWidth = 1.0f;
     self.tfPassWord.layer.borderColor = [self.introVC getColorWithRGBCode:@"c2c0ba"].CGColor;
-    
-    
-    
-    
+
     
 }
 
@@ -257,12 +245,10 @@
             self.sentDataDic = sentData;
             [self processingUrlRequestWithParam: self.sentDataDic ];
             NSLog(@"%@", error);
-            self.homeVC.userInfoDic = [[NSDictionary alloc]init];
-            self.homeVC.userInfoDic = self.sentDataDic;
-            NSLog(@"login vc : %@", self.homeVC.userInfoDic);
             
-   
-            
+            self.receivedUserName = [[self.sentDataDic objectForKey:@"userInfo"]objectForKey:@"userName"];
+            self.receivedUserPoint = [[[self.sentDataDic objectForKey:@"pointInfo"]objectForKey:@"point"] intValue];
+
             
         }
     }] resume];
@@ -272,10 +258,11 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    self.logInClass.result = [[param objectForKey:@"result"] boolValue];
-    self.logInClass.message = [param objectForKey:@"message"];
+    [self.userInfo setResultWithBoolean:[[param objectForKey:@"result"] boolValue]];
+    [self.userInfo setUserNameWithString:[[param objectForKey:@"userInfo"] objectForKey:@"userId"]];
     
-    if(self.logInClass.result)
+    
+    if([self.userInfo getResult])
     {
         NSLog(@"LogIn");
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -295,6 +282,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    
     return YES;
 }
 
@@ -302,16 +290,20 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"]){
+    if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"])
+    {
+        HomeViewController *homeVC = [segue destinationViewController];
+        homeVC.logInVC = self;
+        homeVC.userName = self.receivedUserName;
+        homeVC.userEmail = self.tfEmail.text;
+        homeVC.userPoint = self.receivedUserPoint;
         
-      
-        
-        
-       
+
 
     }
     
-    if([[segue identifier]isEqualToString:@"sgLogIntoIntroView"]){
+    if([[segue identifier]isEqualToString:@"sgLogIntoIntroView"])
+    {
         
     }
 }

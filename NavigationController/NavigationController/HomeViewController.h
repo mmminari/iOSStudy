@@ -17,5 +17,13 @@
 
 @property (strong, nonatomic) LogInViewController *logInVC;
 
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *userEmail;
+@property (assign, nonatomic) NSInteger userPoint;
+
+
+@property (assign, nonatomic) BOOL result;
+
+
 
 @end

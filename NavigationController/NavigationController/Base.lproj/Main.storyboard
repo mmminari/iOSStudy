@@ -1025,9 +1025,6 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="61D-BE-rci">
                                 <rect key="frame" x="13" y="388" width="574" height="212"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="212" id="Tyb-zn-8UT"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1056,7 +1053,6 @@
                     <connections>
                         <outlet property="alcBottomOfTopImage" destination="uJF-d9-8ds" id="j8b-Xs-uas"/>
                         <outlet property="alcBottomOfTopMenuImage" destination="xU9-In-hfu" id="Dr2-lj-d7s"/>
-                        <outlet property="alcHeightOfCard" destination="Tyb-zn-8UT" id="8IL-wf-gql"/>
                         <outlet property="alcHeightOfCardMenu" destination="xWG-SI-nH4" id="E7i-Dp-yXB"/>
                         <outlet property="alcHeightOfHomeMenu" destination="g5p-av-EJw" id="gQJ-IM-to4"/>
                         <outlet property="alcHeightOfMenuBar" destination="78g-zQ-EQP" id="Hfx-ae-NEa"/>

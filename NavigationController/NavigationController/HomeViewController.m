@@ -8,6 +8,8 @@
 
 #import "HomeViewController.h"
 #import "IntroUiViewcontroller.h"
+#import "UserInformation.h"
+#import "LogInViewController.h"
 
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
 #define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
@@ -31,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
 
 @property (strong, nonatomic) IntroUiViewController *introVC;
+@property (strong, nonatomic) UserInformation *userInformation;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
@@ -104,7 +109,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfStoreMenu;
 
 
-
 @end
 
 
@@ -119,8 +123,17 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     buttonTagNumberStore,
 };
 
+
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    self.lbUserName.text = self.userName;
+    self.lbUserEmail.text = self.userEmail;
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)self.userPoint];
+    
+    
+    
+    
     
     self.introVC = [[IntroUiViewController alloc] init];
     
@@ -146,12 +159,7 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     
     [self setColor];
     [self setAutoLayout];
-    
-    NSLog(@"home vc :%@", self.userInfoDic);
 
-   // self.lbUserName.text = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userName"];
-    
-    //self.lbUserEmail.text = [[self.userInfoDic objectForKey:@"userInfo"] objectForKey:@"userId"];
     
 }
 
