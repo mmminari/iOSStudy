@@ -10,6 +10,14 @@
 
 @interface UserInformation : NSObject
 
+
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSString *userName;
+@property (assign, nonatomic) NSInteger point;
+@property (assign, nonatomic) BOOL result;
+
+
+
 -(void)setUserNameWithString:(NSString *)name;
 -(BOOL)getResult;
 -(void)setResultWithBoolean:(BOOL)result;
@@ -21,6 +29,7 @@
 
 
 -(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result;
+-(instancetype)initWithResults:(NSDictionary *)results;
 
 
 

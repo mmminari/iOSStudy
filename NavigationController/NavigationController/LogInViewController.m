@@ -230,29 +230,13 @@
     
     [urlRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:HTTPBodyDic options:0 error:&error]];
     
-    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+    [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+    {
         id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+
+        [self processingUrlRequestWithParam: sentData];
+
         
-        if([sentData isKindOfClass:[NSArray class]])
-        {
-            NSLog(@"erorr");
-        }
-        if([sentData isKindOfClass:[NSDictionary class]])
-        {
-      
-            
-            self.sentDataDic = sentData;
-            NSLog(@"%@", error);
-            
-            self.receivedUserName = [[self.sentDataDic objectForKey:@"userInfo"]objectForKey:@"userName"];
-            self.receivedUserPoint = [[[self.sentDataDic objectForKey:@"pointInfo"]objectForKey:@"point"] intValue];
-            [self.userInfo setResultWithBoolean:[self.sentDataDic objectForKey:@"result"]];
-            
-
-            [self processingUrlRequestWithParam: self.sentDataDic ];
-
-            
-        }
     }] resume];
     
     
@@ -260,7 +244,23 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    if([self.userInfo getResult])
+    
+    if([param isKindOfClass:[NSArray class]])
+    {
+        NSLog(@"erorr");
+    }
+    if([param isKindOfClass:[NSDictionary class]])
+    {
+ 
+        self.sentDataDic = param;
+        
+        UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
+        
+        self.userInfo = userInfo;
+
+    }
+    
+    if([self.userInfo result])
     {
         NSLog(@"LogIn");
          dispatch_async(dispatch_get_main_queue(), ^{
@@ -291,18 +291,9 @@
     if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"])
     {
         HomeViewController *homeVC = [segue destinationViewController];
-       
-        /*
-        homeVC.userName = self.receivedUserName;
-        homeVC.userEmail = self.tfEmail.text;
-        homeVC.userPoint = self.receivedUserPoint;
-        */
-        
-        homeVC.userInfomation = [[UserInformation alloc]initWithName:self.receivedUserName withId:self.tfEmail.text withPoint:self.receivedUserPoint withResult:[self.userInfo getResult]];
-        
-        
 
-
+        homeVC.userInfomation = self.userInfo;
+ 
     }
     
     if([[segue identifier]isEqualToString:@"sgLogIntoIntroView"])

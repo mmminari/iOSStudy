@@ -123,17 +123,10 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    /*
-    self.lbUserName.text = self.userName;
-    self.lbUserEmail.text = self.userEmail;
-    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)self.userPoint];
-    */
 
-    self.lbUserName.text = [self.userInfomation getUserName];
-    self.lbUserEmail.text = [self.userInfomation getUserId];
-    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", [self.userInfomation getUserPoint]];
-    
-    
+    self.lbUserName.text = [self.userInfomation userName];
+    self.lbUserEmail.text = [self.userInfomation userId];
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", [self.userInfomation point]];
 
     
     self.introVC = [[IntroUiViewController alloc] init];

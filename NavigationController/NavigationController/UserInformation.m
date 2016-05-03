@@ -11,15 +11,26 @@
 
 @interface UserInformation ()
 
-@property (assign, nonatomic) BOOL result;
-@property (strong, nonatomic) NSString *userId;
-@property (assign, nonatomic) NSInteger userPoint;
-@property (strong, nonatomic) NSString *userName;
 
 
 @end
 
 @implementation UserInformation
+
+-(instancetype)initWithResults:(NSDictionary *)results
+{
+    if(self = [super init])
+    {
+        _userId = [[results objectForKey:@"userInfo"]objectForKey:@"userId"];
+        _userName = [[results objectForKey:@"userInfo"]objectForKey:@"userName"];
+        _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] intValue];
+        _result = [results objectForKey:@"result"];
+
+    }
+    
+    return self;
+    
+}
 
 
 -(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result
@@ -29,7 +40,7 @@
     {
         self.userName = name;
         self.userId = userID;
-        self.userPoint = point;
+        self.point = point;
         self.result = result;
         
     }
@@ -53,7 +64,7 @@
 
 -(void)setUserPointWithInteger:(NSInteger)point
 {
-    self.userPoint = point;
+    self.point = point;
     
 }
 
@@ -77,7 +88,7 @@
 }
 -(NSInteger)getUserPoint
 {
-    return self.userPoint;
+    return self.point;
 }
 
 @end
