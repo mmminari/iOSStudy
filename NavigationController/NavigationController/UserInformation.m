@@ -23,8 +23,8 @@
     {
         _userId = [[results objectForKey:@"userInfo"]objectForKey:@"userId"];
         _userName = [[results objectForKey:@"userInfo"]objectForKey:@"userName"];
-        _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] intValue];
-        _result = [results objectForKey:@"result"];
+        _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] integerValue];
+        _result = [[results objectForKey:@"result"] boolValue];
 
     }
     

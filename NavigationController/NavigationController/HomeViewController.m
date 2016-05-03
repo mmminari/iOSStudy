@@ -107,6 +107,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCardMenu;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfStoreMenu;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfVIP;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfVIP;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfUserName;
+@property (weak, nonatomic) IBOutlet UIImageView *ivVIP;
+
 
 @end
 
@@ -126,7 +131,7 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
     self.lbUserName.text = [self.userInfomation userName];
     self.lbUserEmail.text = [self.userInfomation userId];
-    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", [self.userInfomation point]];
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.userInfomation point]];
 
     
     self.introVC = [[IntroUiViewController alloc] init];
@@ -145,6 +150,7 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.ivTopRight.image = [UIImage imageNamed:@"btn_menu"];
 
     self.ivMiddleBell.image = [UIImage imageNamed:@"icon_notice_bell"];
+    self.ivVIP.image = [UIImage imageNamed:@"icon_grade_vip"];
 
     self.labelContainerView.layer.cornerRadius = WRATIO_WIDTH(69);
     
@@ -263,6 +269,8 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.alcHeightOfCardMenu.constant = WRATIO_WIDTH(147);
     self.alcHeightOfStoreMenu.constant = WRATIO_WIDTH(147);
     
+    self.alcWidthOfVIP.constant = WRATIO_WIDTH(102);
+    self.alcHeightOfVIP.constant = WRATIO_WIDTH(49);
     
     self.alcTopOfShowPoint.constant = WRATIO_WIDTH(42);
     
@@ -277,8 +285,10 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     
     self.lbMiddleNotice.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
     
+    float leadingoflbUserName = (WRATIO_WIDTH(579)- (self.lbUserName.intrinsicContentSize.width+1.0f+WRATIO_WIDTH(102)))/2;
+    self.alcLeadingOfUserName.constant = leadingoflbUserName    ;
     
-    
+ 
 }
 
 
