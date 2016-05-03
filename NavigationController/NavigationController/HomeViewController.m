@@ -285,7 +285,11 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     
     self.lbMiddleNotice.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
     
-    float leadingoflbUserName = (WRATIO_WIDTH(579)- (self.lbUserName.intrinsicContentSize.width+1.0f+WRATIO_WIDTH(102)))/2;
+    
+    CGRect lbUserNameSize = [self.lbUserName.text boundingRectWithSize:self.lbUserName.frame.size options:0 attributes:@{ NSFontAttributeName:self.lbUserName.font} context:nil];
+    float labelWidth = lbUserNameSize.size.width;
+    
+    float leadingoflbUserName = (WRATIO_WIDTH(579)- (labelWidth+1.0f+WRATIO_WIDTH(102)))/2;
     self.alcLeadingOfUserName.constant = leadingoflbUserName    ;
     
  
