@@ -11,31 +11,73 @@
 
 @interface UserInformation ()
 
-@property (weak, nonatomic) NSString *userName;
 @property (assign, nonatomic) BOOL result;
-@property (weak, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSString *userId;
+@property (assign, nonatomic) NSInteger userPoint;
+@property (strong, nonatomic) NSString *userName;
 
 
 @end
 
 @implementation UserInformation
 
+
+-(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result
+{
+    self = [super init];
+    if(self != nil)
+    {
+        self.userName = name;
+        self.userId = userID;
+        self.userPoint = point;
+        self.result = result;
+        
+    }
+    
+    return self;
+    
+}
+
+
+
 -(void)setUserNameWithString:(NSString *)name
 {
     self.userName = name;
     
 }
--(BOOL)getResult
-{
-    return self.result;
-}
+
 -(void)setResultWithBoolean:(BOOL)result
 {
     self.result = result;
 }
+
+-(void)setUserPointWithInteger:(NSInteger)point
+{
+    self.userPoint = point;
+    
+}
+
+-(void)setUserIdWithString:(NSString *)userId
+{
+    self.userId = userId;
+}
+
+-(BOOL)getResult
+{
+    return self.result;
+}
+
 -(NSString *)getUserName
 {
+    return self.userName;
+}
+-(NSString *)getUserId
+{
     return self.userId;
+}
+-(NSInteger)getUserPoint
+{
+    return self.userPoint;
 }
 
 @end

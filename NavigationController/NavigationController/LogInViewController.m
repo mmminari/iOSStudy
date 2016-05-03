@@ -239,15 +239,17 @@
         }
         if([sentData isKindOfClass:[NSDictionary class]])
         {
-            
-            NSLog(@"%@%@", self.tfEmail.text, self.tfPassWord.text);
+      
             
             self.sentDataDic = sentData;
-            [self processingUrlRequestWithParam: self.sentDataDic ];
             NSLog(@"%@", error);
             
             self.receivedUserName = [[self.sentDataDic objectForKey:@"userInfo"]objectForKey:@"userName"];
             self.receivedUserPoint = [[[self.sentDataDic objectForKey:@"pointInfo"]objectForKey:@"point"] intValue];
+            [self.userInfo setResultWithBoolean:[self.sentDataDic objectForKey:@"result"]];
+            
+
+            [self processingUrlRequestWithParam: self.sentDataDic ];
 
             
         }
@@ -258,10 +260,6 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    [self.userInfo setResultWithBoolean:[[param objectForKey:@"result"] boolValue]];
-    [self.userInfo setUserNameWithString:[[param objectForKey:@"userInfo"] objectForKey:@"userId"]];
-    
-    
     if([self.userInfo getResult])
     {
         NSLog(@"LogIn");
@@ -293,10 +291,15 @@
     if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"])
     {
         HomeViewController *homeVC = [segue destinationViewController];
-        homeVC.logInVC = self;
+       
+        /*
         homeVC.userName = self.receivedUserName;
         homeVC.userEmail = self.tfEmail.text;
         homeVC.userPoint = self.receivedUserPoint;
+        */
+        
+        homeVC.userInfomation = [[UserInformation alloc]initWithName:self.receivedUserName withId:self.tfEmail.text withPoint:self.receivedUserPoint withResult:[self.userInfo getResult]];
+        
         
 
 

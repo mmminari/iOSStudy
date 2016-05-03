@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LogInViewController.h"
+#import "UserInformation.h"
 
 @interface HomeViewController : UIViewController
 
@@ -23,6 +24,9 @@
 
 
 @property (assign, nonatomic) BOOL result;
+
+
+@property(strong, nonatomic) UserInformation *userInfomation;
 
 
 

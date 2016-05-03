@@ -33,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
 
 @property (strong, nonatomic) IntroUiViewController *introVC;
-@property (strong, nonatomic) UserInformation *userInformation;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
@@ -111,9 +110,6 @@
 
 @end
 
-
-
-
 @implementation HomeViewController
 
 typedef NS_ENUM(NSInteger, buttonTagNumber){
@@ -124,16 +120,21 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 };
 
 
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    /*
     self.lbUserName.text = self.userName;
     self.lbUserEmail.text = self.userEmail;
     self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)self.userPoint];
+    */
+
+    self.lbUserName.text = [self.userInfomation getUserName];
+    self.lbUserEmail.text = [self.userInfomation getUserId];
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", [self.userInfomation getUserPoint]];
     
     
-    
-    
+
     
     self.introVC = [[IntroUiViewController alloc] init];
     
@@ -162,6 +163,7 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
     
 }
+
 
 #pragma mark - User Touched Event
 
@@ -261,8 +263,6 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     
     self.alcWidthOfMenuImage.constant = WRATIO_WIDTH(75);
     self.alcHeightOfMenuImage.constant = WRATIO_WIDTH(51);
-    
- //   self.alcHeightOfCard.constant = WRATIO_WIDTH(636);
     
     self.alcHeightOfMenuBar.constant = WRATIO_WIDTH(147);
     self.alcHeightOfHomeMenu.constant = WRATIO_WIDTH(147);

@@ -14,6 +14,14 @@
 -(BOOL)getResult;
 -(void)setResultWithBoolean:(BOOL)result;
 -(NSString *)getUserName;
+-(void)setUserPointWithInteger:(NSInteger)point;
+-(void)setUserIdWithString:(NSString *)userId;
+-(NSString *)getUserId;
+-(NSInteger)getUserPoint;
+
+
+-(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result;
+
 
 
 @end
