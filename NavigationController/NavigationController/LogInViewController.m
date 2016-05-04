@@ -83,6 +83,10 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+    
+    self.tfEmail.text = @"yonghwinam@smtown.com";
+    self.tfPassWord.text = @"apple0000";
         
     [self.navigationController setNavigationBarHidden:YES];
 
@@ -113,7 +117,10 @@
 
 - (IBAction)touchedLogIn:(id)sender
 {
+    self.view.userInteractionEnabled = NO;
+
     [self startSession];
+    
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -262,6 +269,7 @@
     
     if([self.userInfo result])
     {
+
         NSLog(@"LogIn");
          dispatch_async(dispatch_get_main_queue(), ^{
              [self performSegueWithIdentifier:@"sgLogIntoHomeView" sender:self];

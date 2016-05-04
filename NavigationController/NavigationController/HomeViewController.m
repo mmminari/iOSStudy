@@ -290,7 +290,22 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     float labelWidth = lbUserNameSize.size.width;
     
     float leadingoflbUserName = (WRATIO_WIDTH(579)- (labelWidth+1.0f+WRATIO_WIDTH(102)))/2;
-    self.alcLeadingOfUserName.constant = leadingoflbUserName    ;
+ //   self.alcLeadingOfUserName.constant = leadingoflbUserName    ;
+    NSLog(@"%f", leadingoflbUserName);
+    
+    
+    CGFloat centerLabel = self.lbUserName.center.x;
+    CGFloat centerImage = self.ivVIP.center.x;
+ 
+    
+    CGFloat newLeading = (WRATIO_WIDTH(579)-(centerImage-centerLabel)*2)/2;
+    
+    self.alcLeadingOfUserName.constant = newLeading;
+    NSLog(@"%f", newLeading);
+    
+    
+    
+    
     
  
 }

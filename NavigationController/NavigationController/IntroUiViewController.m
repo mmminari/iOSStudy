@@ -89,6 +89,9 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    self.tfInput.text = @"1234";
+    
+    
     [self.btnHide setHidden:YES];
     
     int screenWidth = [UIScreen mainScreen].bounds.size.width;
