@@ -12,4 +12,10 @@
 
 @interface UtilityClass : UIViewController
 
+-(CGFloat)getScreenWidth;
+-(UIColor *)getColorWithRGBCode:(NSString *)code;
+
+
+
+
 @end

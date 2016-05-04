@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LogInViewController.h"
 #import "UserInformation.h"
+#import "BaseViewController.h"
 
-@interface HomeViewController : LogInViewController
+@interface HomeViewController : BaseViewController
 
 @property (strong, nonatomic) NSDictionary *userInfoDic;
 @property (strong, nonatomic) IBOutlet UILabel *lbUserName;

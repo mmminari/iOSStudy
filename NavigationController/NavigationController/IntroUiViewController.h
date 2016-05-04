@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UtilityClass.h"
+#import "BaseViewController.h"
 
-@interface IntroUiViewController : UtilityClass
+@interface IntroUiViewController : BaseViewController
 
 
 -(CGFloat)getWidthOfTargetWithTargetValue:(CGFloat)width andDevieWidth:(CGFloat)dvWidth;

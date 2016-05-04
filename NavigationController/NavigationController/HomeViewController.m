@@ -172,8 +172,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     sessionTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         UIImage *userImage = [[UIImage alloc] initWithData: data] ;
-                              
-        self.ivUser.image = userImage;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.ivUser.image = userImage;
+
+        });
         
         
         
@@ -224,25 +227,25 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)setColor
 {
-    self.ivNavigationBottomColor.backgroundColor = [self getColorWithRGBCode:@"e6e6dd"];
-    self.view.backgroundColor = [self getColorWithRGBCode:@"f9f9f0"];
-    self.lbUserName.textColor = [self getColorWithRGBCode:@"424242"];
-    self.lbUserEmail.textColor = [self getColorWithRGBCode:@"424242"];
-    self.lbAvailablePoint.textColor = [self getColorWithRGBCode:@"424242"];
-    self.lbShowPoint.textColor = [self getColorWithRGBCode:@"333333"];
+    self.ivNavigationBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
+    self.lbUserName.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.lbUserEmail.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.lbAvailablePoint.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.lbShowPoint.textColor = [self.util getColorWithRGBCode:@"333333"];
     
-    self.ivMenuBottomColor.backgroundColor = [self getColorWithRGBCode:@"e6e6dd"];
+    self.ivMenuBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
-    self.navigationContainerView.backgroundColor = [self getColorWithRGBCode:@"ffffff"];
-    self.menuContainerView.backgroundColor = [self getColorWithRGBCode:@"ffffff"];
-    self.userInfoContainerView.backgroundColor = [self getColorWithRGBCode:@"f9f9f0"];
-    self.pointContainerView.backgroundColor = [self getColorWithRGBCode:@"f9f9f0"];
-    self.labelContainerView.backgroundColor = [self getColorWithRGBCode:@"f0f0e4"];
-    self.ivCenterLine.backgroundColor = [self getColorWithRGBCode:@"f0f0e4"];
+    self.navigationContainerView.backgroundColor = [self.util getColorWithRGBCode:@"ffffff"];
+    self.menuContainerView.backgroundColor = [self.util getColorWithRGBCode:@"ffffff"];
+    self.userInfoContainerView.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
+    self.pointContainerView.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
+    self.labelContainerView.backgroundColor = [self.util getColorWithRGBCode:@"f0f0e4"];
+    self.ivCenterLine.backgroundColor = [self.util getColorWithRGBCode:@"f0f0e4"];
     
-    self.ivMenuBottomPinkColor.backgroundColor = [self getColorWithRGBCode:@"f386a1"];
+    self.ivMenuBottomPinkColor.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     
-    self.lbMiddleNotice.textColor = [self getColorWithRGBCode:@"757575"];
+    self.lbMiddleNotice.textColor = [self.util getColorWithRGBCode:@"757575"];
 
 }
 

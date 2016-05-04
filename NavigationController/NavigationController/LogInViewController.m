@@ -181,36 +181,36 @@
 
 -(void)setColor
 {
-    self.view.backgroundColor = [self getColorWithRGBCode:@"f9f7f0"];
-    self.btnLogIn.backgroundColor = [self getColorWithRGBCode:@"f386a1"];
-    self.swcAutoLogIn.onTintColor = [self getColorWithRGBCode:@"f386a1"];
-    self.tfEmail.textColor = [self getColorWithRGBCode:@"7d7d7d"];
-    self.tfPassWord.textColor = [self getColorWithRGBCode:@"7d7d7d"];
+    self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.btnLogIn.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
+    self.swcAutoLogIn.onTintColor = [self.util getColorWithRGBCode:@"f386a1"];
+    self.tfEmail.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
+    self.tfPassWord.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
     
     
-    self.lbEmail.textColor = [self getColorWithRGBCode:@"424242"];
-    self.lbPassWord.textColor = [self getColorWithRGBCode:@"424242"];
-    self.lbBottom.textColor = [self getColorWithRGBCode:@"7d7d7d"];
-    self.lbAutoLogIn.textColor = [self getColorWithRGBCode:@"424242"];
+    self.lbEmail.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.lbPassWord.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.lbBottom.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
+    self.lbAutoLogIn.textColor = [self.util getColorWithRGBCode:@"424242"];
     
-    self.btnLogIn.titleLabel.textColor = [self getColorWithRGBCode:@"ffffff"];
+    self.btnLogIn.titleLabel.textColor = [self.util getColorWithRGBCode:@"ffffff"];
     
-    self.btnFindInfo.titleLabel.textColor = [self getColorWithRGBCode:@"424242"];
+    self.btnFindInfo.titleLabel.textColor = [self.util getColorWithRGBCode:@"424242"];
     
-    self.lbLogInInfo.textColor = [self getColorWithRGBCode:@"424242"];
-    self.ivNavigationBottomColor.backgroundColor = [self getColorWithRGBCode:@"e6e6dd"];
+    self.lbLogInInfo.textColor = [self.util getColorWithRGBCode:@"424242"];
+    self.ivNavigationBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
-    self.ivTopLine.backgroundColor = [self getColorWithRGBCode:@"424242"];
-    self.ivBtnTopLine.backgroundColor = [self getColorWithRGBCode:@"c2c0ba"];
-    self.ivBtnBottomLine.backgroundColor = [self getColorWithRGBCode:@"c2c0ba"];
+    self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
+    self.ivBtnTopLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];
+    self.ivBtnBottomLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];
     
-    self.lbURL.textColor = [self getColorWithRGBCode:@"7d7d7d"];
+    self.lbURL.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
     
     self.tfEmail.layer.borderWidth = 1.0f;
-    self.tfEmail.layer.borderColor = [self getColorWithRGBCode:@"c2c0ba"].CGColor;
+    self.tfEmail.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
     
     self.tfPassWord.layer.borderWidth = 1.0f;
-    self.tfPassWord.layer.borderColor = [self getColorWithRGBCode:@"c2c0ba"].CGColor;
+    self.tfPassWord.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
 
     
 }

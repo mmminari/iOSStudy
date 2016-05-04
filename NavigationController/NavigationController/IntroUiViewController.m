@@ -94,15 +94,15 @@
     
     [self.btnHide setHidden:YES];
     
-    int screenWidth = [UIScreen mainScreen].bounds.size.width;
+    int screenWidth = [self.util getScreenWidth];
     [self setRatioOfDevicewithDevieWidth:screenWidth];
     
-    self.mainContainerView.backgroundColor = [self getColorWithRGBCode:@"ffb5bf"];
-    self.btnOk.backgroundColor = [self getColorWithRGBCode:@"4b4b4b"];
-    self.lbInputComment.textColor = [self getColorWithRGBCode:@"4b4b4b"];
-    self.lbPrivateService.textColor = [self getColorWithRGBCode:@"4b4b4b"];
-    self.lbDetail.textColor = [self getColorWithRGBCode:@"4b4b4b"];
-    self.tfInput.backgroundColor = [self getColorWithRGBCode:@"ffffff"];
+    self.mainContainerView.backgroundColor = [self.util getColorWithRGBCode:@"ffb5bf"];
+    self.btnOk.backgroundColor = [self.util getColorWithRGBCode:@"4b4b4b"];
+    self.lbInputComment.textColor = [self.util getColorWithRGBCode:@"4b4b4b"];
+    self.lbPrivateService.textColor = [self.util getColorWithRGBCode:@"4b4b4b"];
+    self.lbDetail.textColor = [self.util getColorWithRGBCode:@"4b4b4b"];
+    self.tfInput.backgroundColor = [self.util getColorWithRGBCode:@"ffffff"];
 
     self.ivBottomImage.image = [UIImage imageNamed:@"SM_logos"];
     self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];

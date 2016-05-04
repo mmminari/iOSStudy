@@ -124,9 +124,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         wc.title = sender;
 
         
-
-        
-        
     }
     
     
