@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UtilityClass.h"
 
-@interface IntroUiViewController : UIViewController<NSURLSessionDataDelegate>
+@interface IntroUiViewController : UtilityClass
 
 
 -(CGFloat)getWidthOfTargetWithTargetValue:(CGFloat)width andDevieWidth:(CGFloat)dvWidth;

@@ -48,6 +48,7 @@
 		6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */; };
 		6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107E1CCA0FE800C06A5E /* SM_logos.png */; };
 		6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */; };
+		6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050721CD9DBC0006C9513 /* UtilityClass.m */; };
 		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,8 @@
 		6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroUiViewController.m; sourceTree = "<group>"; };
 		6DB0107E1CCA0FE800C06A5E /* SM_logos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SM_logos.png; sourceTree = "<group>"; };
 		6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smtownmembership_logo@3x.png"; sourceTree = "<group>"; };
+		6DF050711CD9DBC0006C9513 /* UtilityClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityClass.h; sourceTree = "<group>"; };
+		6DF050721CD9DBC0006C9513 /* UtilityClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityClass.m; sourceTree = "<group>"; };
 		ACF79B771CC7488300B89C4E /* DemoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListViewController.h; sourceTree = "<group>"; };
 		ACF79B781CC7488300B89C4E /* DemoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +193,8 @@
 				6D464AE41CD082E20035FF68 /* HomeViewController.m */,
 				6D8AA64D1CD73A080044DF31 /* UserInformation.h */,
 				6D8AA64E1CD73A080044DF31 /* UserInformation.m */,
+				6DF050711CD9DBC0006C9513 /* UtilityClass.h */,
+				6DF050721CD9DBC0006C9513 /* UtilityClass.m */,
 				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
 				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
 				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
@@ -312,6 +317,7 @@
 				ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */,
 				6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
+				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
