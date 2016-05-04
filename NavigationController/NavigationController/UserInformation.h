@@ -14,8 +14,8 @@
 @property (strong, nonatomic) NSString *userId;
 @property (strong, nonatomic) NSString *userName;
 @property (assign, nonatomic) NSInteger point;
+@property (strong, nonatomic) NSString *profileImg;
 @property (assign, nonatomic) BOOL result;
-
 
 
 -(void)setUserNameWithString:(NSString *)name;

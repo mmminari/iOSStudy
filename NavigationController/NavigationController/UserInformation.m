@@ -25,6 +25,7 @@
         _userName = [[results objectForKey:@"userInfo"]objectForKey:@"userName"];
         _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] integerValue];
         _result = [[results objectForKey:@"result"] boolValue];
+        _profileImg = [[results objectForKey:@"userInfo"] objectForKey:@"profileImg"];
 
     }
     

@@ -114,15 +114,16 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
 
+
 @end
 
 @implementation HomeViewController
 
-typedef NS_ENUM(NSInteger, buttonTagNumber){
-    buttonTagNumberHome = 1000,
-    buttonTagNumberPoint,
-    buttonTagNumberCard,
-    buttonTagNumberStore,
+typedef NS_ENUM(NSInteger, ButtonTagNumber){
+    ButtonTagNumberHome = 1000,
+    ButtonTagNumberPoint,
+    ButtonTagNumberCard,
+    ButtonTagNumberStore,
 };
 
 
@@ -137,10 +138,10 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     
     self.introVC = [[IntroUiViewController alloc] init];
     
-    self.btnHome.tag = buttonTagNumberHome;
-    self.btnPoint.tag = buttonTagNumberPoint;
-    self.btnCard.tag = buttonTagNumberCard;
-    self.btnStore.tag = buttonTagNumberStore;
+    self.btnHome.tag = ButtonTagNumberHome;
+    self.btnPoint.tag = ButtonTagNumberPoint;
+    self.btnCard.tag = ButtonTagNumberCard;
+    self.btnStore.tag = ButtonTagNumberStore;
 
     [self.navigationController setNavigationBarHidden:YES];
     
@@ -158,9 +159,32 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.ivUser.layer.cornerRadius = WRATIO_WIDTH(195)/2;
     self.ivUser.layer.masksToBounds = YES;
     
+    
     [self setColor];
     [self setAutoLayout];
+    [self startDownLoadImage];
 
+    
+}
+
+-(void)startDownLoadImage
+{
+    NSURLSessionDataTask *sessionTask;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.userInfomation profileImg]]];
+    sessionTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+    {
+        UIImage *userImage = [[UIImage alloc] initWithData: data] ;
+                              
+        self.ivUser.image = userImage;
+        
+        
+        
+    }];
+    
+    [sessionTask resume];
+    
+    
     
 }
 
@@ -169,25 +193,25 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
-    if(sender.tag == buttonTagNumberHome)
+    if(sender.tag == ButtonTagNumberHome)
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*0;
     }
-    if(sender.tag == buttonTagNumberPoint)
+    if(sender.tag == ButtonTagNumberPoint)
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*1;
     }
-    if(sender.tag == buttonTagNumberCard)
+    if(sender.tag == ButtonTagNumberCard)
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*2;
     }
-    if(sender.tag == buttonTagNumberStore)
+    if(sender.tag == ButtonTagNumberStore)
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*3;
     }
     
+    
     NSTimeInterval animationDuration = 0.5;
-    NSLog(@"%f",animationDuration)  ;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
@@ -302,7 +326,9 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
 
     self.alcCenterOfUserName.constant = self.alcCenterOfUserName.constant- WRATIO_WIDTH(102)/2;
     
+    self.lbUserName.preferredMaxLayoutWidth = DEVICE_WIDTH - WRATIO_WIDTH(10)*2 - 1.0f - WRATIO_WIDTH(102);
     
+
  
 }
 
