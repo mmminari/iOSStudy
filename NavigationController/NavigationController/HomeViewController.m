@@ -112,6 +112,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfUserName;
 @property (weak, nonatomic) IBOutlet UIImageView *ivVIP;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
 
 @end
 
@@ -184,6 +185,15 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*3;
     }
+    
+    NSTimeInterval animationDuration = 0.5;
+    NSLog(@"%f",animationDuration)  ;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
     
 }
 
@@ -286,25 +296,11 @@ typedef NS_ENUM(NSInteger, buttonTagNumber){
     self.lbMiddleNotice.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
     
     
-    CGRect lbUserNameSize = [self.lbUserName.text boundingRectWithSize:self.lbUserName.frame.size options:0 attributes:@{ NSFontAttributeName:self.lbUserName.font} context:nil];
-    float labelWidth = lbUserNameSize.size.width;
-    
-    float leadingoflbUserName = (WRATIO_WIDTH(579)- (labelWidth+1.0f+WRATIO_WIDTH(102)))/2;
- //   self.alcLeadingOfUserName.constant = leadingoflbUserName    ;
-    NSLog(@"%f", leadingoflbUserName);
-    
-    
-    CGFloat centerLabel = self.lbUserName.center.x;
-    CGFloat centerImage = self.ivVIP.center.x;
- 
-    
-    CGFloat newLeading = (WRATIO_WIDTH(579)-(centerImage-centerLabel)*2)/2;
-    
-    self.alcLeadingOfUserName.constant = newLeading;
-    NSLog(@"%f", newLeading);
-    
-    
-    
+    //CGRect lbUserNameSize = [self.lbUserName.text boundingRectWithSize:self.lbUserName.frame.size options:0 attributes:@{ NSFontAttributeName:self.lbUserName.font} context:nil];
+
+    //float leadingoflbUserName = (WRATIO_WIDTH(579)- (labelWidth+1.0f+WRATIO_WIDTH(102)))/2;
+
+    self.alcCenterOfUserName.constant = self.alcCenterOfUserName.constant- WRATIO_WIDTH(102)/2;
     
     
  

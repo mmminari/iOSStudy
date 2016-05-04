@@ -826,13 +826,13 @@
                                             <constraint firstAttribute="height" constant="65" id="Y8o-j2-CnS"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkn-Xs-jn7">
-                                        <rect key="frame" x="20" y="83" width="83" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="사용자이름" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkn-Xs-jn7">
+                                        <rect key="frame" x="20" y="83" width="83" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xfn-FB-O33">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xfn-FB-O33">
                                         <rect key="frame" x="104" y="83" width="34" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="FAq-AA-xXM"/>
@@ -845,11 +845,11 @@
                                     <constraint firstItem="XJW-pv-KQa" firstAttribute="centerX" secondItem="Mju-BN-1ph" secondAttribute="centerX" id="1CJ-3S-IzU"/>
                                     <constraint firstItem="eCz-q8-THY" firstAttribute="centerX" secondItem="Mju-BN-1ph" secondAttribute="centerX" id="B1z-bN-r8t"/>
                                     <constraint firstItem="eCz-q8-THY" firstAttribute="top" secondItem="pkn-Xs-jn7" secondAttribute="bottom" constant="5" id="O5C-iQ-nD5"/>
-                                    <constraint firstItem="pkn-Xs-jn7" firstAttribute="leading" secondItem="Mju-BN-1ph" secondAttribute="leading" constant="20" id="VY9-EY-zmK"/>
                                     <constraint firstAttribute="width" constant="193" id="ZvK-I5-NEE"/>
                                     <constraint firstItem="XJW-pv-KQa" firstAttribute="top" secondItem="Mju-BN-1ph" secondAttribute="top" id="b8Z-l1-vAW"/>
                                     <constraint firstItem="pkn-Xs-jn7" firstAttribute="top" secondItem="XJW-pv-KQa" secondAttribute="bottom" constant="18" id="fEx-BY-JRF"/>
                                     <constraint firstAttribute="height" constant="122" id="lMt-TM-lv8"/>
+                                    <constraint firstItem="pkn-Xs-jn7" firstAttribute="centerX" secondItem="Mju-BN-1ph" secondAttribute="centerX" id="pnL-Bw-n5N"/>
                                     <constraint firstItem="xfn-FB-O33" firstAttribute="leading" secondItem="pkn-Xs-jn7" secondAttribute="trailing" constant="1" id="sWY-x6-uAD"/>
                                     <constraint firstItem="xfn-FB-O33" firstAttribute="top" secondItem="pkn-Xs-jn7" secondAttribute="top" id="v87-2g-jiS"/>
                                 </constraints>
@@ -1062,6 +1062,7 @@
                     <connections>
                         <outlet property="alcBottomOfTopImage" destination="uJF-d9-8ds" id="j8b-Xs-uas"/>
                         <outlet property="alcBottomOfTopMenuImage" destination="xU9-In-hfu" id="Dr2-lj-d7s"/>
+                        <outlet property="alcCenterOfUserName" destination="pnL-Bw-n5N" id="F6U-7v-9ef"/>
                         <outlet property="alcHeightOfCardMenu" destination="xWG-SI-nH4" id="E7i-Dp-yXB"/>
                         <outlet property="alcHeightOfHomeMenu" destination="g5p-av-EJw" id="gQJ-IM-to4"/>
                         <outlet property="alcHeightOfMenuBar" destination="78g-zQ-EQP" id="Hfx-ae-NEa"/>
@@ -1080,7 +1081,6 @@
                         <outlet property="alcLeadingOfCard" destination="RZt-B2-TSN" id="8Wv-3j-gIX"/>
                         <outlet property="alcLeadingOfIndicator" destination="BaT-Ax-OZG" id="zHE-dj-Fsz"/>
                         <outlet property="alcLeadingOfNoticeView" destination="YJb-8Z-o38" id="CC8-2S-a51"/>
-                        <outlet property="alcLeadingOfUserName" destination="VY9-EY-zmK" id="5yU-Vp-ZdQ"/>
                         <outlet property="alcLeadingOfUserView" destination="ohp-nI-f6u" id="RRU-qT-frq"/>
                         <outlet property="alcTopOfAvailablePoint" destination="Uae-2S-JVn" id="qOC-W1-Zuc"/>
                         <outlet property="alcTopOfCard" destination="vPv-Wj-K3E" id="Nks-sR-b71"/>
