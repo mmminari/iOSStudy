@@ -9,7 +9,6 @@
 #import "UtilityClass.h"
 
 
-
 @interface UtilityClass ()
 
 @end

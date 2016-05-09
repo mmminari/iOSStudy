@@ -11,12 +11,7 @@
 #import "UserInformation.h"
 #import "LogInViewController.h"
 
-#define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
-#define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
 
-#define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
-#define STANDARD_DEVICE_WIDTH                                       414.0f
-#define WRATIO_WIDTH(w)                                             (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
 
 @interface HomeViewController ()
 
@@ -193,6 +188,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
+    /*
     if(sender.tag == ButtonTagNumberHome)
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*0;
@@ -209,6 +205,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*3;
     }
+    */
+    
+    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*(sender.tag-1000);
     
     
     NSTimeInterval animationDuration = 0.5;

@@ -9,9 +9,7 @@
 #import "IntroUiViewController.h"
 
 
-#define DEVICE_WIDTH                                        [UIScreen mainScreen].bounds.size.width
-#define STANDARD_DEVICE_WIDTH                               414.0f
-#define WRATIO_WIDTH(w)                                     (w/3.0f) / STANDARD_DEVICE_WIDTH * DEVICE_WIDTH
+
 
 /*
  * @params
@@ -89,7 +87,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.tfInput.text = @"1234";
+    self.tfInput.text = @"950214";
     
     
     [self.btnHide setHidden:YES];
