@@ -11,7 +11,7 @@
 @interface CollectionViewController ()
 
 @property (weak,nonatomic) NSArray *arr;
-
+@property (strong, nonatomic) CollectionCell *cCell;
 
 
 @end
@@ -21,8 +21,31 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-   
+
 }
+
+
+                         
+                         
+                         
+                         
+                         
+
+                         
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;
+    
+    return CGSizeMake(width, height);
+    
+}
+ 
+
+
 
 
 
