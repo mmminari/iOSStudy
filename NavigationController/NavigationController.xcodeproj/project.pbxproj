@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D2463C81CD87D7B00A92302 /* icon_grade_vip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2463C61CD87D7B00A92302 /* icon_grade_vip@2x.png */; };
 		6D2463C91CD87D7B00A92302 /* icon_grade_vip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2463C71CD87D7B00A92302 /* icon_grade_vip@3x.png */; };
+		6D3A5FF61CE05F95009DB0E4 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */; };
+		6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */; };
 		6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D464AE11CD057630035FF68 /* LogInViewController.m */; };
 		6D464AE51CD082E20035FF68 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D464AE41CD082E20035FF68 /* HomeViewController.m */; };
 		6D464AED1CD092AF0035FF68 /* img_card_main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D464AE91CD092AF0035FF68 /* img_card_main@2x.png */; };
@@ -56,6 +58,10 @@
 /* Begin PBXFileReference section */
 		6D2463C61CD87D7B00A92302 /* icon_grade_vip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_grade_vip@2x.png"; sourceTree = "<group>"; };
 		6D2463C71CD87D7B00A92302 /* icon_grade_vip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_grade_vip@3x.png"; sourceTree = "<group>"; };
+		6D3A5FF41CE05F95009DB0E4 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		6D3A5FF71CE06B8D009DB0E4 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
 		6D464AE01CD057630035FF68 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		6D464AE11CD057630035FF68 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		6D464AE31CD082E20035FF68 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -200,11 +206,15 @@
 				6DF050721CD9DBC0006C9513 /* UtilityClass.m */,
 				6DF050741CD9F837006C9513 /* BaseViewController.h */,
 				6DF050751CD9F837006C9513 /* BaseViewController.m */,
-				6D4C8A811CC71FDB006AEEBE /* Products */,
+				6D3A5FF41CE05F95009DB0E4 /* CollectionViewController.h */,
+				6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */,
+				6D3A5FF71CE06B8D009DB0E4 /* CollectionCell.h */,
+				6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */,
 				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
 				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
 				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
 				6D4C8A941CC71FDB006AEEBE /* Info.plist */,
+				6D4C8A811CC71FDB006AEEBE /* Products */,
 				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 			);
 			path = NavigationController;
@@ -326,8 +336,10 @@
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */,
+				6D3A5FF61CE05F95009DB0E4 /* CollectionViewController.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
+				6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */,
 				6D464AE51CD082E20035FF68 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

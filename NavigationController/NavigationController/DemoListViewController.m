@@ -16,6 +16,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeTextAttributedString = 0,
     DemoTypeWebView,
     DemoTypeIntroUiView,
+    DemoTypeCollectionView,
 };
 
 @interface DemoListViewController ()
@@ -76,7 +77,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView"];
     
     return listInfo;
 }
@@ -94,7 +95,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *result = nil;
     
-    switch (demotype) {
+    switch (demotype)
+    {
         case DemoTypeTextAttributedString:
             result = @"sgMainToTextView";
             break;
@@ -104,6 +106,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         case DemoTypeIntroUiView:
             result = @"sgMainToUIView";
             break;
+        case DemoTypeCollectionView:
+            result = @"sgMainToCollectionView";
+            break;
+            
         default:
             break;
     }
@@ -113,16 +119,22 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"sgMainToTextView"]){
+    if([[segue identifier] isEqualToString:@"sgMainToTextView"])
+    {
         ViewController *vc = [segue destinationViewController];
         vc.title = sender;
     }
     
-    if([[segue identifier] isEqualToString:@"sgMainToWebView"]){
+    if([[segue identifier] isEqualToString:@"sgMainToWebView"])
+    {
         WebViewController *wc = [segue destinationViewController];
-        
         wc.title = sender;
 
+    }
+    
+    if([[segue identifier] isEqualToString:@"sgMainToCollectionView"])
+    {
+        
         
     }
     

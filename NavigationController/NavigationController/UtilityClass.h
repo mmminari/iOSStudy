@@ -29,6 +29,4 @@
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
 
 
-
-
 @end
