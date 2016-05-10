@@ -14,8 +14,6 @@
 
 @interface CollectionViewController ()
 
-@property (weak,nonatomic) NSArray *arr;
-@property (strong, nonatomic) CollectionCell *cCell;
 @property (strong, nonatomic) ShowImageView *imageVC;
 @property (strong, nonatomic) ButtonView *buttonVC;
 @property (strong, nonatomic) LabelView *labelVC;
@@ -72,7 +70,7 @@
     
     static NSString *cellId = @"collectionCell";
     
-    CollectionCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:cellId
+    CollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId
                                                                                 forIndexPath:indexPath];
     
     if(indexPath.item == 0)
@@ -80,7 +78,7 @@
         cell.colorView.backgroundColor = [UIColor grayColor];
         
         [cell.contentView addSubview:self.imageVC.view];
-        [self setContentViewLayoutWithSubView:cell.contentView withTargetView:self.imageVC.view ];
+        [self setContentViewLayoutWithSubView:self.imageVC.view withTargetView:cell.contentView ];
 
     }
     if(indexPath.item == 1)
@@ -88,7 +86,7 @@
         cell.colorView.backgroundColor = [UIColor purpleColor];
         
         [cell.contentView addSubview:self.swithVC.view];
-        [self setContentViewLayoutWithSubView:cell.contentView withTargetView:self.swithVC.view];
+        [self setContentViewLayoutWithSubView:self.swithVC.view withTargetView:cell.contentView ];
         
     }
     if(indexPath.item == 2)
@@ -96,7 +94,7 @@
         cell.colorView.backgroundColor = [UIColor brownColor];
         
         [cell.contentView addSubview:self.labelVC.view];
-        [self setContentViewLayoutWithSubView:cell.contentView withTargetView:self.labelVC.view ];
+        [self setContentViewLayoutWithSubView:self.labelVC.view withTargetView:cell.contentView  ];
 
     }
     if(indexPath.item == 3)
@@ -104,7 +102,7 @@
         cell.colorView.backgroundColor = [UIColor magentaColor];
         
         [cell.contentView addSubview:self.buttonVC.view];
-        [self setContentViewLayoutWithSubView:cell.contentView  withTargetView:self.buttonVC.view];
+        [self setContentViewLayoutWithSubView:self.buttonVC.view  withTargetView:cell.contentView ];
     }
 
     
@@ -113,39 +111,39 @@
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
 {
-    targetView.translatesAutoresizingMaskIntoConstraints = NO;
+    subView.translatesAutoresizingMaskIntoConstraints = NO;
     
     NSLayoutConstraint *alcTopOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                        attribute:NSLayoutAttributeTop
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeTop
                                                                       multiplier:1.0f
-                                                                        constant:-10.0f];
+                                                                        constant:10.0f];
     
     NSLayoutConstraint *alcBottomOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                        attribute:NSLayoutAttributeBottom
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeBottom
                                                                       multiplier:1.0f
-                                                                        constant:10.0f];
+                                                                        constant:-10.0f];
     
     NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                        attribute:NSLayoutAttributeLeading
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeLeading
                                                                       multiplier:1.0f
-                                                                        constant:-10.0f];
+                                                                        constant:10.0f];
     
     NSLayoutConstraint *alcTrailingOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                        attribute:NSLayoutAttributeTrailing
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeTrailing
                                                                       multiplier:1.0f
-                                                                        constant:10.0f];
+                                                                        constant:-10.0f];
     
     NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
     
-    [subView addConstraints:cArr];
+    [targetView addConstraints:cArr];
     
     
     

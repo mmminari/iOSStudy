@@ -1,0 +1,193 @@
+//
+//  MainViewController.m
+//  NavigationController
+//
+//  Created by 김민아 on 2016. 5. 10..
+//  Copyright © 2016년 김민아. All rights reserved.
+//
+
+#import "MainViewController.h"
+#import "MainCollectionCell.h"
+
+#import "HomeViewController.h"
+#import "PointViewController.h"
+#import "CardViewController.h"
+#import "StoreViewController.h"
+
+
+@interface MainViewController ()
+
+@property (strong, nonatomic) HomeViewController *HomeVC;
+@property (strong, nonatomic) PointViewController *pointVC;
+@property (strong, nonatomic) CardViewController *cardVC;
+@property (strong, nonatomic) StoreViewController *storeVC;
+
+@property (weak, nonatomic) IBOutlet UIView *navigationView;
+@property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
+@property (weak, nonatomic) IBOutlet UIImageView *ivNavigationMenu;
+@property (weak, nonatomic) IBOutlet UIView *tapBarView;
+@property (weak, nonatomic) IBOutlet UIView *barHomeView;
+@property (weak, nonatomic) IBOutlet UIView *barPointView;
+@property (weak, nonatomic) IBOutlet UIView *barCardView;
+@property (weak, nonatomic) IBOutlet UIView *barStoreView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *ivBarBottom;
+@property (weak, nonatomic) IBOutlet UIImageView *ivPinkIndicator;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfHomeView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfPointView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCardView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfStoreView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviagtionBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndicator;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnHome;
+@property (weak, nonatomic) IBOutlet UIButton *btnPoint;
+@property (weak, nonatomic) IBOutlet UIButton *btnCard;
+@property (weak, nonatomic) IBOutlet UIButton *btnStore;
+
+@end
+
+@implementation MainViewController
+
+typedef NS_ENUM(NSInteger, ButtonTagNumber){
+    ButtonTagNumberHome = 1000,
+    ButtonTagNumberPoint,
+    ButtonTagNumberCard,
+    ButtonTagNumberStore,
+};
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
+    self.pointVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainpointview"];
+    self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
+    self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
+    
+    self.btnHome.tag = ButtonTagNumberHome;
+    self.btnPoint.tag = ButtonTagNumberPoint;
+    self.btnCard.tag = ButtonTagNumberCard;
+    self.btnStore.tag = ButtonTagNumberStore;
+    
+    self.alcHeightOfNaviagtionBar.constant = WRATIO_WIDTH(213);
+    
+    self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;
+    self.alcWidthOfCardView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfStoreView.constant = QUARTER_OF_WIDTH;
+    self.alcWidthOfIndicator.constant = QUARTER_OF_WIDTH;
+    
+    self.ivNavigationLogo.image = [UIImage imageNamed:@"top_logo"];
+    self.ivNavigationMenu.image = [UIImage imageNamed:@"btn_menu"];
+    
+    self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    self.navigationView.backgroundColor = [self.util getColorWithRGBCode:@"ffffff"];
+    self.tapBarView.backgroundColor = [self.util getColorWithRGBCode:@"ffffff"];
+    
+    self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
+    self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    
+}
+
+- (IBAction)touchedMenuButton:(UIButton *)sender
+{
+
+    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*(sender.tag-1000);
+    
+    
+    NSTimeInterval animationDuration = 0.5;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+    
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 4;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height-64.0f;
+    
+    return CGSizeMake(width, height);
+    
+}
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellId = @"mainCollectionCell";
+    
+    MainCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
+    if(indexPath.item == 0)
+    {
+        [cell.contentView addSubview:self.HomeVC.view];
+        [self setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
+    }
+    
+    return cell;
+    
+}
+
+-(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
+{
+    subView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSLayoutConstraint *alcTopOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:targetView attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0f
+                                                                        constant:22.0f];
+    
+    NSLayoutConstraint *alcBottomOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:targetView attribute:NSLayoutAttributeBottom
+                                                                         multiplier:1.0f
+                                                                           constant:0.0f];
+    
+    NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                           attribute:NSLayoutAttributeLeading
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:targetView attribute:NSLayoutAttributeLeading
+                                                                          multiplier:1.0f
+                                                                            constant:0.0f];
+    
+    NSLayoutConstraint *alcTrailingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:targetView attribute:NSLayoutAttributeTrailing
+                                                                           multiplier:1.0f
+                                                                             constant:0.0f];
+    
+    NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
+    
+    [targetView addConstraints:cArr];
+    
+    
+    
+}
+
+
+
+
+
+
+
+@end

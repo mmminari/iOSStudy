@@ -13,6 +13,11 @@
 		6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F6F1CE16D8C00EBE9DB /* LabelView.m */; };
 		6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F721CE16D9700EBE9DB /* SwitchView.m */; };
 		6D247F761CE16F2700EBE9DB /* ShowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F751CE16F2700EBE9DB /* ShowImageView.m */; };
+		6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F781CE1CB9200EBE9DB /* MainViewController.m */; };
+		6D247F7C1CE1CBEE00EBE9DB /* MainCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F7B1CE1CBEE00EBE9DB /* MainCollectionCell.m */; };
+		6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F7E1CE1CFEA00EBE9DB /* PointViewController.m */; };
+		6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F811CE1CFF300EBE9DB /* CardViewController.m */; };
+		6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F841CE1CFFC00EBE9DB /* StoreViewController.m */; };
 		6D3A5FF61CE05F95009DB0E4 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */; };
 		6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */; };
 		6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D464AE11CD057630035FF68 /* LogInViewController.m */; };
@@ -70,6 +75,16 @@
 		6D247F721CE16D9700EBE9DB /* SwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchView.m; sourceTree = "<group>"; };
 		6D247F741CE16F2700EBE9DB /* ShowImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowImageView.h; sourceTree = "<group>"; };
 		6D247F751CE16F2700EBE9DB /* ShowImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowImageView.m; sourceTree = "<group>"; };
+		6D247F771CE1CB9100EBE9DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6D247F781CE1CB9200EBE9DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6D247F7A1CE1CBEE00EBE9DB /* MainCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionCell.h; sourceTree = "<group>"; };
+		6D247F7B1CE1CBEE00EBE9DB /* MainCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionCell.m; sourceTree = "<group>"; };
+		6D247F7D1CE1CFEA00EBE9DB /* PointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointViewController.h; sourceTree = "<group>"; };
+		6D247F7E1CE1CFEA00EBE9DB /* PointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointViewController.m; sourceTree = "<group>"; };
+		6D247F801CE1CFF300EBE9DB /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		6D247F811CE1CFF300EBE9DB /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		6D247F831CE1CFFC00EBE9DB /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		6D247F841CE1CFFC00EBE9DB /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
 		6D3A5FF41CE05F95009DB0E4 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		6D3A5FF71CE06B8D009DB0E4 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
@@ -210,8 +225,6 @@
 				6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */,
 				6D464AE01CD057630035FF68 /* LogInViewController.h */,
 				6D464AE11CD057630035FF68 /* LogInViewController.m */,
-				6D464AE31CD082E20035FF68 /* HomeViewController.h */,
-				6D464AE41CD082E20035FF68 /* HomeViewController.m */,
 				6D8AA64D1CD73A080044DF31 /* UserInformation.h */,
 				6D8AA64E1CD73A080044DF31 /* UserInformation.m */,
 				6DF050711CD9DBC0006C9513 /* UtilityClass.h */,
@@ -222,12 +235,6 @@
 				6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */,
 				6D3A5FF71CE06B8D009DB0E4 /* CollectionCell.h */,
 				6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */,
-				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
-				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
-				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
-				6D4C8A941CC71FDB006AEEBE /* Info.plist */,
-				6D4C8A811CC71FDB006AEEBE /* Products */,
-				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 				6D247F6B1CE16D8500EBE9DB /* ButtonView.h */,
 				6D247F6C1CE16D8500EBE9DB /* ButtonView.m */,
 				6D247F6E1CE16D8C00EBE9DB /* LabelView.h */,
@@ -236,6 +243,24 @@
 				6D247F721CE16D9700EBE9DB /* SwitchView.m */,
 				6D247F741CE16F2700EBE9DB /* ShowImageView.h */,
 				6D247F751CE16F2700EBE9DB /* ShowImageView.m */,
+				6D247F771CE1CB9100EBE9DB /* MainViewController.h */,
+				6D247F781CE1CB9200EBE9DB /* MainViewController.m */,
+				6D247F7A1CE1CBEE00EBE9DB /* MainCollectionCell.h */,
+				6D247F7B1CE1CBEE00EBE9DB /* MainCollectionCell.m */,
+				6D464AE31CD082E20035FF68 /* HomeViewController.h */,
+				6D464AE41CD082E20035FF68 /* HomeViewController.m */,
+				6D247F7D1CE1CFEA00EBE9DB /* PointViewController.h */,
+				6D247F7E1CE1CFEA00EBE9DB /* PointViewController.m */,
+				6D247F801CE1CFF300EBE9DB /* CardViewController.h */,
+				6D247F811CE1CFF300EBE9DB /* CardViewController.m */,
+				6D247F831CE1CFFC00EBE9DB /* StoreViewController.h */,
+				6D247F841CE1CFFC00EBE9DB /* StoreViewController.m */,
+				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
+				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
+				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
+				6D4C8A941CC71FDB006AEEBE /* Info.plist */,
+				6D4C8A811CC71FDB006AEEBE /* Products */,
+				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -350,6 +375,7 @@
 			files = (
 				6D247F761CE16F2700EBE9DB /* ShowImageView.m in Sources */,
 				6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */,
+				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
@@ -357,10 +383,14 @@
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
 				ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */,
 				6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */,
+				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
+				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */,
 				6D3A5FF61CE05F95009DB0E4 /* CollectionViewController.m in Sources */,
+				6D247F7C1CE1CBEE00EBE9DB /* MainCollectionCell.m in Sources */,
+				6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
 				6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */,
