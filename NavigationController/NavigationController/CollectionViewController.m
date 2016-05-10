@@ -7,11 +7,22 @@
 //
 
 #import "CollectionViewController.h"
+#import "ShowImageView.h"
+#import "ButtonView.h"
+#import "LabelView.h"
+#import "SwitchView.h"
 
 @interface CollectionViewController ()
 
 @property (weak,nonatomic) NSArray *arr;
 @property (strong, nonatomic) CollectionCell *cCell;
+@property (strong, nonatomic) ShowImageView *imageVC;
+@property (strong, nonatomic) ButtonView *buttonVC;
+@property (strong, nonatomic) LabelView *labelVC;
+@property (strong, nonatomic) SwitchView *swithVC;
+
+
+
 
 
 @end
@@ -21,15 +32,12 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    self.buttonVC = [[ButtonView alloc]init];
+    self.imageVC = [[ShowImageView alloc]init];
+
 
 }
 
-
-                         
-                         
-                         
-                         
-                         
 
                          
 - (CGSize)collectionView:(UICollectionView *)collectionView
@@ -38,15 +46,11 @@
 {
     
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height-64.0f;
     
     return CGSizeMake(width, height);
     
 }
- 
-
-
-
 
 
 
@@ -72,7 +76,10 @@
     
     if(indexPath.item == 0)
     {
-        cell.colorView.backgroundColor = [UIColor blueColor];
+        cell.colorView.backgroundColor = [UIColor grayColor];
+        [self.view addSubview:self.imageVC.ShowImageView];
+
+        
 
     }
     if(indexPath.item == 1)
@@ -81,15 +88,15 @@
     }
     if(indexPath.item == 2)
     {
-        cell.colorView.backgroundColor = [UIColor yellowColor];
+        cell.colorView.backgroundColor = [UIColor brownColor];
 
     }
     if(indexPath.item == 3)
     {
-        cell.colorView.backgroundColor = [UIColor redColor];
+        cell.colorView.backgroundColor = [UIColor magentaColor];
     }
 
-    
+  
     
     
     return cell;
