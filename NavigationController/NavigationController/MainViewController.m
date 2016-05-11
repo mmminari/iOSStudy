@@ -96,13 +96,23 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
+    
 }
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
 
     NSInteger index = sender.tag - 1000;
-    [self setPositionOfPinkIndicatorWithIndexPath:index];
+    
+    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
+    
+    NSTimeInterval animationDuration = 0.3f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
     
 }
 
@@ -120,7 +130,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height-self.alcHeightOfMenuBar.constant-self.alcHeightOfNaviBar.constant ;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height-self.alcHeightOfMenuBar.constant-self.alcHeightOfNaviBar.constant - 1.0f ;
     
     return CGSizeMake(width, height);
     
@@ -158,28 +168,31 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
     }
     
-    if(!self.cvMainView.decelerating)
-    {
-        [self setPositionOfPinkIndicatorWithIndexPath:indexPath.item];
-    }
-    
+    //[self scrollViewDidEndScrollingAnimation:self.cvMainView];
+   // [self scrollViewDidEndDragging:self.cvMainView willDecelerate:YES];
+
     return cell;
     
 }
 
-
--(void)setPositionOfPinkIndicatorWithIndexPath:(NSInteger)index
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    
+    NSInteger index = self.cvMainView.contentOffset.x / DEVICE_WIDTH;
+
     self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
     
-    NSTimeInterval animationDuration = 1.3f;
+    NSTimeInterval animationDuration = 0.3f;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0.5f options:animationOptions animations:^{
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
         [self.view layoutIfNeeded];
         
     } completion:nil];
+    
+    
 }
+
 
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
