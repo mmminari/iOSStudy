@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "UserInformation.h"
+
 
 @interface LogInViewController : BaseViewController
+
+
+
+@property(strong, nonatomic) UserInformation *userInfo;
+
 
 @end

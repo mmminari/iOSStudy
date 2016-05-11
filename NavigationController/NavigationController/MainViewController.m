@@ -41,11 +41,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIndicator;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviagtionBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMenuBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviBar;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnHome;
 @property (weak, nonatomic) IBOutlet UIButton *btnPoint;
 @property (weak, nonatomic) IBOutlet UIButton *btnCard;
 @property (weak, nonatomic) IBOutlet UIButton *btnStore;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
 @end
 
@@ -61,6 +65,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
     self.pointVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainpointview"];
     self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
@@ -94,16 +101,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
 
-    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*(sender.tag-1000);
-    
-    
-    NSTimeInterval animationDuration = 0.5;
-    
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
+    NSInteger index = sender.tag - 1000;
+    [self setPositionOfPinkIndicatorWithIndexPath:index];
     
 }
 
@@ -121,7 +120,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height-64.0f;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height-self.alcHeightOfMenuBar.constant-self.alcHeightOfNaviBar.constant ;
     
     return CGSizeMake(width, height);
     
@@ -139,10 +138,49 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [cell.contentView addSubview:self.HomeVC.view];
         [self setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
     }
+    if(indexPath.item == 1)
+    {
+        [cell.contentView addSubview:self.pointVC.view];
+        [self setContentViewLayoutWithSubView:self.pointVC.view withTargetView:cell.contentView];
+        
+    }
+    if(indexPath.item == 2)
+    {
+        [cell.contentView addSubview:self.cardVC.view];
+        [self setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
+        
+        
+    }
+    if(indexPath.item == 3)
+    {
+        [cell.contentView addSubview:self.storeVC.view];
+        [self setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
+        
+    }
+    
+    if(!self.cvMainView.decelerating)
+    {
+        [self setPositionOfPinkIndicatorWithIndexPath:indexPath.item];
+    }
     
     return cell;
     
 }
+
+
+-(void)setPositionOfPinkIndicatorWithIndexPath:(NSInteger)index
+{
+    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
+    
+    NSTimeInterval animationDuration = 1.3f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.5f options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+}
+
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
 {
@@ -153,7 +191,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeTop
                                                                       multiplier:1.0f
-                                                                        constant:22.0f];
+                                                                        constant:0.0f];
     
     NSLayoutConstraint *alcBottomOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                           attribute:NSLayoutAttributeBottom

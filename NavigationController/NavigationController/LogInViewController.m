@@ -10,7 +10,6 @@
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
 
-#import "UserInformation.h"
 
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
 
@@ -20,7 +19,6 @@
 
 
 @property(strong, nonatomic) IntroUiViewController *introVC;
-@property(strong, nonatomic) UserInformation *userInfo;
 
 
 
@@ -262,9 +260,20 @@
     {
 
         NSLog(@"LogIn");
-         dispatch_async(dispatch_get_main_queue(), ^{
-             [self performSegueWithIdentifier:@"sgLogInToMainView" sender:self];
-            });
+        
+        HomeViewController *homeVC = [[HomeViewController alloc]init];
+        /*
+        homeVC.userInfomation.userName = [self.userInfo userName];
+        homeVC.userInfomation.userId = [self.userInfo userId];
+        homeVC.userInfomation.profileImg = [self.userInfo profileImg];
+         */
+        
+        homeVC.userInfomation = self.userInfo;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *sgId = @"sgLogInToMainView";
+            [self performSegueWithIdentifier:sgId sender:self];        });
+   
     }
     else
     {
@@ -273,6 +282,7 @@
     }
 
 }
+
 
 #pragma mark - TextField Keyboard
 
@@ -283,15 +293,13 @@
     return YES;
 }
 
+
 #pragma mark - Segue Event
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"])
     {
-        HomeViewController *homeVC = [segue destinationViewController];
-
-        homeVC.userInfomation = self.userInfo;
  
     }
     

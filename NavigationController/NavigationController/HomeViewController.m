@@ -125,7 +125,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-
+    
     self.lbUserName.text = [self.userInfomation userName];
     self.lbUserEmail.text = [self.userInfomation userId];
     self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.userInfomation point]];
@@ -172,14 +172,10 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
             self.ivUser.image = userImage;
 
         });
-        
-        
-        
     }];
     
     [sessionTask resume];
-    
-    
+
     
 }
 
@@ -188,25 +184,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
-    /*
-    if(sender.tag == ButtonTagNumberHome)
-    {
-        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*0;
-    }
-    if(sender.tag == ButtonTagNumberPoint)
-    {
-        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*1;
-    }
-    if(sender.tag == ButtonTagNumberCard)
-    {
-        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*2;
-    }
-    if(sender.tag == ButtonTagNumberStore)
-    {
-        self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*3;
-    }
-    */
-    
+  
     self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*(sender.tag-1000);
     
     
@@ -270,7 +248,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.alcTopOfUsername.constant = WRATIO_WIDTH(54);
     
-    
     self.alcTopOfPointView.constant = WRATIO_WIDTH(108);
     self.alcTrailingOfPointView.constant = WRATIO_WIDTH(63);
     self.alcHeightOfPointView.constant =   WRATIO_WIDTH(366);
@@ -317,11 +294,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.lbPoint.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51)];
     
     self.lbMiddleNotice.font = [UIFont systemFontOfSize:WRATIO_WIDTH(48)];
-    
-    
-    //CGRect lbUserNameSize = [self.lbUserName.text boundingRectWithSize:self.lbUserName.frame.size options:0 attributes:@{ NSFontAttributeName:self.lbUserName.font} context:nil];
-
-    //float leadingoflbUserName = (WRATIO_WIDTH(579)- (labelWidth+1.0f+WRATIO_WIDTH(102)))/2;
 
     self.alcCenterOfUserName.constant = self.alcCenterOfUserName.constant- WRATIO_WIDTH(102)/2;
     
