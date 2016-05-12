@@ -9,6 +9,7 @@
 #import "LogInViewController.h"
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
+#import "MainViewController.h"
 
 
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
@@ -260,16 +261,7 @@
     {
 
         NSLog(@"LogIn");
-        
-        HomeViewController *homeVC = [[HomeViewController alloc]init];
-        /*
-        homeVC.userInfomation.userName = [self.userInfo userName];
-        homeVC.userInfomation.userId = [self.userInfo userId];
-        homeVC.userInfomation.profileImg = [self.userInfo profileImg];
-         */
-        
-        homeVC.userInfomation = self.userInfo;
-        
+                
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *sgId = @"sgLogInToMainView";
             [self performSegueWithIdentifier:sgId sender:self];        });
@@ -298,15 +290,13 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"sgLogIntoHomeView"])
+    if([[segue identifier] isEqualToString:@"sgLogInToMainView"])
     {
+        MainViewController *mainVC = [segue destinationViewController];
+        mainVC.userInfo = self.userInfo;
  
     }
-    
-    if([[segue identifier]isEqualToString:@"sgLogIntoIntroView"])
-    {
-        
-    }
+
 }
 
 

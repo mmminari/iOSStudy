@@ -17,8 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *lbUserName;
 @property (strong, nonatomic) IBOutlet UILabel *lbUserEmail;
 
-@property (strong, nonatomic) LogInViewController *logInVC;
-
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *userEmail;
 @property (assign, nonatomic) NSInteger userPoint;

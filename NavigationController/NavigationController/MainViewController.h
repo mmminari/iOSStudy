@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "UserInformation.h"
 
 @interface MainViewController : BaseViewController<UICollectionViewDelegate, UICollectionViewDataSource>
+
+
+@property (strong, nonatomic) UserInformation *userInfo;
 
 @end

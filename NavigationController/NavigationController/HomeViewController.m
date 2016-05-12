@@ -7,9 +7,8 @@
 //
 
 #import "HomeViewController.h"
-#import "IntroUiViewcontroller.h"
 #import "UserInformation.h"
-#import "LogInViewController.h"
+#import "MainViewController.h"
 
 
 
@@ -26,9 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopRight;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
-
-@property (strong, nonatomic) IntroUiViewController *introVC;
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
 
@@ -109,6 +105,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
 
+@property (strong, nonatomic) MainViewController *mainVC;
 
 @end
 
@@ -126,9 +123,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.lbUserName.text = [self.userInfomation userName];
     self.lbUserEmail.text = [self.userInfomation userId];
+    self.lbUserName.text = [self.userInfomation userName];
+
     self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.userInfomation point]];
+
 
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -299,7 +298,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.lbUserName.preferredMaxLayoutWidth = DEVICE_WIDTH - WRATIO_WIDTH(10)*2 - 1.0f - WRATIO_WIDTH(102);
     
-
  
 }
 

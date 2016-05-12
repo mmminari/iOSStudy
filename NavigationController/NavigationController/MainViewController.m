@@ -66,6 +66,12 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     [super viewDidLoad];
     
+    
+    self.HomeVC = [[HomeViewController alloc]init];
+    self.HomeVC.userInfomation   = self.userInfo;
+    
+    NSLog(@"%@", self.userInfo);
+    
     [self.navigationController setNavigationBarHidden:YES];
     
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
@@ -99,22 +105,18 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
+#pragma mark - User Action
+
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
-
     NSInteger index = sender.tag - 1000;
+    [self setLeadingOfPinkIndicatorWithIndex:index];
     
-    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
-    
-    NSTimeInterval animationDuration = 0.3f;
-    
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
-    
+    self.cvMainView.contentOffset = CGPointMake(DEVICE_WIDTH*index,0.0f);
+
 }
+
+#pragma mark - Collection View
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -147,6 +149,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         [cell.contentView addSubview:self.HomeVC.view];
         [self setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
+        
     }
     if(indexPath.item == 1)
     {
@@ -167,9 +170,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
         
     }
-    
-    //[self scrollViewDidEndScrollingAnimation:self.cvMainView];
-   // [self scrollViewDidEndDragging:self.cvMainView willDecelerate:YES];
 
     return cell;
     
@@ -179,7 +179,15 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     
     NSInteger index = self.cvMainView.contentOffset.x / DEVICE_WIDTH;
+    [self setLeadingOfPinkIndicatorWithIndex:index];
 
+}
+
+
+#pragma mark - set layout
+
+-(void)setLeadingOfPinkIndicatorWithIndex:(NSInteger)index
+{
     self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
     
     NSTimeInterval animationDuration = 0.3f;
@@ -190,10 +198,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
     } completion:nil];
     
-    
 }
-
-
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
 {
