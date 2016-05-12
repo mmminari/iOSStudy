@@ -1373,9 +1373,34 @@
                     <view key="view" contentMode="scaleToFill" id="arE-Jh-prl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ8-yV-GUb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Uxs-uZ-vtQ" id="O7H-3K-xUq"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ivg-MY-tZJ">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xQ8-yV-GUb" firstAttribute="top" secondItem="vwD-K0-Enb" secondAttribute="bottom" id="F8J-Z0-SgT"/>
+                            <constraint firstItem="ivg-MY-tZJ" firstAttribute="centerX" secondItem="arE-Jh-prl" secondAttribute="centerX" id="ie2-PM-NMA"/>
+                            <constraint firstAttribute="trailing" secondItem="xQ8-yV-GUb" secondAttribute="trailing" id="pTH-OX-WXs"/>
+                            <constraint firstItem="xQ8-yV-GUb" firstAttribute="leading" secondItem="arE-Jh-prl" secondAttribute="leading" id="pUd-UM-6gm"/>
+                            <constraint firstItem="VLV-bb-ogG" firstAttribute="top" secondItem="xQ8-yV-GUb" secondAttribute="bottom" id="sK7-5n-kkv"/>
+                            <constraint firstItem="ivg-MY-tZJ" firstAttribute="centerY" secondItem="arE-Jh-prl" secondAttribute="centerY" id="zEE-zJ-b3K"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="activityIndic" destination="ivg-MY-tZJ" id="QUf-oU-yPc"/>
+                        <outlet property="wvPoint" destination="xQ8-yV-GUb" id="FTN-PE-b7l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5t-eD-u2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

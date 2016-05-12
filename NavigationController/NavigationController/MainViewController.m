@@ -67,8 +67,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [super viewDidLoad];
     
     
-    self.HomeVC = [[HomeViewController alloc]init];
-    self.HomeVC.userInfomation   = self.userInfo;
     
     NSLog(@"%@", self.userInfo);
     
@@ -78,6 +76,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.pointVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainpointview"];
     self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
+    
+    self.HomeVC.userInfomation   = self.userInfo;
     
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -112,7 +112,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     NSInteger index = sender.tag - 1000;
     [self setLeadingOfPinkIndicatorWithIndex:index];
     
-    self.cvMainView.contentOffset = CGPointMake(DEVICE_WIDTH*index,0.0f);
+    [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
+    
 
 }
 
@@ -185,6 +186,35 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 
 #pragma mark - set layout
+
+-(void)setSwipeAnimationWithIndex:(NSInteger)index
+{
+    self.cvMainView.contentOffset = CGPointMake(DEVICE_WIDTH*index,0.0f);
+
+    NSTimeInterval animationDuration = 0.3f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
+        [self.cvMainView layoutIfNeeded];
+        
+    } completion:nil];
+    
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset
+                animated:(BOOL)animated
+{
+    self.cvMainView.contentOffset = contentOffset;
+    
+    NSTimeInterval animationDuration = 0.3f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
+        [self.cvMainView layoutIfNeeded];
+        
+    } completion:nil];
+    
+}
 
 -(void)setLeadingOfPinkIndicatorWithIndex:(NSInteger)index
 {

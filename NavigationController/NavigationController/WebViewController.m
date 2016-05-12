@@ -26,9 +26,7 @@
 
     self.activityIndicator.hidesWhenStopped = YES;
     [self.activityIndicator startAnimating];
-    
-    // https://memberbeta.smtown.com/Account/SignIn?returnUrl=%2fMy%2fPassport
-    // https://memberbeta.smtown.com
+
     [self urlRequestWithURL:@"https://memberbeta.smtown.com/Account/SignIn?returnUrl=%2fMy%2fPassport"];
 
 }
@@ -66,16 +64,6 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType{
     
     NSLog(@"URL: %@", request.URL.absoluteString);
-    /*
-    NSLog(@"CachePolicy : %lu", (unsigned long)request.cachePolicy);
-    NSLog(@"TimeOutInterval : %f", request.timeoutInterval);
-    NSLog(@"%@", request.mainDocumentURL.absoluteString);
-    NSLog(@"NetworkServiceType : %lu", (unsigned long)request.networkServiceType);
-    NSLog(@"HTTPBody : %lu", request.HTTPBody.length);
-    NSLog(@"HTTPBody : %@", request.HTTPBodyStream);
-    NSLog(@"HTTPMethod : %@", request.HTTPMethod);
-    */
-    
     
     // 도메인
     NSLog(@"Domain : %@ ", request.URL.host );
