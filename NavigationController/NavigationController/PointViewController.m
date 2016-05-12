@@ -10,8 +10,6 @@
 
 @interface PointViewController ()
 
-@property (weak, nonatomic) IBOutlet UIWebView *wvPoint;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndic;
 
 
 @end

@@ -114,6 +114,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
     
+    [self.pointVC.wvPoint reload];
+    
 
 }
 
@@ -181,6 +183,16 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     NSInteger index = self.cvMainView.contentOffset.x / DEVICE_WIDTH;
     [self setLeadingOfPinkIndicatorWithIndex:index];
+    
+    
+    [self.pointVC.wvPoint reload];
+        
+    if(self.pointVC.wvPoint.loading)
+    {
+        [self.pointVC.activityIndic startAnimating];
+    }
+    
+    
 
 }
 
