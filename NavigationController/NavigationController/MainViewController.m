@@ -114,9 +114,10 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
     
-    [self.pointVC.wvPoint reload];
-    
-
+    if(sender.tag == ButtonTagNumberPoint)
+    {
+        [self reloadWkWebView];
+    }
 }
 
 #pragma mark - Collection View
@@ -184,16 +185,19 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     NSInteger index = self.cvMainView.contentOffset.x / DEVICE_WIDTH;
     [self setLeadingOfPinkIndicatorWithIndex:index];
     
+    [self reloadWkWebView];
+
+}
+
+-(void)reloadWkWebView
+{
+    [self.pointVC.wkWebView reload];
     
-    [self.pointVC.wvPoint reload];
-        
-    if(self.pointVC.wvPoint.loading)
+    if(self.pointVC.wkWebView.loading)
     {
         [self.pointVC.activityIndic startAnimating];
     }
     
-    
-
 }
 
 

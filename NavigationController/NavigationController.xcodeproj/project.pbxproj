@@ -18,6 +18,7 @@
 		6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F7E1CE1CFEA00EBE9DB /* PointViewController.m */; };
 		6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F811CE1CFF300EBE9DB /* CardViewController.m */; };
 		6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F841CE1CFFC00EBE9DB /* StoreViewController.m */; };
+		6D33AE031CE5662700B2DFE4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D33AE021CE5662700B2DFE4 /* WebKit.framework */; };
 		6D3A5FF61CE05F95009DB0E4 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */; };
 		6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D3A5FF81CE06B8D009DB0E4 /* CollectionCell.m */; };
 		6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D464AE11CD057630035FF68 /* LogInViewController.m */; };
@@ -85,6 +86,7 @@
 		6D247F811CE1CFF300EBE9DB /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		6D247F831CE1CFFC00EBE9DB /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		6D247F841CE1CFFC00EBE9DB /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		6D33AE021CE5662700B2DFE4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		6D3A5FF41CE05F95009DB0E4 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		6D3A5FF51CE05F95009DB0E4 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		6D3A5FF71CE06B8D009DB0E4 /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D33AE031CE5662700B2DFE4 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +199,7 @@
 		6D4C8A771CC71FDB006AEEBE = {
 			isa = PBXGroup;
 			children = (
+				6D33AE021CE5662700B2DFE4 /* WebKit.framework */,
 				6D4C8A821CC71FDB006AEEBE /* NavigationController */,
 			);
 			sourceTree = "<group>";

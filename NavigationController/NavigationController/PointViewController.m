@@ -22,9 +22,29 @@
     [super viewDidLoad];
     [self urlRequestWithURL:@"http://naver.com"];
     [self.activityIndic startAnimating];
+    self.activityIndic.hidesWhenStopped = YES;
     
+    
+    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    self.wkWebView.UIDelegate = self;
+    self.wkWebView.navigationDelegate = self;
+    
+    [self.view insertSubview:self.wkWebView belowSubview:self.activityIndic];
+    
+    
+    
+    NSURL *urlString = [NSURL URLWithString : @"http://daum.net" ];
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
+    [self.wkWebView loadRequest:request];
+ 
 }
 
+- (void)webView:(WKWebView *)webView
+didFinishNavigation:(WKNavigation *)navigation
+{
+    [self.activityIndic stopAnimating];
+
+}
 
 
 -(void)urlRequestWithURL:(NSString *)urlString
@@ -38,10 +58,12 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.activityIndic stopAnimating];
-    self.activityIndic.hidesWhenStopped = YES;
+    //[self.activityIndic stopAnimating];
 
 }
+
+
+
 
 
 @end

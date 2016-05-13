@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+#import "BaseViewController.h"
 
-@interface PointViewController : UIViewController
+
+@interface PointViewController : BaseViewController <WKUIDelegate, WKNavigationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *wvPoint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndic;
+
+@property (strong, nonatomic) WKWebView *wkWebView;
 
 
 @end
