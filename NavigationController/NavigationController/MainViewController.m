@@ -51,6 +51,10 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
+@property (assign,nonatomic) NSInteger index2;
+
+
+
 @end
 
 @implementation MainViewController
@@ -97,6 +101,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+
     
 }
 
@@ -104,17 +109,25 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
+
+     NSInteger index = sender.tag - 1000;
+
+    if(index != self.index2)
+    {
+        [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
+    }
     
-    NSInteger index = sender.tag - 1000;
     [self setLeadingOfPinkIndicatorWithIndex:index];
 
     if(sender.tag == ButtonTagNumberPoint)
     {
         [self reloadWkWebView];
     }
+    
+    self.index2 = index;
 
-    [self setUserMultiTouchUnenablewithCollectionView:self.cvMainView withIndex:index];
 }
+
 
 #pragma mark - Collection View
 
@@ -138,6 +151,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
+/*
 -(void)setUserMultiTouchUnenablewithCollectionView:(UICollectionView *)collectionView withIndex:(NSInteger)index
 {
     CGFloat width = collectionView.contentOffset.x / DEVICE_WIDTH;
@@ -148,6 +162,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
 
 }
+*/
 
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
