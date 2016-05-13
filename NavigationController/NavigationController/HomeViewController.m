@@ -179,25 +179,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 }
 
 
-#pragma mark - User Touched Event
-
-- (IBAction)touchedMenuButton:(UIButton *)sender
-{
-  
-    self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH*(sender.tag-1000);
-    
-    
-    NSTimeInterval animationDuration = 0.5;
-    
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
-    
-}
-
-
 
 #pragma mark - Set UI
 

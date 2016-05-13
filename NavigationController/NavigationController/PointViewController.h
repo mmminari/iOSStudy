@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import "BaseViewController.h"
+#import "MainViewController.h"
 
 
-@interface PointViewController : BaseViewController <WKUIDelegate, WKNavigationDelegate>
+@interface PointViewController :  MainViewController <WKUIDelegate, WKNavigationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *wvPoint;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndic;

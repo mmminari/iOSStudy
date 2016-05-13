@@ -66,10 +66,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     [super viewDidLoad];
     
-    
-    
-    NSLog(@"%@", self.userInfo);
-    
     [self.navigationController setNavigationBarHidden:YES];
     
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
@@ -102,22 +98,22 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
-    
 }
 
 #pragma mark - User Action
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
+    
     NSInteger index = sender.tag - 1000;
     [self setLeadingOfPinkIndicatorWithIndex:index];
-    
-    [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
-    
+
     if(sender.tag == ButtonTagNumberPoint)
     {
         [self reloadWkWebView];
     }
+
+    [self setUserMultiTouchUnenablewithCollectionView:self.cvMainView withIndex:index];
 }
 
 #pragma mark - Collection View
@@ -140,6 +136,17 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     return CGSizeMake(width, height);
     
+}
+
+-(void)setUserMultiTouchUnenablewithCollectionView:(UICollectionView *)collectionView withIndex:(NSInteger)index
+{
+    CGFloat width = collectionView.contentOffset.x / DEVICE_WIDTH;
+    
+    if(width == 0.0f || width == 1.0f || width == 2.0f || width == 3.0f)
+    {
+        [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
+    }
+
 }
 
 
@@ -186,8 +193,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self setLeadingOfPinkIndicatorWithIndex:index];
     
     [self reloadWkWebView];
-
 }
+
 
 -(void)reloadWkWebView
 {
@@ -197,7 +204,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         [self.pointVC.activityIndic startAnimating];
     }
-    
 }
 
 
@@ -212,9 +218,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
         [self.cvMainView layoutIfNeeded];
-        
     } completion:nil];
-    
+
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset
@@ -281,8 +286,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
     
     [targetView addConstraints:cArr];
-    
-    
+
     
 }
 

@@ -25,9 +25,12 @@
     self.activityIndic.hidesWhenStopped = YES;
     
     
-    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
+    self.wkWebView = [[WKWebView alloc]init];
     self.wkWebView.UIDelegate = self;
     self.wkWebView.navigationDelegate = self;
+    [self.view addSubview:self.wkWebView];
+    [self setContentViewLayoutWithSubView:self.wkWebView withTargetView:self.view];
+    
     
     [self.view insertSubview:self.wkWebView belowSubview:self.activityIndic];
     
