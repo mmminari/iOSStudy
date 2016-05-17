@@ -130,6 +130,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 }
 
+- (void)touchedShowBarcode
+{
+    NSString *sgId = @"sgMainToBarcode";
+    [self performSegueWithIdentifier:sgId sender:self];
+    
+}
+
 
 #pragma mark - Collection View
 

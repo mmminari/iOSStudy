@@ -9,6 +9,7 @@
 #import "CardViewController.h"
 #import "BarcodeViewController.h"
 #import "CardCell.h"
+#import "MainViewController.h"
 
 @interface CardViewController ()
 
@@ -56,20 +57,21 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Seoul"];
 
-    dateFormatter.dateFormat = @"yyyy.MM.dd G ‘at’ HH:mm:ss zzz";
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
     dateFormatter.timeZone = timeZone;
 
     NSString *string = [self.userInfo cardRegdate];
     NSDate *date = [dateFormatter dateFromString:string];
-    NSString *dateString = [dateFormatter stringFromDate: date];
 
-    NSLog(@"%@%@", dateString, date);
+    dateFormatter.dateFormat = @"yyyy.MM.dd";
+    NSString *dateString = [dateFormatter stringFromDate:date ];
     
-    self.lvShowEnrollDate.text  = string;
+    NSString *showDate = @"카드 등록일: ";
+    showDate = [showDate stringByAppendingString:dateString];
+    
+    self.lvShowEnrollDate.text  = showDate;
     
     self.tbMenu.rowHeight = WRATIO_WIDTH(162.0f);
-    //self.tbMenu.separatorInset = UIEdgeInsetsMake(1, 3, 1, 11);
-    
     self.alcHeightOfIvLabelSep.constant = WRATIO_WIDTH(39.0f);
     
 }
@@ -101,9 +103,15 @@
 {
     return self.menuArr.count;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath   *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].selected = NO;
 }
 
 -(void)setColorAndImages
@@ -139,5 +147,11 @@
         
     }
 }
+
+- (IBAction)touchedShowBarcode:(id)sender {
+    MainViewController *mainVC = [[MainViewController alloc]init];
+    [mainVC touchedShowBarcode];
+}
+
 
 @end

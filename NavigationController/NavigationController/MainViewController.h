@@ -17,5 +17,7 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
+-(void)touchedShowBarcode;
+
 
 @end

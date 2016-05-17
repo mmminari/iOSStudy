@@ -1154,11 +1154,12 @@
                         <outlet property="ivPinkIndicator" destination="dq3-dj-V5x" id="4Hk-8X-dhg"/>
                         <outlet property="navigationView" destination="W9a-7h-Fx7" id="RuF-5R-XZv"/>
                         <outlet property="tapBarView" destination="wMg-Kx-8oT" id="OLG-KU-5zS"/>
+                        <segue destination="g6L-j7-6qw" kind="presentation" identifier="sgMainToBarcode" id="iug-Po-RZ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igk-Sw-te0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2154.5" y="1166.5"/>
+            <point key="canvasLocation" x="2131.5" y="1166.5"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="2vM-Rm-HGi">
@@ -1442,7 +1443,7 @@
                                 </constraints>
                                 <state key="normal" image="btn_card_largeimg_sub.png"/>
                                 <connections>
-                                    <segue destination="g6L-j7-6qw" kind="presentation" identifier="sgCardToEnlargeView" id="fpI-xv-0xS"/>
+                                    <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMJ-WV-3LL">
@@ -1562,7 +1563,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lz-LT-iej">
-                                <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                <rect key="frame" x="167" y="323" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1582,7 +1583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2F-5T-Ltc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3784.5" y="1164.5"/>
+            <point key="canvasLocation" x="2380.5" y="419.5"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="1WI-N5-1IX">
