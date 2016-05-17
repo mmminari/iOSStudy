@@ -254,6 +254,8 @@
         UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
         
         self.userInfo = userInfo;
+        
+        NSLog(@"userinfo : %@", self.sentDataDic);
 
     }
     

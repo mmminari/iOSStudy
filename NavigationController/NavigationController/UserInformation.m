@@ -26,7 +26,10 @@
         _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] integerValue];
         _result = [[results objectForKey:@"result"] boolValue];
         _profileImg = [[results objectForKey:@"userInfo"] objectForKey:@"profileImg"];
-
+        _cardNo = [[results objectForKey:@"userInfo"]objectForKey:@"cardNo"];
+        _cardRegdate = [[results objectForKey:@"userInfo"] objectForKey:@"cardRegdate"];
+        _strUserGrade = [[results objectForKey:@"userInfo"]objectForKey:@"strUserGrade"];
+ 
     }
     
     return self;

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "UserInformation.h"
 
-@interface CardViewController : UIViewController
+@interface CardViewController : BaseViewController
+
+@property (strong, nonatomic) UserInformation *userInfo;
+
+
 
 @end

@@ -16,6 +16,11 @@
 @property (assign, nonatomic) NSInteger point;
 @property (strong, nonatomic) NSString *profileImg;
 @property (assign, nonatomic) BOOL result;
+@property (strong, nonatomic) NSString *cardNo;
+@property (strong, nonatomic) NSString *cardRegdate;
+@property (strong, nonatomic) NSString *strUserGrade;
+
+
 
 
 -(void)setUserNameWithString:(NSString *)name;

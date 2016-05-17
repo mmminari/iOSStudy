@@ -78,6 +78,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
     
     self.HomeVC.userInfomation   = self.userInfo;
+    self.cardVC.userInfo = self.userInfo;
+    
     
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
