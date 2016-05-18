@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) UserInformation *userInfo;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnEnlargeCode;
 
 
 @end

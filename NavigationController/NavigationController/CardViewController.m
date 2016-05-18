@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivCard;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBarcode;
-@property (weak, nonatomic) IBOutlet UIButton *btnEnlargeCode;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbBarcodeNum;
 @property (weak, nonatomic) IBOutlet UILabel *lbShowGrade;
@@ -148,10 +147,13 @@
     }
 }
 
+
+/*
 - (IBAction)touchedShowBarcode:(id)sender {
     MainViewController *mainVC = [[MainViewController alloc]init];
     [mainVC touchedShowBarcode];
 }
 
+*/
 
 @end

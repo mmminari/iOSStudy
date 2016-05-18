@@ -103,7 +103,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-
     
 }
 
@@ -132,6 +131,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (void)touchedShowBarcode
 {
+   
     NSString *sgId = @"sgMainToBarcode";
     [self performSegueWithIdentifier:sgId sender:self];
     
