@@ -81,10 +81,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
-    self.cardVC.mainVC = self;
-    
-    
-    
+
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
     self.btnCard.tag = ButtonTagNumberCard;
@@ -199,6 +196,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     if(indexPath.item == 2)
     {
         [cell.contentView addSubview:self.cardVC.view];
+        self.cardVC.mainVC = self;
+
         [self setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
         
         

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface StoreViewController : UIViewController
+@interface StoreViewController : BaseViewController
+
+
+
+
+
 
 @end

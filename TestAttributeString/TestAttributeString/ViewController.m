@@ -114,12 +114,13 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
 }
--(void)viewWillDisappear:(BOOL)animated {
+
+-(void)viewWillDisappear:(BOOL)animated
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - KeyBoard Notification
-
 
 - (void)adjustTextFieldByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info
 {
