@@ -79,6 +79,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
+    self.cardVC.mainVC = self;
+    
     
     
     self.btnHome.tag = ButtonTagNumberHome;

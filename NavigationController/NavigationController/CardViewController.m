@@ -148,12 +148,12 @@
 }
 
 
-/*
+
 - (IBAction)touchedShowBarcode:(id)sender {
-    MainViewController *mainVC = [[MainViewController alloc]init];
-    [mainVC touchedShowBarcode];
+    [self.mainVC performSegueWithIdentifier:@"sgMainToBarcode" sender:self];
+    
 }
 
-*/
+
 
 @end

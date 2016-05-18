@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "UserInformation.h"
+#import "MainViewController.h"
 
 @interface CardViewController : BaseViewController
 
 @property (strong, nonatomic) UserInformation *userInfo;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnEnlargeCode;
+@property (strong, nonatomic) MainViewController *mainVC;
+
 
 
 @end
