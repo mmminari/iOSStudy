@@ -14,6 +14,8 @@
 #import "CardViewController.h"
 #import "StoreViewController.h"
 
+#import "BarcodeViewController.h"
+
 
 @interface MainViewController ()
 
@@ -316,6 +318,15 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"sgMainToBarcode"])
+    {
+        BarcodeViewController *barcVC = [segue destinationViewController];
+        barcVC.barString = [self.userInfo cardNo];
+        
+    }
+}
 
 
 

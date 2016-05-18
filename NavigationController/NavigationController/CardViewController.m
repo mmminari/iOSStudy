@@ -137,19 +137,9 @@
 
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+
+- (IBAction)touchedShowBarcode:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"sgCardToEnlargeView"])
-    {
-        BarcodeViewController *barcVC = [segue destinationViewController];
-        barcVC.barString = [self.userInfo cardNo];
-        
-    }
-}
-
-
-
-- (IBAction)touchedShowBarcode:(id)sender {
     [self.mainVC performSegueWithIdentifier:@"sgMainToBarcode" sender:self];
     
 }
