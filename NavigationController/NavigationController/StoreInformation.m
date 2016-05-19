@@ -19,6 +19,7 @@
 {
     if(self = [super init])
     {
+       
         _name = [[results objectForKey:@"name"]objectForKey:@"ko"];
         _address = [[results objectForKey:@"address"]objectForKey:@"ko"];
         _saleInfo = [[results objectForKey:@"saleInfo"]objectForKey:@"ko"];

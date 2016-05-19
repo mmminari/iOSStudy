@@ -166,7 +166,7 @@
     
 }
 
-#pragma mark - table view cell height
+#pragma mark - table view delegate
 
 -(CGFloat)getHeightOfLabelWithText:(NSString *)text
 {
@@ -219,23 +219,33 @@
                                           
                                           id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
                                           
-                                          if (sentData != NULL)
+                                          if ([sentData isKindOfClass:[NSNull class]])
+                                          {
+                                              NSLog(@"error");
+                                          }
+                                          else
                                           {
                                               NSDictionary *responseData = sentData;
                                               self.responseArr = [responseData objectForKey:@"list"];
-                                              for (NSDictionary *dic in self.responseArr) {
-                                                  self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
-                                                  [self.storeArr addObject:self.storeInformation];
-                                                  
-                                              }
-              
-                                              [self.tvStore reloadData];
                                               
+                                              for (NSDictionary *dic in self.responseArr)
+                                              {
+                                                  if([self getInfoWhetherDataIsNullWithData:dic])
+                                                  {
+                                                      NSLog(@"error");
+                                                  }
+                                                  else
+                                                  {
+                                                      self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
+                                                      [self.storeArr addObject:self.storeInformation];
+                                                  }
+                                                  
+                                        
+                                              }
+                                              [self.tvStore reloadData];
                                           }
-                                          
-                                          
+            
                                       }];
-    
     
     [dataTask resume];
     
@@ -320,5 +330,28 @@
     [self loadImagesOnscreenRows];
 }
 
+
+#pragma mark - private method
+
+-(BOOL)getInfoWhetherDataIsNullWithData:(NSDictionary *)data
+{
+
+    BOOL result = nil;
+    
+    for (NSString *string in data.allValues)
+    {
+        if([string isKindOfClass:[NSNull class]])
+        {
+            result = YES;
+        }
+        else
+        {
+            result = NO;
+        }
+    }
+    
+    return result;
+    
+}
 
 @end
