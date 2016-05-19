@@ -15,13 +15,16 @@
 @implementation StoreInformation
 
 
--(instancetype)initWithResults:(NSArray *)results
+-(instancetype)initWithResults:(NSDictionary*)results
 {
     if(self = [super init])
     {
-        for (NSDictionary *resultsDic in results) {
-            // _name = [resultsDic objectForKey:@"]
-        }
+        _name = [[results objectForKey:@"name"]objectForKey:@"ko"];
+        _address = [[results objectForKey:@"address"]objectForKey:@"ko"];
+        _saleInfo = [[results objectForKey:@"saleInfo"]objectForKey:@"ko"];
+        _explain = [[results objectForKey:@"explain"]objectForKey:@"ko"];
+        _phone = [results objectForKey:@"phone"];
+        _imageInfoUri = [[results objectForKey:@"imageInfo"]objectForKey:@"uri"];
         
     }
     

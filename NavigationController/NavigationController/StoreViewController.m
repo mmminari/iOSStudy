@@ -9,6 +9,7 @@
 #import "StoreViewController.h"
 #import "StoreCell.h"
 #import "ImageDownload.h"
+#import "StoreInformation.h"
 
 #define STORE_API                                               @"http://pointapibeta.smtown.com/api/v1/brand"
 
@@ -34,35 +35,35 @@
     [super viewDidLoad];
     [self stratSession];
     
+    self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
+
     self.downloaingDic = [NSMutableDictionary dictionary];
+    self.imageArr = [NSMutableArray array];
+    
  
 
 }
 
--(void)stratSession
+#pragma mark - set layout
+
+-(void)setLayoutwithCell:(StoreCell *)cell
 {
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:STORE_API];
+    cell.lbName.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(62.0f)];
+    cell.lbSaleInfo.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    cell.lbDetail.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    cell.lbLocation.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    cell.lbPhoneNum.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-                                      {
-                                          
-                                          id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                                          NSDictionary *responseData = sentData;
-                                          self.responseArr = [responseData objectForKey:@"list"];
-                                       //   NSLog(@"%@", self.responseArr);
-                                          
-                                          [self.tvStore reloadData];
+    cell.lbName.textColor = [self.util getColorWithRGBCode:@"424242"];
+    cell.lbSaleInfo.textColor = [self.util getColorWithRGBCode:@"f386a1"];
+    cell.lbDetail.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
+    cell.lbLocation.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
+    cell.lbPhoneNum.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
 
-                                      }];
     
-    
-    [dataTask resume];
-
 }
 
+#pragma mark - tableview
 
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -79,12 +80,12 @@
 }
 
 
+#pragma mark - table view cell
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellId = @"StoreCell";
-    
-    static NSString *languageCode = @"ko";
     
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
@@ -109,20 +110,134 @@
 
     }
     
+    [self setLayoutwithCell:cell];
+    
     NSInteger index = indexPath.row;
     
     NSDictionary *storeInfo = [self.responseArr objectAtIndex:index];
     
-    NSDictionary *nameDic = [storeInfo objectForKey:@"name"];
-    NSString *name = [nameDic objectForKey:languageCode];
+    StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:storeInfo];
     
-    cell.lbName.text = name;
+    
+    cell.lbName.text = [storeInformation name];
+    cell.lbSaleInfo.text = [storeInformation saleInfo];
+    cell.lbDetail.text = [storeInformation explain];
+    cell.lbLocation.text = [storeInformation address];
+    cell.lbPhoneNum.text = [storeInformation phone];
+    
+    NSUInteger count = self.responseArr.count;
+    
+    if(count > 0)
+    {
+        NSString *urlString = [storeInformation imageInfoUri];
+        
+        UIImage *image = nil;
+        
+        @try
+        {
+            image = self.imageArr[index];
+        }
+        @catch (NSException *exception)
+        {
+            
+        }
+        
+        
+        if(!image)
+        {
+            if(self.tvStore.dragging == NO && self.tvStore.decelerating == NO)
+            {
+            }
+            [self startImageDownload:urlString forIndexPath:indexPath];
+
+            cell.ivMain.image = [UIImage imageNamed:@"loading"];
+            
+        }
+        else
+        {
+            cell.ivMain.image = image;
+        }
+    }
+    
         
     
     return cell;
     
     
 }
+
+#pragma mark - table view cell height
+
+-(CGFloat)getHeightOfLabelWithText:(NSString *)text
+{
+    CGFloat screenWidht = DEVICE_WIDTH;
+    CGFloat maxWidth = screenWidht - 20.0f;
+    CGSize maxSize = CGSizeMake(maxWidth, CGFLOAT_MAX);
+    
+    CGRect rect = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)]} context:nil];
+    
+    return rect.size.height;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    NSInteger index = indexPath.row;
+    
+    NSDictionary *storeInfo = [self.responseArr objectAtIndex:index];
+    
+    StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:storeInfo];
+    
+    CGFloat screenWidht = DEVICE_WIDTH;
+    CGFloat maxWidth = screenWidht - 66.0f;
+    CGSize maxSize = CGSizeMake(maxWidth, CGFLOAT_MAX);
+    
+    CGRect rect = [[storeInformation name] boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)]} context:nil];
+    
+    CGFloat heightName = rect.size.height;
+    
+    CGFloat heightSale = [self getHeightOfLabelWithText:[storeInformation saleInfo]];
+    CGFloat heightDetail = [self getHeightOfLabelWithText:[storeInformation explain]];
+    CGFloat heightLocation = [self getHeightOfLabelWithText:[storeInformation address]];
+    CGFloat heightPhone = [self getHeightOfLabelWithText:[storeInformation phone]];
+    
+    return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + WRATIO_WIDTH(1039.0f) + 30.0f;
+}
+
+
+#pragma mark - session task
+
+-(void)stratSession
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [NSURL URLWithString:STORE_API];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                                      {
+                                          
+                                          id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                                          
+                                          if (sentData != NULL)
+                                          {
+                                              NSDictionary *responseData = sentData;
+                                              self.responseArr = [responseData objectForKey:@"list"];
+                                              
+                                              [self.tvStore reloadData];
+                                              
+                                          }
+                                          
+                                          
+                                      }];
+    
+    
+    [dataTask resume];
+    
+}
+
+
+#pragma mark - image download
 
 -(void)startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
 {
@@ -150,10 +265,55 @@
         }];
          
             self.downloaingDic[indexPath] = imageDown;
+        
             [imageDown stardDownload];
+    }
+    
+
+    
+}
+
+-(void)loadImagesOnscreenRows
+{
+    if(self.imageArr.count > 0)
+    {
+        NSArray *arr = [self.tvStore indexPathsForVisibleRows];
+        for(NSIndexPath *indexPath in arr)
+        {
+            UIImage *image = nil;
+            @try
+            {
+                image = self.imageArr[indexPath.row];
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+
+            if(!image)
+            {
+                NSString *url = [[[self.responseArr objectAtIndex:indexPath.row] valueForKey:@"imageInfo" ] valueForKey:@"uri"];
+                NSLog(@"uri %@", url);
+                
+                [self startImageDownload:url forIndexPath:indexPath];
+            }
+        }
     }
 }
 
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate)
+    {
+        [self loadImagesOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesOnscreenRows];
+}
 
 
 @end
