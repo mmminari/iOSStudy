@@ -336,18 +336,16 @@
 -(BOOL)getInfoWhetherDataIsNullWithData:(NSDictionary *)data
 {
 
-    BOOL result = nil;
+    BOOL result = YES;
     
     for (NSString *string in data.allValues)
     {
-        if([string isKindOfClass:[NSNull class]])
-        {
-            result = YES;
-        }
-        else
+        if(![string isKindOfClass:[NSNull class]])
         {
             result = NO;
+
         }
+
     }
     
     return result;
