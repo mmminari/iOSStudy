@@ -25,6 +25,10 @@
 @property (strong, nonatomic) NSMutableArray *imageArr;
 @property (strong, nonatomic) NSMutableDictionary *downloaingDic;
 
+@property (strong, nonatomic) NSMutableArray *storeArr;
+
+@property (strong, nonatomic) StoreInformation *storeInformation;
+
 
 @end
 
@@ -39,8 +43,7 @@
 
     self.downloaingDic = [NSMutableDictionary dictionary];
     self.imageArr = [NSMutableArray array];
-    
- 
+    self.storeArr = [NSMutableArray array];
 
 }
 
@@ -114,22 +117,19 @@
     
     NSInteger index = indexPath.row;
     
-    NSDictionary *storeInfo = [self.responseArr objectAtIndex:index];
-    
-    StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:storeInfo];
-    
-    
-    cell.lbName.text = [storeInformation name];
-    cell.lbSaleInfo.text = [storeInformation saleInfo];
-    cell.lbDetail.text = [storeInformation explain];
-    cell.lbLocation.text = [storeInformation address];
-    cell.lbPhoneNum.text = [storeInformation phone];
+    StoreInformation *stInfo = self.storeArr[index];
+
+    cell.lbName.text = [stInfo name];
+    cell.lbSaleInfo.text = [stInfo saleInfo];
+    cell.lbDetail.text = [stInfo explain];
+    cell.lbLocation.text = [stInfo address];
+    cell.lbPhoneNum.text = [stInfo phone];
     
     NSUInteger count = self.responseArr.count;
     
     if(count > 0)
     {
-        NSString *urlString = [storeInformation imageInfoUri];
+        NSString *urlString = [self.storeInformation imageInfoUri];
         
         UIImage *image = nil;
         
@@ -223,7 +223,12 @@
                                           {
                                               NSDictionary *responseData = sentData;
                                               self.responseArr = [responseData objectForKey:@"list"];
-                                              
+                                              for (NSDictionary *dic in self.responseArr) {
+                                                  self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
+                                                  [self.storeArr addObject:self.storeInformation];
+                                                  
+                                              }
+              
                                               [self.tvStore reloadData];
                                               
                                           }
