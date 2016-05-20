@@ -130,7 +130,7 @@
     
     if(count > 0)
     {
-        NSString *urlString = [self.storeInformation imageInfoUri];
+        NSString *urlString = [stInfo imageInfoUri];
         
         UIImage *image = nil;
         
@@ -231,11 +231,14 @@
                                               for (NSDictionary *dic in self.responseArr)
                                               {
                     
-                                                  self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
-                                                  [self.storeArr addObject:self.storeInformation];
+                                                  StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+                                                  [self.storeArr addObject:storeInformation];
 
                                               }
-                                              [self.tvStore reloadData];
+                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                  [self.tvStore reloadData];
+                                                  
+                                              });
                                           }
             
                                       }];
