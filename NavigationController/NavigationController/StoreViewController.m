@@ -226,21 +226,13 @@
                                           else
                                           {
                                               NSDictionary *responseData = sentData;
-                                              self.responseArr = [responseData objectForKey:@"list"];
-                                              
+                                              self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseData];
                                               for (NSDictionary *dic in self.responseArr)
                                               {
-                                                  if([self getInfoWhetherDataIsNullWithData:dic])
-                                                  {
-                                                      NSLog(@"error");
-                                                  }
-                                                  else
-                                                  {
-                                                      self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
-                                                      [self.storeArr addObject:self.storeInformation];
-                                                  }
-                                                  
-                                        
+                    
+                                                  self.storeInformation = [[StoreInformation alloc] initWithResults:dic];
+                                                  [self.storeArr addObject:self.storeInformation];
+
                                               }
                                               [self.tvStore reloadData];
                                           }
@@ -270,6 +262,7 @@
             @try
             {
                 cell.ivMain.image = self.imageArr[indexPath.row];
+                NSLog(@"%@", self.imageArr[indexPath.row]);
             }
             @catch (NSException *exception)
             {
@@ -307,7 +300,7 @@
 
             if(!image)
             {
-                NSString *url = [[[self.responseArr objectAtIndex:indexPath.row] valueForKey:@"imageInfo" ] valueForKey:@"uri"];
+                NSString *url = [self.util getValueWithKey:@"uri" Dictionary:[self.util getValueWithKey:@"imageInfo" Dictionary:[self.responseArr objectAtIndex:indexPath.row]]];
                 NSLog(@"uri %@", url);
                 
                 [self startImageDownload:url forIndexPath:indexPath];

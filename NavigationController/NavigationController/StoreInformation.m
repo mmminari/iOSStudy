@@ -19,14 +19,13 @@
 {
     if(self = [super init])
     {
-       
-        _name = [[results objectForKey:@"name"]objectForKey:@"ko"];
-        _address = [[results objectForKey:@"address"]objectForKey:@"ko"];
-        _saleInfo = [[results objectForKey:@"saleInfo"]objectForKey:@"ko"];
-        _explain = [[results objectForKey:@"explain"]objectForKey:@"ko"];
-        _phone = [results objectForKey:@"phone"];
-        _imageInfoUri = [[results objectForKey:@"imageInfo"]objectForKey:@"uri"];
-        
+        _name =  [self getValueWithKey:@"ko" Dictionary:[self getValueWithKey:@"name" Dictionary:results]];
+        _address = [self getValueWithKey:@"ko" Dictionary:[self getValueWithKey:@"address" Dictionary:results]];
+        _saleInfo = [self getValueWithKey:@"ko" Dictionary:[self getValueWithKey:@"saleInfo" Dictionary:results]];
+        _explain = [self getValueWithKey:@"ko" Dictionary:[self getValueWithKey:@"explain" Dictionary:results]];
+        _phone = [self getValueWithKey:@"phone" Dictionary:results];
+        _imageInfoUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
+
     }
     
     return self;

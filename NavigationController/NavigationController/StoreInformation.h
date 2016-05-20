@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UtilityClass.h"
 
-@interface StoreInformation : NSObject
+@interface StoreInformation : UtilityClass
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;

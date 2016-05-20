@@ -82,6 +82,23 @@
     
 }
 
+-(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic
+{
+    id result = nil;
+    
+    id value = [dic objectForKey:key];
+    if([value isKindOfClass:[NSNull class]])
+    {
+        result = nil;
+    }
+    else
+    {
+        result = value;
+    }
+    
+    return result;
+    
+}
 
 
 

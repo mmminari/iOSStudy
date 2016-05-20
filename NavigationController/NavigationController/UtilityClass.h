@@ -27,6 +27,7 @@
 
 -(CGFloat)getScreenWidth;
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
+-(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic;
 
 
 @end
