@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoreViewController.h"
+
 
 @interface StoreCell : UITableViewCell
 
@@ -19,5 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivLocation;
 @property (weak, nonatomic) IBOutlet UIImageView *ivPhone;
+
+@property (strong, nonnull) StoreViewController *storeVC;
 
 @end

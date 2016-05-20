@@ -91,6 +91,7 @@
     static NSString *cellId = @"StoreCell";
     
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    cell.storeVC = self;
     
     if(cell == nil)
     {
@@ -291,7 +292,9 @@
             UIImage *image = nil;
             @try
             {
+                StoreCell *cell = [self.tvStore cellForRowAtIndexPath:indexPath];
                 image = self.imageArr[indexPath.row];
+                cell.ivMain.image = image;
             }
             @catch (NSException *exception)
             {
@@ -324,25 +327,5 @@
 }
 
 
-#pragma mark - private method
-
--(BOOL)getInfoWhetherDataIsNullWithData:(NSDictionary *)data
-{
-
-    BOOL result = YES;
-    
-    for (NSString *string in data.allValues)
-    {
-        if(![string isKindOfClass:[NSNull class]])
-        {
-            result = NO;
-
-        }
-
-    }
-    
-    return result;
-    
-}
 
 @end

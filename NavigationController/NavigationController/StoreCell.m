@@ -12,4 +12,24 @@
 
 @implementation StoreCell
 
+- (IBAction)touchedToMakeACall:(id)sender {
+    
+    NSString *format = @"tel://";
+    NSString *num = self.lbPhoneNum.text;
+    format = [format stringByAppendingString:num];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"전화걸기" message:num preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:format]];
+
+        
+    }];
+    
+    [alert addAction:defaultAction];
+    [self.storeVC presentViewController:alert animated:YES completion: nil];
+    
+    
+}
+
 @end
+

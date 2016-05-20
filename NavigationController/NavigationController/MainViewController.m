@@ -105,6 +105,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
+    
 }
 
 #pragma mark - User Action
