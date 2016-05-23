@@ -27,7 +27,6 @@
 
 @property (strong, nonatomic) NSMutableArray *storeArr;
 
-@property (strong, nonatomic) StoreInformation *storeInformation;
 
 
 @end

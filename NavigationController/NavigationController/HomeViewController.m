@@ -105,6 +105,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
 
+
 @property (strong, nonatomic) MainViewController *mainVC;
 
 @end
@@ -119,7 +120,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 };
 
 
-
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -127,7 +127,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.lbUserName.text = [self.userInfomation userName];
 
     self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.userInfomation point]];
-
 
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -154,7 +153,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self setColor];
     [self setAutoLayout];
     [self startDownLoadImage];
-
     
 }
 
@@ -169,13 +167,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.ivUser.image = userImage;
-
         });
     }];
     
     [sessionTask resume];
 
-    
 }
 
 

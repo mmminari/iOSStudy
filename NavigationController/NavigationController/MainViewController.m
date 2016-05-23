@@ -15,6 +15,7 @@
 #import "StoreViewController.h"
 
 #import "BarcodeViewController.h"
+#import "MenuViewController.h"
 
 
 @interface MainViewController ()
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) PointViewController *pointVC;
 @property (strong, nonatomic) CardViewController *cardVC;
 @property (strong, nonatomic) StoreViewController *storeVC;
+@property (strong, nonatomic) MenuViewController *menuVC;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -56,6 +58,12 @@
 @property (assign,nonatomic) NSInteger index2;
 
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfNavi;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfTapBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCollection;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBtnHome;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndic;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfIvMain;
 
 @end
 
@@ -79,8 +87,12 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
     
+    self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
+    
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
+    self.menuVC.userInfo = self.userInfo;
+    
 
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -104,6 +116,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    
+    //[self.view insertSubview:self.menuVC.view belowSubview:self.menuVC.view];
+    //[self.view addSubview:self.menuVC.view];
+    [self.view insertSubview:self.menuVC.view atIndex:0];
+    
     
     
 }
@@ -139,6 +156,52 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
+- (IBAction)touchedBarMenu:(id)sender {
+
+    
+    /*
+    
+    NSLayoutConstraint *alcLeadingOfView = [NSLayoutConstraint constraintWithItem:self.HomeVC.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.menuVC.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
+    
+    [self.HomeVC.view addConstraint:alcLeadingOfView];
+
+     */
+    
+    if(self.alcTrailingOfNavi.constant == 0.0f)
+    {
+        self.alcTrailingOfNavi.constant = WRATIO_WIDTH(1058.0f);
+        self.alcTrailingOfTapBar.constant = WRATIO_WIDTH(1058.0f);
+        self.alcTrailingOfCollection.constant = WRATIO_WIDTH(1058.0f);
+        self.alcLeadingOfBtnHome.constant = -WRATIO_WIDTH(1058.0f);
+        self.alcLeadingOfIndic.constant = self.alcLeadingOfIndic.constant - WRATIO_WIDTH(1058.0f);
+        self.alcCenterOfIvMain.constant = -WRATIO_WIDTH(1058.0f);
+        
+        
+        [self.cvMainView setContentOffset:CGPointMake(self.cvMainView.contentOffset.x + WRATIO_WIDTH(1058.0f),0.0f) animated:YES];
+        
+    }
+    else
+    {
+        self.alcTrailingOfNavi.constant = 0.0f;
+        self.alcTrailingOfTapBar.constant = 0.0f;
+        self.alcTrailingOfCollection.constant = 0.0f;
+        self.alcLeadingOfBtnHome.constant = 0.0f;
+        self.alcLeadingOfIndic.constant = self.alcLeadingOfIndic.constant + WRATIO_WIDTH(1058.0f);
+        self.alcCenterOfIvMain.constant = 0.0f;
+        [self.cvMainView setContentOffset:CGPointMake(self.cvMainView.contentOffset.x - WRATIO_WIDTH(1058.0f),0.0f) animated:YES];
+    }
+    
+    
+    NSTimeInterval animationDuration = 0.25f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
+        [self.view layoutIfNeeded];
+        [self.cvMainView layoutIfNeeded];
+
+    } completion:nil];
+
+}
 
 #pragma mark - Collection View
 
