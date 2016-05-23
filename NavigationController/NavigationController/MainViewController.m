@@ -18,6 +18,8 @@
 #import "MenuViewController.h"
 
 
+#define REMAIN_SPACE                                            414.0f - 353.0f
+
 @interface MainViewController ()
 
 @property (strong, nonatomic) HomeViewController *HomeVC;
@@ -117,9 +119,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
-    //[self.view insertSubview:self.menuVC.view belowSubview:self.menuVC.view];
-    //[self.view addSubview:self.menuVC.view];
-    [self.view insertSubview:self.menuVC.view atIndex:0];
+    [self.view addSubview:self.menuVC.view];
+    [self.view sendSubviewToBack:self.menuVC.view];
+   // [self.view insertSubview:self.menuVC.view atIndex:0];
+    
+    //[self.view insertSubview:self.menuVC.view belowSubview:self.view];
+
+    [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     
     
     
@@ -130,7 +136,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
 
-     NSInteger index = sender.tag - 1000;
+    NSInteger index = sender.tag - 1000;
 
     if(index != self.index2)
     {
@@ -158,46 +164,23 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedBarMenu:(id)sender {
 
-    
-    /*
-    
-    NSLayoutConstraint *alcLeadingOfView = [NSLayoutConstraint constraintWithItem:self.HomeVC.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.menuVC.view attribute:NSLayoutAttributeLeft multiplier:1.0f constant:0.0f];
-    
-    [self.HomeVC.view addConstraint:alcLeadingOfView];
-
-     */
-    
-    if(self.alcTrailingOfNavi.constant == 0.0f)
-    {
-        self.alcTrailingOfNavi.constant = WRATIO_WIDTH(1058.0f);
-        self.alcTrailingOfTapBar.constant = WRATIO_WIDTH(1058.0f);
-        self.alcTrailingOfCollection.constant = WRATIO_WIDTH(1058.0f);
-        self.alcLeadingOfBtnHome.constant = -WRATIO_WIDTH(1058.0f);
-        self.alcLeadingOfIndic.constant = self.alcLeadingOfIndic.constant - WRATIO_WIDTH(1058.0f);
-        self.alcCenterOfIvMain.constant = -WRATIO_WIDTH(1058.0f);
-        
-        
-        [self.cvMainView setContentOffset:CGPointMake(self.cvMainView.contentOffset.x + WRATIO_WIDTH(1058.0f),0.0f) animated:YES];
-        
-    }
-    else
-    {
-        self.alcTrailingOfNavi.constant = 0.0f;
-        self.alcTrailingOfTapBar.constant = 0.0f;
-        self.alcTrailingOfCollection.constant = 0.0f;
-        self.alcLeadingOfBtnHome.constant = 0.0f;
-        self.alcLeadingOfIndic.constant = self.alcLeadingOfIndic.constant + WRATIO_WIDTH(1058.0f);
-        self.alcCenterOfIvMain.constant = 0.0f;
-        [self.cvMainView setContentOffset:CGPointMake(self.cvMainView.contentOffset.x - WRATIO_WIDTH(1058.0f),0.0f) animated:YES];
-    }
-    
-    
-    NSTimeInterval animationDuration = 0.25f;
+    NSTimeInterval animationDuration = 0.5f;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        [self.cvMainView layoutIfNeeded];
+
+        if(self.view.frame.origin.x == 0.0f)
+        {
+            CGRect frame = CGRectMake( - WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH, DEVICE_HEIGHT);
+            self.view.frame = frame;
+            CGRect menuFrame = CGRectMake( WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH*100, DEVICE_HEIGHT);
+            self.menuVC.view.frame = menuFrame;
+        }
+        else
+        {
+            CGRect frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
+            self.view.frame = frame;
+        }
 
     } completion:nil];
 
@@ -225,18 +208,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
-/*
--(void)setUserMultiTouchUnenablewithCollectionView:(UICollectionView *)collectionView withIndex:(NSInteger)index
-{
-    CGFloat width = collectionView.contentOffset.x / DEVICE_WIDTH;
-    
-    if(width == 0.0f || width == 1.0f || width == 2.0f || width == 3.0f)
-    {
-        [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
-    }
-
-}
-*/
 
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
