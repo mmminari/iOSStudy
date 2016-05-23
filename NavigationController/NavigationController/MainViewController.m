@@ -59,6 +59,7 @@
 
 @property (assign,nonatomic) NSInteger index2;
 
+@property (weak, nonatomic) IBOutlet UIView *mainViewContainer;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfNavi;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfTapBar;
@@ -122,8 +123,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self.view addSubview:self.menuVC.view];
     [self.view sendSubviewToBack:self.menuVC.view];
    // [self.view insertSubview:self.menuVC.view atIndex:0];
-    
-    //[self.view insertSubview:self.menuVC.view belowSubview:self.view];
 
     [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     
@@ -169,17 +168,15 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
 
-        if(self.view.frame.origin.x == 0.0f)
+        if(self.mainViewContainer.frame.origin.x == 0.0f)
         {
             CGRect frame = CGRectMake( - WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH, DEVICE_HEIGHT);
-            self.view.frame = frame;
-            CGRect menuFrame = CGRectMake( WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH*100, DEVICE_HEIGHT);
-            self.menuVC.view.frame = menuFrame;
+            self.mainViewContainer .frame = frame;
         }
         else
         {
             CGRect frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
-            self.view.frame = frame;
+            self.mainViewContainer.frame = frame;
         }
 
     } completion:nil];
