@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lbVersion;
 @property (weak, nonatomic) IBOutlet UISwitch *swNotice;
+@property (weak, nonatomic) IBOutlet UILabel *lbMenuText;
 
 @end

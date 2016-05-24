@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 
 -(void)viewDidLoad
 {
+    [super viewDidLoad];
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     
@@ -81,7 +82,6 @@ typedef NS_ENUM(NSInteger, MenuList)
         UIImage *image = [[UIImage alloc]initWithData:data];
 
         self.ivUser.image = image;
-        
     }];
     
     [dataTask resume];
@@ -99,10 +99,15 @@ typedef NS_ENUM(NSInteger, MenuList)
     {
         cell = [[MenuCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    cell.textLabel.text = self.menuArr[indexPath.row];
+    
+    cell.lbMenuText.text = self.menuArr[indexPath.row];
     cell.contentView.layer.borderColor = [self.util getColorWithRGBCode:@"eeeeee"].CGColor;
-    cell.textLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
-    cell.textLabel.textColor = [self.util getColorWithRGBCode:@"424242"];
+    cell.lbMenuText.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
+    cell.lbMenuText.textColor = [self.util getColorWithRGBCode:@"424242"];
+    
+    UIDevice *device = [UIDevice currentDevice];
+    
+    cell.lbVersion.text = device.systemVersion;
 
     [cell.swNotice setHidden:YES];
     [cell.lbVersion setHidden:YES];
@@ -114,9 +119,6 @@ typedef NS_ENUM(NSInteger, MenuList)
     else if(indexPath.row == 6)
     {
         [cell.lbVersion setHidden:NO];
-        UIDevice *device = [UIDevice currentDevice];
-        
-        cell.lbVersion.text = device.systemVersion;
     }
 
     return cell;

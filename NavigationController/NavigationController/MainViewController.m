@@ -130,7 +130,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    self.ivBarBottomCor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     [self.view addSubview:self.menuVC.view];
     [self.view sendSubviewToBack:self.menuVC.view];
    // [self.view insertSubview:self.menuVC.view atIndex:0];
