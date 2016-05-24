@@ -7,6 +7,19 @@
 //
 
 #import "MenuViewController.h"
+#import "ShowMenuViewController.h"
+
+typedef NS_ENUM(NSInteger, MenuList)
+{
+    MenuListPush = 0,
+    MenuListEvent,
+    MenuListNotice,
+    MenuListCustomerCenter,
+    MenuListAgreement,
+    MenuListUserInfo,
+    MenuListVersionNum,
+    
+};
 
 @interface MenuViewController ()
 
@@ -14,6 +27,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserId;
+@property (strong, nonatomic) NSArray *menuArr;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMenuView;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tvMenu;
+
 
 @end
 
@@ -33,7 +52,9 @@
     [self downLoadImage];
     
     
+    self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
     
+    self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
 }
 
@@ -53,6 +74,59 @@
     
     [dataTask resume];
     
+}
+
+#pragma mark - TableView DataSource
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellId = @"menuCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        
+    }
+    cell.textLabel.text = self.menuArr[indexPath.row];
+    return cell;
+    
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.menuArr.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MenuList menuList = indexPath.row;
+    
+    NSLog(@"%zd", menuList);
+    
+    NSString *title = self.menuArr[menuList];
+    //[self performSegueWithIdentifier:@"sgMenuToShowMenu" sender:title];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier]isEqualToString:@"sgMenuToShowMenu"])
+    {
+        ShowMenuViewController *showVC = [segue destinationViewController];
+
+        if([sender isKindOfClass:[NSString class]])
+        {
+            showVC.title = sender;
+            NSLog(@"hi");
+        }
+    }
 }
 
 @end

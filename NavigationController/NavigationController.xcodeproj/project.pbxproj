@@ -80,6 +80,7 @@
 		6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */; };
 		6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107E1CCA0FE800C06A5E /* SM_logos.png */; };
 		6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */; };
+		6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */; };
 		6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050721CD9DBC0006C9513 /* UtilityClass.m */; };
 		6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050751CD9F837006C9513 /* BaseViewController.m */; };
 		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
@@ -185,6 +186,8 @@
 		6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroUiViewController.m; sourceTree = "<group>"; };
 		6DB0107E1CCA0FE800C06A5E /* SM_logos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SM_logos.png; sourceTree = "<group>"; };
 		6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smtownmembership_logo@3x.png"; sourceTree = "<group>"; };
+		6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMenuViewController.h; sourceTree = "<group>"; };
+		6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMenuViewController.m; sourceTree = "<group>"; };
 		6DF050711CD9DBC0006C9513 /* UtilityClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityClass.h; sourceTree = "<group>"; };
 		6DF050721CD9DBC0006C9513 /* UtilityClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityClass.m; sourceTree = "<group>"; };
 		6DF050741CD9F837006C9513 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				6DF050751CD9F837006C9513 /* BaseViewController.m */,
 				6D00A7631CEF071F00481C9C /* MenuViewController.h */,
 				6D00A7641CEF071F00481C9C /* MenuViewController.m */,
+				6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */,
+				6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */,
 				6D247F771CE1CB9100EBE9DB /* MainViewController.h */,
 				6D247F781CE1CB9200EBE9DB /* MainViewController.m */,
 				6D247F7A1CE1CBEE00EBE9DB /* MainCollectionCell.h */,
@@ -480,6 +485,7 @@
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
+				6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */,
 				6D14701C1CEC6130001529A2 /* ImageDownload.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DAD689C1CEABED500C25969 /* CardCell.m in Sources */,

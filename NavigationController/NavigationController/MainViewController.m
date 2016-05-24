@@ -18,7 +18,7 @@
 #import "MenuViewController.h"
 
 
-#define REMAIN_SPACE                                            414.0f - 353.0f
+
 
 @interface MainViewController ()
 
@@ -67,6 +67,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBtnHome;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfIndic;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfIvMain;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfMainView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfMainView;
 
 @end
 
@@ -163,11 +166,24 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedBarMenu:(id)sender {
 
-    NSTimeInterval animationDuration = 0.5f;
+    if(self.alcLeadingOfMainView.constant == 0.0f)
+    {
+        self.alcLeadingOfMainView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
+        self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+    }
+    else
+    {
+        self.alcTrailingOfMainView.constant = 0.0f;
+        self.alcLeadingOfMainView.constant  = 0.0f;
+        
+    }
+    NSTimeInterval animationDuration = 0.25f;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
 
+        
+        /*
         if(self.mainViewContainer.frame.origin.x == 0.0f)
         {
             CGRect frame = CGRectMake( - WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH, DEVICE_HEIGHT);
@@ -178,6 +194,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
             CGRect frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
             self.mainViewContainer.frame = frame;
         }
+         */
+        [self.view layoutIfNeeded];
 
     } completion:nil];
 

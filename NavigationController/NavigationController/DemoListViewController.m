@@ -30,7 +30,8 @@ typedef NS_ENUM(NSInteger, DemoType)
 
 @implementation DemoListViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.list = [self getMenuListInfo];

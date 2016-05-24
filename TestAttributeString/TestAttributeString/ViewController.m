@@ -201,16 +201,13 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     self.userName = self.inputName.text;
     self.userAge = self.inputAge.text;
     self.userHobby  = self.inputHobby.text;
-    
-    
+
     
     NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
-    
     
     introduction = [introduction stringByReplacingOccurrencesOfString:@"%s1" withString:self.userName];
     introduction = [introduction stringByReplacingOccurrencesOfString:@"%s2" withString:self.userAge];
     introduction = [introduction stringByReplacingOccurrencesOfString:@"%s3" withString:self.userHobby];
-    
     
     self.finalIntro = [[NSMutableAttributedString alloc] initWithString:introduction];
     
@@ -274,7 +271,6 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
         
         NSString *introduction = @"제 이름은 %s1 입니다. 나이는 %s2이고, 취미는 %s3 입니다.";
         
-        
         introduction = [introduction stringByReplacingOccurrencesOfString:@"%s1" withString:self.userName];
         introduction = [introduction stringByReplacingOccurrencesOfString:@"%s2" withString:self.userAge];
         introduction = [introduction stringByReplacingOccurrencesOfString:@"%s3" withString:self.userHobby];
@@ -313,20 +309,15 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     {
         if((range.length != 1) && (self.inputName.text.length> 10 - 1))
         {
-            
             [self showErrorMessageWithtextField:self.inputName];
-            
         }
-        
     }
     
     if(textField.tag == textFieldTagNumberAge)
     {
         if((range.length != 1) && (self.inputAge.text.length>2 -1))
         {
-            
             [self showErrorMessageWithtextField:self.inputAge];
-            
         }
     }
     
@@ -334,16 +325,13 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     {
         if((range.length != 1) && (self.inputHobby.text.length >10 -1))
         {
-            
             [self showErrorMessageWithtextField:self.inputHobby];
             
         }
     }
     
-    
     return YES;
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning {

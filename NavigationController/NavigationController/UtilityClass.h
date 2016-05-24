@@ -20,7 +20,7 @@
 
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
 #define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
-
+#define REMAIN_SPACE                                            414.0f - 353.0f
 
 @interface UtilityClass : UIViewController
 
