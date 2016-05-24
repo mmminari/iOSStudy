@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "UserInformation.h"
 #import "BaseViewController.h"
+#import "MainViewController.h"
 
 @interface MenuViewController : BaseViewController
 
-
-
 @property (strong, nonatomic) UserInformation *userInfo;
+@property (strong, nonatomic) MainViewController *mainVC;
 
 @end

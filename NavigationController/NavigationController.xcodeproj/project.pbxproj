@@ -17,6 +17,7 @@
 		6D1470181CEC578A001529A2 /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1470161CEC578A001529A2 /* loading@2x.png */; };
 		6D1470191CEC578A001529A2 /* loading@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1470171CEC578A001529A2 /* loading@3x.png */; };
 		6D14701C1CEC6130001529A2 /* ImageDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D14701B1CEC6130001529A2 /* ImageDownload.m */; };
+		6D18606D1CF3F55E00F8CB6C /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D18606C1CF3F55E00F8CB6C /* MenuCell.m */; };
 		6D2463C81CD87D7B00A92302 /* icon_grade_vip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2463C61CD87D7B00A92302 /* icon_grade_vip@2x.png */; };
 		6D2463C91CD87D7B00A92302 /* icon_grade_vip@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2463C71CD87D7B00A92302 /* icon_grade_vip@3x.png */; };
 		6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D247F6C1CE16D8500EBE9DB /* ButtonView.m */; };
@@ -101,6 +102,8 @@
 		6D1470171CEC578A001529A2 /* loading@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@3x.png"; sourceTree = "<group>"; };
 		6D14701A1CEC6130001529A2 /* ImageDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownload.h; sourceTree = "<group>"; };
 		6D14701B1CEC6130001529A2 /* ImageDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownload.m; sourceTree = "<group>"; };
+		6D18606B1CF3F55E00F8CB6C /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		6D18606C1CF3F55E00F8CB6C /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
 		6D2463C61CD87D7B00A92302 /* icon_grade_vip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_grade_vip@2x.png"; sourceTree = "<group>"; };
 		6D2463C71CD87D7B00A92302 /* icon_grade_vip@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_grade_vip@3x.png"; sourceTree = "<group>"; };
 		6D247F6B1CE16D8500EBE9DB /* ButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonView.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				6D00A7641CEF071F00481C9C /* MenuViewController.m */,
 				6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */,
 				6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */,
+				6D18606B1CF3F55E00F8CB6C /* MenuCell.h */,
+				6D18606C1CF3F55E00F8CB6C /* MenuCell.m */,
 				6D247F771CE1CB9100EBE9DB /* MainViewController.h */,
 				6D247F781CE1CB9200EBE9DB /* MainViewController.m */,
 				6D247F7A1CE1CBEE00EBE9DB /* MainCollectionCell.h */,
@@ -482,6 +487,7 @@
 				6D00A7651CEF071F00481C9C /* MenuViewController.m in Sources */,
 				6D1470151CEC4DE5001529A2 /* StoreCell.m in Sources */,
 				6D1470121CEC4070001529A2 /* StoreInformation.m in Sources */,
+				6D18606D1CF3F55E00F8CB6C /* MenuCell.m in Sources */,
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,

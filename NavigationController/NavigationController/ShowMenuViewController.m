@@ -12,6 +12,9 @@
 @interface ShowMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBack;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBottomColor;
+
 
 @end
 
@@ -21,9 +24,18 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.navigationController setNavigationBarHidden:YES];
+    
     self.lbTitle.text = self.title;
+    self.ivBack.image = [UIImage imageNamed:@"btn_back"];
+    self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    
     
 }
 
+- (IBAction)touchedGoBack:(id)sender {
+    
+}
 
 @end

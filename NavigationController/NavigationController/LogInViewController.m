@@ -76,15 +76,13 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    
     self.tfEmail.text = @"yonghwinam@smtown.com";
     self.tfPassWord.text = @"apple0000";
         
     [self.navigationController setNavigationBarHidden:YES];
     
     self.userInfo = [[UserInformation alloc] init];
-    
-    
+
     self.lbLogInInfo.text = @"로그인 정보";
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottmIcon.image = [UIImage imageNamed:@"icon_info"];
@@ -267,6 +265,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *sgId = @"sgLogInToMainView";
             [self performSegueWithIdentifier:sgId sender:self];        });
+        
+        //뷰가 그려지는 중에 UI의 변경이 있을 경우는 이 코드를 사용해야함.
    
     }
     else

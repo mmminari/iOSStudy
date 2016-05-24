@@ -28,6 +28,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivLabelSep;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIvLabelSep;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCardIv;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCardIv;
+
+
 
 @end
 
@@ -73,7 +77,11 @@
     self.tbMenu.rowHeight = WRATIO_WIDTH(162.0f);
     self.alcHeightOfIvLabelSep.constant = WRATIO_WIDTH(39.0f);
     
+    [self setLayout];
+    
 }
+
+#pragma mark - TableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,6 +121,8 @@
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
 }
 
+#pragma mark - UI
+
 -(void)setColorAndImages
 {
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
@@ -137,6 +147,13 @@
 
 }
 
+-(void)setLayout
+{
+    self.alcWidthOfCardIv.constant = WRATIO_WIDTH(1164.0f);
+    self.alcHeightOfCardIv.constant = WRATIO_WIDTH(728.0f);
+}
+
+#pragma mark - touched Event
 
 - (IBAction)touchedShowBarcode:(id)sender
 {

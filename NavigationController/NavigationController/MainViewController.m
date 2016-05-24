@@ -16,6 +16,7 @@
 
 #import "BarcodeViewController.h"
 #import "MenuViewController.h"
+#import "ShowMenuViewController.h"
 
 
 
@@ -71,6 +72,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfMainView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfMainView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ivBarBottomCor;
+
+
 @end
 
 @implementation MainViewController
@@ -94,10 +98,14 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
     
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
+    //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
     
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
+    self.menuVC.mainVC = self;
+    //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
+    //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로 
     
 
     self.btnHome.tag = ButtonTagNumberHome;
@@ -122,10 +130,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    
+    self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     [self.view addSubview:self.menuVC.view];
     [self.view sendSubviewToBack:self.menuVC.view];
    // [self.view insertSubview:self.menuVC.view atIndex:0];
+    //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
 
     [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     
@@ -373,6 +382,14 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         BarcodeViewController *barcVC = [segue destinationViewController];
         barcVC.barString = [self.userInfo cardNo];
+        
+    }
+    if([[segue identifier]isEqualToString:@"sgMenuToShow"])
+    {
+        ShowMenuViewController *showVC = [segue destinationViewController];
+     
+        showVC.title = sender;
+        NSLog(@"hi");
         
     }
 }

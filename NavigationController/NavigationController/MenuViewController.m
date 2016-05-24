@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "ShowMenuViewController.h"
+#import "MenuCell.h"
 
 typedef NS_ENUM(NSInteger, MenuList)
 {
@@ -30,9 +31,14 @@ typedef NS_ENUM(NSInteger, MenuList)
 @property (strong, nonatomic) NSArray *menuArr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMenuView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ivLine;
 
 @property (weak, nonatomic) IBOutlet UITableView *tvMenu;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfLbName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *ivIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTableView;
 
 @end
 
@@ -51,11 +57,17 @@ typedef NS_ENUM(NSInteger, MenuList)
 
     [self downLoadImage];
     
-    
     self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
     
     self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(102.0f)/2;
+    
+    self.ivLine.backgroundColor = [self.util getColorWithRGBCode:@"eeeeee"];
+    self.ivIcon.image = [UIImage imageNamed:@"icon_grade_vip"];
 
+    self.tvMenu.rowHeight = WRATIO_WIDTH(155.0f);
+    self.alcHeightOfTableView.constant = self.tvMenu.rowHeight * self.menuArr.count;
+    
 }
 
 
@@ -81,18 +93,35 @@ typedef NS_ENUM(NSInteger, MenuList)
 {
     static NSString *cellId = @"menuCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    MenuCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        
+        cell = [[MenuCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     cell.textLabel.text = self.menuArr[indexPath.row];
+    cell.contentView.layer.borderColor = [self.util getColorWithRGBCode:@"eeeeee"].CGColor;
+    cell.textLabel.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
+    cell.textLabel.textColor = [self.util getColorWithRGBCode:@"424242"];
+
+    [cell.swNotice setHidden:YES];
+    [cell.lbVersion setHidden:YES];
+    
+    if(indexPath.row == 0)
+    {
+        [cell.swNotice setHidden:NO];
+    }
+    else if(indexPath.row == 6)
+    {
+        [cell.lbVersion setHidden:NO];
+        UIDevice *device = [UIDevice currentDevice];
+        
+        cell.lbVersion.text = device.systemVersion;
+    }
+
     return cell;
     
 }
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -111,22 +140,16 @@ typedef NS_ENUM(NSInteger, MenuList)
     NSLog(@"%zd", menuList);
     
     NSString *title = self.menuArr[menuList];
-    //[self performSegueWithIdentifier:@"sgMenuToShowMenu" sender:title];
+    [self.mainVC performSegueWithIdentifier:@"sgMenuToShow" sender:title];
+    
+    NSLog(@"title: %@", title);
+    
 
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier]isEqualToString:@"sgMenuToShowMenu"])
-    {
-        ShowMenuViewController *showVC = [segue destinationViewController];
-
-        if([sender isKindOfClass:[NSString class]])
-        {
-            showVC.title = sender;
-            NSLog(@"hi");
-        }
-    }
+    
 }
 
 @end
