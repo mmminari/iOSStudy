@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 
 -(void)viewDidLoad
 {
+    //상위뷰 초기화 꼭 하기 
     [super viewDidLoad];
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
@@ -100,15 +101,13 @@ typedef NS_ENUM(NSInteger, MenuList)
         cell = [[MenuCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     
+    //talbeviewcell을 custom으로 사용할 경우 내장된 라벨을 사용하면 안됨. 라벨도 커스텀으로 넣어주어야 정상작동
     cell.lbMenuText.text = self.menuArr[indexPath.row];
     cell.contentView.layer.borderColor = [self.util getColorWithRGBCode:@"eeeeee"].CGColor;
     cell.lbMenuText.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
     cell.lbMenuText.textColor = [self.util getColorWithRGBCode:@"424242"];
     
-    UIDevice *device = [UIDevice currentDevice];
-    
-    cell.lbVersion.text = device.systemVersion;
-
+    cell.lbVersion.text = [self getBundleAppVersion];
     [cell.swNotice setHidden:YES];
     [cell.lbVersion setHidden:YES];
     
@@ -123,6 +122,18 @@ typedef NS_ENUM(NSInteger, MenuList)
 
     return cell;
     
+}
+
+//NSBundle 사용해서 앱 버전 정보 가져오기
+-(NSString *)getBundleAppVersion
+{
+    NSString *result = nil;
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSDictionary *dic = bundle.infoDictionary;
+    result = [dic objectForKey:@"CFBundleVersion"];
+    
+    return result;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
