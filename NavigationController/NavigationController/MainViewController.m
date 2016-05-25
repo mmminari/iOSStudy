@@ -18,6 +18,11 @@
 #import "MenuViewController.h"
 #import "ShowMenuViewController.h"
 
+#import "MenuEventViewController.h"
+#import "MenuNoticeViewController.h"
+#import "MenuCustomerCenterViewController.h"
+#import "MenuAgreementViewController.h"
+#import "MenuUserInfoViewController.h"
 
 
 
@@ -28,6 +33,8 @@
 @property (strong, nonatomic) CardViewController *cardVC;
 @property (strong, nonatomic) StoreViewController *storeVC;
 @property (strong, nonatomic) MenuViewController *menuVC;
+@property (strong, nonatomic) ShowMenuViewController *showVC;
+
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -99,6 +106,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
+    
+    self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
@@ -382,16 +391,24 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         BarcodeViewController *barcVC = [segue destinationViewController];
         barcVC.barString = [self.userInfo cardNo];
-        
     }
-    if([[segue identifier]isEqualToString:@"sgMenuToShow"])
+    if([[segue identifier]isEqualToString:@"sgMainToEvent"])
     {
-        ShowMenuViewController *showVC = [segue destinationViewController];
-     
-        showVC.title = sender;
-        NSLog(@"hi");
-        
+        MenuEventViewController *eventVC = [segue destinationViewController];
+        eventVC.title = sender;
     }
+    if([[segue identifier] isEqualToString:@"sgMainToNotice"])
+    {
+        MenuNoticeViewController *noticeVC = [segue destinationViewController];
+        noticeVC.title = sender;
+    }
+    if([[segue identifier] isEqualToString:@"sgMainToCusCenter"])
+    {
+        MenuCustomerCenterViewController  *customVC = [segue destinationViewController];
+        customVC.title = sender;
+    }
+    
+    
 }
 
 

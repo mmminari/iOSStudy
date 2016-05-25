@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 
 -(void)viewDidLoad
 {
-    //상위뷰 초기화 꼭 하기 
+    //상위뷰 초기화 꼭 하기
     [super viewDidLoad];
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
@@ -153,10 +153,25 @@ typedef NS_ENUM(NSInteger, MenuList)
     NSLog(@"%zd", menuList);
     
     NSString *title = self.menuArr[menuList];
-    [self.mainVC performSegueWithIdentifier:@"sgMenuToShow" sender:title];
-    
-    NSLog(@"title: %@", title);
-    
+    switch (menuList) {
+        case MenuListEvent:
+            [self.mainVC performSegueWithIdentifier:@"sgMainToEvent" sender:title];
+            break;
+        case MenuListNotice:
+            [self.mainVC performSegueWithIdentifier:@"sgMainToNotice" sender:title];
+            break;
+        case MenuListCustomerCenter:
+            [self.mainVC performSegueWithIdentifier:@"sgMainToCusCenter" sender:title];
+            break;
+        case MenuListAgreement:
+            [self.mainVC performSegueWithIdentifier:@"sgMainToAgreement" sender:title];
+            break;
+        case MenuListUserInfo:
+            [self.mainVC performSegueWithIdentifier:@"sgMainToUserInfo" sender:title];
+            break;
+        default:
+            break;
+    }
 
 }
 

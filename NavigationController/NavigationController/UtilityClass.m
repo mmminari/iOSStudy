@@ -100,6 +100,43 @@
     
 }
 
+-(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
+{
+    subView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSLayoutConstraint *alcTopOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:targetView attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0f
+                                                                        constant:0.0f];
+    
+    NSLayoutConstraint *alcBottomOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                          attribute:NSLayoutAttributeBottom
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:targetView attribute:NSLayoutAttributeBottom
+                                                                         multiplier:1.0f
+                                                                           constant:0.0f];
+    
+    NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                           attribute:NSLayoutAttributeLeading
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:targetView attribute:NSLayoutAttributeLeading
+                                                                          multiplier:1.0f
+                                                                            constant:0.0f];
+    
+    NSLayoutConstraint *alcTrailingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:targetView attribute:NSLayoutAttributeTrailing
+                                                                           multiplier:1.0f
+                                                                             constant:0.0f];
+    
+    NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
+    
+    [targetView addConstraints:cArr];
+    
+}
 
 
 @end

@@ -115,6 +115,10 @@
      NSString *urlString = @"http://membership.smtown.com/";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
+- (IBAction)touchedGoBack:(id)sender {
+    //show로 연결했을 때 뒤로가는 버튼
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Set UI
 
@@ -171,7 +175,7 @@
 
 -(void)setColor
 {
-    self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
     self.btnLogIn.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.swcAutoLogIn.onTintColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.tfEmail.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];

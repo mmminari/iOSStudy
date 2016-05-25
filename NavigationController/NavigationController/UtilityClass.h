@@ -28,6 +28,7 @@
 -(CGFloat)getScreenWidth;
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
 -(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic;
+-(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 
 
 @end

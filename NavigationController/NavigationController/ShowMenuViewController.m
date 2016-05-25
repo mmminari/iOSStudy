@@ -11,9 +11,10 @@
 
 @interface ShowMenuViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBack;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBottomColor;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+
 
 
 @end
@@ -30,12 +31,32 @@
     self.lbTitle.text = self.title;
     self.ivBack.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    
+
     
 }
 
 - (IBAction)touchedGoBack:(id)sender {
-    
+
+    if(self.eventVC)
+    {
+        [self.eventVC.navigationController popViewControllerAnimated:YES];
+    }
+    if(self.notiVC)
+    {
+        [self.notiVC.navigationController popViewControllerAnimated:YES];
+    }
+    if(self.customVC)
+    {
+        [self.customVC.navigationController popViewControllerAnimated:YES];
+    }
+    if(self.agreeVC)
+    {
+        [self.agreeVC.navigationController popViewControllerAnimated:YES];
+    }
+    if(self.infoVC)
+    {
+        [self.infoVC.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
