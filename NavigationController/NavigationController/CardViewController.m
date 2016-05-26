@@ -31,6 +31,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCardIv;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCardIv;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBtn;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBarcode;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBarImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfBarImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBarImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBarImg;
 
 
 @end
@@ -131,8 +142,8 @@
     self.ivCard.image = [UIImage imageNamed:@"img_card_sub"];
     self.btnEnlargeCode.imageView.image = [UIImage imageNamed:@"btn_card_largeimg_sub"];
     
-    self.ivCard.layer.cornerRadius = 8.0f;
-    self.ivBarcode.layer.cornerRadius = 8.0f;
+    self.ivCard.layer.cornerRadius = WRATIO_WIDTH(24.0f);
+    self.ivBarcode.layer.cornerRadius = WRATIO_WIDTH(24.0f);
     self.btnEnlargeCode.layer.masksToBounds = YES;
     
     self.lbShowGrade.textColor = [self.util getColorWithRGBCode:@"7c7c7c"];
@@ -151,6 +162,19 @@
 {
     self.alcWidthOfCardIv.constant = WRATIO_WIDTH(1164.0f);
     self.alcHeightOfCardIv.constant = WRATIO_WIDTH(728.0f);
+    self.alcTopOfTableView.constant = WRATIO_WIDTH(123.0f);
+    self.alcHeightOfBtn.constant = WRATIO_WIDTH(63.0f);
+    self.alcWidthOfBtn.constant  = WRATIO_WIDTH(63.0f);
+    self.alcBottomOfBtn.constant = WRATIO_WIDTH(-27.0f);
+    self.alcBottomOfBarcode.constant = WRATIO_WIDTH(-42.0f);
+    self.alcTopOfBarImg.constant = WRATIO_WIDTH(415.0f);
+    self.alcLeadingOfBarImg.constant = WRATIO_WIDTH(75.0f);
+    self.alcTrailingOfBarImg.constant = WRATIO_WIDTH(-75.0f);
+    self.alcBottomOfBarImg.constant = WRATIO_WIDTH(-75.0f);
+    
+    
+    
+    
 }
 
 #pragma mark - touched Event

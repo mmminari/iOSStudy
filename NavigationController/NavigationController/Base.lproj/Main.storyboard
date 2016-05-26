@@ -1159,8 +1159,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alcBottomOfMainImg" destination="uJF-d9-8ds" id="o0z-D0-Q8x"/>
+                        <outlet property="alcBottomOfMenuImg" destination="xU9-In-hfu" id="csz-Wx-QPI"/>
                         <outlet property="alcCenterOfIvMain" destination="aq6-iX-4iz" id="fLa-pb-QUC"/>
+                        <outlet property="alcHeightOfMainImg" destination="7Mc-B4-gjD" id="qJQ-eJ-cKN"/>
                         <outlet property="alcHeightOfMenuBar" destination="78g-zQ-EQP" id="G1P-Nx-bqi"/>
+                        <outlet property="alcHeightOfMenuImg" destination="pza-io-msn" id="UQ8-8p-LIj"/>
                         <outlet property="alcHeightOfNaviBar" destination="23Z-A4-2KG" id="ryk-qr-fXd"/>
                         <outlet property="alcHeightOfNaviagtionBar" destination="23Z-A4-2KG" id="w8q-Hp-03T"/>
                         <outlet property="alcLeadingOfIndic" destination="BaT-Ax-OZG" id="fO4-Tn-83G"/>
@@ -1170,6 +1174,8 @@
                         <outlet property="alcWidthOfCardView" destination="taU-Pp-S7N" id="ZdG-2o-zwN"/>
                         <outlet property="alcWidthOfHomeView" destination="7rc-Rh-t4c" id="OvS-3C-xmh"/>
                         <outlet property="alcWidthOfIndicator" destination="DQe-Z9-OPR" id="rup-j4-vCv"/>
+                        <outlet property="alcWidthOfMainImg" destination="QtJ-YZ-erW" id="oPI-di-RLP"/>
+                        <outlet property="alcWidthOfMenuImg" destination="ARh-1i-JXK" id="uVb-IZ-MaK"/>
                         <outlet property="alcWidthOfPointView" destination="PeD-iV-QMZ" id="1Md-Oy-PuJ"/>
                         <outlet property="alcWidthOfStoreView" destination="IBX-H0-s6Y" id="4fa-md-dxe"/>
                         <outlet property="barCardView" destination="dar-yl-e8c" id="bDv-vb-QYO"/>
@@ -1352,14 +1358,12 @@
                         <outlet property="alcCenterOfUserName" destination="pnL-Bw-n5N" id="F6U-7v-9ef"/>
                         <outlet property="alcHeightOfCardMenu" destination="xWG-SI-nH4" id="E7i-Dp-yXB"/>
                         <outlet property="alcHeightOfHomeMenu" destination="g5p-av-EJw" id="gQJ-IM-to4"/>
-                        <outlet property="alcHeightOfMenuImage" destination="pza-io-msn" id="ngj-29-69x"/>
                         <outlet property="alcHeightOfMiddleBell" destination="ySZ-XX-U5B" id="bQ4-Cj-Rtw"/>
                         <outlet property="alcHeightOfMiddleLine" destination="VyH-dS-WSG" id="rXa-3E-y5g"/>
                         <outlet property="alcHeightOfNoticeView" destination="jq9-oK-TfW" id="zTR-U2-ga1"/>
                         <outlet property="alcHeightOfPointMenu" destination="skr-Br-eac" id="7i5-Mk-E7p"/>
                         <outlet property="alcHeightOfPointView" destination="CAE-sH-WLk" id="buj-Mx-FS5"/>
                         <outlet property="alcHeightOfStoreMenu" destination="dip-EZ-w9V" id="G5P-Qt-k26"/>
-                        <outlet property="alcHeightOfTopImage" destination="7Mc-B4-gjD" id="HHa-2i-rAN"/>
                         <outlet property="alcHeightOfUserImage" destination="Y8o-j2-CnS" id="hmY-9D-cki"/>
                         <outlet property="alcHeightOfUserView" destination="lMt-TM-lv8" id="QKW-dQ-Vc7"/>
                         <outlet property="alcHeightOfVIP" destination="FAq-AA-xXM" id="JKP-Pb-05e"/>
@@ -1375,10 +1379,8 @@
                         <outlet property="alcTrailingOfCard" destination="n0S-ef-fS9" id="q9p-7f-Zs8"/>
                         <outlet property="alcTrailingOfNoticeView" destination="Lom-0J-zMJ" id="ad9-Pp-haL"/>
                         <outlet property="alcTrailingOfPointView" destination="myg-6e-1Hp" id="HpG-lK-8mO"/>
-                        <outlet property="alcWidthOfMenuImage" destination="ARh-1i-JXK" id="nVS-9k-GM4"/>
                         <outlet property="alcWidthOfMiddleBell" destination="47q-eX-CfR" id="m9u-SU-RD1"/>
                         <outlet property="alcWidthOfPointViewContainer" destination="2h1-GL-8Th" id="nSb-J3-gsv"/>
-                        <outlet property="alcWidthOfTopImage" destination="QtJ-YZ-erW" id="gAB-5T-OmU"/>
                         <outlet property="alcWidthOfUserImage" destination="WzD-0F-Jku" id="LLy-OA-O2W"/>
                         <outlet property="alcWidthOfUserView" destination="ZvK-I5-NEE" id="t0L-20-PaI"/>
                         <outlet property="alcWidthOfVIP" destination="ota-pg-Kdp" id="TtU-lv-KHl"/>
@@ -1565,8 +1567,17 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="alcBottomOfBarImg" destination="e5J-eF-SCC" id="vGk-Bo-zXr"/>
+                        <outlet property="alcBottomOfBarcode" destination="yin-Ys-zGt" id="Vqc-OF-b60"/>
+                        <outlet property="alcBottomOfBtn" destination="iWG-f1-s1v" id="Hio-dr-CqK"/>
+                        <outlet property="alcHeightOfBtn" destination="3XU-OV-1Gf" id="198-FD-i3p"/>
                         <outlet property="alcHeightOfCardIv" destination="Zbu-rN-SaX" id="64j-l3-JY7"/>
                         <outlet property="alcHeightOfIvLabelSep" destination="vl9-0V-H65" id="aCy-uc-RVj"/>
+                        <outlet property="alcLeadingOfBarImg" destination="agM-dx-BCL" id="UfI-ar-lbr"/>
+                        <outlet property="alcTopOfBarImg" destination="dFY-tn-tuc" id="563-tw-dbE"/>
+                        <outlet property="alcTopOfTableView" destination="YnT-kj-q2w" id="LTw-ka-FHO"/>
+                        <outlet property="alcTrailingOfBarImg" destination="Gu7-5T-IJg" id="Ncy-Jf-ot9"/>
+                        <outlet property="alcWidthOfBtn" destination="fVg-Ds-5qF" id="6zD-lO-QTu"/>
                         <outlet property="alcWidthOfCardIv" destination="qyl-cb-Bhs" id="sME-YX-68j"/>
                         <outlet property="btnEnlargeCode" destination="KYx-Re-hpx" id="edB-qi-wLT"/>
                         <outlet property="ivBarcode" destination="v0x-D5-Vhf" id="0Uv-ar-cCc"/>
@@ -1765,9 +1776,16 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="alcCenterOfLbName" destination="zwC-fB-YUQ" id="Nel-8N-L8L"/>
+                        <outlet property="alcHeightOfIcon" destination="poq-mi-dz1" id="k1c-xs-eJ3"/>
+                        <outlet property="alcHeightOfSettingImg" destination="dO4-W5-CQK" id="2Le-X7-bF7"/>
                         <outlet property="alcHeightOfTableView" destination="3DJ-tY-X8x" id="HQ0-rr-fho"/>
-                        <outlet property="alcWidthOfIcon" destination="SB8-c9-t6B" id="1Rh-Yi-1QE"/>
+                        <outlet property="alcHeightOfUserImg" destination="v7a-Np-t94" id="h57-5z-Nd7"/>
+                        <outlet property="alcTopOfTableView" destination="KpD-oN-c4J" id="cjQ-l1-fJm"/>
+                        <outlet property="alcTopOfUserImg" destination="4Vw-Fo-Rqw" id="h5v-fo-kjK"/>
+                        <outlet property="alcWidthOfIcon" destination="SB8-c9-t6B" id="xk0-Gt-caF"/>
                         <outlet property="alcWidthOfMenuView" destination="xrz-tU-Nol" id="6v4-pP-gId"/>
+                        <outlet property="alcWidthOfSettingImg" destination="zUy-gj-CjW" id="zcg-wS-ex3"/>
+                        <outlet property="alcWidthOfUserImg" destination="0T9-uZ-jiG" id="gxz-Kl-gFe"/>
                         <outlet property="ivIcon" destination="tVw-bu-ZyE" id="1ct-Y3-CL8"/>
                         <outlet property="ivLine" destination="nC6-ep-zHV" id="oWF-Za-KNL"/>
                         <outlet property="ivSetting" destination="7xA-BM-FYq" id="s87-h7-L8M"/>
@@ -1802,28 +1820,66 @@
                                             <constraint firstAttribute="height" constant="1" id="524-4v-qAI"/>
                                         </constraints>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-9z-4yP">
-                                        <rect key="frame" x="10" y="48" width="355" height="400"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="119" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IRd-9z-4yP">
+                                        <rect key="frame" x="10" y="27" width="355" height="400"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="400" id="Uon-xr-HXp"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="cwC-tk-THV">
-                                                <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="119" id="cwC-tk-THV" customClass="EventCell">
+                                                <rect key="frame" x="0.0" y="28" width="355" height="119"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cwC-tk-THV" id="Pel-9N-1OA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="118"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYr-qX-GhV">
+                                                            <rect key="frame" x="18" y="59" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrP-bN-JfH">
+                                                            <rect key="frame" x="328" y="33" width="9" height="12"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="9" id="5RJ-EK-9Jd"/>
+                                                                <constraint firstAttribute="height" constant="12" id="F8P-Dq-bwR"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP8-9m-RRY">
+                                                            <rect key="frame" x="18" y="8" width="42" height="31"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="PrP-bN-JfH" secondAttribute="trailing" constant="10" id="00F-az-gDo"/>
+                                                        <constraint firstItem="PrP-bN-JfH" firstAttribute="centerY" secondItem="Pel-9N-1OA" secondAttribute="centerY" id="31M-e3-ZRg"/>
+                                                        <constraint firstItem="hP8-9m-RRY" firstAttribute="leading" secondItem="Pel-9N-1OA" secondAttribute="leadingMargin" constant="10" id="MvZ-jG-MXt"/>
+                                                        <constraint firstItem="hP8-9m-RRY" firstAttribute="top" secondItem="Pel-9N-1OA" secondAttribute="topMargin" constant="22" id="Xzm-i3-8KQ"/>
+                                                        <constraint firstItem="hYr-qX-GhV" firstAttribute="top" secondItem="hP8-9m-RRY" secondAttribute="bottom" constant="8" id="YPA-Dc-vDH"/>
+                                                        <constraint firstItem="hYr-qX-GhV" firstAttribute="leading" secondItem="Pel-9N-1OA" secondAttribute="leadingMargin" constant="10" id="frN-l6-n5J"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="ivButton" destination="PrP-bN-JfH" id="x6p-vZ-bjb"/>
+                                                    <outlet property="lbSubTitle" destination="hYr-qX-GhV" id="pHo-6n-t8z"/>
+                                                    <outlet property="lbTitle" destination="hP8-9m-RRY" id="263-rQ-SSK"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="7HZ-AR-Yhc" id="YW1-z2-uT3"/>
+                                            <outlet property="delegate" destination="7HZ-AR-Yhc" id="dHV-wR-RoC"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="VLC-xa-im2" firstAttribute="top" secondItem="Hg9-dF-pac" secondAttribute="top" constant="26" id="7nn-wo-GTs"/>
-                                    <constraint firstItem="IRd-9z-4yP" firstAttribute="top" secondItem="VLC-xa-im2" secondAttribute="bottom" constant="21" id="9up-dW-UsP"/>
+                                    <constraint firstItem="IRd-9z-4yP" firstAttribute="top" secondItem="VLC-xa-im2" secondAttribute="bottom" id="9up-dW-UsP"/>
                                     <constraint firstItem="VLC-xa-im2" firstAttribute="leading" secondItem="Hg9-dF-pac" secondAttribute="leading" constant="10" id="Q8r-wQ-O7u"/>
                                     <constraint firstItem="IRd-9z-4yP" firstAttribute="leading" secondItem="Hg9-dF-pac" secondAttribute="leading" constant="10" id="Xpq-YO-0tZ"/>
                                     <constraint firstAttribute="trailing" secondItem="IRd-9z-4yP" secondAttribute="trailing" constant="10" id="ejF-nt-DTS"/>
@@ -1843,12 +1899,12 @@
                     <connections>
                         <outlet property="containerView" destination="Hg9-dF-pac" id="cyO-DJ-JN6"/>
                         <outlet property="ivTopLine" destination="VLC-xa-im2" id="lnP-gJ-QaM"/>
-                        <outlet property="tvEvent" destination="IRd-9z-4yP" id="IiF-Fa-l1z"/>
+                        <outlet property="tvEvent" destination="IRd-9z-4yP" id="faH-Lb-dOb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y62-0U-Tr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3346.5" y="423.5"/>
+            <point key="canvasLocation" x="3346.5" y="424.5"/>
         </scene>
         <!--Menu Notice View Controller-->
         <scene sceneID="GJ0-qW-Ndc">
@@ -2301,6 +2357,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="alcHeightOfImg" destination="fTt-os-fSh" id="rCd-gY-0ak"/>
+                                            <outlet property="alcHeightOfLocImg" destination="s4h-9x-Dro" id="Jdd-v3-x6N"/>
+                                            <outlet property="alcHeightOfPhoImg" destination="6pW-h9-BFV" id="scm-2x-9Qh"/>
+                                            <outlet property="alcLeadingOfAddress" destination="Eaj-8E-Gm4" id="a04-Wy-cC1"/>
+                                            <outlet property="alcLeadingOfDetail" destination="O46-0l-NP6" id="08L-eW-bop"/>
+                                            <outlet property="alcLeadingOfExplain" destination="2Bl-Cx-aSu" id="O2V-oc-1jn"/>
+                                            <outlet property="alcLeadingOfNameLabel" destination="EvK-no-0z6" id="wMV-Gd-IMc"/>
+                                            <outlet property="alcLeadingOfPhone" destination="inq-aV-Si5" id="4Pn-iz-HBl"/>
+                                            <outlet property="alcTopOfAddress" destination="8xo-b5-kOB" id="vNW-ue-QhL"/>
+                                            <outlet property="alcTopOfDetail" destination="TFD-pi-qOW" id="mg4-Nq-wNG"/>
+                                            <outlet property="alcTopOfExplain" destination="opW-RE-zCz" id="lqh-MY-kSn"/>
+                                            <outlet property="alcTopOfLbLocation" destination="69i-i6-vW2" id="9Az-av-oOa"/>
+                                            <outlet property="alcTopOfLbPhone" destination="Ssh-NJ-iAa" id="k0V-sX-x2s"/>
+                                            <outlet property="alcTopOfNameLabel" destination="jz9-Pm-WTA" id="cQN-71-VJU"/>
+                                            <outlet property="alcTopOfPhone" destination="3EC-mI-Vaf" id="xRt-hN-bMI"/>
+                                            <outlet property="alcWidthOfLocImg" destination="EsG-MD-Uyv" id="uXU-KB-NUV"/>
+                                            <outlet property="alcWidthOfPhoImg" destination="8aO-os-nW3" id="EYt-PZ-YbF"/>
                                             <outlet property="ivLocation" destination="UPb-vY-qku" id="5ho-eW-LvX"/>
                                             <outlet property="ivMain" destination="IEh-r3-gEo" id="zrT-yi-X0h"/>
                                             <outlet property="ivPhone" destination="Zt2-mK-NEv" id="ahi-I2-4Rg"/>

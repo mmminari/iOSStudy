@@ -39,6 +39,13 @@ typedef NS_ENUM(NSInteger, MenuList)
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIcon;
 @property (weak, nonatomic) IBOutlet UIImageView *ivIcon;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfUserImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfUserImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfSettingImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfSettingImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUserImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIcon;
 
 @end
 
@@ -54,7 +61,7 @@ typedef NS_ENUM(NSInteger, MenuList)
     self.lbUserName.text = [self.userInfo userName];
     self.lbUserId.text = [self.userInfo userId];
     
-    self.ivUser.layer.cornerRadius = 50.0f;
+    self.ivUser.layer.cornerRadius = WRATIO_WIDTH(300.0f)/2;
     self.ivUser.layer.masksToBounds = YES;
 
     [self downLoadImage];
@@ -69,6 +76,20 @@ typedef NS_ENUM(NSInteger, MenuList)
 
     self.tvMenu.rowHeight = WRATIO_WIDTH(155.0f);
     self.alcHeightOfTableView.constant = self.tvMenu.rowHeight * self.menuArr.count;
+    self.alcHeightOfUserImg.constant = WRATIO_WIDTH(300.0f);
+    self.alcWidthOfUserImg.constant = WRATIO_WIDTH(300.0f);
+    self.alcTopOfTableView.constant = WRATIO_WIDTH(635.0f);
+    self.alcHeightOfSettingImg.constant = WRATIO_WIDTH(69.0f);
+    self.alcWidthOfSettingImg.constant = WRATIO_WIDTH(69.0f);
+    self.alcTopOfUserImg.constant = WRATIO_WIDTH(135.0f);
+    self.alcHeightOfIcon.constant = WRATIO_WIDTH(48.0f);
+    self.alcWidthOfIcon.constant = WRATIO_WIDTH(102.0f);
+    
+    self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
+    self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    
+    
+    
     
 }
 

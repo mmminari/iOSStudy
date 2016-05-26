@@ -81,6 +81,12 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivBarBottomCor;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMainImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMainImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfMenuImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMenuImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfMainImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfMenuImg;
 
 @end
 
@@ -146,6 +152,14 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
 
     [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
+    
+    self.alcHeightOfMainImg.constant = WRATIO_WIDTH(48.0f);
+    self.alcWidthOfMainImg.constant = WRATIO_WIDTH(729.0f);
+    self.alcHeightOfMenuImg.constant = WRATIO_WIDTH(51.0f);
+    self.alcWidthOfMenuImg.constant = WRATIO_WIDTH(75.0f);
+    self.alcBottomOfMainImg.constant = WRATIO_WIDTH(54.0f);
+    self.alcBottomOfMenuImg.constant = WRATIO_WIDTH(54.0f);
+    
     
     
     
@@ -407,6 +421,19 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         MenuCustomerCenterViewController  *customVC = [segue destinationViewController];
         customVC.title = sender;
     }
+    if([[segue identifier] isEqualToString:@"sgMainToAgreement"])
+    {
+        MenuAgreementViewController *agreeVC = [segue destinationViewController];
+        
+        agreeVC.title = sender;
+    }
+    if([[segue identifier] isEqualToString:@"sgMainToUserInfo"])
+    {
+        MenuUserInfoViewController *infoVC = [segue destinationViewController];
+        infoVC.title = sender;
+        
+    }
+    
     
     
 }

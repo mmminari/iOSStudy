@@ -26,6 +26,9 @@
     
     self.showVC.agreeVC = self;
     
+    self.showVC.lbTitle.text = self.title;
+    
+    
     
     
 }

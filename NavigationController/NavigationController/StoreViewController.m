@@ -27,8 +27,6 @@
 
 @property (strong, nonatomic) NSMutableArray *storeArr;
 
-
-
 @end
 
 @implementation StoreViewController
@@ -125,6 +123,26 @@
     cell.lbLocation.text = [stInfo address];
     cell.lbPhoneNum.text = [stInfo phone];
     
+    cell.alcHeightOfImg.constant = WRATIO_WIDTH(1139.0f);
+    cell.alcTopOfNameLabel.constant = WRATIO_WIDTH(72.0f);
+    cell.alcLeadingOfNameLabel.constant = WRATIO_WIDTH(78.0f);
+    cell.alcTopOfExplain.constant = WRATIO_WIDTH(34.0f);
+    cell.alcLeadingOfExplain.constant = WRATIO_WIDTH(78.0f);
+    cell.alcTopOfDetail.constant = WRATIO_WIDTH(60.0f);
+    cell.alcLeadingOfDetail.constant = WRATIO_WIDTH(78.0f);
+    cell.alcTopOfAddress.constant = WRATIO_WIDTH(60.0f);
+    cell.alcLeadingOfAddress.constant = WRATIO_WIDTH(78.0f);
+    cell.alcTopOfPhone.constant = WRATIO_WIDTH(39.0f);
+    cell.alcLeadingOfPhone.constant =WRATIO_WIDTH(78.0f);
+    cell.alcWidthOfLocImg.constant = WRATIO_WIDTH(57.0f);
+    cell.alcWidthOfPhoImg.constant = WRATIO_WIDTH(57.0f);
+    cell.alcHeightOfLocImg.constant = WRATIO_WIDTH(57.0f);
+    cell.alcHeightOfPhoImg.constant = WRATIO_WIDTH(57.0f);
+    cell.alcTopOfLbPhone.constant = WRATIO_WIDTH(12.0f);
+    cell.alcTopOfLbLocation.constant = WRATIO_WIDTH(12.0f);
+    
+    
+    
     NSUInteger count = self.responseArr.count;
     
     if(count > 0)
@@ -141,26 +159,20 @@
         {
             
         }
-        
-        
+
         if(!image)
         {
-            if(self.tvStore.dragging == NO && self.tvStore.decelerating == NO)
-            {
-            }
+           
             [self startImageDownload:urlString forIndexPath:indexPath];
 
             cell.ivMain.image = [UIImage imageNamed:@"loading"];
-            
         }
-        else
+        else //이미지가 있을때의 처리작업
         {
             cell.ivMain.image = image;
         }
     }
-    
-        
-    
+
     return cell;
     
     

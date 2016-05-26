@@ -87,6 +87,7 @@
 		6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107E1CCA0FE800C06A5E /* SM_logos.png */; };
 		6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */; };
 		6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */; };
+		6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE6CCD1CF5A7DA0037D4FB /* EventCell.m */; };
 		6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050721CD9DBC0006C9513 /* UtilityClass.m */; };
 		6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050751CD9F837006C9513 /* BaseViewController.m */; };
 		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
@@ -206,6 +207,8 @@
 		6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smtownmembership_logo@3x.png"; sourceTree = "<group>"; };
 		6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMenuViewController.h; sourceTree = "<group>"; };
 		6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMenuViewController.m; sourceTree = "<group>"; };
+		6DCE6CCC1CF5A7DA0037D4FB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		6DCE6CCD1CF5A7DA0037D4FB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		6DF050711CD9DBC0006C9513 /* UtilityClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityClass.h; sourceTree = "<group>"; };
 		6DF050721CD9DBC0006C9513 /* UtilityClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityClass.m; sourceTree = "<group>"; };
 		6DF050741CD9F837006C9513 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				6D18606C1CF3F55E00F8CB6C /* MenuCell.m */,
 				6D4E43EE1CF5459C002041F7 /* MenuEventViewController.h */,
 				6D4E43EF1CF5459C002041F7 /* MenuEventViewController.m */,
+				6DCE6CCC1CF5A7DA0037D4FB /* EventCell.h */,
+				6DCE6CCD1CF5A7DA0037D4FB /* EventCell.m */,
 				6D4E43F11CF545AA002041F7 /* MenuNoticeViewController.h */,
 				6D4E43F21CF545AA002041F7 /* MenuNoticeViewController.m */,
 				6D4E43F41CF545BC002041F7 /* MenuCustomerCenterViewController.h */,
@@ -514,6 +519,7 @@
 				6D1470151CEC4DE5001529A2 /* StoreCell.m in Sources */,
 				6D1470121CEC4070001529A2 /* StoreInformation.m in Sources */,
 				6D18606D1CF3F55E00F8CB6C /* MenuCell.m in Sources */,
+				6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */,
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
 				6D4E43FC1CF545DB002041F7 /* MenuUserInfoViewController.m in Sources */,

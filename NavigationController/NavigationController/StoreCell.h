@@ -24,4 +24,23 @@
 
 @property (strong, nonnull) StoreViewController *storeVC;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfExplain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfExplain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfDetail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfDetail;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfAddress;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfPhone;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfPhone;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfLocImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfPhoImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfLocImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfPhoImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbLocation;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbPhone;
+
 @end
