@@ -402,43 +402,37 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 //segue를 사용하지 않고 storyboardId를 이용해서 뷰 전환
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list
 {
-    MenuList *menuList = 0;
     BaseViewController *baseVC = nil;
     
     if([stid isEqualToString:@"stid-event"])
     {
         MenuEventViewController *eventVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];
         baseVC = eventVC;
-        baseVC.menuList = menuList;
         
     }
     if([stid isEqualToString:@"stid-notice"])
     {
         MenuNoticeViewController *notiVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];
         baseVC = notiVC;
-        baseVC.menuList = menuList;
     }
     if([stid isEqualToString:@"stid-cuscenter"])
     {
         MenuCustomerCenterViewController *custVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];
         baseVC = custVC;
-        baseVC.menuList = menuList;
     }
     if([stid isEqualToString:@"stid-agreement"])
     {
         MenuAgreementViewController *agreeVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];
         baseVC = agreeVC;
-        baseVC.menuList = menuList;
     }
     if([stid isEqualToString:@"stid-userinfo"])
     {
         MenuUserInfoViewController *userVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];
         baseVC = userVC;
-        baseVC.menuList = menuList;
     }
     
-    [self.navigationController pushViewController:baseVC animated:YES];
     [baseVC setTitleOfNavibarWithMenuList:list];
+    [self.navigationController pushViewController:baseVC animated:YES];
     
 }
 

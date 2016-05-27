@@ -28,15 +28,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    [self.view insertSubview:self.showVC.view belowSubview:self.backgroundView];
-    [self.util setContentViewLayoutWithSubView:self.showVC.view withTargetView:self.view];
-    
-    self.showVC.lbTitle.text = self.title;
-    
-    self.showVC.notiVC = self;
+
       
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.ivMiddleLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];

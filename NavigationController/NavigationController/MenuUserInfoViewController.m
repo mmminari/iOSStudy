@@ -21,12 +21,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad] ;
-    self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    [self.view addSubview:self.showVC.view];
-    self.showVC.infoVC = self;
-    
-    self.showVC.lbTitle.text = self.title;
-    
 }
+
+
 
 @end

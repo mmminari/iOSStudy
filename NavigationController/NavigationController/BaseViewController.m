@@ -22,8 +22,18 @@
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list
 {
     ShowMenuViewController *showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
+    
+    [self addChildViewController:showVC];
+    
     NSString *title = [self getTitleOfNaviWithMenuType:list];
+ 
+    [self.view addSubview:showVC.view];
+    [self.util setContentViewLayoutWithSubView2:showVC.view withTargetView:self.view];
+    
     showVC.lbTitle.text = title;
+    showVC.baseVC = self;
+    
+    
     
 }
 

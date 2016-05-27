@@ -29,14 +29,6 @@
 {
     [super viewDidLoad];
     
-    self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    [self.view insertSubview:self.naviVC.view belowSubview:self.containerView];
-    
-    [self.util setContentViewLayoutWithSubView:self.naviVC.view withTargetView:self.view];
-    self.naviVC.eventVC = self;
-    
-    //self.naviVC.lbTitle.text = self.title;
-    
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.tvEvent.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
     self.containerView.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];

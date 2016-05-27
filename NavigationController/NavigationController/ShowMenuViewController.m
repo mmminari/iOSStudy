@@ -26,7 +26,6 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.lbTitle.text = self.title;
     self.ivBack.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     
@@ -34,26 +33,7 @@
 
 - (IBAction)touchedGoBack:(id)sender {
  
-    if(self.eventVC)
-    {
-        [self.eventVC.navigationController popViewControllerAnimated:YES];
-    }
-    if(self.notiVC)
-    {
-        [self.notiVC.navigationController popViewControllerAnimated:YES];
-    }
-    if(self.customVC)
-    {
-        [self.customVC.navigationController popViewControllerAnimated:YES];
-    }
-    if(self.agreeVC)
-    {
-        [self.agreeVC.navigationController popViewControllerAnimated:YES];
-    }
-    if(self.infoVC)
-    {
-        [self.infoVC.navigationController popViewControllerAnimated:YES];
-    }
+    [self.baseVC.navigationController popViewControllerAnimated:YES];
     
 }
 

@@ -30,15 +30,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    [self.view insertSubview:self.showVC.view belowSubview:self.backgroundView];
-    
-    self.showVC.lbTitle.text = self.title   ;
-    
-    self.showVC.customVC = self;
-    
-    
+
     
     self.backgroundView.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
     self.lbTitle.text = @"1:1 문의";
