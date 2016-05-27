@@ -10,17 +10,7 @@
 #import "ShowMenuViewController.h"
 #import "MenuCell.h"
 
-typedef NS_ENUM(NSInteger, MenuList)
-{
-    MenuListPush = 0,
-    MenuListEvent,
-    MenuListNotice,
-    MenuListCustomerCenter,
-    MenuListAgreement,
-    MenuListUserInfo,
-    MenuListVersionNum,
-    
-};
+
 
 @interface MenuViewController ()
 
@@ -87,9 +77,6 @@ typedef NS_ENUM(NSInteger, MenuList)
     
     self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
     self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
-    
-    
-    
     
 }
 
@@ -171,34 +158,31 @@ typedef NS_ENUM(NSInteger, MenuList)
 {
     MenuList menuList = indexPath.row;
     
-    NSLog(@"%zd", menuList);
+    NSString *stid = nil;
     
-    NSString *title = self.menuArr[menuList];
     switch (menuList) {
         case MenuListEvent:
-            [self.mainVC performSegueWithIdentifier:@"sgMainToEvent" sender:title];
+            stid = @"stid-event";
             break;
         case MenuListNotice:
-            [self.mainVC performSegueWithIdentifier:@"sgMainToNotice" sender:title];
+            stid = @"stid-notice";
             break;
         case MenuListCustomerCenter:
-            [self.mainVC performSegueWithIdentifier:@"sgMainToCusCenter" sender:title];
+            stid = @"stid-cuscenter";
             break;
         case MenuListAgreement:
-            [self.mainVC performSegueWithIdentifier:@"sgMainToAgreement" sender:title];
+            stid = @"stid-agreement";
             break;
         case MenuListUserInfo:
-            [self.mainVC performSegueWithIdentifier:@"sgMainToUserInfo" sender:title];
+            stid = @"stid-userinfo";
             break;
         default:
             break;
     }
-
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
     
+    [self.mainVC moveToTheTargetViewWithStid:stid MenuList:menuList];
+
 }
+
 
 @end

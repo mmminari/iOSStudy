@@ -20,7 +20,19 @@
 
 #define DEVICE_WIDTH                                                [UIScreen mainScreen].bounds.size.width
 #define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
-#define REMAIN_SPACE                                            414.0f - 353.0f
+#define REMAIN_SPACE                                                414.0f - 353.0f
+
+typedef NS_ENUM(NSInteger, MenuList)
+{
+    MenuListPush = 0,
+    MenuListEvent,
+    MenuListNotice,
+    MenuListCustomerCenter,
+    MenuListAgreement,
+    MenuListUserInfo,
+    MenuListVersionNum,
+    
+};
 
 @interface UtilityClass : UIViewController
 
@@ -29,6 +41,9 @@
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
 -(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic;
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
+-(void)setContentViewLayoutWithSubView2:(UIView *)subView withTargetView:(UIView *)targetView;
+
+
 
 
 @end

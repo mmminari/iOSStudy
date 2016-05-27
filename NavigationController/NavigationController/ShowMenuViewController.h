@@ -28,7 +28,10 @@
 @property (strong, nonatomic) MenuAgreementViewController *agreeVC;
 @property (strong, nonatomic) MenuUserInfoViewController *infoVC;
 
+@property (strong, nonatomic) BaseViewController *baseVC;
 
+
+//@property (assign, nonatomic) MenuList menuList;
 
 
 

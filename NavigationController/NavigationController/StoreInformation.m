@@ -25,6 +25,8 @@
         _explain = [self getValueWithKey:@"ko" Dictionary:[self getValueWithKey:@"explain" Dictionary:results]];
         _phone = [self getValueWithKey:@"phone" Dictionary:results];
         _imageInfoUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
+        _imageInfoHeight = [self getValueWithKey:@"height" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
+        _imageInfoWidth = [self getValueWithKey:@"width" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
 
     }
     

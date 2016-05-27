@@ -123,6 +123,21 @@
     cell.lbLocation.text = [stInfo address];
     cell.lbPhoneNum.text = [stInfo phone];
     
+    
+    NSString *height = [stInfo imageInfoHeight];
+    CGFloat imgHeight = [height floatValue];
+    
+    NSString *widht = [stInfo imageInfoWidth];
+    CGFloat imgWidth = [widht floatValue];
+    NSLog(@"%f", imgWidth);
+    
+    
+    CGFloat ratioHeight = (DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
+    
+    cell.alcHeightOfImg.constant = WRATIO_WIDTH(ratioHeight);
+    
+
+    
     cell.alcHeightOfImg.constant = WRATIO_WIDTH(1139.0f);
     cell.alcTopOfNameLabel.constant = WRATIO_WIDTH(72.0f);
     cell.alcLeadingOfNameLabel.constant = WRATIO_WIDTH(78.0f);

@@ -12,6 +12,12 @@
 @interface BaseViewController : UIViewController
 
 @property (strong, nonatomic) UtilityClass *util;
+@property (assign, nonatomic) MenuList *menuList;
+
+-(void)setTitleOfNavibarWithMenuList:(MenuList)list;
+
+
+
 
 
 @end

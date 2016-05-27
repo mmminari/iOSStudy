@@ -37,9 +37,7 @@
     self.showVC.lbTitle.text = self.title;
     
     self.showVC.notiVC = self;
-    
-
-    
+      
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.ivMiddleLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];
     self.ivBottomLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];

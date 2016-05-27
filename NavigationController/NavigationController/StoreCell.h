@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivLocation;
 @property (weak, nonatomic) IBOutlet UIImageView *ivPhone;
 
-@property (strong, nonnull) StoreViewController *storeVC;
+@property (strong, nonatomic) StoreViewController *storeVC;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNameLabel;

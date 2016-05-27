@@ -17,6 +17,9 @@
 @property (strong, nonatomic) NSString *explain;
 @property (strong, nonatomic) NSString *phone;
 @property (strong, nonatomic) NSString *imageInfoUri;
+@property (strong, nonatomic) NSString *imageInfoHeight;
+@property (strong, nonatomic) NSString *imageInfoWidth;
+
 
 -(instancetype)initWithResults:(NSDictionary *)results;
 

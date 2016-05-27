@@ -1802,7 +1802,7 @@
         <!--Menu Event View Controller-->
         <scene sceneID="thw-OI-ZDj">
             <objects>
-                <viewController id="7HZ-AR-Yhc" customClass="MenuEventViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stid-event" id="7HZ-AR-Yhc" customClass="MenuEventViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gi3-E1-TeZ"/>
                         <viewControllerLayoutGuide type="bottom" id="d87-Yy-gxO"/>
@@ -1909,7 +1909,7 @@
         <!--Menu Notice View Controller-->
         <scene sceneID="GJ0-qW-Ndc">
             <objects>
-                <viewController id="t0b-Lu-nZu" customClass="MenuNoticeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stid-notice" id="t0b-Lu-nZu" customClass="MenuNoticeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wxN-sO-wVq"/>
                         <viewControllerLayoutGuide type="bottom" id="WEl-Hx-sX3"/>
@@ -2022,7 +2022,7 @@
         <!--Menu Customer Center View Controller-->
         <scene sceneID="Vxa-mK-aaG">
             <objects>
-                <viewController id="Dhs-lE-noJ" customClass="MenuCustomerCenterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stid-cuscenter" id="Dhs-lE-noJ" customClass="MenuCustomerCenterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EAa-BV-CSA"/>
                         <viewControllerLayoutGuide type="bottom" id="UK3-JC-fC3"/>
@@ -2139,7 +2139,7 @@
         <!--Menu Agreement View Controller-->
         <scene sceneID="i2b-v2-QOz">
             <objects>
-                <viewController id="AL6-Ar-3AP" customClass="MenuAgreementViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stid-agreement" id="AL6-Ar-3AP" customClass="MenuAgreementViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vWw-gw-5Ff"/>
                         <viewControllerLayoutGuide type="bottom" id="zEH-Pa-47f"/>
@@ -2157,7 +2157,7 @@
         <!--Menu User Info View Controller-->
         <scene sceneID="Fk0-r5-Jqv">
             <objects>
-                <viewController id="uid-cd-vY7" customClass="MenuUserInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="stid-userinfo" id="uid-cd-vY7" customClass="MenuUserInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xpv-ac-d2d"/>
                         <viewControllerLayoutGuide type="bottom" id="31k-GU-OIn"/>
