@@ -77,18 +77,14 @@
 
 @property (strong, nonatomic) celebAuth *ca;
 
-
-
 @end
 
 @implementation IntroUiViewController
-
 
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     self.tfInput.text = @"950214";
-    
     
     [self.btnHide setHidden:YES];
     
@@ -106,13 +102,10 @@
     self.ivLogoImage.image = [UIImage imageNamed:@"smtownmembership_logo"];
     
     [self.navigationController setNavigationBarHidden:YES];
-    
 
 }
 
-
 #pragma mark - Touched Event
-
 
 - (IBAction)touchedBtnOk:(id)sender
 {
@@ -125,11 +118,8 @@
         
         [alert addAction:defaultAction];
         [self presentViewController:alert animated:YES completion:nil];
-        
     }
-    
     [self startUrlSession];
-    
 }
 
 
@@ -137,7 +127,6 @@
 
 -(void)setRatioOfDevicewithDevieWidth:(int)width
 {
-    
     
     self.alcIvLogoWidth.constant = WRATIO_WIDTH(664.0f);
     self.alcIvLogoHeight.constant = WRATIO_WIDTH(190.0f);
@@ -181,7 +170,6 @@
         self.alcBottomMarginFromIvLogoToLbInput.constant = [self getHeightOfTargetWithTargetValue:317.0f andDeviceHeight:screenHeight];
         self.alcBottomMarginOfIvBottom.constant = [self getHeightOfTargetWithTargetValue:112.0f  andDeviceHeight:screenHeight];
 
-
     }
 
 }
@@ -194,7 +182,6 @@
     
     return result;
     
-    
 }
 
 -(CGFloat)getHeightOfTargetWithTargetValue:(CGFloat)height andDeviceHeight:(CGFloat)dvHeight
@@ -204,10 +191,7 @@
     result = height/736*dvHeight/3;
     
     return result;
-    
 }
-
-
 
 #pragma mark - Set UIColor
 
@@ -250,9 +234,8 @@
                                 resultDic = sentData;
                                 NSLog(@"dic: %@", resultDic);
                                 [self processOfRequestWithParam:resultDic];
-                                
                             }
-                                                                                               }] resume];
+                                                                                            }] resume];
     
 }
 
@@ -291,8 +274,6 @@
     
 }
 
-
-
 #pragma mark - Hide TextField Keyboard
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -317,18 +298,13 @@
     return YES;
 }
 
-
-
 - (IBAction)touchedHideKeyBoard:(id)sender withTextField:(UITextField *)textField
 {
     if([self.tfInput isFirstResponder])
     {
         [self.tfInput resignFirstResponder];
-        
     }
-
 }
-
 
 
 

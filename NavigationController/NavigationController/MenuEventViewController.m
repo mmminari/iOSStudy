@@ -36,7 +36,6 @@
     self.titleArr = @[@"SM TOWN MEMBERSHIP 2월달 혜택 안내"];
     self.subTitleArr  = @[@"2016년 02월 18일"];
     self.tvEvent.rowHeight = WRATIO_WIDTH(165.0f) + WRATIO_WIDTH(82.0f);
-    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

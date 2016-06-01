@@ -10,18 +10,19 @@
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
 #import "MainViewController.h"
+#import "MainInformation.h"
 
 
 #define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
-
+#define MAIN_API                                                    @"http://pointapibeta.smtown.com/api/v1/main"
 
 
 @interface LogInViewController ()
 
 
 @property(strong, nonatomic) IntroUiViewController *introVC;
-
-
+@property (strong, nonatomic) HomeViewController *homeVC;
+@property (strong, nonatomic) MainInformation *mainInfo;
 
 @property (weak, nonatomic) IBOutlet UITextField *tfEmail;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassWord;
@@ -78,7 +79,7 @@
     
     self.tfEmail.text = @"yonghwinam@smtown.com";
     self.tfPassWord.text = @"apple0000";
-        
+    
     [self.navigationController setNavigationBarHidden:YES];
     
     self.userInfo = [[UserInformation alloc] init];
@@ -87,7 +88,6 @@
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottmIcon.image = [UIImage imageNamed:@"icon_info"];
     self.ivGoButton.image = [UIImage imageNamed:@"btn_menu_go"];
-    
     
     [self setColor];
     [self setAutoLayout];
@@ -115,6 +115,7 @@
      NSString *urlString = @"http://membership.smtown.com/";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
+
 - (IBAction)touchedGoBack:(id)sender {
     //show로 연결했을 때 뒤로가는 버튼
     [self.navigationController popViewControllerAnimated:YES];
@@ -124,7 +125,6 @@
 
 -(void)setAutoLayout
 {
-    
     self.alcTopOfTopLine.constant = WRATIO_WIDTH(78);
     self.alcTopOfLbEmail.constant = WRATIO_WIDTH(57);
     self.alcTopOfTfEmail.constant = WRATIO_WIDTH(51);
@@ -181,7 +181,6 @@
     self.tfEmail.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
     self.tfPassWord.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
     
-    
     self.lbEmail.textColor = [self.util getColorWithRGBCode:@"424242"];
     self.lbPassWord.textColor = [self.util getColorWithRGBCode:@"424242"];
     self.lbBottom.textColor = [self.util getColorWithRGBCode:@"7d7d7d"];
@@ -206,7 +205,6 @@
     self.tfPassWord.layer.borderWidth = 1.0f;
     self.tfPassWord.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
 
-    
 }
 
 
@@ -232,7 +230,6 @@
     [[session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-
         [self processingUrlRequestWithParam: sentData];
 
         
@@ -243,14 +240,12 @@
 
 -(void)processingUrlRequestWithParam:(id)param
 {
-    
     if([param isKindOfClass:[NSArray class]])
     {
         NSLog(@"erorr");
     }
     if([param isKindOfClass:[NSDictionary class]])
     {
- 
         self.sentDataDic = param;
         
         UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
@@ -258,27 +253,52 @@
         self.userInfo = userInfo;
         
         NSLog(@"userinfo : %@", self.sentDataDic);
-
     }
     
     if([self.userInfo result])
     {
-
         NSLog(@"LogIn");
-                
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *sgId = @"sgLogInToMainView";
-            [self performSegueWithIdentifier:sgId sender:self];        });
-        
-        //뷰가 그려지는 중에 UI의 변경이 있을 경우는 이 코드를 사용해야함.
-   
+        [self startSessionForHomeImg];
     }
     else
     {
         NSLog(@"fail");
-        
     }
+}
 
+-(void)startSessionForHomeImg
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [NSURL URLWithString:MAIN_API];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+               {
+                   id receiveData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                   
+                   [self processionHomeRequestWithParm:receiveData];
+               }];
+    
+    [task resume];
+
+}
+
+-(void)processionHomeRequestWithParm:(id)parm
+{
+    if([parm isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *dataDic = parm;
+        NSString *lagCode = [self.util getDeviceLaguage];
+        self.mainInfo = [[MainInformation alloc]initWithResults:dataDic lagCode:lagCode];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *sgId = @"sgLogInToMainView";
+                [self performSegueWithIdentifier:sgId sender:self];
+        });
+        //뷰가 그려지는 중에 UI의 변경이 있을 경우는 이 코드를 사용해야함.
+
+    }
 }
 
 
@@ -291,7 +311,6 @@
     return YES;
 }
 
-
 #pragma mark - Segue Event
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -300,12 +319,9 @@
     {
         MainViewController *mainVC = [segue destinationViewController];
         mainVC.userInfo = self.userInfo;
- 
+        mainVC.mainInfo = self.mainInfo;
     }
-
 }
-
-
 
 @end
 

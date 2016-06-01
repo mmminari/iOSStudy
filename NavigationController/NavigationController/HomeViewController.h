@@ -10,6 +10,7 @@
 #import "LogInViewController.h"
 #import "UserInformation.h"
 #import "BaseViewController.h"
+#import "MainInformation.h"
 
 @interface HomeViewController : BaseViewController
 
@@ -20,13 +21,16 @@
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *userEmail;
 @property (assign, nonatomic) NSInteger userPoint;
-
+@property (strong, nonatomic) UIImage *bannerImage;
+@property (strong, nonatomic) NSString *eventText;
 
 @property (assign, nonatomic) BOOL result;
 
-
 @property(strong, nonatomic) UserInformation *userInfomation;
+@property (strong, nonatomic) MainInformation *mainInfo;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
 
 @end

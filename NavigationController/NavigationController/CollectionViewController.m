@@ -19,10 +19,6 @@
 @property (strong, nonatomic) LabelView *labelVC;
 @property (strong, nonatomic) SwitchView *swithVC;
 
-
-
-
-
 @end
 
 @implementation CollectionViewController
@@ -36,8 +32,6 @@
     self.buttonVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-buttonview"];
  
 }
-
-
                          
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
@@ -51,8 +45,6 @@
     
 }
 
-
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView
 {
     // _data is a class member variable that contains one array per section.
@@ -63,7 +55,6 @@
 {
     return 4;
 }
-
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,8 +135,6 @@
     NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
     
     [targetView addConstraints:cArr];
-    
-    
     
 }
 

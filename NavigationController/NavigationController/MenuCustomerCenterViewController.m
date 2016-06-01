@@ -55,9 +55,7 @@
     self.ivBottomLine.backgroundColor = [self.util getColorWithRGBCode:@"c2c0ba"];
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     
-    
-    
-    
+
 }
 
 @end

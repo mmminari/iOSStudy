@@ -41,7 +41,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivCenterLine;
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomPinkColor;
 @property (weak, nonatomic) IBOutlet UIImageView *ivMiddleBell;
-@property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviagtionBar;
 
@@ -105,8 +104,11 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
 
+@property (weak, nonatomic) IBOutlet UIView *bannerView;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBanner;
 
 @property (strong, nonatomic) MainViewController *mainVC;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBannerView;
 
 @end
 
@@ -123,6 +125,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    self.lbMiddleNotice.text = [self.mainInfo eventTitle];
     self.lbUserEmail.text = [self.userInfomation userId];
     self.lbUserName.text = [self.userInfomation userName];
 
@@ -153,6 +156,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self setColor];
     [self setAutoLayout];
     [self startDownLoadImage];
+    [self startDownLoadBanner];
     
 }
 
@@ -174,6 +178,36 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 }
 
+-(void)startDownLoadBanner
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.mainInfo bannerUri]]];
+    NSURLSessionTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        UIImage *image = [[UIImage alloc]initWithData:data];
+        
+        if(image != nil)
+        {
+            self.ivBanner.image = image;
+        }
+        
+        }];
+    
+        [dataTask resume];
+}
+
+- (IBAction)touchedHideBanner:(id)sender
+{
+    self.alcTopOfBannerView.constant = -78.0f;
+    NSTimeInterval animationDuration = 0.25f;
+    
+    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
+    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
+        
+        [self.view layoutIfNeeded];
+        
+    } completion:nil];
+    
+}
 
 
 #pragma mark - Set UI

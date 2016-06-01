@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 -(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic;
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)setContentViewLayoutWithSubView2:(UIView *)subView withTargetView:(UIView *)targetView;
+-(NSString *)getDeviceLaguage;
 
 
 

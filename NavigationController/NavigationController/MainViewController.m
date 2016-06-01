@@ -87,6 +87,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfMenuImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfMainImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfMenuImg;
+@property (weak, nonatomic) IBOutlet UIView *hideView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfHideView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfHideView;
+@property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 
 @end
 
@@ -103,6 +107,10 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     [super viewDidLoad];
     
+    [self.hideView setHidden:YES];
+    self.hideView.backgroundColor = [UIColor blackColor];
+    self.hideView.alpha = 0.5f;
+
     [self.navigationController setNavigationBarHidden:YES];
     
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
@@ -119,9 +127,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
+    self.HomeVC.mainInfo = self.mainInfo;
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
-    //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로 
-    
+    //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로
 
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -159,10 +167,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcWidthOfMenuImg.constant = WRATIO_WIDTH(75.0f);
     self.alcBottomOfMainImg.constant = WRATIO_WIDTH(54.0f);
     self.alcBottomOfMenuImg.constant = WRATIO_WIDTH(54.0f);
-    
-    
-    
-    
+
 }
 
 #pragma mark - User Action
@@ -195,40 +200,40 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self performSegueWithIdentifier:sgId sender:self];
     
 }
+- (IBAction)touchedBackToMain:(id)sender {
+    
+    self.alcTrailingOfMainView.constant = 0.0f;
+    self.alcLeadingOfMainView.constant  = 0.0f;
+    self.alcTrailingOfHideView.constant = 0.0f;
+    self.alcLeadingOfHideView.constant = 0.0f;
+    [self.hideView setHidden:YES];
+    
+    [self setAnimation];
+    
+}
 
 - (IBAction)touchedBarMenu:(id)sender {
 
-    if(self.alcLeadingOfMainView.constant == 0.0f)
-    {
-        self.alcLeadingOfMainView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
-        self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-    }
-    else
-    {
-        self.alcTrailingOfMainView.constant = 0.0f;
-        self.alcLeadingOfMainView.constant  = 0.0f;
-        
-    }
-    NSTimeInterval animationDuration = 0.25f;
+    self.alcLeadingOfMainView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcLeadingOfHideView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcTrailingOfHideView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+    [self.hideView setHidden:NO];
+    
+    [self setAnimation];
+
+    
+}
+
+-(void)setAnimation
+{
+    NSTimeInterval animationDuration = 0.3f;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
-
         
-        /*
-        if(self.mainViewContainer.frame.origin.x == 0.0f)
-        {
-            CGRect frame = CGRectMake( - WRATIO_WIDTH(REMAIN_SPACE), 0, DEVICE_WIDTH, DEVICE_HEIGHT);
-            self.mainViewContainer .frame = frame;
-        }
-        else
-        {
-            CGRect frame = CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT);
-            self.mainViewContainer.frame = frame;
-        }
-         */
         [self.view layoutIfNeeded];
-
+        
     } completion:nil];
 
 }
@@ -254,8 +259,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     return CGSizeMake(width, height);
     
 }
-
-
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -297,7 +300,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
     NSInteger index = self.cvMainView.contentOffset.x / DEVICE_WIDTH;
     [self setLeadingOfPinkIndicatorWithIndex:index];
     
@@ -349,14 +351,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)setLeadingOfPinkIndicatorWithIndex:(NSInteger)index
 {
     self.alcLeadingOfIndicator.constant = QUARTER_OF_WIDTH * index;
-    
-    NSTimeInterval animationDuration = 0.3f;
-    
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
+    [self setAnimation];
     
 }
 
@@ -403,7 +398,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list
 {
     BaseViewController *baseVC = nil;
-    
+    //baseVC라는 부모클래스에 자식을 담아두기위함
     if([stid isEqualToString:@"stid-event"])
     {
         MenuEventViewController *eventVC = [self.storyboard instantiateViewControllerWithIdentifier:stid];

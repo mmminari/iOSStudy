@@ -24,22 +24,17 @@
     [self.activityIndic startAnimating];
     self.activityIndic.hidesWhenStopped = YES;
     
-    
     self.wkWebView = [[WKWebView alloc]init];
     self.wkWebView.UIDelegate = self;
     self.wkWebView.navigationDelegate = self;
     [self.view addSubview:self.wkWebView];
     [self setContentViewLayoutWithSubView:self.wkWebView withTargetView:self.view];
     
-    
     [self.view insertSubview:self.wkWebView belowSubview:self.activityIndic];
-    
-    
-    
+
     NSURL *urlString = [NSURL URLWithString : @"http://daum.net" ];
     NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
     [self.wkWebView loadRequest:request];
- 
 }
 
 - (void)webView:(WKWebView *)webView
@@ -49,14 +44,12 @@ didFinishNavigation:(WKNavigation *)navigation
 
 }
 
-
 -(void)urlRequestWithURL:(NSString *)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     [self.wvPoint loadRequest:request];
-
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
@@ -64,8 +57,6 @@ didFinishNavigation:(WKNavigation *)navigation
     //[self.activityIndic stopAnimating];
 
 }
-
-
 
 
 

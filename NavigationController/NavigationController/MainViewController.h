@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "UserInformation.h"
+#import "MainInformation.h"
 
 
 @interface MainViewController : BaseViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 
 
 @property (strong, nonatomic) UserInformation *userInfo;
+@property (strong, nonatomic) MainInformation *mainInfo;
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)touchedShowBarcode;

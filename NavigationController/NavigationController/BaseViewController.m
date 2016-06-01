@@ -24,6 +24,7 @@
     ShowMenuViewController *showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     
     [self addChildViewController:showVC];
+    //지역변수로 VC를 셋팅해주었기 때문에 showVC를 childVC로 추가해주어야한다.
     
     NSString *title = [self getTitleOfNaviWithMenuType:list];
  
@@ -31,10 +32,8 @@
     [self.util setContentViewLayoutWithSubView2:showVC.view withTargetView:self.view];
     
     showVC.lbTitle.text = title;
-    showVC.baseVC = self;
-    
-    
-    
+    showVC.baseVC = self; //각 VC를 baseVC에 담아서 필요할 때 사용.
+
 }
 
 -(NSString *)getTitleOfNaviWithMenuType:(MenuList )menuList

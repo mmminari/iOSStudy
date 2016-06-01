@@ -22,6 +22,16 @@
     
 }
 
+-(NSString *)getDeviceLaguage
+{
+    NSString *result = nil;
+    
+    NSLocale *locale = [NSLocale currentLocale];
+    result = [locale objectForKey:NSLocaleLanguageCode];
+    return result;
+    
+}
+
 -(UIColor *)getColorWithRGBCode:(NSString *)code
 {
     UIColor *color = nil;

@@ -17,7 +17,4 @@
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
 
 
-
-
-
 @end

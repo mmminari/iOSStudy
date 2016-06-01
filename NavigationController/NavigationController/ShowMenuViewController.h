@@ -8,12 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "MainViewController.h"
-#import "MenuEventViewController.h"
-#import "MenuNoticeViewController.h"
-#import "MenuCustomerCenterViewController.h"
-#import "MenuAgreementViewController.h"
-#import "MenuUserInfoViewController.h"
 
 @interface ShowMenuViewController : BaseViewController
 
@@ -21,18 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 
-@property (strong, nonatomic) MainViewController *mainVC;
-@property (strong, nonatomic) MenuEventViewController *eventVC;
-@property (strong, nonatomic) MenuNoticeViewController *notiVC;
-@property (strong, nonatomic) MenuCustomerCenterViewController *customVC;
-@property (strong, nonatomic) MenuAgreementViewController *agreeVC;
-@property (strong, nonatomic) MenuUserInfoViewController *infoVC;
-
 @property (strong, nonatomic) BaseViewController *baseVC;
-
-
-//@property (assign, nonatomic) MenuList menuList;
-
 
 
 @end

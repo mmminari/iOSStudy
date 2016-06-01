@@ -171,10 +171,7 @@
     self.alcLeadingOfBarImg.constant = WRATIO_WIDTH(75.0f);
     self.alcTrailingOfBarImg.constant = WRATIO_WIDTH(-75.0f);
     self.alcBottomOfBarImg.constant = WRATIO_WIDTH(-75.0f);
-    
-    
-    
-    
+
 }
 
 #pragma mark - touched Event

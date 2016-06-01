@@ -26,6 +26,8 @@
 @property (strong, nonatomic) NSMutableDictionary *downloaingDic;
 
 @property (strong, nonatomic) NSMutableArray *storeArr;
+@property (assign, nonatomic) CGFloat rationHeight;
+
 
 @end
 
@@ -59,12 +61,10 @@
     cell.lbDetail.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
     cell.lbLocation.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
     cell.lbPhoneNum.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
-
     
 }
 
 #pragma mark - tableview
-
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
@@ -108,7 +108,6 @@
         
         cell.lbPhoneNum.numberOfLines = 0;
         cell.lbPhoneNum.lineBreakMode = NSLineBreakByWordWrapping;
-
     }
     
     [self setLayoutwithCell:cell];
@@ -123,7 +122,6 @@
     cell.lbLocation.text = [stInfo address];
     cell.lbPhoneNum.text = [stInfo phone];
     
-    
     NSString *height = [stInfo imageInfoHeight];
     CGFloat imgHeight = [height floatValue];
     
@@ -132,12 +130,9 @@
     NSLog(@"%f", imgWidth);
     
     
-    CGFloat ratioHeight = (DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
+    self.rationHeight = (DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
     
-    cell.alcHeightOfImg.constant = WRATIO_WIDTH(ratioHeight);
-    
-
-    
+    cell.alcHeightOfImg.constant = WRATIO_WIDTH(self.rationHeight);
     cell.alcHeightOfImg.constant = WRATIO_WIDTH(1139.0f);
     cell.alcTopOfNameLabel.constant = WRATIO_WIDTH(72.0f);
     cell.alcLeadingOfNameLabel.constant = WRATIO_WIDTH(78.0f);
@@ -155,9 +150,7 @@
     cell.alcHeightOfPhoImg.constant = WRATIO_WIDTH(57.0f);
     cell.alcTopOfLbPhone.constant = WRATIO_WIDTH(12.0f);
     cell.alcTopOfLbLocation.constant = WRATIO_WIDTH(12.0f);
-    
-    
-    
+
     NSUInteger count = self.responseArr.count;
     
     if(count > 0)
@@ -177,7 +170,6 @@
 
         if(!image)
         {
-           
             [self startImageDownload:urlString forIndexPath:indexPath];
 
             cell.ivMain.image = [UIImage imageNamed:@"loading"];
@@ -187,9 +179,8 @@
             cell.ivMain.image = image;
         }
     }
-
-    return cell;
     
+    return cell;
     
 }
 
@@ -204,7 +195,6 @@
     CGRect rect = [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)]} context:nil];
     
     return rect.size.height;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -224,11 +214,12 @@
     CGFloat heightName = rect.size.height;
     
     CGFloat heightSale = [self getHeightOfLabelWithText:[storeInformation saleInfo]];
+
     CGFloat heightDetail = [self getHeightOfLabelWithText:[storeInformation explain]];
     CGFloat heightLocation = [self getHeightOfLabelWithText:[storeInformation address]];
     CGFloat heightPhone = [self getHeightOfLabelWithText:[storeInformation phone]];
     
-    return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + WRATIO_WIDTH(1039.0f) + 30.0f;
+    return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + WRATIO_WIDTH(self.rationHeight)  + 70.0f;
 }
 
 
@@ -306,9 +297,7 @@
         
             [imageDown stardDownload];
     }
-    
 
-    
 }
 
 -(void)loadImagesOnscreenRows

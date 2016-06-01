@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IPz-QH-3ZO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247.5" y="-398.5"/>
+            <point key="canvasLocation" x="1247.5" y="-367.5"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="DbR-CS-Tac">
@@ -449,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zku-b6-3E2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3089.5" y="1914.5"/>
+            <point key="canvasLocation" x="2967.5" y="1914.5"/>
         </scene>
         <!--Label View-->
         <scene sceneID="Cx9-df-ttg">
@@ -480,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpo-TE-cnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620.5" y="1914.5"/>
+            <point key="canvasLocation" x="2561.5" y="1914.5"/>
         </scene>
         <!--Switch View-->
         <scene sceneID="AaW-SR-9zR">
@@ -508,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRZ-Nv-eyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2163.5" y="1914.5"/>
+            <point key="canvasLocation" x="2131.5" y="1914.5"/>
         </scene>
         <!--Intro Ui View Controller-->
         <scene sceneID="Zvr-dj-rux">
@@ -1102,17 +1102,17 @@
                                                     <constraint firstItem="RCp-nO-QNY" firstAttribute="centerX" secondItem="kxo-CV-QPu" secondAttribute="centerX" id="nSr-ls-Eo3"/>
                                                 </constraints>
                                             </view>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-w3-wAb">
+                                                <rect key="frame" x="0.0" y="48" width="375" height="1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="PCF-5l-O7G"/>
+                                                </constraints>
+                                            </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-dj-V5x">
                                                 <rect key="frame" x="0.0" y="47" width="150" height="2"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="DQe-Z9-OPR"/>
                                                     <constraint firstAttribute="height" constant="2.5" id="fLZ-NN-Soj"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-w3-wAb">
-                                                <rect key="frame" x="0.0" y="48" width="375" height="1"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="PCF-5l-O7G"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -1149,13 +1149,35 @@
                                     <constraint firstItem="wMg-Kx-8oT" firstAttribute="leading" secondItem="R3Z-Ns-pB4" secondAttribute="leading" id="tvN-ur-DKH"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2p-1a-2c3">
+                                <rect key="frame" x="0.0" y="-20" width="375" height="623"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j27-cC-0Mh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <connections>
+                                            <action selector="touchedBackToMain:" destination="hbM-rF-nvx" eventType="touchUpInside" id="au7-50-IoC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="j27-cC-0Mh" firstAttribute="top" secondItem="H2p-1a-2c3" secondAttribute="top" id="5B8-Fd-kZO"/>
+                                    <constraint firstAttribute="trailing" secondItem="j27-cC-0Mh" secondAttribute="trailing" id="CDU-bj-Eqi"/>
+                                    <constraint firstItem="j27-cC-0Mh" firstAttribute="leading" secondItem="H2p-1a-2c3" secondAttribute="leading" id="d5f-Tf-L20"/>
+                                    <constraint firstAttribute="bottom" secondItem="j27-cC-0Mh" secondAttribute="bottom" id="lyt-re-YI6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="R3Z-Ns-pB4" secondAttribute="trailing" id="NXU-34-mgq"/>
                             <constraint firstItem="xlc-gA-P9k" firstAttribute="top" secondItem="R3Z-Ns-pB4" secondAttribute="bottom" id="WMq-if-Xzx"/>
                             <constraint firstItem="R3Z-Ns-pB4" firstAttribute="top" secondItem="tUC-ot-I8k" secondAttribute="bottom" constant="-20" id="YEa-ID-foq"/>
+                            <constraint firstAttribute="trailing" secondItem="H2p-1a-2c3" secondAttribute="trailing" id="cRy-X7-Oxt"/>
                             <constraint firstItem="R3Z-Ns-pB4" firstAttribute="leading" secondItem="sm0-fe-cfH" secondAttribute="leading" id="pSP-1i-M7G"/>
+                            <constraint firstItem="xlc-gA-P9k" firstAttribute="top" secondItem="H2p-1a-2c3" secondAttribute="bottom" id="pUJ-Sw-mLy"/>
+                            <constraint firstItem="H2p-1a-2c3" firstAttribute="top" secondItem="tUC-ot-I8k" secondAttribute="bottom" constant="-20" id="sSe-0F-ZFA"/>
+                            <constraint firstItem="H2p-1a-2c3" firstAttribute="leading" secondItem="sm0-fe-cfH" secondAttribute="leading" id="zlZ-9q-oLx"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1167,9 +1189,11 @@
                         <outlet property="alcHeightOfMenuImg" destination="pza-io-msn" id="UQ8-8p-LIj"/>
                         <outlet property="alcHeightOfNaviBar" destination="23Z-A4-2KG" id="ryk-qr-fXd"/>
                         <outlet property="alcHeightOfNaviagtionBar" destination="23Z-A4-2KG" id="w8q-Hp-03T"/>
+                        <outlet property="alcLeadingOfHideView" destination="zlZ-9q-oLx" id="IUS-W0-SMj"/>
                         <outlet property="alcLeadingOfIndic" destination="BaT-Ax-OZG" id="fO4-Tn-83G"/>
                         <outlet property="alcLeadingOfIndicator" destination="BaT-Ax-OZG" id="H2s-Q3-6UM"/>
                         <outlet property="alcLeadingOfMainView" destination="pSP-1i-M7G" id="mmx-mx-tuZ"/>
+                        <outlet property="alcTrailingOfHideView" destination="cRy-X7-Oxt" id="zT8-cy-TRg"/>
                         <outlet property="alcTrailingOfMainView" destination="NXU-34-mgq" id="POX-YL-eEM"/>
                         <outlet property="alcWidthOfCardView" destination="taU-Pp-S7N" id="ZdG-2o-zwN"/>
                         <outlet property="alcWidthOfHomeView" destination="7rc-Rh-t4c" id="OvS-3C-xmh"/>
@@ -1184,9 +1208,11 @@
                         <outlet property="barStoreView" destination="kxo-CV-QPu" id="Ryd-PA-Jrb"/>
                         <outlet property="btnCard" destination="N0E-i9-6Gl" id="uTT-XG-Zpu"/>
                         <outlet property="btnHome" destination="r1t-fi-LkS" id="bWI-tR-kwL"/>
+                        <outlet property="btnMenu" destination="BkN-yD-5sd" id="cXh-cA-QAN"/>
                         <outlet property="btnPoint" destination="IS7-TS-R6x" id="fT3-Kd-HRy"/>
                         <outlet property="btnStore" destination="RCp-nO-QNY" id="CpC-jz-mHh"/>
                         <outlet property="cvMainView" destination="Ope-Qa-IG3" id="tan-Xr-I9M"/>
+                        <outlet property="hideView" destination="H2p-1a-2c3" id="imW-uJ-eIC"/>
                         <outlet property="ivBarBottom" destination="6cP-iy-DRa" id="R6g-rI-QJ5"/>
                         <outlet property="ivBarBottomCor" destination="Rht-w3-wAb" id="dx1-gF-1L2"/>
                         <outlet property="ivNavigationLogo" destination="kDK-KM-vfz" id="StN-gz-8Kp"/>
@@ -1333,6 +1359,35 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="61D-BE-rci">
                                 <rect key="frame" x="13" y="287" width="349" height="380"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYB-bW-2ih">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oDb-yd-W5i">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEh-4z-hlf">
+                                        <rect key="frame" x="351" y="8" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="IDo-0m-nPH"/>
+                                            <constraint firstAttribute="width" constant="16" id="wwk-0C-JBn"/>
+                                        </constraints>
+                                        <state key="normal" image="btn_popup_close.png"/>
+                                        <connections>
+                                            <action selector="touchedHideBanner:" destination="2Rg-Gi-D3a" eventType="touchUpInside" id="TI7-ng-3uJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="oDb-yd-W5i" secondAttribute="bottom" id="5YM-Ic-0s1"/>
+                                    <constraint firstItem="oDb-yd-W5i" firstAttribute="top" secondItem="aYB-bW-2ih" secondAttribute="top" id="Ape-as-abj"/>
+                                    <constraint firstItem="oDb-yd-W5i" firstAttribute="leading" secondItem="aYB-bW-2ih" secondAttribute="leading" id="PoK-2U-0jh"/>
+                                    <constraint firstAttribute="trailing" secondItem="oDb-yd-W5i" secondAttribute="trailing" id="UqV-bb-amP"/>
+                                    <constraint firstItem="pEh-4z-hlf" firstAttribute="top" secondItem="aYB-bW-2ih" secondAttribute="top" constant="8" id="V32-tI-l0u"/>
+                                    <constraint firstAttribute="height" constant="78" id="ci4-59-S6q"/>
+                                    <constraint firstAttribute="trailing" secondItem="pEh-4z-hlf" secondAttribute="trailing" constant="8" id="nTw-Q1-sZn"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1343,10 +1398,13 @@
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="top" secondItem="WJU-Ct-oPS" secondAttribute="bottom" constant="22" id="Kvt-Jl-nTL"/>
                             <constraint firstAttribute="trailing" secondItem="IBJ-wv-il9" secondAttribute="trailing" constant="21" id="Lom-0J-zMJ"/>
                             <constraint firstItem="61D-BE-rci" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="13" id="RZt-B2-TSN"/>
+                            <constraint firstAttribute="trailing" secondItem="aYB-bW-2ih" secondAttribute="trailing" id="SOe-dl-oTH"/>
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="YJb-8Z-o38"/>
+                            <constraint firstItem="aYB-bW-2ih" firstAttribute="top" secondItem="yhD-LJ-b7O" secondAttribute="top" id="gcT-Od-79p"/>
                             <constraint firstItem="8cU-2z-G4V" firstAttribute="top" secondItem="Mju-BN-1ph" secondAttribute="top" id="gvx-Zb-jzk"/>
                             <constraint firstAttribute="trailing" secondItem="OET-0a-xDh" secondAttribute="trailing" constant="21" id="myg-6e-1Hp"/>
                             <constraint firstAttribute="trailing" secondItem="61D-BE-rci" secondAttribute="trailing" constant="13" id="n0S-ef-fS9"/>
+                            <constraint firstItem="aYB-bW-2ih" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" id="nGF-Jd-JKt"/>
                             <constraint firstItem="Mju-BN-1ph" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="ohp-nI-f6u"/>
                             <constraint firstItem="61D-BE-rci" firstAttribute="top" secondItem="OET-0a-xDh" secondAttribute="bottom" constant="43" id="vPv-Wj-K3E"/>
                         </constraints>
@@ -1371,6 +1429,7 @@
                         <outlet property="alcLeadingOfNoticeView" destination="YJb-8Z-o38" id="CC8-2S-a51"/>
                         <outlet property="alcLeadingOfUserView" destination="ohp-nI-f6u" id="RRU-qT-frq"/>
                         <outlet property="alcTopOfAvailablePoint" destination="Uae-2S-JVn" id="qOC-W1-Zuc"/>
+                        <outlet property="alcTopOfBannerView" destination="gcT-Od-79p" id="XGk-i3-f0s"/>
                         <outlet property="alcTopOfCard" destination="vPv-Wj-K3E" id="Nks-sR-b71"/>
                         <outlet property="alcTopOfPointView" destination="Koz-ho-iEk" id="jyU-ye-NfN"/>
                         <outlet property="alcTopOfShowPoint" destination="4a7-dk-Ypg" id="yPL-W5-mgr"/>
@@ -1384,6 +1443,8 @@
                         <outlet property="alcWidthOfUserImage" destination="WzD-0F-Jku" id="LLy-OA-O2W"/>
                         <outlet property="alcWidthOfUserView" destination="ZvK-I5-NEE" id="t0L-20-PaI"/>
                         <outlet property="alcWidthOfVIP" destination="ota-pg-Kdp" id="TtU-lv-KHl"/>
+                        <outlet property="bannerView" destination="aYB-bW-2ih" id="fbH-hz-98F"/>
+                        <outlet property="ivBanner" destination="oDb-yd-W5i" id="lQF-ea-ql0"/>
                         <outlet property="ivCard" destination="61D-BE-rci" id="Ger-CS-CGk"/>
                         <outlet property="ivCenterLine" destination="8cU-2z-G4V" id="WBn-47-PDb"/>
                         <outlet property="ivMiddleBell" destination="kDV-D6-KMi" id="CwJ-QM-Xbv"/>
@@ -1635,7 +1696,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2F-5T-Ltc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2380.5" y="419.5"/>
+            <point key="canvasLocation" x="2396.5" y="419.5"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="ZVC-j1-NiI">
@@ -1904,7 +1965,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y62-0U-Tr2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3346.5" y="424.5"/>
+            <point key="canvasLocation" x="3233.5" y="419.5"/>
         </scene>
         <!--Menu Notice View Controller-->
         <scene sceneID="GJ0-qW-Ndc">
@@ -2017,7 +2078,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZU-hx-K9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3871.5" y="422.5"/>
+            <point key="canvasLocation" x="3651.5" y="419.5"/>
         </scene>
         <!--Menu Customer Center View Controller-->
         <scene sceneID="Vxa-mK-aaG">
@@ -2134,7 +2195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ma0-nk-FwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4421.5" y="435.5"/>
+            <point key="canvasLocation" x="4069.5" y="419.5"/>
         </scene>
         <!--Menu Agreement View Controller-->
         <scene sceneID="i2b-v2-QOz">
@@ -2152,7 +2213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEC-au-99E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4901" y="440"/>
+            <point key="canvasLocation" x="4492.5" y="419.5"/>
         </scene>
         <!--Menu User Info View Controller-->
         <scene sceneID="Fk0-r5-Jqv">
@@ -2170,7 +2231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fHm-Mj-C0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5364" y="454"/>
+            <point key="canvasLocation" x="4909.5" y="419.5"/>
         </scene>
         <!--Show Menu View Controller-->
         <scene sceneID="ahk-n3-Rqp">
@@ -2411,6 +2472,7 @@
     </scenes>
     <resources>
         <image name="btn_card_largeimg_sub.png" width="21" height="21"/>
+        <image name="btn_popup_close.png" width="16" height="16"/>
         <image name="icon_store_location.png" width="19" height="19"/>
         <image name="icon_store_phone.png" width="19" height="19"/>
         <image name="menu_card.png" width="47" height="12"/>
