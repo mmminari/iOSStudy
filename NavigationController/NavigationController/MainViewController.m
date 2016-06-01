@@ -204,8 +204,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.alcTrailingOfMainView.constant = 0.0f;
     self.alcLeadingOfMainView.constant  = 0.0f;
-    self.alcTrailingOfHideView.constant = 0.0f;
-    self.alcLeadingOfHideView.constant = 0.0f;
+
     [self.hideView setHidden:YES];
     
     [self setAnimation];
@@ -216,8 +215,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
     self.alcLeadingOfMainView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-    self.alcLeadingOfHideView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
-    self.alcTrailingOfHideView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+
     [self.hideView setHidden:NO];
     
     [self setAnimation];
