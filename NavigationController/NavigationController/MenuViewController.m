@@ -9,7 +9,7 @@
 #import "MenuViewController.h"
 #import "ShowMenuViewController.h"
 #import "MenuCell.h"
-
+#import "SettingViewController.h"
 
 
 @interface MenuViewController ()
@@ -37,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUserImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIcon;
 
+@property (strong, nonatomic) SettingViewController *settingVC;
+
 @end
 
 @implementation MenuViewController
@@ -45,6 +47,9 @@
 {
     //상위뷰 초기화 꼭 하기
     [super viewDidLoad];
+    
+    self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
+    
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     
@@ -95,6 +100,13 @@
     
     [dataTask resume];
     
+}
+#pragma mark - User Action
+
+- (IBAction)touchedGoToSettingView:(id)sender
+{
+    [self.mainVC performSegueWithIdentifier:@"sgMenuToSetting" sender:nil];
+    NSLog(@"hi");
 }
 
 #pragma mark - TableView DataSource

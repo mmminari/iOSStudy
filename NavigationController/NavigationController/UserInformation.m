@@ -21,6 +21,7 @@
 {
     if(self = [super init])
     {
+        _userNo = [[[results objectForKey:@"userInfo"] objectForKey:@"userNo"] intValue];
         _userId = [[results objectForKey:@"userInfo"]objectForKey:@"userId"];
         _userName = [[results objectForKey:@"userInfo"]objectForKey:@"userName"];
         _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] integerValue];

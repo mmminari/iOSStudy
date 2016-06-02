@@ -24,6 +24,7 @@
 #import "MenuAgreementViewController.h"
 #import "MenuUserInfoViewController.h"
 
+#import "SettingViewController.h"
 
 
 @interface MainViewController ()
@@ -34,7 +35,7 @@
 @property (strong, nonatomic) StoreViewController *storeVC;
 @property (strong, nonatomic) MenuViewController *menuVC;
 @property (strong, nonatomic) ShowMenuViewController *showVC;
-
+@property (strong, nonatomic) SettingViewController *settingVC;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -117,8 +118,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.pointVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainpointview"];
     self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
-    
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
+    self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
     
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
@@ -128,6 +129,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
     self.HomeVC.mainInfo = self.mainInfo;
+    self.settingVC.userInfo = self.userInfo;
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
     //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로
 
@@ -219,8 +221,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self.hideView setHidden:NO];
     
     [self setAnimation];
-
-    
 }
 
 -(void)setAnimation
@@ -436,6 +436,12 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         BarcodeViewController *barcVC = [segue destinationViewController];
         barcVC.barString = [self.userInfo cardNo];
     }
+    if([[segue identifier] isEqualToString:@"sgMenuToSetting"])
+    {
+        SettingViewController *settingVC = [segue destinationViewController];
+        settingVC.userInfo = self.userInfo;
+    }
+  
 }
 
 

@@ -220,8 +220,11 @@
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [urlRequest setHTTPMethod:@"POST"];
     
+    NSNumber *autoLogIn = [NSNumber numberWithBool:self.swcAutoLogIn.on];
+    NSLog(@"%@", autoLogIn);
     NSDictionary *HTTPBodyDic = @{@"email" : self.tfEmail.text,
-                                  @"password" : self.tfPassWord.text };
+                                  @"password" : self.tfPassWord.text,
+                                  @"autoSignin" : autoLogIn };
     
     NSError *error;
     
@@ -231,6 +234,8 @@
     {
         id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
         [self processingUrlRequestWithParam: sentData];
+        
+        NSLog(@"%@", sentData);
 
         
     }] resume];
@@ -259,6 +264,14 @@
     {
         NSLog(@"LogIn");
         [self startSessionForHomeImg];
+        
+        //쿠키값 불러오기
+        NSHTTPCookieStorage *cookieStor = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        NSArray *cookiesArr = [cookieStor cookiesForURL:[NSURL URLWithString: LOGIN_API]];
+
+        NSLog(@"%@", cookiesArr);
+        
+        
     }
     else
     {
@@ -277,18 +290,18 @@
                {
                    id receiveData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
                    
-                   [self processionHomeRequestWithParm:receiveData];
+                   [self processingHomeRequestWithParam:receiveData];
                }];
     
     [task resume];
 
 }
 
--(void)processionHomeRequestWithParm:(id)parm
+-(void)processingHomeRequestWithParam:(id)param
 {
-    if([parm isKindOfClass:[NSDictionary class]])
+    if([param isKindOfClass:[NSDictionary class]])
     {
-        NSDictionary *dataDic = parm;
+        NSDictionary *dataDic = param;
         NSString *lagCode = [self.util getDeviceLaguage];
         self.mainInfo = [[MainInformation alloc]initWithResults:dataDic lagCode:lagCode];
 
