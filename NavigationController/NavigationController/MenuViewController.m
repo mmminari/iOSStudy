@@ -192,7 +192,7 @@
             break;
     }
     
-    [self.mainVC moveToTheTargetViewWithStid:stid MenuList:menuList];
+    [self.mainVC moveToTheTargetViewWithMenuList:menuList];
 
 }
 

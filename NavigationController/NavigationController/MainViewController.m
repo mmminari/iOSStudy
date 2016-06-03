@@ -25,7 +25,7 @@
 #import "MenuUserInfoViewController.h"
 
 #import "SettingViewController.h"
-
+#import "MenuWebViewController.h"
 
 @interface MainViewController ()
 
@@ -429,6 +429,19 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self.navigationController pushViewController:baseVC animated:YES];
     
 }
+-(void)moveToTheTargetViewWithMenuList:(MenuList)list
+{
+    BaseViewController *baseVC = nil;
+    MenuWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuWebView"];
+    
+    baseVC = webVC;
+    [baseVC setTitleOfNavibarWithMenuList:list];
+    [baseVC setWevViewWithMenuList:list];
+    [self.navigationController pushViewController:baseVC animated:YES];
+
+    
+}
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

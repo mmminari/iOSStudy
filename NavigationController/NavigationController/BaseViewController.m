@@ -83,19 +83,19 @@
     
     switch (menuList) {
         case MenuListEvent:
-            result = @"http://www.naver.com";
+            result = @"https://pointapibeta.smtown.com/event";
             break;
         case MenuListNotice:
-            result = @"http://www.daum.net";
+            result = @"https://pointapibeta.smtown.com/notice";
             break;
         case MenuListCustomerCenter:
-            result = @"고객센터";
+            result = @"https://pointapibeta.smtown.com/Faq";
             break;
         case MenuListAgreement:
-            result = @"이용약관";
+            result = @"https://pointapibeta.smtown.com/policy/terms";
             break;
         case MenuListUserInfo:
-            result = @"회원정보";
+            result = @"https://pointapibeta.smtown.com/policy/privacy";
             break;
         default:
             break;

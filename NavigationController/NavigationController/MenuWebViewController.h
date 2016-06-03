@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface MenuWebViewController : UIViewController<UIWebViewDelegate>
+@interface MenuWebViewController : BaseViewController<UIWebViewDelegate>
 
 
 @property (strong, nonatomic) NSString *urlString;

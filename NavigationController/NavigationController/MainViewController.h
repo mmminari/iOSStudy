@@ -21,6 +21,7 @@
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)touchedShowBarcode;
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;
+-(void)moveToTheTargetViewWithMenuList:(MenuList)list;
 
 
 @end
