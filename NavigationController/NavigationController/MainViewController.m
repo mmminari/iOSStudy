@@ -27,6 +27,8 @@
 #import "SettingViewController.h"
 #import "MenuWebViewController.h"
 
+#import "SplashViewController.h"
+
 @interface MainViewController ()
 
 @property (strong, nonatomic) HomeViewController *HomeVC;
@@ -36,6 +38,7 @@
 @property (strong, nonatomic) MenuViewController *menuVC;
 @property (strong, nonatomic) ShowMenuViewController *showVC;
 @property (strong, nonatomic) SettingViewController *settingVC;
+@property (strong, nonatomic) SplashViewController *splashVC;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -107,6 +110,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
+    [self.view addSubview:self.splashVC.view];
+    
+    
     
     [self.hideView setHidden:YES];
     self.hideView.backgroundColor = [UIColor blackColor];

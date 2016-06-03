@@ -105,7 +105,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             result = @"sgMainToWebView";
             break;
         case DemoTypeIntroUiView:
-            result = @"sgMainToUIView";
+            result = @"sgDemoToMain";
             break;
         case DemoTypeCollectionView:
             result = @"sgMainToCollectionView";
