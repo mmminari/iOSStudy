@@ -99,7 +99,7 @@
     [request setHTTPMethod:@"POST"];
     
     NSNumber *userNo = [NSNumber numberWithInt:(int)[self.userInfo userNo]];
-    NSNumber *autoLogin = [NSNumber numberWithBool:self.swcAutoLogin];
+    NSNumber *autoLogin = [NSNumber numberWithBool:self.swcAutoLogin.isOn];
     NSLog(@"%@", autoLogin);
     NSDictionary *bodyDic = @{ @"userNo" : userNo,
                                @"deviceToken" : @"d963fcf6e9578fa44adc519287432c1b7ce176684388dabbaac0409c56873fc8",

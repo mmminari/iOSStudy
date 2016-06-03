@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivSplash;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (strong, nonatomic) NSUserDefaults *autoSignIn;
+
 
 @end
 
@@ -19,6 +21,7 @@
 
 -(void)viewDidLoad
 {
+    
     [super viewDidLoad];
     
     [self.indicator setHidesWhenStopped:YES];
@@ -36,8 +39,19 @@
     if (DEVICE_HEIGHT == 736) {
         self.ivSplash.image = [UIImage imageNamed:@"splash_1242x2208"];
     }
-
+    
+    self.autoSignIn = [NSUserDefaults standardUserDefaults];
+    [self.autoSignIn setBool:NO forKey:@"isAutoSignIn"];
+    
     
 }
 
+
+-(BOOL)getResultOfAutoSignIn
+{
+    BOOL result = [self.autoSignIn boolForKey:@"isAutoSignIn"];
+    
+    return result;
+    
+}
 @end

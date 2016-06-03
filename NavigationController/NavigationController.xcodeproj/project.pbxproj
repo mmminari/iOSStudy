@@ -54,6 +54,8 @@
 		6D4AD3001D012DF600CFC443 /* splash_640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4AD2FC1D012DF600CFC443 /* splash_640x1136.png */; };
 		6D4AD3011D012DF600CFC443 /* splash_750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4AD2FD1D012DF600CFC443 /* splash_750x1334.png */; };
 		6D4AD3021D012DF600CFC443 /* splash_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4AD2FE1D012DF600CFC443 /* splash_1242x2208.png */; };
+		6D4AD3081D01660F00CFC443 /* LogOutCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */; };
+		6D4AD30B1D01672C00CFC443 /* LogOutCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */; };
 		6D4B648D1CD2EDDA0078969D /* menu_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */; };
 		6D4B648E1CD2EDDA0078969D /* menu_store@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */; };
 		6D4B64911CD2F4590078969D /* icon_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648F1CD2F4590078969D /* icon_info@2x.png */; };
@@ -177,6 +179,10 @@
 		6D4AD2FC1D012DF600CFC443 /* splash_640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_640x1136.png; sourceTree = "<group>"; };
 		6D4AD2FD1D012DF600CFC443 /* splash_750x1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_750x1334.png; sourceTree = "<group>"; };
 		6D4AD2FE1D012DF600CFC443 /* splash_1242x2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_1242x2208.png; sourceTree = "<group>"; };
+		6D4AD3061D01660F00CFC443 /* LogOutCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogOutCollectionViewController.h; sourceTree = "<group>"; };
+		6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutCollectionViewController.m; sourceTree = "<group>"; };
+		6D4AD3091D01672C00CFC443 /* LogOutCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogOutCollectionCell.h; sourceTree = "<group>"; };
+		6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutCollectionCell.m; sourceTree = "<group>"; };
 		6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@2x.png"; sourceTree = "<group>"; };
 		6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@3x.png"; sourceTree = "<group>"; };
 		6D4B648F1CD2F4590078969D /* icon_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_info@2x.png"; sourceTree = "<group>"; };
@@ -394,6 +400,10 @@
 				6D4AD2F91D0128CF00CFC443 /* SplashViewController.m */,
 				6D464AE01CD057630035FF68 /* LogInViewController.h */,
 				6D464AE11CD057630035FF68 /* LogInViewController.m */,
+				6D4AD3061D01660F00CFC443 /* LogOutCollectionViewController.h */,
+				6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */,
+				6D4AD3091D01672C00CFC443 /* LogOutCollectionCell.h */,
+				6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */,
 				6D8AA64D1CD73A080044DF31 /* UserInformation.h */,
 				6D8AA64E1CD73A080044DF31 /* UserInformation.m */,
 				6DF050711CD9DBC0006C9513 /* UtilityClass.h */,
@@ -574,6 +584,7 @@
 				6D4AD2FA1D0128CF00CFC443 /* SplashViewController.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
 				6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */,
+				6D4AD3081D01660F00CFC443 /* LogOutCollectionViewController.m in Sources */,
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
@@ -606,6 +617,7 @@
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
+				6D4AD30B1D01672C00CFC443 /* LogOutCollectionCell.m in Sources */,
 				6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */,
 				6D464AE51CD082E20035FF68 /* HomeViewController.m in Sources */,
 				6D4787261CFED047001A9A52 /* MainInformation.m in Sources */,

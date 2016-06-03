@@ -1,5 +1,5 @@
 //
-//  SplashViewController.h
+//  LogOutViewController.h
 //  NavigationController
 //
 //  Created by 김민아 on 2016. 6. 3..
@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
 
-@interface SplashViewController : BaseViewController
-
--(BOOL)getResultOfAutoSignIn;
-
+@interface LogOutViewController : UIViewController
 
 @end

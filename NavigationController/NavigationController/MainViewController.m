@@ -28,6 +28,7 @@
 #import "MenuWebViewController.h"
 
 #import "SplashViewController.h"
+#import "LogOutCollectionViewController.h"
 
 @interface MainViewController ()
 
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) ShowMenuViewController *showVC;
 @property (strong, nonatomic) SettingViewController *settingVC;
 @property (strong, nonatomic) SplashViewController *splashVC;
+@property (strong, nonatomic) LogOutCollectionViewController *logoutVC;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -112,7 +114,19 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [super viewDidLoad];
     
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
+    self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
+    
     [self.view addSubview:self.splashVC.view];
+    [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
+    
+    if(![self.splashVC getResultOfAutoSignIn])
+    {
+        [self.view addSubview:self.logoutVC.view];
+        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
+        
+        [self.splashVC.view removeFromSuperview];
+        
+    }
     
     
     
