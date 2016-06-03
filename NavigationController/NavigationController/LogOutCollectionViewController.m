@@ -15,6 +15,8 @@
 
 @implementation LogOutCollectionViewController
 
+
+//collectinViewCell의 Min Spacting을 0으로 주어야 셀이 밀리는 것을 방지할 수 있음
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -28,7 +30,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     CGFloat width = DEVICE_WIDTH;
-    CGFloat height = DEVICE_HEIGHT - 51.0f;
+    CGFloat height = DEVICE_HEIGHT - 71.0f;
     
     return CGSizeMake(width, height);
 }

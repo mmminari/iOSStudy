@@ -125,6 +125,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
         
         [self.splashVC.view removeFromSuperview];
+        [self.splashVC removeFromParentViewController];
+        self.splashVC = nil;
         
     }
     
