@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseModel.h"
 
-@interface UserInformation : NSObject
+@interface UserInformation : BaseModel
 
 
 //User Info

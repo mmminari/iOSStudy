@@ -425,6 +425,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
     
     [baseVC setTitleOfNavibarWithMenuList:list];
+    [baseVC setWevViewWithMenuList:list];
     [self.navigationController pushViewController:baseVC animated:YES];
     
 }

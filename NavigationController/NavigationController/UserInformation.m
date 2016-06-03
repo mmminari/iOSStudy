@@ -21,15 +21,15 @@
 {
     if(self = [super init])
     {
-        _userNo = [[[results objectForKey:@"userInfo"] objectForKey:@"userNo"] intValue];
-        _userId = [[results objectForKey:@"userInfo"]objectForKey:@"userId"];
-        _userName = [[results objectForKey:@"userInfo"]objectForKey:@"userName"];
-        _point = [[[results objectForKey:@"pointInfo"]objectForKey:@"point"] integerValue];
-        _result = [[results objectForKey:@"result"] boolValue];
-        _profileImg = [[results objectForKey:@"userInfo"] objectForKey:@"profileImg"];
-        _cardNo = [[results objectForKey:@"userInfo"]objectForKey:@"cardNo"];
-        _cardRegdate = [[results objectForKey:@"userInfo"] objectForKey:@"cardRegdate"];
-        _strUserGrade = [[results objectForKey:@"userInfo"]objectForKey:@"strUserGrade"];
+        _userNo = [[self getValueWithKey:@"userNo" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]] intValue];
+        _userId = [self getValueWithKey:@"userId" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
+        _userName = [self getValueWithKey:@"userName" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
+        _point = [[self getValueWithKey:@"point" Dictionary:[self getValueWithKey:@"pointInfo" Dictionary:results]] integerValue];
+        _result = [[self getValueWithKey:@"result" Dictionary:results] boolValue];
+        _profileImg = [self getValueWithKey:@"profileImg" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
+        _cardNo = [self getValueWithKey:@"cardNo" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
+        _cardRegdate = [self getValueWithKey:@"cardRegdate" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
+        _strUserGrade = [self getValueWithKey:@"strUserGrade" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
  
     }
     

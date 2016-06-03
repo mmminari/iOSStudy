@@ -15,6 +15,7 @@
 @property (assign, nonatomic) MenuList *menuList;
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
+-(void)setWevViewWithMenuList:(MenuList)list;
 
 
 @end

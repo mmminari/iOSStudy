@@ -2376,6 +2376,19 @@
                         <outlet property="IvLine3" destination="UIi-Fq-b3f" id="Ehj-Vu-rQj"/>
                         <outlet property="IvLine4" destination="3Xl-Iy-aRw" id="Wbg-bL-xqq"/>
                         <outlet property="IvLine5" destination="exr-tv-Ju7" id="9Q8-I4-39h"/>
+                        <outlet property="alcHeightOfButton" destination="LaU-xs-ZVH" id="AjF-FS-TTz"/>
+                        <outlet property="alcTopOfButton" destination="r1M-Fj-Fta" id="dxj-wZ-YL5"/>
+                        <outlet property="alcTopOfLbAutoLogin" destination="Yjx-7V-EqI" id="U8C-sK-LGi"/>
+                        <outlet property="alcTopOfLbChangeInfo" destination="QAW-qu-2RB" id="q5u-BX-hei"/>
+                        <outlet property="alcTopOfLbChangePw" destination="PP3-PG-wHR" id="nyj-A8-P9v"/>
+                        <outlet property="alcTopOfLbRelease" destination="2Dj-fj-TDA" id="TNE-gQ-BUN"/>
+                        <outlet property="alcTopOfLine1" destination="w1u-2T-qne" id="CPl-6T-KJQ"/>
+                        <outlet property="alcTopOfLine2" destination="mMl-7a-lnz" id="tDl-Yu-rS8"/>
+                        <outlet property="alcTopOfLine3" destination="Dtf-7L-30V" id="D7t-5d-JvH"/>
+                        <outlet property="alcTopOfLine4" destination="E9H-XB-VyO" id="Az1-r8-ihQ"/>
+                        <outlet property="alcTopOfLine5" destination="bgb-oZ-DfQ" id="kYm-Hf-PHM"/>
+                        <outlet property="alcTopOfUserName" destination="fS2-dI-1i6" id="0hZ-zS-0dG"/>
+                        <outlet property="alcWidthOfButton" destination="5ce-L6-b67" id="6rq-Y4-sJr"/>
                         <outlet property="btnLogOut" destination="f4T-MB-3Wv" id="wub-FC-BDL"/>
                         <outlet property="lbAutoLogIn" destination="5rg-q2-gWw" id="Zvc-mb-i3b"/>
                         <outlet property="lbCancelService" destination="s4R-rA-DGb" id="rww-Dp-Sbj"/>
@@ -2388,7 +2401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lod-bF-sRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2701" y="-357"/>
+            <point key="canvasLocation" x="2700.5" y="-357.5"/>
         </scene>
         <!--Show Menu View Controller-->
         <scene sceneID="ahk-n3-Rqp">
@@ -2466,6 +2479,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBP-ph-xdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3346" y="-270"/>
+        </scene>
+        <!--Menu Web View Controller-->
+        <scene sceneID="2Bf-pQ-DRc">
+            <objects>
+                <viewController storyboardIdentifier="stid-menuWebView" id="own-Vx-gBE" customClass="MenuWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="54C-Lh-2YM"/>
+                        <viewControllerLayoutGuide type="bottom" id="eC1-Mr-RAS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fxW-aa-5Ol">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uS3-cf-BKQ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="own-Vx-gBE" id="oqH-4H-5iT"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eC1-Mr-RAS" firstAttribute="top" secondItem="uS3-cf-BKQ" secondAttribute="bottom" id="8v0-Yc-a5s"/>
+                            <constraint firstItem="uS3-cf-BKQ" firstAttribute="leading" secondItem="fxW-aa-5Ol" secondAttribute="leading" id="S2d-Mo-ww7"/>
+                            <constraint firstItem="uS3-cf-BKQ" firstAttribute="top" secondItem="54C-Lh-2YM" secondAttribute="bottom" id="fQv-Xh-xAV"/>
+                            <constraint firstAttribute="trailing" secondItem="uS3-cf-BKQ" secondAttribute="trailing" id="ofA-vZ-5F4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="wvMenu" destination="uS3-cf-BKQ" id="80r-em-Vav"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsa-us-8q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4001" y="-272"/>
         </scene>
         <!--Store View Controller-->
         <scene sceneID="1WI-N5-1IX">

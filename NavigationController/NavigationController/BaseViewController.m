@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "ShowMenuViewController.h"
-
+#import "MenuWebViewController.h"
 
 @implementation BaseViewController
 
@@ -36,6 +36,20 @@
 
 }
 
+-(void)setWevViewWithMenuList:(MenuList)list
+{
+    MenuWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuWebView"];
+    [self addChildViewController:webVC];
+    
+    [self.view addSubview:webVC.view];
+    [self.util setContentViewLayoutWithSubView3:webVC.view withTargetView:self.view];
+    
+    webVC.urlString = [self getUrlStringWithMenuList:list];
+    [webVC urlRequestWithUrl:webVC.urlString];
+    
+    
+}
+
 -(NSString *)getTitleOfNaviWithMenuType:(MenuList )menuList
 {
     NSString *result = nil;
@@ -54,6 +68,33 @@
             result = @"이용약관";
             break;
         case MenuListUserInfo:
+            result = @"개인정보 취급방침";
+            break;
+        default:
+            break;
+    }
+    
+    return result;
+}
+
+-(NSString *)getUrlStringWithMenuList:(MenuList )menuList
+{
+    NSString *result = nil;
+    
+    switch (menuList) {
+        case MenuListEvent:
+            result = @"http://www.naver.com";
+            break;
+        case MenuListNotice:
+            result = @"http://www.daum.net";
+            break;
+        case MenuListCustomerCenter:
+            result = @"고객센터";
+            break;
+        case MenuListAgreement:
+            result = @"이용약관";
+            break;
+        case MenuListUserInfo:
             result = @"회원정보";
             break;
         default:
@@ -62,6 +103,7 @@
     
     return result;
 }
+
 
 
 @end

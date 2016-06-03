@@ -30,6 +30,19 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swcAutoLogin;
 @property (strong, nonatomic) NSDictionary *resultDic;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUserName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine1;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbChangePw;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbChangeInfo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine3;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbAutoLogin;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine4;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbRelease;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine5;
 
 
 @end
@@ -59,6 +72,7 @@
     [self.btnLogOut setTitle:@"로그아웃" forState:UIControlStateNormal];
     
     [self setColorAndFont];
+    [self setLayout];
     
     NSLog(@"%zd", [self.userInfo userNo]);
     
@@ -139,8 +153,27 @@
     self.IvLine3.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     self.IvLine4.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     self.IvLine5.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    
+
+}
+
+-(void)setLayout
+{
+    self.alcTopOfUserName.constant = WRATIO_WIDTH(246.0f);
+    self.alcTopOfButton.constant = WRATIO_WIDTH(246.0f);
+    self.alcHeightOfButton.constant = WRATIO_WIDTH(117.0f);
+    self.alcWidthOfButton.constant = WRATIO_WIDTH(300.0f);
+    self.alcTopOfLine1.constant = WRATIO_WIDTH(80.0f);
+    self.alcTopOfLine2.constant = WRATIO_WIDTH(156.0f);
+    self.alcTopOfLine3.constant = WRATIO_WIDTH(156.0f);
+    self.alcTopOfLine4.constant = WRATIO_WIDTH(156.0f);
+    self.alcTopOfLine5.constant = WRATIO_WIDTH(156.0f);
+    self.alcTopOfLbChangePw.constant = WRATIO_WIDTH(47.0f);
+    self.alcTopOfLbChangeInfo.constant = WRATIO_WIDTH(47.0f);
+    self.alcTopOfLbAutoLogin.constant = WRATIO_WIDTH(47.0f);
+    self.alcTopOfLbRelease.constant = WRATIO_WIDTH(47.0f);
     
 }
+
+
 
 @end

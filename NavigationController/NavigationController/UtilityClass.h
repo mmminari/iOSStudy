@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)setContentViewLayoutWithSubView2:(UIView *)subView withTargetView:(UIView *)targetView;
 -(NSString *)getDeviceLaguage;
+-(void)setContentViewLayoutWithSubView3:(UIView *)subView withTargetView:(UIView *)targetView;
 
 
 

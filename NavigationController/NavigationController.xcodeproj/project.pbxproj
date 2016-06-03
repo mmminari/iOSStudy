@@ -47,6 +47,8 @@
 		6D4787231CFEC41C001A9A52 /* btn_popup_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4787211CFEC41C001A9A52 /* btn_popup_close@3x.png */; };
 		6D4787261CFED047001A9A52 /* MainInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4787251CFED047001A9A52 /* MainInformation.m */; };
 		6D4AD2EF1CFFFCA400CFC443 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */; };
+		6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2F11D002B6800CFC443 /* BaseModel.m */; };
+		6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */; };
 		6D4B648D1CD2EDDA0078969D /* menu_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */; };
 		6D4B648E1CD2EDDA0078969D /* menu_store@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */; };
 		6D4B64911CD2F4590078969D /* icon_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648F1CD2F4590078969D /* icon_info@2x.png */; };
@@ -160,6 +162,10 @@
 		6D4787251CFED047001A9A52 /* MainInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainInformation.m; sourceTree = "<group>"; };
 		6D4AD2ED1CFFFCA400CFC443 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		6D4AD2F01D002B6800CFC443 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		6D4AD2F11D002B6800CFC443 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		6D4AD2F31D002F3C00CFC443 /* MenuWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuWebViewController.h; sourceTree = "<group>"; };
+		6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuWebViewController.m; sourceTree = "<group>"; };
 		6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@2x.png"; sourceTree = "<group>"; };
 		6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@3x.png"; sourceTree = "<group>"; };
 		6D4B648F1CD2F4590078969D /* icon_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_info@2x.png"; sourceTree = "<group>"; };
@@ -331,12 +337,16 @@
 				6DF050721CD9DBC0006C9513 /* UtilityClass.m */,
 				6DF050741CD9F837006C9513 /* BaseViewController.h */,
 				6DF050751CD9F837006C9513 /* BaseViewController.m */,
+				6D4AD2F01D002B6800CFC443 /* BaseModel.h */,
+				6D4AD2F11D002B6800CFC443 /* BaseModel.m */,
 				6D00A7631CEF071F00481C9C /* MenuViewController.h */,
 				6D00A7641CEF071F00481C9C /* MenuViewController.m */,
 				6D4AD2ED1CFFFCA400CFC443 /* SettingViewController.h */,
 				6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */,
 				6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */,
 				6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */,
+				6D4AD2F31D002F3C00CFC443 /* MenuWebViewController.h */,
+				6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */,
 				6D18606B1CF3F55E00F8CB6C /* MenuCell.h */,
 				6D18606C1CF3F55E00F8CB6C /* MenuCell.m */,
 				6D4E43EE1CF5459C002041F7 /* MenuEventViewController.h */,
@@ -525,6 +535,7 @@
 				6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */,
 				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
+				6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */,
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
@@ -554,6 +565,7 @@
 				6D247F7C1CE1CBEE00EBE9DB /* MainCollectionCell.m in Sources */,
 				6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
+				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
 				6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */,
