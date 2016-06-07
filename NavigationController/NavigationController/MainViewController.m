@@ -69,7 +69,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCard;
 @property (weak, nonatomic) IBOutlet UIButton *btnStore;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
 @property (assign,nonatomic) NSInteger index2;
 
@@ -115,22 +114,24 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
     self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
+
+    self.splashVC.mainVC = self;    
     
     [self.view addSubview:self.splashVC.view];
     [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
     
-    if(![self.splashVC getResultOfAutoSignIn])
+    
+    
+    if(![self.util getResultOfAutoSignIn])
     {
-        [self.view addSubview:self.logoutVC.view];
-        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
+      //  [self.view addSubview:self.logoutVC.view];
+       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
         
         [self.splashVC.view removeFromSuperview];
         [self.splashVC removeFromParentViewController];
         self.splashVC = nil;
         
     }
-    
-    
     
     [self.hideView setHidden:YES];
     self.hideView.backgroundColor = [UIColor blackColor];
@@ -147,7 +148,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
     
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    
+        
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
@@ -453,6 +454,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self.navigationController pushViewController:baseVC animated:YES];
     
 }
+
 -(void)moveToTheTargetViewWithMenuList:(MenuList)list
 {
     BaseViewController *baseVC = nil;
@@ -463,7 +465,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [baseVC setWevViewWithMenuList:list];
     [self.navigationController pushViewController:baseVC animated:YES];
 
-    
 }
 
 

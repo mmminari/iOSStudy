@@ -13,9 +13,6 @@
 #import "MainInformation.h"
 
 
-#define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
-#define MAIN_API                                                    @"http://pointapibeta.smtown.com/api/v1/main"
-
 
 @interface LogInViewController ()
 
@@ -168,7 +165,6 @@
         self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(78);
         self.alcTopOfBtnFindInfo.constant = HRATIO_HEIGHT(75);
         self.alcTopOfLbBottom.constant = HRATIO_HEIGHT(75);
-        
     }
 
 }

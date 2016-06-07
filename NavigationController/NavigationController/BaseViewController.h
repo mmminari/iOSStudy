@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "UtilityClass.h"
+#import "LibraryClass.h"
 
 @interface BaseViewController : UIViewController
 
 @property (strong, nonatomic) UtilityClass *util;
 @property (assign, nonatomic) MenuList *menuList;
+@property (strong, nonatomic) LibraryClass *library;
+
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
 -(void)setWevViewWithMenuList:(MenuList)list;

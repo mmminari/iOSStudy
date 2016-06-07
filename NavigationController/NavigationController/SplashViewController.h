@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "MainViewController.h"
 
 @interface SplashViewController : BaseViewController
 
--(BOOL)getResultOfAutoSignIn;
 
+
+@property (strong, nonatomic) MainViewController *mainVC;
 
 @end

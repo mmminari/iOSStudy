@@ -22,6 +22,11 @@
 #define QUARTER_OF_WIDTH                                            DEVICE_WIDTH/4
 #define REMAIN_SPACE                                                414.0f - 353.0f
 
+
+#define LOGIN_API                                                   @"https://pointapibeta.smtown.com/api/v1/accountSignin"
+#define MAIN_API                                                    @"http://pointapibeta.smtown.com/api/v1/main"
+
+
 typedef NS_ENUM(NSInteger, MenuList)
 {
     MenuListPush = 0,
@@ -36,6 +41,7 @@ typedef NS_ENUM(NSInteger, MenuList)
 
 @interface UtilityClass : UIViewController
 
+@property (strong, nonatomic) NSUserDefaults *autoSignIn;
 
 -(CGFloat)getScreenWidth;
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
@@ -44,6 +50,9 @@ typedef NS_ENUM(NSInteger, MenuList)
 -(void)setContentViewLayoutWithSubView2:(UIView *)subView withTargetView:(UIView *)targetView;
 -(NSString *)getDeviceLaguage;
 -(void)setContentViewLayoutWithSubView3:(UIView *)subView withTargetView:(UIView *)targetView;
+
+-(void)setResultOfAutoSignInWithSwith:(BOOL)swith;
+-(BOOL)getResultOfAutoSignIn;
 
 
 

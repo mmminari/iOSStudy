@@ -121,11 +121,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     ButtonTagNumberStore,
 };
 
-
 -(void)viewDidLoad{
     [super viewDidLoad];
+    NSLog(@"self.lib : %@",self.library);
     
-    self.lbMiddleNotice.text = [self.mainInfo eventTitle];
+    self.lbMiddleNotice.text = [self.library eventTitle];
+    NSLog(@"title %@", [self.library eventTitle]);
+    
     self.lbUserEmail.text = [self.userInfomation userId];
     self.lbUserName.text = [self.userInfomation userName];
 
@@ -241,7 +243,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcHeightOfNaviagtionBar.constant = WRATIO_WIDTH(213);
     
     self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
-    self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;
+    self.alcWidthOfPointView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfCardView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfStoreView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfIndicator.constant = QUARTER_OF_WIDTH;

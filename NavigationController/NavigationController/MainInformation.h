@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseModel.h"
+#import "BaseViewController.h"
 
-@interface MainInformation : BaseModel
+@interface MainInformation : BaseViewController
 
 //introInfo
 

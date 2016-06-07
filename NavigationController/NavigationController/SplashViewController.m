@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivSplash;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (strong, nonatomic) NSUserDefaults *autoSignIn;
+@property (strong, nonatomic) NSDictionary *resultDic;
+@property (strong, nonatomic) NSNotificationCenter *notiCenter;
 
 
 @end
@@ -21,7 +23,6 @@
 
 -(void)viewDidLoad
 {
-    
     [super viewDidLoad];
     
     [self.indicator setHidesWhenStopped:YES];
@@ -40,18 +41,50 @@
         self.ivSplash.image = [UIImage imageNamed:@"splash_1242x2208"];
     }
     
-    self.autoSignIn = [NSUserDefaults standardUserDefaults];
-    [self.autoSignIn setBool:NO forKey:@"isAutoSignIn"];
+    [self startSession];
+
+    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
+    self.notiCenter = [NSNotificationCenter defaultCenter];
+    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"noti" object:nil];
     
+    self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-main"];
     
 }
 
-
--(BOOL)getResultOfAutoSignIn
+-(void)viewDidDisappear:(BOOL)animated
 {
-    BOOL result = [self.autoSignIn boolForKey:@"isAutoSignIn"];
+    [self.notiCenter removeObserver:self];
+}
+
+-(void)startSession
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [NSURL URLWithString:MAIN_API];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    return result;
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                              {
+                                  id receiveData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+                                  
+                                  if ([receiveData isKindOfClass:[NSDictionary class]])
+                                  {
+                                      self.resultDic = receiveData;
+                                      [self.notiCenter postNotificationName:@"noti" object:self.resultDic];
+                                  }
+                                  
+                              }];
+    [task resume];
+
+}
+
+
+-(void)sendData:(NSNotification *)notification
+{
+    [self.library initWithResults:[notification object]];
+    NSLog(@"send");
+
+    [self.mainVC.cvMainView reloadData];
     
 }
+
 @end

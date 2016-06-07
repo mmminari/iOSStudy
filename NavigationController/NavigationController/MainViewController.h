@@ -23,5 +23,7 @@
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;
 -(void)moveToTheTargetViewWithMenuList:(MenuList)list;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
+
 
 @end

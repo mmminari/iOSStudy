@@ -56,44 +56,4 @@
 
 
 
--(void)setUserNameWithString:(NSString *)name
-{
-    self.userName = name;
-    
-}
-
--(void)setResultWithBoolean:(BOOL)result
-{
-    self.result = result;
-}
-
--(void)setUserPointWithInteger:(NSInteger)point
-{
-    self.point = point;
-    
-}
-
--(void)setUserIdWithString:(NSString *)userId
-{
-    self.userId = userId;
-}
-
--(BOOL)getResult
-{
-    return self.result;
-}
-
--(NSString *)getUserName
-{
-    return self.userName;
-}
--(NSString *)getUserId
-{
-    return self.userId;
-}
--(NSInteger)getUserPoint
-{
-    return self.point;
-}
-
 @end

@@ -15,6 +15,21 @@
 
 @implementation UtilityClass
 
+-(void)setResultOfAutoSignInWithSwith:(BOOL)swith
+{
+    self.autoSignIn = [NSUserDefaults standardUserDefaults];
+    [self.autoSignIn setBool:swith forKey:@"isAutoSignIn"];
+    
+}
+
+-(BOOL)getResultOfAutoSignIn
+{
+    BOOL result = [self.autoSignIn boolForKey:@"isAutoSignIn"];
+    
+    return result;
+    
+}
+
 -(CGFloat)getScreenWidth
 {
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;

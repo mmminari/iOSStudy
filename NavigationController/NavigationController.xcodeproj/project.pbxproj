@@ -56,6 +56,7 @@
 		6D4AD3021D012DF600CFC443 /* splash_1242x2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4AD2FE1D012DF600CFC443 /* splash_1242x2208.png */; };
 		6D4AD3081D01660F00CFC443 /* LogOutCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */; };
 		6D4AD30B1D01672C00CFC443 /* LogOutCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */; };
+		6D4AD30E1D017B0700CFC443 /* LibraryClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD30D1D017B0700CFC443 /* LibraryClass.m */; };
 		6D4B648D1CD2EDDA0078969D /* menu_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */; };
 		6D4B648E1CD2EDDA0078969D /* menu_store@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */; };
 		6D4B64911CD2F4590078969D /* icon_info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4B648F1CD2F4590078969D /* icon_info@2x.png */; };
@@ -183,6 +184,8 @@
 		6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutCollectionViewController.m; sourceTree = "<group>"; };
 		6D4AD3091D01672C00CFC443 /* LogOutCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogOutCollectionCell.h; sourceTree = "<group>"; };
 		6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutCollectionCell.m; sourceTree = "<group>"; };
+		6D4AD30C1D017B0700CFC443 /* LibraryClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryClass.h; sourceTree = "<group>"; };
+		6D4AD30D1D017B0700CFC443 /* LibraryClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryClass.m; sourceTree = "<group>"; };
 		6D4B648B1CD2EDDA0078969D /* menu_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@2x.png"; sourceTree = "<group>"; };
 		6D4B648C1CD2EDDA0078969D /* menu_store@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_store@3x.png"; sourceTree = "<group>"; };
 		6D4B648F1CD2F4590078969D /* icon_info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_info@2x.png"; sourceTree = "<group>"; };
@@ -396,6 +399,8 @@
 				6D4AD2F71D01273700CFC443 /* EtcViewController */,
 				6D4B649B1CD333510078969D /* ImageFile */,
 				6D4AD2F61D0126E200CFC443 /* MenuViewController */,
+				6D4AD30C1D017B0700CFC443 /* LibraryClass.h */,
+				6D4AD30D1D017B0700CFC443 /* LibraryClass.m */,
 				6D4AD2F81D0128CF00CFC443 /* SplashViewController.h */,
 				6D4AD2F91D0128CF00CFC443 /* SplashViewController.m */,
 				6D464AE01CD057630035FF68 /* LogInViewController.h */,
@@ -590,6 +595,7 @@
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
 				6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */,
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
+				6D4AD30E1D017B0700CFC443 /* LibraryClass.m in Sources */,
 				ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */,
 				6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */,
 				6D4E43F31CF545AA002041F7 /* MenuNoticeViewController.m in Sources */,

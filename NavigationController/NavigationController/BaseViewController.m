@@ -12,10 +12,32 @@
 
 @implementation BaseViewController
 
+
+//가장먼저실행
+-(instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if (self = [super initWithCoder:aDecoder]) {
+        
+    }
+    
+    return self;
+}
+
+//그다음
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    
+}
+
+//그다음
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.util = [[UtilityClass alloc]init];
+    
+    self.library = [LibraryClass sharedInstance]; //싱글톤 초기화
     
 }
 
