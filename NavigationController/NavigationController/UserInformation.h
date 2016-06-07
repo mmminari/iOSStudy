@@ -37,8 +37,6 @@
 @property (assign, nonatomic) BOOL result;
 
 
-
--(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result;
 -(instancetype)initWithResults:(NSDictionary *)results;
 
 

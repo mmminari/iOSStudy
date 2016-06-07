@@ -97,6 +97,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfHideView;
 @property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
+
+@property (strong, nonatomic) NSNotificationCenter *notiCenter;
+
 @end
 
 @implementation MainViewController
@@ -114,8 +118,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
     self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
-
-    self.splashVC.mainVC = self;    
     
     [self.view addSubview:self.splashVC.view];
     [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
@@ -166,7 +168,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcHeightOfNaviagtionBar.constant = WRATIO_WIDTH(213);
     
     self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
-    self.alcWidthOfPointView.constant =QUARTER_OF_WIDTH;
+    self.alcWidthOfPointView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfCardView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfStoreView.constant = QUARTER_OF_WIDTH;
     self.alcWidthOfIndicator.constant = QUARTER_OF_WIDTH;
@@ -194,14 +196,29 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcWidthOfMenuImg.constant = WRATIO_WIDTH(75.0f);
     self.alcBottomOfMainImg.constant = WRATIO_WIDTH(54.0f);
     self.alcBottomOfMenuImg.constant = WRATIO_WIDTH(54.0f);
+    
+    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
+    self.notiCenter = [NSNotificationCenter defaultCenter];
+    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
 
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.notiCenter removeObserver:self];
+}
+
+-(void)sendData:(NSNotification *)notification
+{
+    NSLog(@"send");
+    [self.cvMainView reloadData];
+    NSLog(@"%@", [self.library eventTitle]);
 }
 
 #pragma mark - User Action
 
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
-
     NSInteger index = sender.tag - 1000;
 
     if(index != self.index2)
@@ -240,7 +257,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 - (IBAction)touchedBarMenu:(id)sender {
 
-    self.alcLeadingOfMainView.constant = -WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcLeadingOfMainView.constant = - WRATIO_WIDTH(REMAIN_SPACE);
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
     [self.hideView setHidden:NO];
@@ -450,7 +467,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
     
     [baseVC setTitleOfNavibarWithMenuList:list];
-    [baseVC setWevViewWithMenuList:list];
+    [baseVC setWebViewWithMenuList:list];
     [self.navigationController pushViewController:baseVC animated:YES];
     
 }
@@ -462,7 +479,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     baseVC = webVC;
     [baseVC setTitleOfNavibarWithMenuList:list];
-    [baseVC setWevViewWithMenuList:list];
+    [baseVC setWebViewWithMenuList:list];
     [self.navigationController pushViewController:baseVC animated:YES];
 
 }

@@ -38,22 +38,4 @@
 }
 
 
--(id)initWithName:(NSString *)name withId:(NSString *)userID withPoint:(NSInteger)point withResult:(BOOL)result
-{
-    self = [super init];
-    if(self != nil)
-    {
-        self.userName = name;
-        self.userId = userID;
-        self.point = point;
-        self.result = result;
-        
-    }
-    
-    return self;
-    
-}
-
-
-
 @end

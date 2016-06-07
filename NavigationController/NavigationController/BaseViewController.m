@@ -36,9 +36,7 @@
 {
     [super viewDidLoad];
     self.util = [[UtilityClass alloc]init];
-    
     self.library = [LibraryClass sharedInstance]; //싱글톤 초기화
-    
 }
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list
@@ -58,7 +56,7 @@
 
 }
 
--(void)setWevViewWithMenuList:(MenuList)list
+-(void)setWebViewWithMenuList:(MenuList)list
 {
     MenuWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuWebView"];
     [self addChildViewController:webVC];
@@ -68,7 +66,6 @@
     
     webVC.urlString = [self getUrlStringWithMenuList:list];
     [webVC urlRequestWithUrl:webVC.urlString];
-    
     
 }
 

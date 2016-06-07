@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "MainViewController.h"
 
 @interface SplashViewController : BaseViewController
 
 
-
-@property (strong, nonatomic) MainViewController *mainVC;
 
 @end

@@ -18,7 +18,7 @@
 
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
--(void)setWevViewWithMenuList:(MenuList)list;
+-(void)setWebViewWithMenuList:(MenuList)list;
 
 
 @end

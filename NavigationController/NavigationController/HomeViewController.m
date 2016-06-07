@@ -121,7 +121,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     ButtonTagNumberStore,
 };
 
--(void)viewDidLoad{
+-(void)viewDidLoad
+{
     [super viewDidLoad];
     NSLog(@"self.lib : %@",self.library);
     
@@ -177,7 +178,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }];
     
     [sessionTask resume];
-
 }
 
 -(void)startDownLoadBanner
@@ -191,7 +191,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         {
             self.ivBanner.image = image;
         }
-        
         }];
     
         [dataTask resume];
@@ -208,7 +207,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.view layoutIfNeeded];
         
     } completion:nil];
-    
 }
 
 

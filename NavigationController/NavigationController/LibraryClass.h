@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserInformation.h"
 
 @interface LibraryClass : NSObject
 

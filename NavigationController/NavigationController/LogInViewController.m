@@ -119,7 +119,6 @@
 }
 
 #pragma mark - Set UI
-
 -(void)setAutoLayout
 {
     self.alcTopOfTopLine.constant = WRATIO_WIDTH(78);
@@ -205,7 +204,6 @@
 
 
 #pragma mark - URLSession
-
 -(void)startSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -312,7 +310,6 @@
 
 
 #pragma mark - TextField Keyboard
-
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -321,7 +318,6 @@
 }
 
 #pragma mark - Segue Event
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgLogInToMainView"])

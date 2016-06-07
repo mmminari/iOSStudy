@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (strong, nonatomic) NSUserDefaults *autoSignIn;
 @property (strong, nonatomic) NSDictionary *resultDic;
-@property (strong, nonatomic) NSNotificationCenter *notiCenter;
 
 
 @end
@@ -43,17 +42,6 @@
     
     [self startSession];
 
-    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
-    self.notiCenter = [NSNotificationCenter defaultCenter];
-    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"noti" object:nil];
-    
-    self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-main"];
-    
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [self.notiCenter removeObserver:self];
 }
 
 -(void)startSession
@@ -69,7 +57,9 @@
                                   if ([receiveData isKindOfClass:[NSDictionary class]])
                                   {
                                       self.resultDic = receiveData;
-                                      [self.notiCenter postNotificationName:@"noti" object:self.resultDic];
+                                      [self.library initWithResults:self.resultDic];
+                                      
+                                      [[NSNotificationCenter defaultCenter] postNotificationName:@"endDataTransit" object:nil];
                                   }
                                   
                               }];
@@ -78,13 +68,6 @@
 }
 
 
--(void)sendData:(NSNotification *)notification
-{
-    [self.library initWithResults:[notification object]];
-    NSLog(@"send");
 
-    [self.mainVC.cvMainView reloadData];
-    
-}
 
 @end
