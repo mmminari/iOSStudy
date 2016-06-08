@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
+#import "MainInformation.h"
 
 @interface LibraryClass : NSObject
 
@@ -38,6 +39,8 @@
 + (instancetype)sharedInstance;
 -(void)initWithResults:(NSDictionary *)results;
 
+@property (strong, nonatomic) UserInformation *userInfo;
+@property (strong, nonatomic) MainInformation *mainInfo;
 
 
 @end

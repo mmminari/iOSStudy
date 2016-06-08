@@ -28,7 +28,6 @@
 
 -(void)initWithResults:(NSDictionary *)results
 {
-
     _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
     _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
 

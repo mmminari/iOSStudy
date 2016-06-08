@@ -27,7 +27,6 @@
     BOOL result = [self.autoSignIn boolForKey:@"isAutoSignIn"];
     
     return result;
-    
 }
 
 -(CGFloat)getScreenWidth
@@ -66,7 +65,6 @@
         
         for(int i = 0; i<[colorValue length];i++)
         {
-            
             color = [colorValue substringWithRange:NSMakeRange(i, 1)];
             
             if([color isEqualToString:@"a"])
@@ -82,9 +80,11 @@
             else if([color isEqualToString:@"f"])
                 color = @"15";
             
-            if (i == 0) {
+            if (i == 0)
+            {
                 totalValue += color.integerValue * 16;
-            }else
+            }
+            else
             {
                 totalValue += color.integerValue;
             }
@@ -96,7 +96,6 @@
         
         finalColorValue = 0.0f;
         totalValue = 0.0f;
-        
     }
     
     color = [UIColor colorWithRed:[[rgbDictionary valueForKey:@"Red"] floatValue]
@@ -107,6 +106,8 @@
     
 }
 
+
+//NSNull인지 확인한 수 NSNull이면 nil값을 넣어 리턴해주어야 오류가 안남
 -(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic
 {
     id result = nil;
@@ -122,7 +123,6 @@
     }
     
     return result;
-    
 }
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView

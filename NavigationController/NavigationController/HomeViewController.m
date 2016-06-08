@@ -109,6 +109,7 @@
 
 @property (strong, nonatomic) MainViewController *mainVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBannerView;
+@property (strong, nonatomic) NSString *bannerUrlString;
 
 @end
 
@@ -155,12 +156,17 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivUser.layer.cornerRadius = WRATIO_WIDTH(195)/2;
     self.ivUser.layer.masksToBounds = YES;
     
-    
     [self setColor];
     [self setAutoLayout];
     [self startDownLoadImage];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.lbMiddleNotice.text = [self.library eventTitle];
+    self.bannerUrlString = [self.library bannerUri];
     [self startDownLoadBanner];
-    
+
 }
 
 -(void)startDownLoadImage
@@ -182,7 +188,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)startDownLoadBanner
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.mainInfo bannerUri]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.bannerUrlString]];
     NSURLSessionTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         UIImage *image = [[UIImage alloc]initWithData:data];

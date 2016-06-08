@@ -8,10 +8,7 @@
 
 #import "UserInformation.h"
 
-
 @interface UserInformation ()
-
-
 
 @end
 
@@ -30,11 +27,9 @@
         _cardNo = [self getValueWithKey:@"cardNo" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
         _cardRegdate = [self getValueWithKey:@"cardRegdate" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
         _strUserGrade = [self getValueWithKey:@"strUserGrade" Dictionary:[self getValueWithKey:@"userInfo" Dictionary:results]];
- 
     }
     
     return self;
-    
 }
 
 

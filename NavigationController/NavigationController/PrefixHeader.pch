@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  NavigationController
+//
+//  Created by 김민아 on 2016. 6. 8..
+//  Copyright © 2016년 김민아. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "YHDebugLog.h"
+
+#endif /* PrefixHeader_pch */

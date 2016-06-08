@@ -14,7 +14,6 @@
 
 @interface MainViewController : BaseViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 
-
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
@@ -22,7 +21,5 @@
 -(void)touchedShowBarcode;
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;
 -(void)moveToTheTargetViewWithMenuList:(MenuList)list;
-
-
 
 @end

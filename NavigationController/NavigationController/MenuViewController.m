@@ -85,7 +85,6 @@
     
 }
 
-
 -(void)downLoadImage
 {
     NSURLSessionDataTask *dataTask;
@@ -193,7 +192,7 @@
     }
     
     [self.mainVC moveToTheTargetViewWithMenuList:menuList];
-
+    
 }
 
 

@@ -70,8 +70,7 @@
     }
     
     return cell;
-    
-    
+
 }
 
 @end

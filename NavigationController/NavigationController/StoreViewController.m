@@ -129,7 +129,6 @@
     CGFloat imgWidth = [widht floatValue];
     NSLog(@"%f", imgWidth);
     
-    
     self.rationHeight = (DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
     
     cell.alcHeightOfImg.constant = WRATIO_WIDTH(self.rationHeight);
@@ -234,7 +233,6 @@
     
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                                       {
-                                          
                                           id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
                                           
                                           if ([sentData isKindOfClass:[NSNull class]])

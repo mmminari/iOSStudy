@@ -220,6 +220,8 @@
 		6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@3x.png"; sourceTree = "<group>"; };
 		6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@2x.png"; sourceTree = "<group>"; };
 		6D50E08E1CF2AA1E003A7EB7 /* img_profile_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@3x.png"; sourceTree = "<group>"; };
+		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
+		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D8AA64D1CD73A080044DF31 /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		6D8AA64E1CD73A080044DF31 /* UserInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformation.m; sourceTree = "<group>"; };
 		6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
@@ -394,6 +396,8 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */,
+				6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
 				6D4C8A871CC71FDB006AEEBE /* AppDelegate.m */,
 				6D4AD2F71D01273700CFC443 /* EtcViewController */,
@@ -409,22 +413,24 @@
 				6D4AD3071D01660F00CFC443 /* LogOutCollectionViewController.m */,
 				6D4AD3091D01672C00CFC443 /* LogOutCollectionCell.h */,
 				6D4AD30A1D01672C00CFC443 /* LogOutCollectionCell.m */,
+				6D247F771CE1CB9100EBE9DB /* MainViewController.h */,
+				6D247F781CE1CB9200EBE9DB /* MainViewController.m */,
+				6D4AD2F01D002B6800CFC443 /* BaseModel.h */,
+				6D4AD2F11D002B6800CFC443 /* BaseModel.m */,
 				6D8AA64D1CD73A080044DF31 /* UserInformation.h */,
 				6D8AA64E1CD73A080044DF31 /* UserInformation.m */,
+				6D1470101CEC4070001529A2 /* StoreInformation.h */,
+				6D1470111CEC4070001529A2 /* StoreInformation.m */,
+				6D4787241CFED047001A9A52 /* MainInformation.h */,
+				6D4787251CFED047001A9A52 /* MainInformation.m */,
 				6DF050711CD9DBC0006C9513 /* UtilityClass.h */,
 				6DF050721CD9DBC0006C9513 /* UtilityClass.m */,
 				6DF050741CD9F837006C9513 /* BaseViewController.h */,
 				6DF050751CD9F837006C9513 /* BaseViewController.m */,
-				6D4AD2F01D002B6800CFC443 /* BaseModel.h */,
-				6D4AD2F11D002B6800CFC443 /* BaseModel.m */,
 				6D00A7631CEF071F00481C9C /* MenuViewController.h */,
 				6D00A7641CEF071F00481C9C /* MenuViewController.m */,
 				6D4AD2ED1CFFFCA400CFC443 /* SettingViewController.h */,
 				6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */,
-				6D247F771CE1CB9100EBE9DB /* MainViewController.h */,
-				6D247F781CE1CB9200EBE9DB /* MainViewController.m */,
-				6D4787241CFED047001A9A52 /* MainInformation.h */,
-				6D4787251CFED047001A9A52 /* MainInformation.m */,
 				6D247F7A1CE1CBEE00EBE9DB /* MainCollectionCell.h */,
 				6D247F7B1CE1CBEE00EBE9DB /* MainCollectionCell.m */,
 				6D464AE31CD082E20035FF68 /* HomeViewController.h */,
@@ -441,8 +447,6 @@
 				6D14701B1CEC6130001529A2 /* ImageDownload.m */,
 				6D1470131CEC4DE5001529A2 /* StoreCell.h */,
 				6D1470141CEC4DE5001529A2 /* StoreCell.m */,
-				6D1470101CEC4070001529A2 /* StoreInformation.h */,
-				6D1470111CEC4070001529A2 /* StoreInformation.m */,
 				6D468FAF1CE5D55D00538EE0 /* BarcodeViewController.h */,
 				6D468FB01CE5D55D00538EE0 /* BarcodeViewController.m */,
 				6D4C8A8C1CC71FDB006AEEBE /* Main.storyboard */,
@@ -738,6 +742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "${SRCROOT}/${PROJECT_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = NavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smict.NavigationController;
@@ -749,6 +754,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "${SRCROOT}/${PROJECT_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = NavigationController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.smict.NavigationController;

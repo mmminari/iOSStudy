@@ -14,16 +14,11 @@
 {
     if(self = [super init])
     {
-        /*
-        _eventTitle = [self getValueWithKey:lagCode Dictionary:[self getValueWithKey:@"title" Dictionary:[self getValueWithKey:@"textEvent" Dictionary:results]]];
-        _bannerUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"banner" Dictionary:[self getValueWithKey:@"imageEvent" Dictionary:results]]];
-    
-         */
+        _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
+        _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
     }
     
-    
     return self;
-
 }
 
 @end

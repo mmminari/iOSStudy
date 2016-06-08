@@ -41,7 +41,6 @@
     }
     
     [self startSession];
-
 }
 
 -(void)startSession
@@ -66,8 +65,5 @@
     [task resume];
 
 }
-
-
-
 
 @end

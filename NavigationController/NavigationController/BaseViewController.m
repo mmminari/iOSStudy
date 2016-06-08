@@ -16,7 +16,8 @@
 //가장먼저실행
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-    if (self = [super initWithCoder:aDecoder]) {
+    if (self = [super initWithCoder:aDecoder])
+    {
         
     }
     
@@ -27,8 +28,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    
 }
 
 //그다음
@@ -122,7 +121,5 @@
     
     return result;
 }
-
-
 
 @end

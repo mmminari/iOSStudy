@@ -76,7 +76,6 @@
     
     NSLog(@"%zd", [self.userInfo userNo]);
     
-    
 }
 
 #pragma mark - User Action

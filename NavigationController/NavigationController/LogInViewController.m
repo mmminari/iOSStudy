@@ -71,7 +71,8 @@
 
 @implementation LogInViewController
 
--(void)viewDidLoad{
+-(void)viewDidLoad
+{
     [super viewDidLoad];
     
     self.tfEmail.text = @"yonghwinam@smtown.com";
@@ -104,7 +105,6 @@
 {
     self.view.userInteractionEnabled = NO;
     [self startSession];
-    
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -113,7 +113,8 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
 }
 
-- (IBAction)touchedGoBack:(id)sender {
+- (IBAction)touchedGoBack:(id)sender
+{
     //show로 연결했을 때 뒤로가는 버튼
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -230,11 +231,8 @@
         [self processingUrlRequestWithParam: sentData];
         
         NSLog(@"%@", sentData);
-
         
     }] resume];
-    
-    
 }
 
 -(void)processingUrlRequestWithParam:(id)param
@@ -253,7 +251,6 @@
         
         NSLog(@"userinfo : %@", self.sentDataDic);
     }
-    
     if([self.userInfo result])
     {
         NSLog(@"LogIn");
@@ -264,8 +261,6 @@
         NSArray *cookiesArr = [cookieStor cookiesForURL:[NSURL URLWithString: LOGIN_API]];
 
         NSLog(@"%@", cookiesArr);
-        
-        
     }
     else
     {
@@ -286,7 +281,6 @@
                    
                    [self processingHomeRequestWithParam:receiveData];
                }];
-    
     [task resume];
 
 }
@@ -304,7 +298,6 @@
                 [self performSegueWithIdentifier:sgId sender:self];
         });
         //뷰가 그려지는 중에 UI의 변경이 있을 경우는 이 코드를 사용해야함.
-
     }
 }
 

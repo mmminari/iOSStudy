@@ -33,4 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;
 
 
+-(void)viewWillAppear:(BOOL)animated;
+
+
 @end

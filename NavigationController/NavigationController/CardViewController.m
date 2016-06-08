@@ -101,7 +101,8 @@
     
     CardCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[CardCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     

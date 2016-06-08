@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UtilityClass.h"
+#import "BaseModel.h"
 
-@interface StoreInformation : UtilityClass
+@interface StoreInformation : BaseModel
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *address;

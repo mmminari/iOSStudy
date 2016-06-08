@@ -196,7 +196,7 @@ typedef NS_ENUM(NSInteger, textFieldTagNumber){
     
 }
 
-- (IBAction)show:(UIButton *)sender { 
+- (IBAction)show:(UIButton *)sender {
     
     self.userName = self.inputName.text;
     self.userAge = self.inputAge.text;

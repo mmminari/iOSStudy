@@ -22,11 +22,9 @@
     
     NSURLSessionDataTask *datatask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
                                       {
-      
                                           [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                                               UIImage *image = [[UIImage alloc]initWithData:data];
                                               
-                                
                                               if(image!= nil)
                                               {
                                                   [self.imageArr addObject:image];

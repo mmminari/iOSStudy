@@ -112,45 +112,52 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     ButtonTagNumberStore,
 };
 
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
-    self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
-    
-    [self.view addSubview:self.splashVC.view];
-    [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
-    
-    
-    
-    if(![self.util getResultOfAutoSignIn])
-    {
-      //  [self.view addSubview:self.logoutVC.view];
-       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
-        
-        [self.splashVC.view removeFromSuperview];
-        [self.splashVC removeFromParentViewController];
-        self.splashVC = nil;
-        
-    }
-    
+    [self.navigationController setNavigationBarHidden:YES];
+
+    //side menu show시 화면을 까맣게 보여주는 view
     [self.hideView setHidden:YES];
     self.hideView.backgroundColor = [UIColor blackColor];
     self.hideView.alpha = 0.5f;
-
-    [self.navigationController setNavigationBarHidden:YES];
     
+    self.btnHome.tag = ButtonTagNumberHome;
+    self.btnPoint.tag = ButtonTagNumberPoint;
+    self.btnCard.tag = ButtonTagNumberCard;
+    self.btnStore.tag = ButtonTagNumberStore;
+
+    //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
+    self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
     self.pointVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainpointview"];
     self.cardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-maincardview"];
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
-    //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
-    
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-        
+    
+    
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
+        [self.view addSubview:self.splashVC.view];
+        [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
+ 
+    });
+
+   
+    
+    //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
+    if(![self.util getResultOfAutoSignIn])
+    {
+      //  [self.view addSubview:self.logoutVC.view];
+       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
+
+    }
+
     self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
@@ -159,12 +166,53 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.settingVC.userInfo = self.userInfo;
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
     //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로
-
-    self.btnHome.tag = ButtonTagNumberHome;
-    self.btnPoint.tag = ButtonTagNumberPoint;
-    self.btnCard.tag = ButtonTagNumberCard;
-    self.btnStore.tag = ButtonTagNumberStore;
     
+    [self.view addSubview:self.menuVC.view];
+    [self.view sendSubviewToBack:self.menuVC.view];
+   // [self.view insertSubview:self.menuVC.view atIndex:0];
+    //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
+
+    [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
+    [self setLayoutAndColor];
+    
+}
+
+
+#pragma mark - NotificationCenter
+
+-(void)viewWillAppear:(BOOL)animated
+{
+
+    NSLog(@"will appear");
+    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
+    self.notiCenter = [NSNotificationCenter defaultCenter];
+    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.notiCenter removeObserver:self];
+}
+
+-(void)sendData:(NSNotification *)notification
+{
+    NSLog(@"send");
+    NSLog(@"%@, %@", [self.library eventTitle], [self.library bannerUri]);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.cvMainView reloadData];
+        
+        [self.splashVC.view removeFromSuperview];
+      //  [self.splashVC removeFromParentViewController];
+        
+    });
+}
+
+#pragma mark - UI
+
+-(void)setLayoutAndColor
+{
     self.alcHeightOfNaviagtionBar.constant = WRATIO_WIDTH(213);
     
     self.alcWidthOfHomeView.constant = QUARTER_OF_WIDTH;
@@ -183,12 +231,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivPinkIndicator.backgroundColor = [self.util getColorWithRGBCode:@"f386a1"];
     self.ivBarBottom.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     self.ivBarBottomCor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    [self.view addSubview:self.menuVC.view];
-    [self.view sendSubviewToBack:self.menuVC.view];
-   // [self.view insertSubview:self.menuVC.view atIndex:0];
-    //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
-
-    [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     
     self.alcHeightOfMainImg.constant = WRATIO_WIDTH(48.0f);
     self.alcWidthOfMainImg.constant = WRATIO_WIDTH(729.0f);
@@ -197,22 +239,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcBottomOfMainImg.constant = WRATIO_WIDTH(54.0f);
     self.alcBottomOfMenuImg.constant = WRATIO_WIDTH(54.0f);
     
-    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
-    self.notiCenter = [NSNotificationCenter defaultCenter];
-    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
-
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [self.notiCenter removeObserver:self];
-}
-
--(void)sendData:(NSNotification *)notification
-{
-    NSLog(@"send");
-    [self.cvMainView reloadData];
-    NSLog(@"%@", [self.library eventTitle]);
 }
 
 #pragma mark - User Action
@@ -221,6 +247,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     NSInteger index = sender.tag - 1000;
 
+    //사용자 버튼 중복터치 방지
     if(index != self.index2)
     {
         [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*index,0.0f) animated:YES];
@@ -234,18 +261,16 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
     
     self.index2 = index;
-
 }
 
 - (void)touchedShowBarcode
 {
-   
     NSString *sgId = @"sgMainToBarcode";
     [self performSegueWithIdentifier:sgId sender:self];
-    
 }
-- (IBAction)touchedBackToMain:(id)sender {
-    
+
+- (IBAction)touchedBackToMain:(id)sender
+{
     self.alcTrailingOfMainView.constant = 0.0f;
     self.alcLeadingOfMainView.constant  = 0.0f;
 
@@ -255,8 +280,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
 }
 
-- (IBAction)touchedBarMenu:(id)sender {
-
+- (IBAction)touchedBarMenu:(id)sender
+{
     self.alcLeadingOfMainView.constant = - WRATIO_WIDTH(REMAIN_SPACE);
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
@@ -297,7 +322,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     CGFloat height = [UIScreen mainScreen].bounds.size.height-self.alcHeightOfMenuBar.constant-self.alcHeightOfNaviBar.constant - 1.0f ;
     
     return CGSizeMake(width, height);
-    
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -310,28 +334,24 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         [cell.contentView addSubview:self.HomeVC.view];
         [self setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
-        
+        [self.HomeVC viewWillAppear:YES];
+        //각각의 viewcontroller을 subview로 추가해주었기 때문에 업데이트할 속성들을 따로 오버라이딩 하여 호출해주어야 reload됨
     }
     if(indexPath.item == 1)
     {
         [cell.contentView addSubview:self.pointVC.view];
         [self setContentViewLayoutWithSubView:self.pointVC.view withTargetView:cell.contentView];
-        
     }
     if(indexPath.item == 2)
     {
         [cell.contentView addSubview:self.cardVC.view];
         self.cardVC.mainVC = self;
-
         [self setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
-        
-        
     }
     if(indexPath.item == 3)
     {
         [cell.contentView addSubview:self.storeVC.view];
         [self setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
-        
     }
 
     return cell;
@@ -346,7 +366,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self reloadWkWebView];
 }
 
-
 -(void)reloadWkWebView
 {
     [self.pointVC.wkWebView reload];
@@ -356,7 +375,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.pointVC.activityIndic startAnimating];
     }
 }
-
 
 #pragma mark - set layout
 
@@ -431,7 +449,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     [targetView addConstraints:cArr];
 
-    
 }
 
 //segue를 사용하지 않고 storyboardId를 이용해서 뷰 전환
@@ -468,7 +485,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     [baseVC setTitleOfNavibarWithMenuList:list];
     [baseVC setWebViewWithMenuList:list];
-    [self.navigationController pushViewController:baseVC animated:YES];
+    [self.navigationController pushViewController:baseVC animated:YES]; //segue를 사용하지 않고 뷰 전환 (push)
     
 }
 
@@ -483,7 +500,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self.navigationController pushViewController:baseVC animated:YES];
 
 }
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
