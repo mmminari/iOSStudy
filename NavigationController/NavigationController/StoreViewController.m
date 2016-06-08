@@ -13,10 +13,7 @@
 
 #define STORE_API                                               @"http://pointapibeta.smtown.com/api/v1/brand"
 
-
-
 @interface StoreViewController ()
-
 
 @property (strong, nonatomic) NSDictionary *responseDic;
 @property (strong, nonatomic) NSArray *responseArr;
@@ -27,7 +24,6 @@
 
 @property (strong, nonatomic) NSMutableArray *storeArr;
 @property (assign, nonatomic) CGFloat rationHeight;
-
 
 @end
 

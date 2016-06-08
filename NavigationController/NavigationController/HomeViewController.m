@@ -127,8 +127,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [super viewDidLoad];
     NSLog(@"self.lib : %@",self.library);
     
-    self.lbMiddleNotice.text = [self.library eventTitle];
-    NSLog(@"title %@", [self.library eventTitle]);
+    self.lbMiddleNotice.text = [self.library.mainInfo eventTitle];
+    NSLog(@"title %@", [self.library.mainInfo eventTitle]);
     
     self.lbUserEmail.text = [self.userInfomation userId];
     self.lbUserName.text = [self.userInfomation userName];
@@ -163,8 +163,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.lbMiddleNotice.text = [self.library eventTitle];
-    self.bannerUrlString = [self.library bannerUri];
+    self.lbMiddleNotice.text = [self.library.mainInfo eventTitle];
+    self.bannerUrlString = [self.library.mainInfo bannerUri];
     [self startDownLoadBanner];
 
 }

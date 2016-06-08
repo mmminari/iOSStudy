@@ -8,21 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+#import "IntroInformation.h"
 
 @interface MainInformation : BaseModel
 
-//introInfo
-@property (assign, nonatomic) NSInteger backgroundWidth;
-@property (assign, nonatomic) NSInteger backgroundHeight;
-@property (strong, nonatomic) NSString *backgroundUri;
-
-@property (assign, nonatomic) NSInteger contentWidth;
-@property (assign, nonatomic) NSInteger contentHeight;
-@property (strong, nonatomic) NSString *contentUri;
-
-@property (assign, nonatomic) NSInteger contentBackgroundWidht;
-@property (assign, nonatomic) NSInteger contentBackgroundHeight;
-@property (strong, nonatomic) NSString *contentBackgroundUri;
 
 //textEvent
 @property (strong, nonatomic) NSString *eventTitle;
@@ -31,7 +20,11 @@
 //imageEvent
 @property (strong, nonatomic) NSString *bannerUri;
 
+-(void)initWithResults:(NSDictionary *)results;
 
--(instancetype)initWithResults:(NSDictionary *)results lagCode:(NSString *)lagCode;
+@property (strong, nonatomic) NSMutableArray *introInfoArr;
+@property (strong, nonatomic) IntroInformation *introInfo;
+@property (strong, nonatomic) NSMutableArray *introInformationArr;
+
 
 @end

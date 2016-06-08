@@ -81,6 +81,7 @@
 		6D50E08C1CF2A9C3003A7EB7 /* menu_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */; };
 		6D50E08F1CF2AA1E003A7EB7 /* img_profile_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */; };
 		6D50E0901CF2AA1E003A7EB7 /* img_profile_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08E1CF2AA1E003A7EB7 /* img_profile_menu@3x.png */; };
+		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
 		6D9AE0F51CD1F9F700B99E2B /* btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F31CD1F9F700B99E2B /* btn_back@3x.png */; };
@@ -222,6 +223,8 @@
 		6D50E08E1CF2AA1E003A7EB7 /* img_profile_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@3x.png"; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
+		6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroInformation.m; sourceTree = "<group>"; };
 		6D8AA64D1CD73A080044DF31 /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		6D8AA64E1CD73A080044DF31 /* UserInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformation.m; sourceTree = "<group>"; };
 		6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
@@ -423,6 +426,8 @@
 				6D1470111CEC4070001529A2 /* StoreInformation.m */,
 				6D4787241CFED047001A9A52 /* MainInformation.h */,
 				6D4787251CFED047001A9A52 /* MainInformation.m */,
+				6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */,
+				6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */,
 				6DF050711CD9DBC0006C9513 /* UtilityClass.h */,
 				6DF050721CD9DBC0006C9513 /* UtilityClass.m */,
 				6DF050741CD9F837006C9513 /* BaseViewController.h */,
@@ -615,6 +620,7 @@
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
 				6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */,
 				6D14701C1CEC6130001529A2 /* ImageDownload.m in Sources */,
+				6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DAD689C1CEABED500C25969 /* CardCell.m in Sources */,
 				6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */,

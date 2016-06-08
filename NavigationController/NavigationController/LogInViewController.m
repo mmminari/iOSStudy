@@ -244,10 +244,10 @@
     if([param isKindOfClass:[NSDictionary class]])
     {
         self.sentDataDic = param;
+       // UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
         
-        UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
-        
-        self.userInfo = userInfo;
+        [self.library.userInfo initWithResults:self.sentDataDic];
+        //self.userInfo = userInfo;
         
         NSLog(@"userinfo : %@", self.sentDataDic);
     }
@@ -290,8 +290,10 @@
     if([param isKindOfClass:[NSDictionary class]])
     {
         NSDictionary *dataDic = param;
-        NSString *lagCode = [self.util getDeviceLaguage];
-        self.mainInfo = [[MainInformation alloc]initWithResults:dataDic lagCode:lagCode];
+      //  NSString *lagCode = [self.util getDeviceLaguage];
+        
+        [self.library.mainInfo initWithResults:dataDic];
+        
 
         dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *sgId = @"sgLogInToMainView";
@@ -315,9 +317,9 @@
 {
     if([[segue identifier] isEqualToString:@"sgLogInToMainView"])
     {
-        MainViewController *mainVC = [segue destinationViewController];
-        mainVC.userInfo = self.userInfo;
-        mainVC.mainInfo = self.mainInfo;
+        //MainViewController *mainVC = [segue destinationViewController];
+       // mainVC.userInfo = self.userInfo;
+       // mainVC.mainInfo = self.mainInfo;
     }
 }
 

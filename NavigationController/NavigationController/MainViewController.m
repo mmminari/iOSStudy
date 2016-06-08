@@ -29,6 +29,7 @@
 
 #import "SplashViewController.h"
 #import "LogOutCollectionViewController.h"
+#import "IntroInformation.h"
 
 @interface MainViewController ()
 
@@ -138,27 +139,20 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     
-    
-    static dispatch_once_t oncePredicate;
-    
-    dispatch_once(&oncePredicate, ^{
-        self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
-        [self.view addSubview:self.splashVC.view];
-        [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
- 
-    });
 
-   
-    
+    self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
+    [self.view addSubview:self.splashVC.view];
+    [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
+
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
     if(![self.util getResultOfAutoSignIn])
     {
-      //  [self.view addSubview:self.logoutVC.view];
-       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
+        [self.view addSubview:self.logoutVC.view];
+        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
 
     }
 
-    self.HomeVC.userInfomation   = self.userInfo;
+   // self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
@@ -197,7 +191,12 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)sendData:(NSNotification *)notification
 {
     NSLog(@"send");
-    NSLog(@"%@, %@", [self.library eventTitle], [self.library bannerUri]);
+    NSLog(@"%@, %@", [self.library.mainInfo eventTitle], [self.library.mainInfo bannerUri]);
+    
+    IntroInformation *info = self.library.mainInfo.introInformationArr[1];
+    
+    NSString *urlString = [info backgroundUri];
+    NSLog(@"hihi %@", urlString);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         

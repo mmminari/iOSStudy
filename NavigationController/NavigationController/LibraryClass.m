@@ -15,22 +15,26 @@
 + (instancetype)sharedInstance
 {
     static LibraryClass *_sharedInstance = nil;
-    
+
     static dispatch_once_t oncePredicate;
     
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[LibraryClass alloc] init];
+ 
     });
     
     return _sharedInstance;
 }
 
-
--(void)initWithResults:(NSDictionary *)results
+-(instancetype)init
 {
-    _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
-    _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
+    if(self = [super init])
+    {
+        self.userInfo = [[UserInformation alloc]init];
+        self.mainInfo = [[MainInformation alloc]init];
 
+    }
+    return self;
 }
 
 @end

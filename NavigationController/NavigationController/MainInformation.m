@@ -10,15 +10,22 @@
 
 @implementation MainInformation
 
--(instancetype)initWithResults:(NSDictionary *)results lagCode:(NSString *)lagCode
+
+-(void)initWithResults:(NSDictionary *)results
 {
-    if(self = [super init])
-    {
-        _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
-        _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
-    }
+    self.introInfoArr = [self getValueWithKey:@"introInfo" Dictionary:results];
+    self.introInformationArr = [NSMutableArray array];
     
-    return self;
+    for (NSDictionary *dic in self.introInfoArr)
+    {
+        IntroInformation *introInfo = [[IntroInformation alloc]initWithInfoDic:dic];
+        [self.introInformationArr addObject:introInfo];
+    }
+    NSLog(@"introArr: %@", self.introInformationArr);
+    
+    _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
+    _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
+    
 }
 
 @end

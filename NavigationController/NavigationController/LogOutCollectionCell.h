@@ -10,4 +10,11 @@
 
 @interface LogOutCollectionCell : UICollectionViewCell
 
+
+@property (weak, nonatomic) IBOutlet UIImageView *ivBackground;
+@property (weak, nonatomic) IBOutlet UIImageView *ivContent;
+@property (weak, nonatomic) IBOutlet UIImageView *ivContentBackground;
+
+
+
 @end

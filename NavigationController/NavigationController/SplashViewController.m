@@ -56,7 +56,7 @@
                                   if ([receiveData isKindOfClass:[NSDictionary class]])
                                   {
                                       self.resultDic = receiveData;
-                                      [self.library initWithResults:self.resultDic];
+                                       [self.library.mainInfo initWithResults:self.resultDic];
                                       
                                       [[NSNotificationCenter defaultCenter] postNotificationName:@"endDataTransit" object:nil];
                                   }

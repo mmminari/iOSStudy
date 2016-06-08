@@ -10,8 +10,6 @@
 
 @interface PointViewController ()
 
-
-
 @end
 
 @implementation PointViewController
@@ -28,7 +26,7 @@
     self.wkWebView.UIDelegate = self;
     self.wkWebView.navigationDelegate = self;
     [self.view addSubview:self.wkWebView];
-    [self setContentViewLayoutWithSubView:self.wkWebView withTargetView:self.view];
+    [self.util setContentViewLayoutWithSubView:self.wkWebView withTargetView:self.view];
     
     [self.view insertSubview:self.wkWebView belowSubview:self.activityIndic];
 
