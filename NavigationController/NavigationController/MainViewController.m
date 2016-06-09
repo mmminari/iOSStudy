@@ -176,7 +176,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewWillAppear:(BOOL)animated
 {
-
     NSLog(@"will appear");
     //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
     self.notiCenter = [NSNotificationCenter defaultCenter];
@@ -191,19 +190,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)sendData:(NSNotification *)notification
 {
     NSLog(@"send");
-    NSLog(@"%@, %@", [self.library.mainInfo eventTitle], [self.library.mainInfo bannerUri]);
-    
-    IntroInformation *info = self.library.mainInfo.introInformationArr[1];
-    
-    NSString *urlString = [info backgroundUri];
-    NSLog(@"hihi %@", urlString);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
         [self.cvMainView reloadData];
         
         [self.splashVC.view removeFromSuperview];
-      //  [self.splashVC removeFromParentViewController];
+        [self.splashVC removeFromParentViewController];
         
     });
 }
@@ -237,7 +230,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcWidthOfMenuImg.constant = WRATIO_WIDTH(75.0f);
     self.alcBottomOfMainImg.constant = WRATIO_WIDTH(54.0f);
     self.alcBottomOfMenuImg.constant = WRATIO_WIDTH(54.0f);
-    
 }
 
 #pragma mark - User Action

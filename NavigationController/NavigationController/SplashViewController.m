@@ -7,6 +7,7 @@
 //
 
 #import "SplashViewController.h"
+#import "MainInformation.h"
 
 @interface SplashViewController ()
 
@@ -56,7 +57,9 @@
                                   if ([receiveData isKindOfClass:[NSDictionary class]])
                                   {
                                       self.resultDic = receiveData;
-                                       [self.library.mainInfo initWithResults:self.resultDic];
+                                      
+                                      MainInformation *mainInfo = [[MainInformation alloc]initWithResults:self.resultDic];
+                                      self.library.mainInfo = mainInfo;
                                       
                                       [[NSNotificationCenter defaultCenter] postNotificationName:@"endDataTransit" object:nil];
                                   }

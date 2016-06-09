@@ -11,21 +11,32 @@
 @implementation MainInformation
 
 
--(void)initWithResults:(NSDictionary *)results
+-(instancetype)initWithResults:(id)results
 {
-    self.introInfoArr = [self getValueWithKey:@"introInfo" Dictionary:results];
-    self.introInformationArr = [NSMutableArray array];
-    
-    for (NSDictionary *dic in self.introInfoArr)
+    if(self = [super init])
     {
-        self.introInfo = [[IntroInformation alloc]initWithInfoDic:dic];
-        [self.introInformationArr addObject:self.introInfo];
+        if ([results isKindOfClass:[NSDictionary class]])
+        {
+            NSArray *list = [self getValueWithKey:@"introInfo" Dictionary:results];
+            NSMutableArray *listArr = [NSMutableArray array];
+            
+            for (NSDictionary *dic in list)
+            {
+                IntroInformation *introInfo = [[IntroInformation alloc]initWithInfoDic:dic];
+                [listArr addObject:introInfo];
+            }
+            
+            self.introList = (NSArray *)listArr;
+            NSLog(@"introList %@", self.introList);
+        }
+        
+        _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
+        _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
     }
-    NSLog(@"introArr: %@", self.introInformationArr);
     
-    _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
-    _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
     
+    
+    return self;
 }
 
 @end

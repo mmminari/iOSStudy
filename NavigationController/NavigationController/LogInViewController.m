@@ -10,16 +10,8 @@
 #import "IntroUiViewController.h"
 #import "HomeViewController.h"
 #import "MainViewController.h"
-#import "MainInformation.h"
-
-
 
 @interface LogInViewController ()
-
-
-@property(strong, nonatomic) IntroUiViewController *introVC;
-@property (strong, nonatomic) HomeViewController *homeVC;
-@property (strong, nonatomic) MainInformation *mainInfo;
 
 @property (weak, nonatomic) IBOutlet UITextField *tfEmail;
 @property (weak, nonatomic) IBOutlet UITextField *tfPassWord;
@@ -80,8 +72,6 @@
     
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.userInfo = [[UserInformation alloc] init];
-
     self.lbLogInInfo.text = @"로그인 정보";
     self.ivButton.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottmIcon.image = [UIImage imageNamed:@"icon_info"];
@@ -245,7 +235,8 @@
     {
         self.sentDataDic = param;
         
-        [self.library.userInfo initWithResults:self.sentDataDic];
+        UserInformation *userInfo = [[UserInformation alloc]initWithResults:self.sentDataDic];
+        self.library.userInfo = userInfo;
         
     }
     if([self.userInfo result])
@@ -286,11 +277,6 @@
 {
     if([param isKindOfClass:[NSDictionary class]])
     {
-        NSDictionary *dataDic = param;
-      //  NSString *lagCode = [self.util getDeviceLaguage];
-        
-        [self.library.mainInfo initWithResults:dataDic];
-        
 
         dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *sgId = @"sgLogInToMainView";

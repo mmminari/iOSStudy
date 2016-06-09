@@ -44,14 +44,15 @@
     
     NSLog(@"lib %@", self.library);
     NSLog(@"main - intro - arr %@", self.library.mainInfo);
-    NSLog(@" %@", self.library.mainInfo.introInformationArr[1]);
     
     [self.btnRegCard setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
-    [self.btnRegCard setTitle:@"포인트 카드 발급 등록" forState:UIControlStateNormal];
+    [self.btnRegCard setTitle:@"     포인트 카드 발급 등록     " forState:UIControlStateNormal];
     [self.btnRegCard setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
+    self.btnRegCard.titleLabel.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(46.0f)];
     
-                                    
-    
+    self.lbLogIn.text = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
+    self.lbLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46.0f)];
+    self.lbLogIn.textColor = [self.util getColorWithRGBCode:@"b0b0b0"];
 
 }
 
@@ -206,11 +207,11 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.backgroundArr;
         
-        IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
 
         imageDown.urlString = [info backgroundUri];
         NSLog(@"url string : %@", imageDown.urlString);
-        NSLog(@" count : %zd", self.library.mainInfo.introInformationArr.count);
+        NSLog(@" count : %zd", self.library.mainInfo.introList.count);
         
         
         [imageDown setCompletionHandler:^
@@ -234,6 +235,7 @@
         [imageDown stardDownload];
     }
 }
+
 -(void)startDownloadContentBackgroundImageWithIndexPath:(NSIndexPath *)indexPath
 {
     ImageDownload *imageDown = self.backgroundContentDic[indexPath];
@@ -242,7 +244,7 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.backgroundContentArr;
         
-        IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
         
         imageDown.urlString = [info contentBackgroundUri];
    
@@ -266,8 +268,8 @@
         
         [imageDown stardDownload];
     }
-    
 }
+
 -(void)startDownloadContentImageWithIndexPath:(NSIndexPath *)indexPath
 {
     ImageDownload *imageDown = self.contentDic[indexPath];
@@ -277,22 +279,21 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.contentArr;
         
-        IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
         
         imageDown.urlString = [info contentUri];
         NSLog(@"content %@", [info contentUri]);
         
-        
-        [imageDown setCompletionHandler:^{
+        [imageDown setCompletionHandler:^
+        {
             LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
-            NSLog(@"cdll : %@", cell);
             
             @try
             {
                 cell.ivContent.image = self.contentArr[indexPath.row];
                 cell.alcWidthOfIvContent.constant = WRATIO_WIDTH([info contentWidth]);
                 cell.alcHeightOfIvContent.constant = WRATIO_WIDTH([info contentHeight]);
-                NSLog(@"width : %f height : %f", WRATIO_WIDTH([info contentWidth]), WRATIO_WIDTH([info contentHeight    ]));
+                NSLog(@"width : %f height : %f", WRATIO_WIDTH([info contentWidth]), WRATIO_WIDTH([info contentHeight]));
             }
             @catch (NSException *exception)
             {
@@ -306,6 +307,6 @@
         
         [imageDown stardDownload];
     }
-    
 }
+
 @end

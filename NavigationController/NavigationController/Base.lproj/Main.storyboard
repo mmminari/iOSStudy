@@ -1341,16 +1341,16 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tB-Sf-eyZ">
-                                <rect key="frame" x="0.0" y="391" width="600" height="199"/>
+                                <rect key="frame" x="0.0" y="410" width="600" height="180"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhZ-Yq-m0e">
-                                        <rect key="frame" x="266" y="155" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhZ-Yq-m0e">
+                                        <rect key="frame" x="279" y="137" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-tm-zq8">
-                                        <rect key="frame" x="264" y="97" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebj-tm-zq8">
+                                        <rect key="frame" x="277" y="55" width="46" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="yPP-ua-fip"/>
                                         </constraints>
@@ -1362,7 +1362,7 @@
                                     <constraint firstItem="jhZ-Yq-m0e" firstAttribute="centerX" secondItem="4tB-Sf-eyZ" secondAttribute="centerX" id="0m0-Rg-30N"/>
                                     <constraint firstItem="ebj-tm-zq8" firstAttribute="centerX" secondItem="4tB-Sf-eyZ" secondAttribute="centerX" id="6uP-qX-yhS"/>
                                     <constraint firstAttribute="bottom" secondItem="jhZ-Yq-m0e" secondAttribute="bottom" constant="22" id="eW7-dr-x6H"/>
-                                    <constraint firstAttribute="height" constant="199" id="uWE-sE-dAd"/>
+                                    <constraint firstAttribute="height" constant="180" id="uWE-sE-dAd"/>
                                     <constraint firstItem="jhZ-Yq-m0e" firstAttribute="top" secondItem="ebj-tm-zq8" secondAttribute="bottom" constant="39" id="xL7-6N-COq"/>
                                 </constraints>
                             </view>

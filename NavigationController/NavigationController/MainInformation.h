@@ -19,12 +19,12 @@
 
 //imageEvent
 @property (strong, nonatomic) NSString *bannerUri;
+@property (assign, nonatomic) NSInteger bannerUriWidth;
+@property (assign, nonatomic) NSInteger bannerUriHeight;
 
--(void)initWithResults:(NSDictionary *)results;
+@property (strong, nonatomic) NSArray *introList;
 
-@property (strong, nonatomic) NSMutableArray *introInfoArr;
-@property (strong, nonatomic) IntroInformation *introInfo;
-@property (strong, nonatomic) NSMutableArray *introInformationArr;
+-(instancetype)initWithResults:(id)results;
 
 
 @end

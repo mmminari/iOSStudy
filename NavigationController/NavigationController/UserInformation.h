@@ -37,6 +37,6 @@
 @property (assign, nonatomic) BOOL result;
 
 
--(void)initWithResults:(NSDictionary *)results;
+-(instancetype)initWithResults:(NSDictionary *)results;
 
 @end

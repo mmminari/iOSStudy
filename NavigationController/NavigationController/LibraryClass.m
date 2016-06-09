@@ -26,15 +26,4 @@
     return _sharedInstance;
 }
 
--(instancetype)init
-{
-    if(self = [super init])
-    {
-        self.userInfo = [[UserInformation alloc]init];
-        self.mainInfo = [[MainInformation alloc]init];
-
-    }
-    return self;
-}
-
 @end
