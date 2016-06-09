@@ -21,11 +21,11 @@
         
         _contentWidth = [[self getValueWithKey:@"width" Dictionary:[self getValueWithKey:@"content" Dictionary:results]] intValue];
         _contentHeight = [[self getValueWithKey:@"height" Dictionary:[self getValueWithKey:@"content" Dictionary:results]] intValue];
-        _contentUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"background" Dictionary:results]];
-        
+        _contentUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"content" Dictionary:results]];
+                
         _contentBackgroundWidht = [[self getValueWithKey:@"width" Dictionary:[self getValueWithKey:@"content_background" Dictionary:results]] intValue];
         _contentBackgroundHeight = [[self getValueWithKey:@"height" Dictionary:[self getValueWithKey:@"content_background" Dictionary:results]] intValue];
-        _contentBackgroundUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"background" Dictionary:results]];
+        _contentBackgroundUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"content_background" Dictionary:results]];
         
     }
     

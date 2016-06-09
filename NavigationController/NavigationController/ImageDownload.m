@@ -18,6 +18,8 @@
 -(void)stardDownload
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
+    NSLog(@"imgdownurl : %@", self.urlString);
+    
     NSURLSession *session = [NSURLSession sharedSession];
     
     NSURLSessionDataTask *datatask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
@@ -29,7 +31,6 @@
                                               {
                                                   [self.imageArr addObject:image];
                                                   NSLog(@"image arr : %zd", self.imageArr.count);
-                                                  
                                               }
                                               
                                               if (self.completionHandler != nil)

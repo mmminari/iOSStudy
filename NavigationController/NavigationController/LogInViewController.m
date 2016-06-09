@@ -244,12 +244,9 @@
     if([param isKindOfClass:[NSDictionary class]])
     {
         self.sentDataDic = param;
-       // UserInformation *userInfo = [[UserInformation alloc] initWithResults:self.sentDataDic];
         
         [self.library.userInfo initWithResults:self.sentDataDic];
-        //self.userInfo = userInfo;
         
-        NSLog(@"userinfo : %@", self.sentDataDic);
     }
     if([self.userInfo result])
     {

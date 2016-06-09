@@ -18,7 +18,12 @@
 @property (strong, nonatomic) NSMutableArray *contentArr;
 
 @property (strong, nonatomic) NSMutableDictionary *backgroundDic;
+@property (strong, nonatomic) NSMutableDictionary *backgroundContentDic;
+@property (strong, nonatomic) NSMutableDictionary *contentDic;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *cvLogOut;
+@property (weak, nonatomic) IBOutlet UIButton *btnRegCard;
+@property (weak, nonatomic) IBOutlet UILabel *lbLogIn;
 
 @end
 
@@ -30,9 +35,23 @@
     
     self.backgroundArr = [NSMutableArray array];
     self.backgroundDic = [NSMutableDictionary dictionary];
+    
+    self.backgroundContentArr = [NSMutableArray array];
+    self.backgroundContentDic = [NSMutableDictionary dictionary];
+    
+    self.contentArr = [NSMutableArray array];
+    self.contentDic = [NSMutableDictionary dictionary];
+    
     NSLog(@"lib %@", self.library);
     NSLog(@"main - intro - arr %@", self.library.mainInfo);
     NSLog(@" %@", self.library.mainInfo.introInformationArr[1]);
+    
+    [self.btnRegCard setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
+    [self.btnRegCard setTitle:@"포인트 카드 발급 등록" forState:UIControlStateNormal];
+    [self.btnRegCard setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
+    
+                                    
+    
 
 }
 
@@ -59,74 +78,127 @@
 {
     static NSString *cellId = @"logOutCollectionCell";
 
+    
     LogOutCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
+    cell.alcHeightOfContainerView.constant = WRATIO_WIDTH(524.0f);
     
     if(indexPath.item == 0)
     {
-        cell.contentView.backgroundColor = [UIColor blueColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
+        
     }
     if(indexPath.item == 1)
     {
-        cell.contentView.backgroundColor = [UIColor brownColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     if(indexPath.item == 2)
     {
-        cell.contentView.backgroundColor = [UIColor yellowColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     if(indexPath.item == 3)
     {
-        cell.contentView.backgroundColor = [UIColor grayColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     if(indexPath.item == 4)
     {
-        cell.contentView.backgroundColor = [UIColor greenColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     if(indexPath.item == 5)
     {
-        cell.contentView.backgroundColor = [UIColor purpleColor];
-    }if(indexPath.item == 6)
+        cell.contentView.backgroundColor = [UIColor blackColor];
+    }
+    if(indexPath.item == 6)
     {
-        cell.contentView.backgroundColor = [UIColor magentaColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     
-    IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+    [self startDownloadBackgroundImageWithIndexPath:indexPath];
+    [self startDownloadContentImageWithIndexPath:indexPath];
+    [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
     
-    NSString *urlString = [info backgroundUri];
+    NSInteger countBackground = self.backgroundArr.count;
+    NSInteger countContent = self.contentArr.count;
+    NSInteger countContentBackground = self.backgroundContentArr.count;
     
-    [self startDownloadBackgroundImage:urlString forIndexPath:indexPath];
-    
-    NSInteger count = self.backgroundArr.count;
-    
-    if(count >0)
+    if(countBackground >0)
     {
-        UIImage *image = nil;
+        UIImage *imgBackgound = nil;
         
         @try
         {
-            image = self.backgroundArr[indexPath.row];
+            imgBackgound = self.backgroundArr[indexPath.row];
+
         }
         @catch (NSException *exception)
         {
             
         }
         
-        if(!image)
+        if(!imgBackgound)
         {
-            [self startDownloadBackgroundImage:urlString forIndexPath:indexPath];
+            [self startDownloadBackgroundImageWithIndexPath:indexPath];
         }
         else
         {
-            cell.ivBackground.image = image;
+            cell.ivBackground.image = imgBackgound;
+        }
+        
+    }
+    if(countContent >0)
+    {
+
+        UIImage *imgContent = nil;
+        
+        @try
+        {
+            imgContent = self.contentArr[indexPath.row];
+        }
+        @catch (NSException *exception)
+        {
+            
+        }
+
+        if(!imgContent)
+        {
+            [self startDownloadContentImageWithIndexPath:indexPath];
+        }
+        else
+        {
+            cell.ivContent.image = imgContent;
         }
     }
-    
-    
+
+    if(countContentBackground >0)
+    {
+        UIImage *imgContentBackground = nil;
+        
+        @try
+        {
+            imgContentBackground = self.backgroundContentArr[indexPath.row];
+        }
+        @catch (NSException *exception)
+        {
+            
+        }
+        
+        if(!imgContentBackground)
+        {
+            [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
+        }
+        else
+        {
+            cell.ivContentBackground.image = imgContentBackground;
+        }
+
+    }
+
     
     return cell;
 
 }
 
--(void)startDownloadBackgroundImage:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
+-(void)startDownloadBackgroundImageWithIndexPath:(NSIndexPath *)indexPath
 {
     ImageDownload *imageDown = self.backgroundDic[indexPath];
     if(imageDown == nil)
@@ -137,10 +209,14 @@
         IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
 
         imageDown.urlString = [info backgroundUri];
+        NSLog(@"url string : %@", imageDown.urlString);
+        NSLog(@" count : %zd", self.library.mainInfo.introInformationArr.count);
         
-        [imageDown setCompletionHandler:^{
+        
+        [imageDown setCompletionHandler:^
+        {
             LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
-            
+
             @try
             {
                 cell.ivBackground.image = self.backgroundArr[indexPath.row];
@@ -154,6 +230,79 @@
         }];
         
         self.backgroundDic[indexPath] = imageDown;
+        
+        [imageDown stardDownload];
+    }
+}
+-(void)startDownloadContentBackgroundImageWithIndexPath:(NSIndexPath *)indexPath
+{
+    ImageDownload *imageDown = self.backgroundContentDic[indexPath];
+    if(imageDown == nil)
+    {
+        imageDown = [[ImageDownload alloc]init];
+        imageDown.imageArr = self.backgroundContentArr;
+        
+        IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+        
+        imageDown.urlString = [info contentBackgroundUri];
+   
+        [imageDown setCompletionHandler:^
+        {
+            LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
+            
+            @try
+            {
+                cell.ivContentBackground.image = self.backgroundContentArr[indexPath.row];
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+            [self.backgroundContentDic removeObjectForKey:indexPath];
+            
+        }];
+        
+        self.backgroundContentDic[indexPath] = imageDown;
+        
+        [imageDown stardDownload];
+    }
+    
+}
+-(void)startDownloadContentImageWithIndexPath:(NSIndexPath *)indexPath
+{
+    ImageDownload *imageDown = self.contentDic[indexPath];
+    
+    if(imageDown == nil)
+    {
+        imageDown = [[ImageDownload alloc]init];
+        imageDown.imageArr = self.contentArr;
+        
+        IntroInformation *info = self.library.mainInfo.introInformationArr[indexPath.row];
+        
+        imageDown.urlString = [info contentUri];
+        NSLog(@"content %@", [info contentUri]);
+        
+        
+        [imageDown setCompletionHandler:^{
+            LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
+            NSLog(@"cdll : %@", cell);
+            
+            @try
+            {
+                cell.ivContent.image = self.contentArr[indexPath.row];
+                cell.alcWidthOfIvContent.constant = WRATIO_WIDTH([info contentWidth]);
+                cell.alcHeightOfIvContent.constant = WRATIO_WIDTH([info contentHeight]);
+                NSLog(@"width : %f height : %f", WRATIO_WIDTH([info contentWidth]), WRATIO_WIDTH([info contentHeight    ]));
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+            [self.contentDic removeObjectForKey:indexPath];
+            
+        }];
+        
+        self.contentDic[indexPath] = imageDown;
         
         [imageDown stardDownload];
     }

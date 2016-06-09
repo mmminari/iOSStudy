@@ -18,8 +18,8 @@
     
     for (NSDictionary *dic in self.introInfoArr)
     {
-        IntroInformation *introInfo = [[IntroInformation alloc]initWithInfoDic:dic];
-        [self.introInformationArr addObject:introInfo];
+        self.introInfo = [[IntroInformation alloc]initWithInfoDic:dic];
+        [self.introInformationArr addObject:self.introInfo];
     }
     NSLog(@"introArr: %@", self.introInformationArr);
     

@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivContent;
 @property (weak, nonatomic) IBOutlet UIImageView *ivContentBackground;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIvContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIvContent;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfContainerView;
 
 
 @end
