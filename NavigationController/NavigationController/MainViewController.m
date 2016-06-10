@@ -147,7 +147,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
     if(![self.util getResultOfAutoSignIn])
     {
-        [self.view addSubview:self.logoutVC.view];
+        [self.mainViewContainer addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
     }
 
@@ -198,8 +198,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.splashVC removeFromParentViewController];
         
         [self.logoutVC.cvLogOut reloadData];
-
-        
     });
 }
 

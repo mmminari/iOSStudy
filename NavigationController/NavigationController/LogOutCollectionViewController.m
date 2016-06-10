@@ -56,7 +56,7 @@
     self.lbLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46.0f)];
     self.lbLogIn.textColor = [self.util getColorWithRGBCode:@"b0b0b0"];
     
-    self.introList = self.library.mainInfo.introList;
+    self.introList = self.introList;
 
 }
 
@@ -68,7 +68,7 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 7;
+    return self.introList.count;
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -168,7 +168,6 @@
         }
 
     }
-
     
     return cell;
 
@@ -182,16 +181,17 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.backgroundArr;
         
-        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
+        IntroInformation *info = self.introList[indexPath.row];
 
         imageDown.urlString = [info backgroundUri];
         NSLog(@"url string : %@", imageDown.urlString);
-        NSLog(@" count : %zd", self.library.mainInfo.introList.count);
+        NSLog(@" count : %zd", self.introList.count);
         
         
         [imageDown setCompletionHandler:^
         {
-            LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
+            //속성을 보다 작은 곳에 담을 때에는 타입을 명시적으로 지정해주어야 한다
+            LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:indexPath];
 
             @try
             {
@@ -202,6 +202,7 @@
                 
             }
             [self.backgroundDic removeObjectForKey:indexPath];
+            [self.cvLogOut reloadData];
             
         }];
         
@@ -219,13 +220,13 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.backgroundContentArr;
         
-        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
+        IntroInformation *info = self.introList[indexPath.row];
         
         imageDown.urlString = [info contentBackgroundUri];
    
         [imageDown setCompletionHandler:^
         {
-            LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
+            LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:indexPath];
             
             @try
             {
@@ -236,7 +237,8 @@
                 
             }
             [self.backgroundContentDic removeObjectForKey:indexPath];
-            
+            [self.cvLogOut reloadData];
+
         }];
         
         self.backgroundContentDic[indexPath] = imageDown;
@@ -254,7 +256,7 @@
         imageDown = [[ImageDownload alloc]init];
         imageDown.imageArr = self.contentArr;
         
-        IntroInformation *info = self.library.mainInfo.introList[indexPath.row];
+        IntroInformation *info = self.introList[indexPath.row];
         
         imageDown.urlString = [info contentUri];
         NSLog(@"content %@", [info contentUri]);
@@ -275,12 +277,14 @@
                 
             }
             [self.contentDic removeObjectForKey:indexPath];
-            
+            [self.cvLogOut reloadData];
+
         }];
         
         self.contentDic[indexPath] = imageDown;
         
         [imageDown stardDownload];
+
     }
 }
 
