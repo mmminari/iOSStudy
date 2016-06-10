@@ -1341,7 +1341,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4tB-Sf-eyZ">
-                                <rect key="frame" x="0.0" y="410" width="600" height="180"/>
+                                <rect key="frame" x="0.0" y="420" width="600" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhZ-Yq-m0e">
                                         <rect key="frame" x="279" y="137" width="42" height="21"/>
@@ -1356,11 +1356,16 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                     </button>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TSW-NE-Ym9">
+                                        <rect key="frame" x="281" y="-12" width="39" height="37"/>
+                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="jhZ-Yq-m0e" firstAttribute="centerX" secondItem="4tB-Sf-eyZ" secondAttribute="centerX" id="0m0-Rg-30N"/>
                                     <constraint firstItem="ebj-tm-zq8" firstAttribute="centerX" secondItem="4tB-Sf-eyZ" secondAttribute="centerX" id="6uP-qX-yhS"/>
+                                    <constraint firstItem="TSW-NE-Ym9" firstAttribute="centerX" secondItem="4tB-Sf-eyZ" secondAttribute="centerX" id="R8j-jP-mAw"/>
+                                    <constraint firstItem="ebj-tm-zq8" firstAttribute="top" secondItem="TSW-NE-Ym9" secondAttribute="bottom" constant="30" id="VZK-mt-WnD"/>
                                     <constraint firstAttribute="bottom" secondItem="jhZ-Yq-m0e" secondAttribute="bottom" constant="22" id="eW7-dr-x6H"/>
                                     <constraint firstAttribute="height" constant="180" id="uWE-sE-dAd"/>
                                     <constraint firstItem="jhZ-Yq-m0e" firstAttribute="top" secondItem="ebj-tm-zq8" secondAttribute="bottom" constant="39" id="xL7-6N-COq"/>
@@ -1371,10 +1376,10 @@
                         <constraints>
                             <constraint firstItem="yut-TX-oqu" firstAttribute="top" secondItem="ndJ-qU-4Rr" secondAttribute="bottom" id="AIv-dL-lSk"/>
                             <constraint firstItem="ndJ-qU-4Rr" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leading" id="L49-jN-CFq"/>
-                            <constraint firstItem="4tB-Sf-eyZ" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leadingMargin" constant="-20" id="RM3-fg-vNW"/>
-                            <constraint firstItem="yut-TX-oqu" firstAttribute="top" secondItem="4tB-Sf-eyZ" secondAttribute="bottom" constant="10" id="TFa-1L-clx"/>
+                            <constraint firstItem="4tB-Sf-eyZ" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leading" id="RM3-fg-vNW"/>
+                            <constraint firstItem="yut-TX-oqu" firstAttribute="top" secondItem="4tB-Sf-eyZ" secondAttribute="bottom" id="TFa-1L-clx"/>
                             <constraint firstItem="ndJ-qU-4Rr" firstAttribute="top" secondItem="X31-US-Gm9" secondAttribute="bottom" id="g74-k3-9iR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4tB-Sf-eyZ" secondAttribute="trailing" constant="-20" id="tkU-jR-vtJ"/>
+                            <constraint firstAttribute="trailing" secondItem="4tB-Sf-eyZ" secondAttribute="trailing" id="tkU-jR-vtJ"/>
                             <constraint firstAttribute="trailing" secondItem="ndJ-qU-4Rr" secondAttribute="trailing" id="xcf-Ka-1Vl"/>
                         </constraints>
                     </view>
@@ -1382,6 +1387,7 @@
                         <outlet property="btnRegCard" destination="ebj-tm-zq8" id="S8r-EY-yg7"/>
                         <outlet property="cvLogOut" destination="ndJ-qU-4Rr" id="m91-P2-Wpi"/>
                         <outlet property="lbLogIn" destination="jhZ-Yq-m0e" id="YZI-eT-hrU"/>
+                        <outlet property="pageController" destination="TSW-NE-Ym9" id="2Fh-6u-gkM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clZ-0T-Lmc" userLabel="First Responder" sceneMemberID="firstResponder"/>

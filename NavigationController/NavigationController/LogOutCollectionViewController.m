@@ -24,8 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnRegCard;
 @property (weak, nonatomic) IBOutlet UILabel *lbLogIn;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
-@property (weak, nonatomic) NSArray *introList;
 
 @end
 
@@ -51,10 +51,20 @@
     [self.btnRegCard setTitle:@"     포인트 카드 발급 등록     " forState:UIControlStateNormal];
     [self.btnRegCard setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     self.btnRegCard.titleLabel.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(46.0f)];
-    
-    self.lbLogIn.text = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
+    /*
+    NSString *info = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
     self.lbLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46.0f)];
     self.lbLogIn.textColor = [self.util getColorWithRGBCode:@"b0b0b0"];
+    
+    NSMutableAttributedString *addInfo = [[NSMutableAttributedString alloc]initWithString:@"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >"];
+    
+    NSRange range = [info rangeOfString:@"로그인 >"];
+    
+    [addInfo addAttribute:NSForegroundColorAttributeName value:[self.util getColorWithRGBCode:@"f386a1"] range:NSMakeRange(range.location, addInfo.length)];
+        
+    self.lbLogIn.attributedText = addInfo;
+    
+    */
     
     self.introList = self.introList;
 
@@ -68,6 +78,7 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    self.pageController.numberOfPages = self.introList.count;
     return self.introList.count;
 }
 
@@ -202,7 +213,6 @@
                 
             }
             [self.backgroundDic removeObjectForKey:indexPath];
-            [self.cvLogOut reloadData];
             
         }];
         
@@ -237,7 +247,6 @@
                 
             }
             [self.backgroundContentDic removeObjectForKey:indexPath];
-            [self.cvLogOut reloadData];
 
         }];
         
@@ -277,7 +286,6 @@
                 
             }
             [self.contentDic removeObjectForKey:indexPath];
-            [self.cvLogOut reloadData];
 
         }];
         
@@ -290,9 +298,9 @@
 
 -(void)loadImageOnVisibleCells
 {
+    NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
     if(self.contentArr > 0)
     {
-        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
         for(NSIndexPath *path in arr)
         {
             UIImage *image = nil;
@@ -315,7 +323,6 @@
     }
     if(self.backgroundArr > 0)
     {
-        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
         for(NSIndexPath *path in arr)
         {
             UIImage *image = nil;
@@ -339,7 +346,6 @@
 
     if(self.backgroundContentArr > 0)
     {
-        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
         for(NSIndexPath *path in arr)
         {
             UIImage *image = nil;
@@ -361,11 +367,16 @@
         }
     }
 
+
 }
+
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self loadImageOnVisibleCells];
+
+    self.pageController.currentPage = [self.cvLogOut.indexPathsForVisibleItems lastObject].row;
+    
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -373,6 +384,7 @@
     if(!decelerate)
     {
         [self loadImageOnVisibleCells];
+
     }
 }
 

@@ -148,7 +148,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     if(![self.util getResultOfAutoSignIn])
     {
         [self.mainViewContainer addSubview:self.logoutVC.view];
-        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
+        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
     }
 
    // self.HomeVC.userInfomation   = self.userInfo;
@@ -196,6 +196,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
         [self.splashVC.view removeFromSuperview];
         [self.splashVC removeFromParentViewController];
+        self.logoutVC.introList = self.library.mainInfo.introList;
         
         [self.logoutVC.cvLogOut reloadData];
     });
