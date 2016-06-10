@@ -46,6 +46,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfLbLogOut;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnLogIn;
 
+@property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
+@property (weak, nonatomic) IBOutlet UIButton *btnSetting;
+
 @end
 
 @implementation MenuViewController
@@ -57,6 +61,13 @@
     
     [self.logOutViewContainer setHidden:YES];
     
+    if([self getResultOfAutoSignIn])
+    {
+        [self.logOutViewContainer setHidden:NO];
+        [self.ivSetting setHidden:YES];
+        [self.btnSetting setHidden:YES];
+    }
+    
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
     self.
@@ -64,8 +75,8 @@
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     
-    self.lbUserName.text = [self.userInfo userName];
-    self.lbUserId.text = [self.userInfo userId];
+    self.lbUserName.text = [self.library.userInfo userName];
+    self.lbUserId.text = [self.library.userInfo userId];
     
     self.ivUser.layer.cornerRadius = WRATIO_WIDTH(300.0f)/2;
     self.ivUser.layer.masksToBounds = YES;
@@ -108,6 +119,12 @@
     
      
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.lbUserName.text = [self.library.userInfo userName];
+    self.lbUserId.text = [self.library.userInfo userId];
 }
 
 -(void)downLoadImage

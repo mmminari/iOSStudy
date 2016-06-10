@@ -17,8 +17,11 @@
 @property (strong, nonatomic) LibraryClass *library;
 
 
+
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
 -(void)setWebViewWithMenuList:(MenuList)list;
 
+-(void)setResultOfAutoSignInWithSwith:(BOOL)swith;
+-(BOOL)getResultOfAutoSignIn;
 
 @end

@@ -95,6 +95,7 @@
 {
     self.view.userInteractionEnabled = NO;
     [self startSession];
+    [self setResultOfAutoSignInWithSwith:self.swcAutoLogIn];
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender

@@ -125,15 +125,12 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"self.lib : %@",self.library);
     
     self.lbMiddleNotice.text = [self.library.mainInfo eventTitle];
-    NSLog(@"title %@", [self.library.mainInfo eventTitle]);
-    
-    self.lbUserEmail.text = [self.userInfomation userId];
-    self.lbUserName.text = [self.userInfomation userName];
+    self.lbUserEmail.text = [self.library.userInfo userId];
+    self.lbUserName.text = [self.library.userInfo userName];
 
-    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.userInfomation point]];
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.library.userInfo point]];
 
     self.btnHome.tag = ButtonTagNumberHome;
     self.btnPoint.tag = ButtonTagNumberPoint;
@@ -156,16 +153,29 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivUser.layer.cornerRadius = WRATIO_WIDTH(195)/2;
     self.ivUser.layer.masksToBounds = YES;
     
+    self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+    
     [self setColor];
     [self setAutoLayout];
-    [self startDownLoadImage];
+
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     self.lbMiddleNotice.text = [self.library.mainInfo eventTitle];
+    LogBlue(@"title : %@", [self.library.mainInfo eventTitle]);
+    
     self.bannerUrlString = [self.library.mainInfo bannerUri];
+    
+    self.lbUserEmail.text = [self.library.userInfo userId];
+    self.lbUserName.text = [self.library.userInfo userName];
+    
+    NSLog(@"userInfo : %@", self.library.userInfo);
+    
+    self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.library.userInfo point]];
     [self startDownLoadBanner];
+    [self startDownLoadImage];
 
 }
 
@@ -173,11 +183,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     NSURLSessionDataTask *sessionTask;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.userInfomation profileImg]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.library.userInfo profileImg]]];
     sessionTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         UIImage *userImage = [[UIImage alloc] initWithData: data] ;
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             self.ivUser.image = userImage;
         });

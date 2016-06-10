@@ -54,14 +54,14 @@
     [super viewDidLoad];
     [self setColorAndImages];
     
-    NSMutableString *cardString = [NSMutableString stringWithString:[self.userInfo cardNo]];
+    NSMutableString *cardString = [NSMutableString stringWithString:[self.library.userInfo cardNo]];
     [cardString insertString:@" " atIndex:4];
     [cardString insertString:@" " atIndex:9];
     [cardString insertString:@" "  atIndex:14];
     self.lbBarcodeNum.text = cardString;
     
     NSString *showGrade = @"회원등급: ";
-    NSString *grade = [self.userInfo strUserGrade];
+    NSString *grade = [self.library.userInfo strUserGrade];
     showGrade = [showGrade stringByAppendingString:grade];
     
     self.lbShowGrade.text = showGrade;
@@ -74,7 +74,7 @@
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss";
     dateFormatter.timeZone = timeZone;
 
-    NSString *string = [self.userInfo cardRegdate];
+    NSString *string = [self.library.userInfo cardRegdate];
     NSDate *date = [dateFormatter dateFromString:string];
 
     dateFormatter.dateFormat = @"yyyy.MM.dd";

@@ -10,6 +10,13 @@
 #import "ShowMenuViewController.h"
 #import "MenuWebViewController.h"
 
+@interface BaseViewController ()
+
+@property (strong, nonatomic) NSUserDefaults *autoSignIn;
+
+
+@end
+
 @implementation BaseViewController
 
 
@@ -36,6 +43,21 @@
     [super viewDidLoad];
     self.util = [[UtilityClass alloc]init];
     self.library = [LibraryClass sharedInstance]; //싱글톤 초기화
+    self.autoSignIn = [NSUserDefaults standardUserDefaults];
+
+}
+
+-(void)setResultOfAutoSignInWithSwith:(BOOL)swith
+{
+    [self.autoSignIn setBool:swith forKey:@"isAutoSignIn"];
+    
+}
+
+-(BOOL)getResultOfAutoSignIn
+{
+    BOOL result = [self.autoSignIn boolForKey:@"isAutoSignIn"];
+    
+    return result;
 }
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list

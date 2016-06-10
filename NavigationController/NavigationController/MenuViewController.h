@@ -16,9 +16,8 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainViewController *mainVC;
 
-@property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
-@property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
-@property (weak, nonatomic) IBOutlet UIButton *btnSetting;
+-(void)viewWillAppear:(BOOL)animated;
+
 
 
 @end

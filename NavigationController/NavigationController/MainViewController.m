@@ -138,21 +138,19 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
-    
 
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
     [self.view addSubview:self.splashVC.view];
     [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
 
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
-    if(![self.util getResultOfAutoSignIn])
+    if([self getResultOfAutoSignIn])
     {
         [self.mainViewContainer addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
         
     }
 
-   // self.HomeVC.userInfomation   = self.userInfo;
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
@@ -180,6 +178,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
     self.notiCenter = [NSNotificationCenter defaultCenter];
     [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
+    [self.notiCenter addObserver:self selector:@selector(reloadColletionViews:) name:@"endUserInfoTransit" object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -200,10 +199,15 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         self.logoutVC.introList = self.library.mainInfo.introList;
         
         [self.logoutVC.cvLogOut reloadData];
+    });
+}
+
+-(void)reloadColletionViews:(NSNotification *)noti
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self.menuVC.logOutViewContainer setHidden:NO];
-        [self.menuVC.ivSetting setHidden:YES];
-        [self.menuVC.btnSetting setHidden:YES];
+        [self.cvMainView reloadData];
+        [self.menuVC viewWillAppear:YES];
 
     });
 }
@@ -284,6 +288,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
     [self.hideView setHidden:NO];
+    [self.hideView bringSubviewToFront:self.hideView];
+    
     
     [self setAnimation];
 }

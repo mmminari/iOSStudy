@@ -8,6 +8,7 @@
 
 #import "SplashViewController.h"
 #import "MainInformation.h"
+#import "UserInformation.h"
 
 @interface SplashViewController ()
 
@@ -41,7 +42,15 @@
         self.ivSplash.image = [UIImage imageNamed:@"splash_1242x2208"];
     }
     
+    if ([self getResultOfAutoSignIn])
+    {
+        [self startAutoSignInSession];
+    }
+
+    [self startAutoSignInSession];
+
     [self startSession];
+    
 }
 
 -(void)startSession
@@ -67,6 +76,33 @@
                               }];
     [task resume];
 
+}
+
+-(void)startAutoSignInSession
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *urlString = [NSURL URLWithString:AUTO_SIGN_IN_API];
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlString];
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+                              {
+                                  id receiveData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+                                  if ([receiveData isKindOfClass:[NSDictionary class]])
+                                  {
+                                      NSDictionary *result = (NSDictionary *)receiveData;
+                                      
+                                      UserInformation *userInfo = [[UserInformation alloc]initWithResults:result];
+                                      self.library.userInfo = userInfo;
+                                      
+                                      [[NSNotificationCenter defaultCenter] postNotificationName:@"endUserInfoTransit" object:nil];
+
+                                      
+                                      
+                                  }
+                                  
+                                  
+                              }];
+    
+    [task resume];
 }
 
 @end
