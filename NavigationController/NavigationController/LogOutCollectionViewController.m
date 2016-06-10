@@ -10,6 +10,7 @@
 #import "LogOutCollectionCell.h"
 #import "ImageDownload.h"
 #import "IntroInformation.h"
+#import "MainInformation.h"
 
 @interface LogOutCollectionViewController ()
 
@@ -21,9 +22,10 @@
 @property (strong, nonatomic) NSMutableDictionary *backgroundContentDic;
 @property (strong, nonatomic) NSMutableDictionary *contentDic;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *cvLogOut;
 @property (weak, nonatomic) IBOutlet UIButton *btnRegCard;
 @property (weak, nonatomic) IBOutlet UILabel *lbLogIn;
+
+@property (weak, nonatomic) NSArray *introList;
 
 @end
 
@@ -53,6 +55,8 @@
     self.lbLogIn.text = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
     self.lbLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46.0f)];
     self.lbLogIn.textColor = [self.util getColorWithRGBCode:@"b0b0b0"];
+    
+    self.introList = self.library.mainInfo.introList;
 
 }
 
@@ -83,36 +87,7 @@
     LogOutCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
     cell.alcHeightOfContainerView.constant = WRATIO_WIDTH(524.0f);
-    
-    if(indexPath.item == 0)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-        
-    }
-    if(indexPath.item == 1)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
-    if(indexPath.item == 2)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
-    if(indexPath.item == 3)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
-    if(indexPath.item == 4)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
-    if(indexPath.item == 5)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
-    if(indexPath.item == 6)
-    {
-        cell.contentView.backgroundColor = [UIColor blackColor];
-    }
+    cell.contentView.backgroundColor = [UIColor blackColor];
     
     [self startDownloadBackgroundImageWithIndexPath:indexPath];
     [self startDownloadContentImageWithIndexPath:indexPath];
@@ -286,7 +261,7 @@
         
         [imageDown setCompletionHandler:^
         {
-            LogOutCollectionCell *cell = [self.cvLogOut cellForItemAtIndexPath:indexPath];
+            LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:indexPath];
             
             @try
             {
@@ -306,6 +281,94 @@
         self.contentDic[indexPath] = imageDown;
         
         [imageDown stardDownload];
+    }
+}
+
+-(void)loadImageOnVisibleCells
+{
+    if(self.contentArr > 0)
+    {
+        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
+        for(NSIndexPath *path in arr)
+        {
+            UIImage *image = nil;
+            @try {
+                LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:path];
+                image = self.contentArr[path.row];
+                cell.ivContent.image = image;
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+            if(!image)
+            {
+                [self startDownloadContentImageWithIndexPath:path];
+                
+            }
+            
+        }
+    }
+    if(self.backgroundArr > 0)
+    {
+        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
+        for(NSIndexPath *path in arr)
+        {
+            UIImage *image = nil;
+            @try {
+                LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:path];
+                image = self.backgroundArr[path.row];
+                cell.ivBackground.image = image;
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+            if(!image)
+            {
+                [self startDownloadBackgroundImageWithIndexPath:path];
+                
+            }
+          
+        }
+    }
+
+    if(self.backgroundContentArr > 0)
+    {
+        NSArray *arr = [self.cvLogOut indexPathsForVisibleItems];
+        for(NSIndexPath *path in arr)
+        {
+            UIImage *image = nil;
+            @try {
+                LogOutCollectionCell *cell = (LogOutCollectionCell *)[self.cvLogOut cellForItemAtIndexPath:path];
+                image = self.backgroundContentArr[path.row];
+                cell.ivContentBackground.image = image;
+            }
+            @catch (NSException *exception)
+            {
+                
+            }
+            if(!image)
+            {
+                [self startDownloadContentBackgroundImageWithIndexPath:path];
+                
+            }
+
+        }
+    }
+
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImageOnVisibleCells];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if(!decelerate)
+    {
+        [self loadImageOnVisibleCells];
     }
 }
 

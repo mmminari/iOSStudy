@@ -11,5 +11,6 @@
 
 @interface LogOutCollectionViewController : BaseViewController<UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *cvLogOut;
 
 @end

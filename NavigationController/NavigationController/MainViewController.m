@@ -149,7 +149,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         [self.view addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.view];
-
     }
 
    // self.HomeVC.userInfomation   = self.userInfo;
@@ -197,6 +196,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
         [self.splashVC.view removeFromSuperview];
         [self.splashVC removeFromParentViewController];
+        
+        [self.logoutVC.cvLogOut reloadData];
+
         
     });
 }
