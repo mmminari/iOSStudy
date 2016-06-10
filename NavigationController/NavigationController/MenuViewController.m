@@ -10,12 +10,12 @@
 #import "ShowMenuViewController.h"
 #import "MenuCell.h"
 #import "SettingViewController.h"
+#import "LogInViewController.h"
 
 
 @interface MenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivUser;
-@property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserName;
 @property (weak, nonatomic) IBOutlet UILabel *lbUserId;
 @property (strong, nonatomic) NSArray *menuArr;
@@ -38,6 +38,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIcon;
 
 @property (strong, nonatomic) SettingViewController *settingVC;
+@property (strong, nonatomic) LogInViewController *loginVC;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbLogOut;
+@property (weak, nonatomic) IBOutlet UIButton *btnLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfBtnLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfLbLogOut;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnLogIn;
 
 @end
 
@@ -48,7 +55,11 @@
     //상위뷰 초기화 꼭 하기
     [super viewDidLoad];
     
+    [self.logOutViewContainer setHidden:YES];
+    
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
+    self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
+    self.
     
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
@@ -79,9 +90,23 @@
     self.alcTopOfUserImg.constant = WRATIO_WIDTH(135.0f);
     self.alcHeightOfIcon.constant = WRATIO_WIDTH(48.0f);
     self.alcWidthOfIcon.constant = WRATIO_WIDTH(102.0f);
+    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(66.0f);
+    
+    self.alcWidthOfBtnLogIn.constant = WRATIO_WIDTH(225.0f);
+    self.alcCenterOfLbLogOut.constant = self.alcCenterOfLbLogOut.constant - WRATIO_WIDTH(225.0f) / 2;
+    
     
     self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
     self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    
+    self.lbLogOut.text = @"로그인이 필요 합니다.";
+    [self.btnLogIn setTitle:@"로그인" forState:UIControlStateNormal];
+    [self.btnLogIn setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
+    [self.btnLogIn setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
+    self.lbLogOut.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
+    self.lbLogOut.textColor = [self.util getColorWithRGBCode:@"424242"];
+    
+     
     
 }
 
@@ -93,8 +118,17 @@
     dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         UIImage *image = [[UIImage alloc]initWithData:data];
+        
+        if(!image)
+        {
+            self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+        }
+        else
+        {
+            self.ivUser.image = image;
 
-        self.ivUser.image = image;
+        }
+        
     }];
     
     [dataTask resume];
@@ -106,6 +140,12 @@
 {
     [self.mainVC performSegueWithIdentifier:@"sgMenuToSetting" sender:nil];
     NSLog(@"hi");
+}
+
+- (IBAction)touchedGoToLogInView:(id)sender
+{
+    [self.mainVC.navigationController pushViewController:self.loginVC animated:YES];
+    
 }
 
 #pragma mark - TableView DataSource

@@ -149,6 +149,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     {
         [self.mainViewContainer addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
+        
     }
 
    // self.HomeVC.userInfomation   = self.userInfo;
@@ -199,6 +200,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         self.logoutVC.introList = self.library.mainInfo.introList;
         
         [self.logoutVC.cvLogOut reloadData];
+        
+        [self.menuVC.logOutViewContainer setHidden:NO];
+        [self.menuVC.ivSetting setHidden:YES];
+        [self.menuVC.btnSetting setHidden:YES];
+
     });
 }
 
