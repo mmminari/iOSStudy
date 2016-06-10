@@ -51,20 +51,20 @@
     [self.btnRegCard setTitle:@"     포인트 카드 발급 등록     " forState:UIControlStateNormal];
     [self.btnRegCard setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     self.btnRegCard.titleLabel.font = [UIFont boldSystemFontOfSize:WRATIO_WIDTH(46.0f)];
-    /*
-    NSString *info = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
+    
     self.lbLogIn.font = [UIFont systemFontOfSize:WRATIO_WIDTH(46.0f)];
     self.lbLogIn.textColor = [self.util getColorWithRGBCode:@"b0b0b0"];
     
-    NSMutableAttributedString *addInfo = [[NSMutableAttributedString alloc]initWithString:@"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >"];
+    NSString *info = @"로그인 하시면 더 많은 혜택을 받으실 수 있습니다. 로그인 >";
+    NSMutableAttributedString *addInfo = [[NSMutableAttributedString alloc]initWithString:info];
     
     NSRange range = [info rangeOfString:@"로그인 >"];
-    
-    [addInfo addAttribute:NSForegroundColorAttributeName value:[self.util getColorWithRGBCode:@"f386a1"] range:NSMakeRange(range.location, addInfo.length)];
+
+    [addInfo addAttribute:NSForegroundColorAttributeName value:[self.util getColorWithRGBCode:@"f386a1"] range:NSMakeRange(range.location, range.length)];
         
     self.lbLogIn.attributedText = addInfo;
     
-    */
+    
     
     self.introList = self.introList;
 
@@ -375,7 +375,7 @@
 {
     [self loadImageOnVisibleCells];
 
-    self.pageController.currentPage = [self.cvLogOut.indexPathsForVisibleItems lastObject].row;
+    self.pageController.currentPage = [self getIndexOfPage];
     
 }
 
@@ -386,6 +386,16 @@
         [self loadImageOnVisibleCells];
 
     }
+}
+
+#pragma makr - private method
+
+-(NSInteger)getIndexOfPage
+{
+    NSInteger result = self.cvLogOut.contentOffset.x / DEVICE_WIDTH ;
+    
+    return result;
+    
 }
 
 @end
