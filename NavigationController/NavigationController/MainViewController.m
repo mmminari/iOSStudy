@@ -42,6 +42,7 @@
 @property (strong, nonatomic) SettingViewController *settingVC;
 @property (strong, nonatomic) SplashViewController *splashVC;
 @property (strong, nonatomic) LogOutCollectionViewController *logoutVC;
+@property (strong, nonatomic) LogInViewController *LoginVC;
 
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationLogo;
@@ -138,17 +139,17 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
+    self.LoginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
 
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
     [self.view addSubview:self.splashVC.view];
     [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
 
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
-    if([self getResultOfAutoSignIn])
+    if(![self getResultOfAutoSignIn])
     {
         [self.mainViewContainer addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
-        
     }
 
     self.cardVC.userInfo = self.userInfo;
@@ -174,16 +175,26 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"will appear");
-    //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
-    self.notiCenter = [NSNotificationCenter defaultCenter];
-    [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
-    [self.notiCenter addObserver:self selector:@selector(reloadColletionViews:) name:@"endUserInfoTransit" object:nil];
+    BOOL flag = YES;
+    
+    if(flag)
+    {
+        NSLog(@"will appear");
+        //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
+        self.notiCenter = [NSNotificationCenter defaultCenter];
+        [self.notiCenter addObserver:self selector:@selector(sendData:) name:@"endDataTransit" object:nil];
+        [self.notiCenter addObserver:self selector:@selector(reloadColletionViews:) name:@"endUserInfoTransit" object:nil];
+        [self.notiCenter addObserver:self selector:@selector(backToLogInView:) name:@"backToLogInView" object:nil];
+        [self.notiCenter addObserver:self selector:@selector(backToLogOutView:) name:@"backToLogOutView" object:nil];
+
+    }
+    
+    flag = NO;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    [self.notiCenter removeObserver:self];
+//    [self.notiCenter removeObserver:self];
 }
 
 -(void)sendData:(NSNotification *)notification
@@ -199,6 +210,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         self.logoutVC.introList = self.library.mainInfo.introList;
         
         [self.logoutVC.cvLogOut reloadData];
+        
+        LogRed(@"sendData");
+
     });
 }
 
@@ -208,8 +222,41 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
         [self.cvMainView reloadData];
         [self.menuVC viewWillAppear:YES];
+        LogRed(@"reloadColletionViews");
+
 
     });
+}
+
+-(void)backToLogInView:(NSNotification *)noti
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.logoutVC.view setHidden:YES];
+        [self.menuVC setMenuLogInLayOut];
+        
+        [self.cvMainView reloadData];
+        [self.menuVC viewWillAppear:YES];
+        
+        LogRed(@"backToLogInView");
+
+        
+    });
+}
+
+-(void)backToLogOutView:(NSNotification *)noti
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.logoutVC.view setHidden:NO];
+        [self.menuVC setMenuLogOutLayOut];
+        [self.cvMainView reloadData];
+        [self.menuVC viewWillAppear:YES];
+        
+        
+    });
+
+    
 }
 
 #pragma mark - UI

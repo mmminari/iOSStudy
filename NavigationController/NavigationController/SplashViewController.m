@@ -42,15 +42,17 @@
         self.ivSplash.image = [UIImage imageNamed:@"splash_1242x2208"];
     }
     
+    [self setResultOfAutoSignInWithSwith:NO];
+    
     if ([self getResultOfAutoSignIn])
     {
         [self startAutoSignInSession];
     }
+    else
+    {
+        [self startSession];
+    }
 
-    [self startAutoSignInSession];
-
-    [self startSession];
-    
 }
 
 -(void)startSession

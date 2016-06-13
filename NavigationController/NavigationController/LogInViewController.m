@@ -58,6 +58,8 @@
 @property (weak, nonatomic) NSString *receivedUserName;
 @property (assign, nonatomic) NSInteger receivedUserPoint;
 
+
+
 @end
 
 
@@ -240,7 +242,7 @@
         self.library.userInfo = userInfo;
         
     }
-    if([self.userInfo result])
+    if([self.library.userInfo result])
     {
         NSLog(@"LogIn");
         [self startSessionForHomeImg];
@@ -249,7 +251,7 @@
         NSHTTPCookieStorage *cookieStor = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         NSArray *cookiesArr = [cookieStor cookiesForURL:[NSURL URLWithString: LOGIN_API]];
 
-        NSLog(@"%@", cookiesArr);
+        LogYellow(@"%@", cookiesArr);
     }
     else
     {
@@ -278,12 +280,16 @@
 {
     if([param isKindOfClass:[NSDictionary class]])
     {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"backToLogInView" object:nil];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *sgId = @"sgLogInToMainView";
-                [self performSegueWithIdentifier:sgId sender:self];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+
+
         });
-        //뷰가 그려지는 중에 UI의 변경이 있을 경우는 이 코드를 사용해야함.
+
     }
 }
 
@@ -301,9 +307,7 @@
 {
     if([[segue identifier] isEqualToString:@"sgLogInToMainView"])
     {
-        //MainViewController *mainVC = [segue destinationViewController];
-       // mainVC.userInfo = self.userInfo;
-       // mainVC.mainInfo = self.mainInfo;
+
     }
 }
 

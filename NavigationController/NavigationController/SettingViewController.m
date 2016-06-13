@@ -54,7 +54,7 @@
     [super viewDidLoad];
     
     [self.navigationController setNavigationBarHidden: YES];
-    
+
     self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.showVC.view];
     [self.util setContentViewLayoutWithSubView2:self.showVC.view withTargetView:self.view];
@@ -62,8 +62,8 @@
     
     self.showVC.baseVC = self;
     
-    self.lbUserName.text = [self.userInfo userName];
-    self.lbUserId.text = [self.userInfo userId];
+    self.lbUserName.text = [self.library.userInfo userName];
+    self.lbUserId.text = [self.library.userInfo userId];
     self.lbChangePw.text = @"비밀번호 변경";
     self.lbChangeUserInfo.text = @"회원정보 수정";
     self.lbAutoLogIn.text = @"자동 로그인";
@@ -73,8 +73,6 @@
     
     [self setColorAndFont];
     [self setLayout];
-    
-    NSLog(@"%zd", [self.userInfo userNo]);
     
 }
 
@@ -121,6 +119,17 @@
              NSHTTPCookieStorage *cookieStor = [NSHTTPCookieStorage sharedHTTPCookieStorage];
              NSArray *cookieArr = [cookieStor cookiesForURL:[NSURL URLWithString:LOG_OUT_API]];
              NSLog(@"%@", cookieArr)    ;
+             self.library.userInfo = nil;
+             
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"backToLogOutView" object:nil];
+                 [self.navigationController popViewControllerAnimated:YES];
+
+             });
+
+             
          }
      }] resume];
 

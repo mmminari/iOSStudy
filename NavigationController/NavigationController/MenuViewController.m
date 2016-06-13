@@ -46,7 +46,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfLbLogOut;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnLogIn;
 
-@property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
 @property (weak, nonatomic) IBOutlet UIButton *btnSetting;
 
@@ -61,11 +60,9 @@
     
     [self.logOutViewContainer setHidden:YES];
     
-    if([self getResultOfAutoSignIn])
+    if(![self getResultOfAutoSignIn])
     {
-        [self.logOutViewContainer setHidden:NO];
-        [self.ivSetting setHidden:YES];
-        [self.btnSetting setHidden:YES];
+        [self setMenuLogOutLayOut];
     }
     
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
@@ -125,13 +122,14 @@
 {
     self.lbUserName.text = [self.library.userInfo userName];
     self.lbUserId.text = [self.library.userInfo userId];
+    [self downLoadImage];
 }
 
 -(void)downLoadImage
 {
     NSURLSessionDataTask *dataTask;
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.userInfo profileImg]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[self.library.userInfo profileImg]]];
     dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         UIImage *image = [[UIImage alloc]initWithData:data];
@@ -252,5 +250,18 @@
     
 }
 
+-(void)setMenuLogOutLayOut
+{
+    [self.logOutViewContainer setHidden:NO];
+    [self.ivSetting setHidden:YES];
+    [self.btnSetting setHidden:YES];
+}
+
+-(void)setMenuLogInLayOut
+{
+    [self.logOutViewContainer setHidden:YES];
+    [self.ivSetting setHidden:NO];
+    [self.btnSetting setHidden:NO];
+}
 
 @end

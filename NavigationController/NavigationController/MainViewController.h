@@ -17,6 +17,8 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
+
+
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)touchedShowBarcode;
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;

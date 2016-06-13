@@ -16,7 +16,12 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainViewController *mainVC;
 
+@property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
+
+
 -(void)viewWillAppear:(BOOL)animated;
+-(void)setMenuLogInLayOut;
+-(void)setMenuLogOutLayOut;
 
 
 
