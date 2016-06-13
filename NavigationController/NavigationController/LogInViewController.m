@@ -97,7 +97,6 @@
 {
     self.view.userInteractionEnabled = NO;
     [self startSession];
-    [self setResultOfAutoSignInWithSwith:self.swcAutoLogIn];
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -246,7 +245,8 @@
     {
         NSLog(@"LogIn");
         [self startSessionForHomeImg];
-        
+        [self setResultOfAutoSignInWithSwith:self.swcAutoLogIn];
+
         //쿠키값 불러오기
         NSHTTPCookieStorage *cookieStor = [NSHTTPCookieStorage sharedHTTPCookieStorage];
         NSArray *cookiesArr = [cookieStor cookiesForURL:[NSURL URLWithString: LOGIN_API]];
@@ -257,6 +257,9 @@
     {
         NSLog(@"fail");
     }
+    
+    self.view.userInteractionEnabled = YES;
+
 }
 
 -(void)startSessionForHomeImg

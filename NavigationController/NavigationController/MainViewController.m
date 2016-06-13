@@ -102,7 +102,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
 @property (strong, nonatomic) NSNotificationCenter *notiCenter;
-
+@property (assign, nonatomic) BOOL flag;
 @end
 
 @implementation MainViewController
@@ -129,6 +129,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.btnPoint.tag = ButtonTagNumberPoint;
     self.btnCard.tag = ButtonTagNumberCard;
     self.btnStore.tag = ButtonTagNumberStore;
+    
+    self.flag = YES;
 
     //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
     self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
@@ -175,9 +177,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    BOOL flag = YES;
-    
-    if(flag)
+    if(self.flag)
     {
         NSLog(@"will appear");
         //NSNotificationCenter을 사용하여 통신이 끝난 후 데이터를 넘겨줌
@@ -189,7 +189,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
     }
     
-    flag = NO;
+    self.flag = NO;
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -199,7 +199,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)sendData:(NSNotification *)notification
 {
-    NSLog(@"send");
+    LogYellow(@"send");
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -210,9 +210,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         self.logoutVC.introList = self.library.mainInfo.introList;
         
         [self.logoutVC.cvLogOut reloadData];
-        
-        LogRed(@"sendData");
-
     });
 }
 
@@ -223,9 +220,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.cvMainView reloadData];
         [self.menuVC viewWillAppear:YES];
         LogRed(@"reloadColletionViews");
-
-
-    });
+        
+  });
 }
 
 -(void)backToLogInView:(NSNotification *)noti
@@ -234,13 +230,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         
         [self.logoutVC.view setHidden:YES];
         [self.menuVC setMenuLogInLayOut];
-        
         [self.cvMainView reloadData];
-        [self.menuVC viewWillAppear:YES];
-        
-        LogRed(@"backToLogInView");
-
-        
     });
 }
 
@@ -251,12 +241,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.logoutVC.view setHidden:NO];
         [self.menuVC setMenuLogOutLayOut];
         [self.cvMainView reloadData];
-        [self.menuVC viewWillAppear:YES];
-        
         
     });
-
-    
 }
 
 #pragma mark - UI
@@ -335,9 +321,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
     [self.hideView setHidden:NO];
-    [self.hideView bringSubviewToFront:self.hideView];
-    
-    
+
     [self setAnimation];
 }
 

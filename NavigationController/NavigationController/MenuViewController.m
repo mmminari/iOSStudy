@@ -114,15 +114,6 @@
     self.lbLogOut.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
     self.lbLogOut.textColor = [self.util getColorWithRGBCode:@"424242"];
     
-     
-    
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    self.lbUserName.text = [self.library.userInfo userName];
-    self.lbUserId.text = [self.library.userInfo userId];
-    [self downLoadImage];
 }
 
 -(void)downLoadImage
@@ -149,6 +140,7 @@
     [dataTask resume];
     
 }
+
 #pragma mark - User Action
 
 - (IBAction)touchedGoToSettingView:(id)sender
@@ -164,6 +156,7 @@
 }
 
 #pragma mark - TableView DataSource
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellId = @"menuCell";
@@ -252,6 +245,8 @@
 
 -(void)setMenuLogOutLayOut
 {
+    self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+    
     [self.logOutViewContainer setHidden:NO];
     [self.ivSetting setHidden:YES];
     [self.btnSetting setHidden:YES];
@@ -259,6 +254,10 @@
 
 -(void)setMenuLogInLayOut
 {
+    self.lbUserName.text = [self.library.userInfo userName];
+    self.lbUserId.text = [self.library.userInfo userId];
+    [self downLoadImage];
+    
     [self.logOutViewContainer setHidden:YES];
     [self.ivSetting setHidden:NO];
     [self.btnSetting setHidden:NO];

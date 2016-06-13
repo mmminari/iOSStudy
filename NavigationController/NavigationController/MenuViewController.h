@@ -18,8 +18,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
 
-
--(void)viewWillAppear:(BOOL)animated;
 -(void)setMenuLogInLayOut;
 -(void)setMenuLogOutLayOut;
 
