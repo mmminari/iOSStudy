@@ -34,11 +34,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.hideView.backgroundColor = [UIColor blackColor];
-    self.hideView.alpha = 0.5f;
-    [self.hideView setHidden:YES];
-    
+
     self.backgroundArr = [NSMutableArray array];
     self.backgroundDic = [NSMutableDictionary dictionary];
     

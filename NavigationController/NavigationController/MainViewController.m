@@ -140,7 +140,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.storeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainstoreview"];
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
-    self.showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     self.LoginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
 
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
@@ -157,6 +156,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
+    self.cardVC.mainVC = self;
     self.HomeVC.mainInfo = self.mainInfo;
     self.settingVC.userInfo = self.userInfo;
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
@@ -310,8 +310,6 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcLeadingOfMainView.constant  = 0.0f;
 
     [self.hideView setHidden:YES];
-    [self.logoutVC.hideView setHidden:YES];
-    
     [self setAnimation];
     
 }
@@ -321,10 +319,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcLeadingOfMainView.constant = - WRATIO_WIDTH(REMAIN_SPACE);
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
 
-
     [self.hideView setHidden:NO];
-    [self.logoutVC.hideView setHidden:NO];
-
+    [self.mainViewContainer bringSubviewToFront:self.hideView];
     [self setAnimation];
 }
 
@@ -539,6 +535,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 }
 
+/*
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([[segue identifier] isEqualToString:@"sgMainToBarcode"])
@@ -553,6 +550,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
   
 }
+*/
 
 
 @end

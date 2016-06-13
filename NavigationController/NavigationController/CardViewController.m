@@ -10,6 +10,10 @@
 #import "BarcodeViewController.h"
 #import "CardCell.h"
 #import "MainViewController.h"
+#import "RegCardViewController.h"
+#import "ChangePwViewController.h"
+#import "ReportCardLossViewController.h"
+#import "RegCodeViewController.h"
 
 @interface CardViewController ()
 
@@ -44,6 +48,13 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBarImg;
 
 
+@property (strong, nonatomic) RegCardViewController *regVC;
+@property (strong, nonatomic) ChangePwViewController *changeVC;
+@property (strong, nonatomic) ReportCardLossViewController *reportVC;
+@property (strong, nonatomic) RegCodeViewController *regCodeVC;
+
+
+
 @end
 
 
@@ -53,6 +64,11 @@
 {
     [super viewDidLoad];
     [self setColorAndImages];
+    
+    self.regVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-regCardView"];
+    self.changeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-changePwView"];
+    self.reportVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-ReportCardLossView"];
+    self.regCodeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-RegCodeView"];
     
     NSMutableString *cardString = [NSMutableString stringWithString:[self.library.userInfo cardNo]];
     [cardString insertString:@" " atIndex:4];
@@ -131,6 +147,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath   *)indexPath
 {
     [tableView cellForRowAtIndexPath:indexPath].selected = NO;
+    
+    BaseViewController *baseVC = nil;
+    
+    if(indexPath.row == 0)
+    {
+        [self.mainVC.navigationController pushViewController:self.regVC animated:YES];
+        baseVC = self.regVC;
+    }
+    else if (indexPath.row == 1)
+    {
+        [self.mainVC.navigationController pushViewController:self.changeVC animated:YES];
+        baseVC = self.changeVC;
+    }
+    else if (indexPath.row == 2)
+    {
+        [self.mainVC.navigationController pushViewController:self.reportVC animated:YES];
+        baseVC = self.reportVC;
+    }
+    else if (indexPath.row == 3)
+    {
+        [self.mainVC.navigationController pushViewController:self.regCodeVC animated:YES];
+        baseVC = self.regCodeVC;
+    }
+    
+    [baseVC setTitleOfNavibarWithIndexPath:indexPath];
 }
 
 #pragma mark - UI

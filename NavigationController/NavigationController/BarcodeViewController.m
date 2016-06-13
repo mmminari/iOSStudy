@@ -21,11 +21,12 @@
 {
     [super viewDidLoad];
     
-    NSMutableString *barcodeNum = [NSMutableString stringWithString:self.barString];
+    NSMutableString *barcodeNum = [NSMutableString stringWithString:[self.library.userInfo cardNo]];
     [barcodeNum insertString:@" " atIndex:4];
     [barcodeNum insertString:@" " atIndex:9];
     [barcodeNum insertString:@" "  atIndex:14];
-    self.lbShow.text = barcodeNum;
+    self.lbShow.text = barcodeNum   ;
+    
 }
 
 - (IBAction)touchedGoBack:(id)sender

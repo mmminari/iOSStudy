@@ -13,6 +13,5 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvLogOut;
 @property (weak, nonatomic) NSArray *introList;
-@property (weak, nonatomic) IBOutlet UIView *hideView;
 
 @end

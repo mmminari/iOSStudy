@@ -39,6 +39,15 @@ typedef NS_ENUM(NSInteger, MenuList)
     
 };
 
+typedef NS_ENUM(NSInteger, CardList)
+{
+    CardListRegNewCard = 0,
+    CardListChangePw,
+    CardListReportCardLoss,
+    CardListRegCode,
+};
+
+
 @interface UtilityClass : UIViewController
 
 

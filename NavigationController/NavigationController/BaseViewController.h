@@ -24,4 +24,6 @@
 -(void)setResultOfAutoSignInWithSwith:(BOOL)swith;
 -(BOOL)getResultOfAutoSignIn;
 
+-(void)setTitleOfNavibarWithIndexPath:(NSIndexPath *)index;
+
 @end

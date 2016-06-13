@@ -81,6 +81,10 @@
 		6D50E08C1CF2A9C3003A7EB7 /* menu_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */; };
 		6D50E08F1CF2AA1E003A7EB7 /* img_profile_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */; };
 		6D50E0901CF2AA1E003A7EB7 /* img_profile_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08E1CF2AA1E003A7EB7 /* img_profile_menu@3x.png */; };
+		6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E1291D0E7A42004124B8 /* RegCardViewController.m */; };
+		6D51E12D1D0E8A3A004124B8 /* ChangePwViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E12C1D0E8A3A004124B8 /* ChangePwViewController.m */; };
+		6D51E1301D0E9327004124B8 /* ReportCardLossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E12F1D0E9327004124B8 /* ReportCardLossViewController.m */; };
+		6D51E1331D0E9A10004124B8 /* RegCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -221,6 +225,14 @@
 		6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@3x.png"; sourceTree = "<group>"; };
 		6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@2x.png"; sourceTree = "<group>"; };
 		6D50E08E1CF2AA1E003A7EB7 /* img_profile_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@3x.png"; sourceTree = "<group>"; };
+		6D51E1281D0E7A42004124B8 /* RegCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegCardViewController.h; sourceTree = "<group>"; };
+		6D51E1291D0E7A42004124B8 /* RegCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegCardViewController.m; sourceTree = "<group>"; };
+		6D51E12B1D0E8A3A004124B8 /* ChangePwViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePwViewController.h; sourceTree = "<group>"; };
+		6D51E12C1D0E8A3A004124B8 /* ChangePwViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePwViewController.m; sourceTree = "<group>"; };
+		6D51E12E1D0E9327004124B8 /* ReportCardLossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportCardLossViewController.h; sourceTree = "<group>"; };
+		6D51E12F1D0E9327004124B8 /* ReportCardLossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportCardLossViewController.m; sourceTree = "<group>"; };
+		6D51E1311D0E9A10004124B8 /* RegCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegCodeViewController.h; sourceTree = "<group>"; };
+		6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegCodeViewController.m; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
@@ -444,6 +456,14 @@
 				6D247F7E1CE1CFEA00EBE9DB /* PointViewController.m */,
 				6D247F801CE1CFF300EBE9DB /* CardViewController.h */,
 				6D247F811CE1CFF300EBE9DB /* CardViewController.m */,
+				6D51E1281D0E7A42004124B8 /* RegCardViewController.h */,
+				6D51E1291D0E7A42004124B8 /* RegCardViewController.m */,
+				6D51E12B1D0E8A3A004124B8 /* ChangePwViewController.h */,
+				6D51E12C1D0E8A3A004124B8 /* ChangePwViewController.m */,
+				6D51E12E1D0E9327004124B8 /* ReportCardLossViewController.h */,
+				6D51E12F1D0E9327004124B8 /* ReportCardLossViewController.m */,
+				6D51E1311D0E9A10004124B8 /* RegCodeViewController.h */,
+				6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */,
 				6D330C041CEABADC00DF266D /* CardCell.h */,
 				6DAD689B1CEABED500C25969 /* CardCell.m */,
 				6D247F831CE1CFFC00EBE9DB /* StoreViewController.h */,
@@ -597,6 +617,8 @@
 				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
 				6D4AD2FA1D0128CF00CFC443 /* SplashViewController.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
+				6D51E12D1D0E8A3A004124B8 /* ChangePwViewController.m in Sources */,
+				6D51E1331D0E9A10004124B8 /* RegCodeViewController.m in Sources */,
 				6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */,
 				6D4AD3081D01660F00CFC443 /* LogOutCollectionViewController.m in Sources */,
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
@@ -615,12 +637,14 @@
 				6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */,
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
+				6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */,
 				6D4E43FC1CF545DB002041F7 /* MenuUserInfoViewController.m in Sources */,
 				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,
 				6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */,
 				6D14701C1CEC6130001529A2 /* ImageDownload.m in Sources */,
 				6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */,
+				6D51E1301D0E9327004124B8 /* ReportCardLossViewController.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DAD689C1CEABED500C25969 /* CardCell.m in Sources */,
 				6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */,

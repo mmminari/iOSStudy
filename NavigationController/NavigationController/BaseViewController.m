@@ -60,6 +60,45 @@
     return result;
 }
 
+-(void)setTitleOfNavibarWithIndexPath:(NSIndexPath *)index
+{
+    ShowMenuViewController *showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
+    [self addChildViewController:showVC];
+    
+    NSString *title = [self getTitleWithIndex:index];
+    
+    [self.view addSubview:showVC.view];
+    [self.util setContentViewLayoutWithSubView2:showVC.view withTargetView:self.view];
+    
+    showVC.lbTitle.text = title;
+    showVC.baseVC = self;
+}
+
+-(NSString *)getTitleWithIndex:(NSIndexPath *)index
+{
+    NSString *title = nil;
+    
+    switch (index.row) {
+        case 0:
+            title = @"카드 새로 등록하기";
+            break;
+        case 1:
+            title = @"카드 비밀번호 변경";
+            break;
+        case 2:
+            title = @"카드 분실 신고";
+            break;
+        case 3:
+            title = @"구매인증 코드 등록";
+            break;
+        default:
+            break;
+    }
+    
+    return title;
+    
+}
+
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list
 {
     ShowMenuViewController *showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
