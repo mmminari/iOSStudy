@@ -1371,14 +1371,22 @@
                                     <constraint firstItem="jhZ-Yq-m0e" firstAttribute="top" secondItem="ebj-tm-zq8" secondAttribute="bottom" constant="39" id="xL7-6N-COq"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yVb-YV-EGK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.22650240384615383" green="0.22650240384615383" blue="0.22650240384615383" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yVb-YV-EGK" secondAttribute="trailing" id="7yN-5M-RgJ"/>
                             <constraint firstItem="yut-TX-oqu" firstAttribute="top" secondItem="ndJ-qU-4Rr" secondAttribute="bottom" id="AIv-dL-lSk"/>
                             <constraint firstItem="ndJ-qU-4Rr" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leading" id="L49-jN-CFq"/>
                             <constraint firstItem="4tB-Sf-eyZ" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leading" id="RM3-fg-vNW"/>
                             <constraint firstItem="yut-TX-oqu" firstAttribute="top" secondItem="4tB-Sf-eyZ" secondAttribute="bottom" id="TFa-1L-clx"/>
+                            <constraint firstItem="yVb-YV-EGK" firstAttribute="leading" secondItem="Sdo-He-tsB" secondAttribute="leading" id="XK3-79-vA4"/>
                             <constraint firstItem="ndJ-qU-4Rr" firstAttribute="top" secondItem="X31-US-Gm9" secondAttribute="bottom" id="g74-k3-9iR"/>
+                            <constraint firstItem="yVb-YV-EGK" firstAttribute="top" secondItem="Sdo-He-tsB" secondAttribute="top" id="jtL-wn-DaA"/>
+                            <constraint firstItem="4tB-Sf-eyZ" firstAttribute="bottom" secondItem="yVb-YV-EGK" secondAttribute="bottom" id="sTh-HS-JBJ"/>
                             <constraint firstAttribute="trailing" secondItem="4tB-Sf-eyZ" secondAttribute="trailing" id="tkU-jR-vtJ"/>
                             <constraint firstAttribute="trailing" secondItem="ndJ-qU-4Rr" secondAttribute="trailing" id="xcf-Ka-1Vl"/>
                         </constraints>
@@ -1386,6 +1394,7 @@
                     <connections>
                         <outlet property="btnRegCard" destination="ebj-tm-zq8" id="S8r-EY-yg7"/>
                         <outlet property="cvLogOut" destination="ndJ-qU-4Rr" id="m91-P2-Wpi"/>
+                        <outlet property="hideView" destination="yVb-YV-EGK" id="Odr-M8-7FA"/>
                         <outlet property="lbLogIn" destination="jhZ-Yq-m0e" id="YZI-eT-hrU"/>
                         <outlet property="pageController" destination="TSW-NE-Ym9" id="2Fh-6u-gkM"/>
                     </connections>
@@ -1977,7 +1986,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ni8-sg-2Oo">
                                                 <rect key="frame" x="155" y="31" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvJ-rJ-pAu">
