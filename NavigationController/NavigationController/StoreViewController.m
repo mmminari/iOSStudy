@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
  //   [self startSession];
-    [self requestStoreInformationWithUrlString:@"/api/v1/brand"];
+    [self requestStoreInformation];
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
 
@@ -290,9 +290,9 @@
 }
 */
 
--(void)requestStoreInformationWithUrlString:(NSString *)urlString
+-(void)requestStoreInformation
 {
-    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results)
+    [self.library getStoreInformationWithParam:nil success:^(id results)
     {
         self.responseArr = [self.util getValueWithKey:@"list" Dictionary:results];
         for (NSDictionary *dic in self.responseArr)

@@ -47,13 +47,13 @@
     if ([self getResultOfAutoSignIn])
     {
         //[self startAutoSignInSession];
-        [self requestUserInformationWithUrlString:@"/api/v1/memberInfo"];
+        [self requestUserInformation];
         
     }
     else
     {
         //[self startSession];
-        [self requstMainInformationWithUrlString:@"/api/v1/main"];
+        [self requstMainInformation];
         
     }
 
@@ -61,14 +61,13 @@
 
 #pragma mark - ARI request
 
--(void)requstMainInformationWithUrlString:(NSString *)urlString
+-(void)requstMainInformation
 {
-    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results) {
+    [self.library getMainInformationWithParam:nil success:^(id results) {
         
         if ([results isKindOfClass:[NSDictionary class]])
         {
             self.resultDic = results;
-            
             MainInformation *mainInfo = [[MainInformation alloc]initWithResults:self.resultDic];
             self.library.mainInfo = mainInfo;
             
@@ -80,9 +79,9 @@
     
 }
 
--(void)requestUserInformationWithUrlString:(NSString *)urlString
+-(void)requestUserInformation
 {
-    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results) {
+    [self.library getUserInformationWithParam:nil success:^(id results) {
         
         if ([results isKindOfClass:[NSDictionary class]])
         {

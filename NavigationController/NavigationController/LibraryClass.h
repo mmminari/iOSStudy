@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
 #import "MainInformation.h"
-#import "HTTPClient.h"
 
 
 @interface LibraryClass : NSObject
@@ -20,6 +19,8 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
-@property (strong, nonatomic) HTTPClient *httpClient;
-
+-(void)getMainInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure;
+-(void)getUserInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure;
+-(void)getStoreInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure;
+-(void)getLogInResultsWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure;
 @end

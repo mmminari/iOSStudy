@@ -58,8 +58,6 @@
 @property (weak, nonatomic) NSString *receivedUserName;
 @property (assign, nonatomic) NSInteger receivedUserPoint;
 
-
-
 @end
 
 
@@ -97,7 +95,7 @@
 {
     self.view.userInteractionEnabled = NO;
     //[self startSession];
-    [self requestLogInWithUrlString:@"/api/v1/accountSignin"];
+    [self requestLogIn];
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -230,7 +228,7 @@
     }] resume];
 }
 */
--(void)requestLogInWithUrlString:(NSString *)urlString
+-(void)requestLogIn
 {
     NSNumber *autoLogIn = [NSNumber numberWithBool:self.swcAutoLogIn.on];
 
@@ -238,7 +236,7 @@
                                   @"password" : self.tfPassWord.text,
                                   @"autoSignin" : autoLogIn };
     
-    [self.library.httpClient POSTWithUrlString:urlString parameters:HTTPBodyDic success:^(id results) {
+    [self.library getLogInResultsWithParam:HTTPBodyDic success:^(id results) {
         [self processingUrlRequestWithParam: results];
 
     } failure:^(NSError *error) {
