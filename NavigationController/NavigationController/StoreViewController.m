@@ -32,7 +32,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self stratSession];
+    [self startSession];
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
 
@@ -219,7 +219,7 @@
 
 
 #pragma mark - session task
-
+/*
 -(void)stratSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -255,6 +255,36 @@
                                       }];
     
     [dataTask resume];
+    
+}
+ */
+
+
+-(void)startSession
+{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:STORE_API]];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, NSDictionary *responseObject, NSError *error)
+                                      {
+                                          self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseObject];
+                                          for (NSDictionary *dic in self.responseArr)
+                                          {
+                                              
+                                              StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+                                              [self.storeArr addObject:storeInformation];
+                                              
+                                          }
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              [self.tvStore reloadData];
+                                              
+                                          });
+                                          
+                                      }];
+    
+    [dataTask resume];
+    
     
 }
 

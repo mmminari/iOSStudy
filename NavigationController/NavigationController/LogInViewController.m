@@ -197,6 +197,7 @@
 
 
 #pragma mark - URLSession
+
 -(void)startSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -226,6 +227,7 @@
         
     }] resume];
 }
+
 
 -(void)processingUrlRequestWithParam:(id)param
 {
