@@ -14,10 +14,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivIconTop;
 @property (weak, nonatomic) IBOutlet UIImageView *ivIconBottom;
 @property (weak, nonatomic) IBOutlet UIButton *btnReg;
-@property (weak, nonatomic) IBOutlet UITextField *tfInputCode;
 @property (weak, nonatomic) IBOutlet UILabel *lbExplainTop;
 @property (weak, nonatomic) IBOutlet UILabel *lbExplainBottom;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
+@property (weak, nonatomic) IBOutlet UIView *tfContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivFfBackground;
+@property (weak, nonatomic) IBOutlet UITextField *tfInputCode;
+@property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
 @end
 
@@ -25,18 +28,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.btnHide setHidden: YES];
     
     self.ivIconTop.image = [UIImage imageNamed:@"icon_info"];
     self.ivIconBottom.image = [UIImage imageNamed:@"icon_info"];
     
     [self setColorAndFont];
     
+    UIImage *img = [UIImage imageNamed:@"box_white2"];
+    
+    img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(40.0f, 40.0f, 40.0f, 40.0f)
+                              resizingMode:UIImageResizingModeStretch];
+    
+    self.ivFfBackground.image = img;
+    
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *) textField
+{
+    [textField resignFirstResponder];
+    [self.btnHide setHidden:YES];
+    
+    return YES;
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.btnHide setHidden:NO];
+    return YES;
+    
+}
+
+- (IBAction)touchedHideKeyboard:(id)sender
+{
+    [self.tfInputCode resignFirstResponder];
+    [self.btnHide setHidden:YES];
+    
+}
 
 -(void)setColorAndFont
 {
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.tfContainer.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.ivBottomLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     

@@ -21,16 +21,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnReg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTfReg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *ivTfBackground;
+@property (weak, nonatomic) IBOutlet UIView *ivTfContainer;
+@property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
 @end
 
 @implementation RegCardViewController
 
-
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.btnHide setHidden:YES];
     
     self.ivEx1.image = [UIImage imageNamed:@"icon_info"];
     self.ivEx2.image = [UIImage imageNamed:@"icon_info"];
@@ -39,16 +41,43 @@
     
     self.alcHeightOfTfReg.constant = WRATIO_WIDTH(115.0f);
     self.alcHeightOfBtn.constant = WRATIO_WIDTH(115.0f);
+    
+    UIImage *img = [UIImage imageNamed:@"box_white2"];
 
+    img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(40.0f, 40.0f, 40.0f, 40.0f)
+                              resizingMode:UIImageResizingModeStretch];
+    
+    self.ivTfBackground.image = img;
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *) textField
+{
+    [textField resignFirstResponder];
+    [self.btnHide setHidden:YES];
+
+    return YES;
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.btnHide setHidden:NO];
+    return YES;
+    
+}
+
+- (IBAction)touchedHideKeyBoard:(id)sender
+{
+    [self.tfInputCardNum resignFirstResponder];
+    [self.btnHide setHidden:YES];
 
 }
 
 
-
 -(void)setColorAndFont
 {
-    
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
+    self.ivTfContainer.backgroundColor =[self.util getColorWithRGBCode:@"f9f9f0"];
     
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.ivBottom.backgroundColor = [self.util getColorWithRGBCode:@"7d7d7d"];
@@ -68,9 +97,8 @@
     [self.btnReg setTitle:@"등록하기" forState:UIControlStateNormal];
     [self.btnReg.titleLabel setFont:[UIFont boldSystemFontOfSize:WRATIO_WIDTH(47.0f)]];
     [self.btnReg setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
-    
-    self.tfInputCardNum.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
-    self.tfInputCardNum.layer.borderWidth = WRATIO_WIDTH(1.0);
+
     
 }
+
 @end

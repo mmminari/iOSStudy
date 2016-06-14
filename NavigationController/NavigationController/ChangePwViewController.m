@@ -12,11 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopLine;
 @property (weak, nonatomic) IBOutlet UILabel *lbCurrentPw;
-@property (weak, nonatomic) IBOutlet UITextField *tfCurrentPw;
 @property (weak, nonatomic) IBOutlet UILabel *lbNewPw;
-@property (weak, nonatomic) IBOutlet UITextField *tfNewPw;
 @property (weak, nonatomic) IBOutlet UILabel *lbCheckPw;
-@property (weak, nonatomic) IBOutlet UITextField *tfCheckPw;
 @property (weak, nonatomic) IBOutlet UIImageView *ivIcon;
 @property (weak, nonatomic) IBOutlet UILabel *lbExplain;
 @property (weak, nonatomic) IBOutlet UILabel *lbExplain2;
@@ -26,6 +23,17 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNewPw;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCheckPw;
 
+@property (weak, nonatomic) IBOutlet UIView *currnetPwContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivCurrentTf;
+@property (weak, nonatomic) IBOutlet UITextField *tfCurrentPw;
+
+@property (weak, nonatomic) IBOutlet UIView *changedPwContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivNewPw;
+@property (weak, nonatomic) IBOutlet UITextField *tfNewPw;
+@property (weak, nonatomic) IBOutlet UIView *checkPwContainer;
+@property (weak, nonatomic) IBOutlet UIImageView *ivCheckPw;
+@property (weak, nonatomic) IBOutlet UITextField *tfCheckPw;
+@property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
 @end
 
@@ -33,21 +41,70 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    [self.btnHide setHidden:YES];
+    
     self.alcHeightOfNewPw.constant = WRATIO_WIDTH(115.0f);
     self.alcHeightOfCheckPw.constant = WRATIO_WIDTH(115.0f);
     self.alcHeightOfTfCurrentPw.constant = WRATIO_WIDTH(115.0f);
     
     self.ivIcon.image = [UIImage imageNamed:@"icon_info"];
+    UIImage *img = [UIImage imageNamed:@"box_white2"];
+
+    img = [img resizableImageWithCapInsets:UIEdgeInsetsMake(40.0f, 40.0f, 40.0f, 40.0f)
+                              resizingMode:UIImageResizingModeStretch];
+    
+    self.ivCurrentTf.image = img;
+    self.ivNewPw.image = img;
+    self.ivCheckPw.image = img;
+    
     
     [self setColorAndFont];
 }
+
+-(BOOL)textFieldShouldReturn:(UITextField *) textField
+{
+    [textField resignFirstResponder];
+    [self.btnHide setHidden:YES];
+    
+    return YES;
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    [self.btnHide setHidden:NO];
+    return YES;
+    
+}
+
+- (IBAction)touchedHideKeyBoard:(id)sender withTextField:(UITextField *)textField
+{
+    if([self.tfCheckPw isFirstResponder])
+    {
+        [self.tfCheckPw resignFirstResponder];
+    }
+    else if([self.tfNewPw isFirstResponder])
+    {
+        [self.tfNewPw resignFirstResponder];
+    }
+    else if([self.tfCurrentPw isFirstResponder])
+    {
+        [self.tfCurrentPw resignFirstResponder];
+    }
+    
+    [self.btnHide setHidden:YES];
+    
+}
+
+
 
 -(void)setColorAndFont
 {
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.currnetPwContainer.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.changedPwContainer.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    self.checkPwContainer.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
+    
     self.ivTopLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     self.ivBottomLine.backgroundColor = [self.util getColorWithRGBCode:@"424242"];
     
@@ -75,13 +132,7 @@
     [self.btnChange setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     [self.btnChange setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
     
-    self.tfCheckPw.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
-    self.tfNewPw.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
-    self.tfCheckPw.layer.borderColor = [self.util getColorWithRGBCode:@"c2c0ba"].CGColor;
-    
-    
-    
-    
+
     
 }
 

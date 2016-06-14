@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BaseViewController.h"
 
-@interface RegCardViewController : BaseViewController
+@interface RegCardViewController : BaseViewController<UITextFieldDelegate>
 
 
 @end
