@@ -96,7 +96,8 @@
 - (IBAction)touchedLogIn:(id)sender
 {
     self.view.userInteractionEnabled = NO;
-    [self startSession];
+    //[self startSession];
+    [self requestLogInWithUrlString:@"/api/v1/accountSignin"];
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -198,6 +199,7 @@
 
 #pragma mark - URLSession
 
+/*
 -(void)startSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -226,6 +228,24 @@
         NSLog(@"%@", sentData);
         
     }] resume];
+}
+*/
+-(void)requestLogInWithUrlString:(NSString *)urlString
+{
+    NSNumber *autoLogIn = [NSNumber numberWithBool:self.swcAutoLogIn.on];
+
+    NSDictionary *HTTPBodyDic = @{@"email" : self.tfEmail.text,
+                                  @"password" : self.tfPassWord.text,
+                                  @"autoSignin" : autoLogIn };
+    
+    [self.library.httpClient POSTWithUrlString:urlString parameters:HTTPBodyDic success:^(id results) {
+        [self processingUrlRequestWithParam: results];
+
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
+    
+    
 }
 
 

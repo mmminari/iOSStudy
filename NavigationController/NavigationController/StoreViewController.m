@@ -32,7 +32,8 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    [self startSession];
+ //   [self startSession];
+    [self requestStoreInformationWithUrlString:@"/api/v1/brand"];
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
 
@@ -259,7 +260,7 @@
 }
  */
 
-
+/*
 -(void)startSession
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -286,6 +287,28 @@
     [dataTask resume];
     
     
+}
+*/
+
+-(void)requestStoreInformationWithUrlString:(NSString *)urlString
+{
+    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results)
+    {
+        self.responseArr = [self.util getValueWithKey:@"list" Dictionary:results];
+        for (NSDictionary *dic in self.responseArr)
+        {
+            
+            StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+            [self.storeArr addObject:storeInformation];
+            
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tvStore reloadData];
+            
+        });
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
 }
 
 

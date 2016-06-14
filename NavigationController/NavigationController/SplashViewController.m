@@ -46,15 +46,60 @@
     
     if ([self getResultOfAutoSignIn])
     {
-        [self startAutoSignInSession];
+        //[self startAutoSignInSession];
+        [self requestUserInformationWithUrlString:@"/api/v1/memberInfo"];
+        
     }
     else
     {
-        [self startSession];
+        //[self startSession];
+        [self requstMainInformationWithUrlString:@"/api/v1/main"];
+        
     }
 
 }
 
+#pragma mark - ARI request
+
+-(void)requstMainInformationWithUrlString:(NSString *)urlString
+{
+    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results) {
+        
+        if ([results isKindOfClass:[NSDictionary class]])
+        {
+            self.resultDic = results;
+            
+            MainInformation *mainInfo = [[MainInformation alloc]initWithResults:self.resultDic];
+            self.library.mainInfo = mainInfo;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"endDataTransit" object:nil];
+        }
+    } failure:^(NSError *error) {
+        LogGreen(@"fail");
+    }];
+    
+}
+
+-(void)requestUserInformationWithUrlString:(NSString *)urlString
+{
+    [self.library.httpClient GETWithUrlString:urlString parameters:nil success:^(id results) {
+        
+        if ([results isKindOfClass:[NSDictionary class]])
+        {
+            NSDictionary *result = (NSDictionary *)results;
+            
+            UserInformation *userInfo = [[UserInformation alloc]initWithResults:result];
+            self.library.userInfo = userInfo;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"endUserInfoTransit" object:nil];
+            
+        }
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
+}
+
+/*
 -(void)startSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -106,5 +151,8 @@
     
     [task resume];
 }
+
+*/
+
 
 @end

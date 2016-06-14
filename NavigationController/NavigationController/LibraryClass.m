@@ -7,6 +7,14 @@
 //
 
 #import "LibraryClass.h"
+#import <AFNetworking/AFNetworking.h>
+
+@interface LibraryClass ()
+
+
+
+@end
+
 
 @implementation LibraryClass
 
@@ -25,5 +33,17 @@
     
     return _sharedInstance;
 }
+
+-(instancetype)init
+{
+    if(self = [super init])
+    {
+        _httpClient = [[HTTPClient alloc]initWithBaseURL];
+    }
+    
+    return self;
+}
+
+
 
 @end

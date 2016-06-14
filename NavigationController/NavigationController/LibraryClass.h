@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
 #import "MainInformation.h"
+#import "HTTPClient.h"
+
 
 @interface LibraryClass : NSObject
 
@@ -18,5 +20,6 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
+@property (strong, nonatomic) HTTPClient *httpClient;
 
 @end
