@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnEnlargeCode;
 @property (strong, nonatomic) MainViewController *mainVC;
 
+-(void)viewWillAppear:(BOOL)animated;
 
 
 @end

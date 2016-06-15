@@ -381,6 +381,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [cell.contentView addSubview:self.cardVC.view];
         self.cardVC.mainVC = self;
         [self setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
+        [self.cardVC viewWillAppear:YES];
     }
     if(indexPath.item == 3)
     {

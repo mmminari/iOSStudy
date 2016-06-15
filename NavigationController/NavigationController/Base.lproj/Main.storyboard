@@ -2362,7 +2362,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="F1B8FCCE-74BB-4F99-89E8-905110E923F2"/>
+                                <state key="normal" image="880325BA-212D-4C61-97F4-2940B51B8593"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -3193,6 +3193,9 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YV9-jJ-rqr">
                                 <rect key="frame" x="310" y="277" width="51" height="31"/>
+                                <connections>
+                                    <action selector="touchedAutoLoginSwithch:" destination="pMH-LZ-hXR" eventType="valueChanged" id="Tsu-aV-7jH"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3537,7 +3540,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="F1B8FCCE-74BB-4F99-89E8-905110E923F2" width="21" height="21">
+        <image name="880325BA-212D-4C61-97F4-2940B51B8593" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

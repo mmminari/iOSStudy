@@ -95,7 +95,7 @@
 {
     self.view.userInteractionEnabled = NO;
     //[self startSession];
-    [self requestLogIn];
+    [self reqLogIn];
 }
 
 - (IBAction)touchedURLStringToSafari:(id)sender
@@ -228,7 +228,7 @@
     }] resume];
 }
 */
--(void)requestLogIn
+-(void)reqLogIn
 {
     NSNumber *autoLogIn = [NSNumber numberWithBool:self.swcAutoLogIn.on];
 
@@ -236,7 +236,7 @@
                                   @"password" : self.tfPassWord.text,
                                   @"autoSignin" : autoLogIn };
     
-    [self.library postLogInResultsWithParam:HTTPBodyDic success:^(id results) {
+    [self.library requestLogInWithParameter:HTTPBodyDic success:^(id results) {
         [self processingUrlRequestWithParam: results];
 
     } failure:^(NSError *error) {

@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
  //   [self startSession];
-    [self requestStoreInformation];
+    [self reqStoreInformation];
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
 
@@ -290,9 +290,9 @@
 }
 */
 
--(void)requestStoreInformation
+-(void)reqStoreInformation
 {
-    [self.library getStoreInformationWithParam:nil success:^(id results)
+    [self.library requestStoreInformationWithParameter:nil success:^(id results)
     {
         self.responseArr = [self.util getValueWithKey:@"list" Dictionary:results];
         for (NSDictionary *dic in self.responseArr)

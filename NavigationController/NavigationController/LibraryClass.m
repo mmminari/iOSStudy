@@ -47,11 +47,11 @@
 }
 
 
--(void)getMainInformationWithParam:(id)param
+-(void)requestMainInformationWithParameter:(id)parameter
                            success:(void (^)(id results))success
                            failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient GETWithUrlString:@"/api/v1/main" parameters:param success:^(id results) {
+    [self.httpClient GETWithUrlString:@"/api/v1/main" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -64,11 +64,11 @@
     }];
 }
 
--(void)getUserInformationWithParam:(id)param
+-(void)requestUserInformationWithParameter:(id)parameter
                            success:(void (^)(id results))success
                            failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient GETWithUrlString:@"/api/v1/memberInfo" parameters:param success:^(id results) {
+    [self.httpClient GETWithUrlString:@"/api/v1/memberInfo" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -81,11 +81,11 @@
     }];
 }
 
--(void)getStoreInformationWithParam:(id)param
+-(void)requestStoreInformationWithParameter:(id)parameter
                             success:(void (^)(id results))success
                             failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient GETWithUrlString:@"/api/v1/brand" parameters:param success:^(id results) {
+    [self.httpClient GETWithUrlString:@"/api/v1/brand" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -98,11 +98,11 @@
     }];
 }
 
--(void)postLogInResultsWithParam:(id)param
+-(void)requestLogInWithParameter:(id)parameter
                          success:(void (^)(id results))success
                          failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignin" parameters:param success:^(id results) {
+    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignin" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -114,11 +114,11 @@
         }
     }];
 }
--(void)postResultsOfLogOutWithParam:(id)param
+-(void)requestLogOutWithParameter:(id)parameter
                             success:(void (^)(id results))success
                             failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignOut" parameters:param success:^(id results) {
+    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignOut" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -131,11 +131,11 @@
     }];
 }
 
--(void)postAlbumCodeWithParam:(id)param
+-(void)requestRegisterAlbumCodeWithParameter:(id)parameter
                       success:(void (^)(id results))success
                       failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient POSTWithUrlString:@"/api/v1/pointAlbum" parameters:param success:^(id results) {
+    [self.httpClient POSTWithUrlString:@"/api/v1/pointAlbum" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -148,11 +148,11 @@
     }];
 }
 
--(void)putCardNumWithParam:(id)param
+-(void)requestRegisterCardNumWithParameter:(id)parameter
                    success:(void (^)(id results))success
                    failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient PUTWithUrlString:@"/api/v1/cardSet" parameters:param success:^(id results) {
+    [self.httpClient PUTWithUrlString:@"/api/v1/cardSet" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -165,11 +165,11 @@
     }];
 }
 
--(void)patchCardPwWithParam:(id)param
+-(void)requestChangeCardPwWithParameter:(id)parameter
                     success:(void (^)(id results))success
                     failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient PATCHWithUrlString:@"/api/v1/cardPassword" parameters:param success:^(id results) {
+    [self.httpClient PATCHWithUrlString:@"/api/v1/cardPassword" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);
@@ -182,11 +182,11 @@
     }];
 }
 
--(void)patchCardLossWithParam:(id)param
+-(void)requestReportCardLossWithParameter:(id)parameter
                       success:(void (^)(id results))success
                       failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient PATCHWithUrlString:@"/api/v1/cardLoss" parameters:param success:^(id results) {
+    [self.httpClient PATCHWithUrlString:@"/api/v1/cardLoss" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);

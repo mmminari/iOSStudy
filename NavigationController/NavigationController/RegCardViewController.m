@@ -78,20 +78,20 @@
 
 - (IBAction)touchedReisgerCard:(id)sender
 {
-    [self registerCardNum];
+    [self reqResigerCardNum];
 }
 
--(void)registerCardNum
+-(void)reqResigerCardNum
 {
     NSDictionary *inputData = @{ @"cardNo" : self.tfInputCardNum.text,
                                  @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
                                  @"lang" : @"ko"};
     
-    [self.library putCardNumWithParam:inputData success:^(id results) {
+    [self.library requestRegisterCardNumWithParameter:inputData success:^(id results) {
         NSDictionary *result = (NSDictionary *)results;
-        if([result objectForKey:@"result"])
+        if([self.util getValueWithKey:@"result" Dictionary:result])
         {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
             }];

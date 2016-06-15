@@ -35,22 +35,27 @@
 }
 - (IBAction)touchedReportCardLoss:(id)sender
 {
-    [self reportCardLoss];
+    [self reqReportCardLoss];
 }
 
--(void)reportCardLoss
+-(void)reqReportCardLoss
 {
     NSDictionary *inputData = @{@"lang" : @"kr" };
     
-    [self.library patchCardLossWithParam:inputData success:^(id results) {
+    [self.library requestReportCardLossWithParameter:inputData success:^(id results) {
         NSDictionary *result = (NSDictionary *)results;
-        if([result objectForKey:@"result"])
+        if([self.util getValueWithKey:@"result" Dictionary:result])
         {
-            UIAlertController  *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[result objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:nil];
+            LogBlue(@"OrgincardNo: %@", [self.library.userInfo cardNo]);
+            [self.library.userInfo setCardNo:[self.util getValueWithKey:@"data" Dictionary:result]];
+            LogBlue(@"NewcardNo: %@", [self.library.userInfo cardNo]);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"endUserInfoTransit" object:nil];
+            
         }
     } failure:nil];
 }

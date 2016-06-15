@@ -47,13 +47,13 @@
     if ([self getResultOfAutoSignIn])
     {
         //[self startAutoSignInSession];
-        [self requestUserInformation];
+        [self reqUserInformation];
         
     }
     else
     {
         //[self startSession];
-        [self requstMainInformation];
+        [self reqMainInformation];
         
     }
 
@@ -61,9 +61,9 @@
 
 #pragma mark - ARI request
 
--(void)requstMainInformation
+-(void)reqMainInformation
 {
-    [self.library getMainInformationWithParam:nil success:^(id results) {
+    [self.library requestMainInformationWithParameter:nil success:^(id results) {
         
         if ([results isKindOfClass:[NSDictionary class]])
         {
@@ -79,9 +79,9 @@
     
 }
 
--(void)requestUserInformation
+-(void)reqUserInformation
 {
-    [self.library getUserInformationWithParam:nil success:^(id results) {
+    [self.library requestUserInformationWithParameter:nil success:^(id results) {
         
         if ([results isKindOfClass:[NSDictionary class]])
         {

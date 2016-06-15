@@ -19,40 +19,40 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
--(void)getMainInformationWithParam:(id)param
-                           success:(void (^)(id results))success
-                           failure:(void (^)(NSError *error))failure;
+-(void)requestMainInformationWithParameter:(id)parameter
+                                   success:(void (^)(id results))success
+                                   failure:(void (^)(NSError *error))failure;
 
--(void)getUserInformationWithParam:(id)param
-                           success:(void (^)(id results))success
-                           failure:(void (^)(NSError *error))failure;
+-(void)requestUserInformationWithParameter:(id)parameter
+                                   success:(void (^)(id results))success
+                                   failure:(void (^)(NSError *error))failure;
 
--(void)getStoreInformationWithParam:(id)param
-                            success:(void (^)(id results))success
-                            failure:(void (^)(NSError *error))failure;
+-(void)requestStoreInformationWithParameter:(id)parameter
+                                    success:(void (^)(id results))success
+                                    failure:(void (^)(NSError *error))failure;
 
--(void)postLogInResultsWithParam:(id)param
+-(void)requestLogInWithParameter:(id)parameter
                          success:(void (^)(id results))success
                          failure:(void (^)(NSError *error))failure;
 
--(void)postResultsOfLogOutWithParam:(id)param
-                            success:(void (^)(id results))success
-                            failure:(void (^)(NSError *error))failure;
+-(void)requestLogOutWithParameter:(id)parameter
+                          success:(void (^)(id results))success
+                          failure:(void (^)(NSError *error))failure;
 
--(void)postAlbumCodeWithParam:(id)param
-                      success:(void (^)(id results))success
-                      failure:(void (^)(NSError *error))failure;
+-(void)requestRegisterAlbumCodeWithParameter:(id)parameter
+                                     success:(void (^)(id results))success
+                                     failure:(void (^)(NSError *error))failure;
 
--(void)putCardNumWithParam:(id)param
-                   success:(void (^)(id results))success
-                   failure:(void (^)(NSError *error))failure;
+-(void)requestRegisterCardNumWithParameter:(id)parameter
+                                   success:(void (^)(id results))success
+                                   failure:(void (^)(NSError *error))failure;
 
--(void)patchCardPwWithParam:(id)param
-                   success:(void (^)(id results))success
-                    failure:(void (^)(NSError *error))failure;
+-(void)requestChangeCardPwWithParameter:(id)parameter
+                                success:(void (^)(id results))success
+                                failure:(void (^)(NSError *error))failure;
 
--(void)patchCardLossWithParam:(id)param
-                      success:(void (^)(id results))success
-                      failure:(void (^)(NSError *error))failure;
+-(void)requestReportCardLossWithParameter:(id)parameter
+                                  success:(void (^)(id results))success
+                                  failure:(void (^)(NSError *error))failure;
 
 @end

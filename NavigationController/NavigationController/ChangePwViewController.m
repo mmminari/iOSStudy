@@ -100,21 +100,21 @@
 
 - (IBAction)touchedChangePw:(id)sender
 {
-    [self changePw];
+    [self reqchangePw];
     
 }
 
--(void)changePw
+-(void)reqchangePw
 {
     NSDictionary *inputData = @{ @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
                                  @"pointOldPw" : self.tfCurrentPw.text,
                                  @"pointUsePw" : self.tfNewPw.text };
     
-    [self.library patchCardPwWithParam:inputData success:^(id results) {
+    [self.library requestChangeCardPwWithParameter:inputData success:^(id results) {
         NSDictionary *result = (NSDictionary *)results;
-        if([result objectForKey:@"result"])
+        if([self.util getValueWithKey:@"result" Dictionary:result])
         {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[result objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
             }];

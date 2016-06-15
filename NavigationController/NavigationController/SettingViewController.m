@@ -80,7 +80,17 @@
 - (IBAction)touchedLogOut:(id)sender
 {
    // [self startSession];
-    [self requestLogOut];
+    [self reqLogOut];
+    
+}
+- (IBAction)touchedAutoLoginSwithch:(id)sender
+{
+    [self setResultOfAutoSignInWithSwith:self.swcAutoLogin.on];
+    BOOL result = [self getResultOfAutoSignIn];
+    
+    LogYellow(@"switch : %@", [NSNumber numberWithBool:result]);
+    
+    
     
 }
 
@@ -137,7 +147,7 @@
 }
 */
 
--(void)requestLogOut
+-(void)reqLogOut
 {
     NSNumber *userNo = [NSNumber numberWithInt:(int)[self.userInfo userNo]];
     NSNumber *autoLogin = [NSNumber numberWithBool:self.swcAutoLogin.isOn];
@@ -150,7 +160,7 @@
                                @"inPushOn" : autoLogin,
                                @"isPushDebug" : @0 };
     
-    [self.library postLogInResultsWithParam:bodyDic success:^(id results) {
+    [self.library requestLogOutWithParameter:bodyDic success:^(id results) {
         if([results isKindOfClass:[NSDictionary class]])
         {
             self.resultDic = [[NSDictionary alloc]initWithDictionary:results];

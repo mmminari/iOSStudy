@@ -107,6 +107,14 @@
     [self setLayout];
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSMutableString *cardString = [NSMutableString stringWithString:[self.library.userInfo cardNo]];
+    [cardString insertString:@" " atIndex:4];
+    [cardString insertString:@" " atIndex:9];
+    [cardString insertString:@" "  atIndex:14];
+    self.lbBarcodeNum.text = cardString;
+}
 
 #pragma mark - TableView
 

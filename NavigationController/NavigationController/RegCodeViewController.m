@@ -73,24 +73,24 @@
 
 - (IBAction)touchedRegisterCode:(id)sender
 {
-    [self postAlbumCode];
+    [self reqRegisterAlbumCode];
     
 }
 
 #pragma mark - Session
 
--(void)postAlbumCode
+-(void)reqRegisterAlbumCode
 {
     NSDictionary *dic = @{ @"albumCouponNo" : self.tfInputCode.text,
                            @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
                            @"lang" : @"ko" };
     
-    [self.library postAlbumCodeWithParam:dic success:^(id results)
+    [self.library requestRegisterAlbumCodeWithParameter:dic success:^(id results)
     {
         NSDictionary *result = (NSDictionary *)results;
-        if([result objectForKey:@"result"])
+        if([self.util getValueWithKey:@"result" Dictionary:result])
         {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction  *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 
             }];
