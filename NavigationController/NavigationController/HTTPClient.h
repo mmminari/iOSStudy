@@ -21,4 +21,11 @@
                  success:(void (^)(id results))success
                  failure:(void (^)(NSError *error))failure;
 
+-(void)PUTWithUrlString:(NSString *)urlString parameters:(id)parameters
+                success:(void (^)(id results))success
+                failure:(void (^)(NSError *error))failure;
+
+-(void)PATCHWithUrlString:(NSString *)urlString parameters:(id)parameters
+                  success:(void (^)(id results))success
+                  failure:(void (^)(NSError *error))failure;
 @end

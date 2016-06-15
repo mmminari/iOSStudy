@@ -33,7 +33,27 @@
     [self setColorAndFont];
     
 }
+- (IBAction)touchedReportCardLoss:(id)sender
+{
+    [self reportCardLoss];
+}
 
+-(void)reportCardLoss
+{
+    NSDictionary *inputData = @{@"lang" : @"kr" };
+    
+    [self.library patchCardLossWithParam:inputData success:^(id results) {
+        NSDictionary *result = (NSDictionary *)results;
+        if([result objectForKey:@"result"])
+        {
+            UIAlertController  *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[result objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    } failure:nil];
+}
 -(void)setColorAndFont
 {
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];

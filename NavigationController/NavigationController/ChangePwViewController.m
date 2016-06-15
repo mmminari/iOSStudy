@@ -57,6 +57,9 @@
     self.ivNewPw.image = img;
     self.ivCheckPw.image = img;
     
+    self.tfCurrentPw.text = @"0808";
+    self.tfNewPw.text = @"2222";
+    self.tfCheckPw.text = @"2222";
     
     [self setColorAndFont];
 }
@@ -95,6 +98,31 @@
     
 }
 
+- (IBAction)touchedChangePw:(id)sender
+{
+    [self changePw];
+    
+}
+
+-(void)changePw
+{
+    NSDictionary *inputData = @{ @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
+                                 @"pointOldPw" : self.tfCurrentPw.text,
+                                 @"pointUsePw" : self.tfNewPw.text };
+    
+    [self.library patchCardPwWithParam:inputData success:^(id results) {
+        NSDictionary *result = (NSDictionary *)results;
+        if([result objectForKey:@"result"])
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[result objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    } failure:nil];
+}
 
 
 -(void)setColorAndFont

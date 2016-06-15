@@ -41,6 +41,7 @@
                               resizingMode:UIImageResizingModeStretch];
     
     self.ivFfBackground.image = img;
+    self.tfInputCode.text = @"A0RE160229131RU52U";
     
 }
 
@@ -59,11 +60,48 @@
     
 }
 
+
+
+#pragma mark - User Action
+
 - (IBAction)touchedHideKeyboard:(id)sender
 {
     [self.tfInputCode resignFirstResponder];
     [self.btnHide setHidden:YES];
     
+}
+
+- (IBAction)touchedRegisterCode:(id)sender
+{
+    [self postAlbumCode];
+    
+}
+
+#pragma mark - Session
+
+-(void)postAlbumCode
+{
+    NSDictionary *dic = @{ @"albumCouponNo" : self.tfInputCode.text,
+                           @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
+                           @"lang" : @"ko" };
+    
+    [self.library postAlbumCodeWithParam:dic success:^(id results)
+    {
+        NSDictionary *result = (NSDictionary *)results;
+        if([result objectForKey:@"result"])
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction  *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
+        
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
 }
 
 -(void)setColorAndFont

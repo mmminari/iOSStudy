@@ -48,6 +48,7 @@
                               resizingMode:UIImageResizingModeStretch];
     
     self.ivTfBackground.image = img;
+    self.tfInputCardNum.text = @"A0RE160831071742";
     
 }
 
@@ -66,6 +67,8 @@
     
 }
 
+#pragma mark - User Action
+
 - (IBAction)touchedHideKeyBoard:(id)sender
 {
     [self.tfInputCardNum resignFirstResponder];
@@ -73,6 +76,36 @@
 
 }
 
+- (IBAction)touchedReisgerCard:(id)sender
+{
+    [self registerCardNum];
+}
+
+-(void)registerCardNum
+{
+    NSDictionary *inputData = @{ @"cardNo" : self.tfInputCardNum.text,
+                                 @"userNo" : [NSNumber numberWithInteger:[self.library.userInfo userNo]],
+                                 @"lang" : @"ko"};
+    
+    [self.library putCardNumWithParam:inputData success:^(id results) {
+        NSDictionary *result = (NSDictionary *)results;
+        if([result objectForKey:@"result"])
+        {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[result objectForKey:@"code"] message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+            }];
+            [alert addAction:action];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
+}
+
+#pragma mark - UI
 
 -(void)setColorAndFont
 {

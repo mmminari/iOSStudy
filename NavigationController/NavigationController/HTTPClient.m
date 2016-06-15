@@ -60,5 +60,39 @@
     }];
 }
 
+-(void)PUTWithUrlString:(NSString *)urlString parameters:(id)parameters
+                success:(void (^)(id results))success
+                failure:(void (^)(NSError *error))failure
+{
+    [self PUT:urlString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if(success)
+        {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if(failure)
+        {
+            failure(error);
+        }
+    }];
+}
+
+-(void)PATCHWithUrlString:(NSString *)urlString parameters:(id)parameters
+                  success:(void (^)(id results))success
+                  failure:(void (^)(NSError *error))failure
+{
+    [self PATCH:urlString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        if(success)
+        {
+            success(responseObject);
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        if(failure)
+        {
+            failure(error);
+        }
+    }];
+}
+
 
 @end

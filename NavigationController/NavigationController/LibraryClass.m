@@ -47,7 +47,9 @@
 }
 
 
--(void)getMainInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure
+-(void)getMainInformationWithParam:(id)param
+                           success:(void (^)(id results))success
+                           failure:(void (^)(NSError *error))failure
 {
     [self.httpClient GETWithUrlString:@"/api/v1/main" parameters:param success:^(id results) {
         if(success)
@@ -62,7 +64,9 @@
     }];
 }
 
--(void)getUserInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure
+-(void)getUserInformationWithParam:(id)param
+                           success:(void (^)(id results))success
+                           failure:(void (^)(NSError *error))failure
 {
     [self.httpClient GETWithUrlString:@"/api/v1/memberInfo" parameters:param success:^(id results) {
         if(success)
@@ -77,7 +81,9 @@
     }];
 }
 
--(void)getStoreInformationWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure
+-(void)getStoreInformationWithParam:(id)param
+                            success:(void (^)(id results))success
+                            failure:(void (^)(NSError *error))failure
 {
     [self.httpClient GETWithUrlString:@"/api/v1/brand" parameters:param success:^(id results) {
         if(success)
@@ -92,9 +98,27 @@
     }];
 }
 
--(void)getLogInResultsWithParam:(id)param success:(void (^)(id results))success failure:(void (^)(NSError *error))failure
+-(void)postLogInResultsWithParam:(id)param
+                         success:(void (^)(id results))success
+                         failure:(void (^)(NSError *error))failure
 {
-    [self.httpClient GETWithUrlString:@"/api/v1/accountSignin" parameters:param success:^(id results) {
+    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignin" parameters:param success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+-(void)postResultsOfLogOutWithParam:(id)param
+                            success:(void (^)(id results))success
+                            failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient POSTWithUrlString:@"/api/v1/accountSignOut" parameters:param success:^(id results) {
         if(success)
         {
             success(results);
@@ -107,5 +131,72 @@
     }];
 }
 
+-(void)postAlbumCodeWithParam:(id)param
+                      success:(void (^)(id results))success
+                      failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient POSTWithUrlString:@"/api/v1/pointAlbum" parameters:param success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+-(void)putCardNumWithParam:(id)param
+                   success:(void (^)(id results))success
+                   failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient PUTWithUrlString:@"/api/v1/cardSet" parameters:param success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+-(void)patchCardPwWithParam:(id)param
+                    success:(void (^)(id results))success
+                    failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient PATCHWithUrlString:@"/api/v1/cardPassword" parameters:param success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+-(void)patchCardLossWithParam:(id)param
+                      success:(void (^)(id results))success
+                      failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient PATCHWithUrlString:@"/api/v1/cardLoss" parameters:param success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
 
 @end

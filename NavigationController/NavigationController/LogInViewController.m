@@ -236,7 +236,7 @@
                                   @"password" : self.tfPassWord.text,
                                   @"autoSignin" : autoLogIn };
     
-    [self.library getLogInResultsWithParam:HTTPBodyDic success:^(id results) {
+    [self.library postLogInResultsWithParam:HTTPBodyDic success:^(id results) {
         [self processingUrlRequestWithParam: results];
 
     } failure:^(NSError *error) {

@@ -79,12 +79,13 @@
 #pragma mark - User Action
 - (IBAction)touchedLogOut:(id)sender
 {
-    [self startSession];
+   // [self startSession];
+    [self requestLogOut];
     
 }
 
 #pragma mark - Session
-
+/*
 -(void)startSession
 {
     NSURLSession *session = [NSURLSession sharedSession];
@@ -134,6 +135,39 @@
      }] resume];
 
 }
+*/
+
+-(void)requestLogOut
+{
+    NSNumber *userNo = [NSNumber numberWithInt:(int)[self.userInfo userNo]];
+    NSNumber *autoLogin = [NSNumber numberWithBool:self.swcAutoLogin.isOn];
+    NSLog(@"%@", autoLogin);
+    NSDictionary *bodyDic = @{ @"userNo" : userNo,
+                               @"deviceToken" : @"d963fcf6e9578fa44adc519287432c1b7ce176684388dabbaac0409c56873fc8",
+                               @"deviceType" : @"ios",
+                               @"version" : @115,
+                               @"lang" : @"ko",
+                               @"inPushOn" : autoLogin,
+                               @"isPushDebug" : @0 };
+    
+    [self.library postLogInResultsWithParam:bodyDic success:^(id results) {
+        if([results isKindOfClass:[NSDictionary class]])
+        {
+            self.resultDic = [[NSDictionary alloc]initWithDictionary:results];
+            self.library.userInfo = nil;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"backToLogOutView" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            });
+        }
+        
+    } failure:^(NSError *error) {
+        LogGreen(@"error");
+    }];
+}
+     
 #pragma mark - UI
 
 -(void)setColorAndFont
