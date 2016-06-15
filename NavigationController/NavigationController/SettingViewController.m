@@ -74,9 +74,22 @@
     [self setColorAndFont];
     [self setLayout];
     
+    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(10.0f, 600.0f, 50.0f, 50.0f)];
+    [button setBackgroundColor:[UIColor purpleColor]];
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(touchedButton:) forControlEvents:UIControlEventTouchUpInside];
+
+    
 }
 
 #pragma mark - User Action
+
+-(void)touchedButton:(UIButton *)btn
+{
+    LogRed(@"button touched!");
+    
+}
+
 - (IBAction)touchedLogOut:(id)sender
 {
    // [self startSession];
