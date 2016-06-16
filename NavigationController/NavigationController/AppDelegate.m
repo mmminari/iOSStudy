@@ -20,7 +20,28 @@
     LogGreen(@"launchOptions : %@",launchOptions);
     
     // Override point for customization after application launch.
+    
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+    
     return YES;
+}
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    //device token값 넘기기
+    LogGreen( @"data : %@" , deviceToken);
+    NSString *tokenString = [deviceToken description];
+    NSString *deviceTokenString = [tokenString substringWithRange:NSMakeRange(1, tokenString.length-2)];
+
+    
+    
+    LogGreen(@"tokenString : %@", deviceTokenString);
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
