@@ -19,6 +19,9 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
+@property (assign, nonatomic) BOOL launchOption;
+
+
 -(void)requestMainInformationWithParameter:(id)parameter
                                    success:(void (^)(id results))success
                                    failure:(void (^)(NSError *error))failure;

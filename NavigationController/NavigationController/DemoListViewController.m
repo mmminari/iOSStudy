@@ -45,13 +45,11 @@ typedef NS_ENUM(NSInteger, DemoType)
 -(void)viewWillAppear:(BOOL)animated
 {
     LogBlue(@"willAppear");
-    if([[NSUserDefaults standardUserDefaults] boolForKey:@"launchOption"])
-    {
-        LogBlue(@"NSUserDefaults standardUserDefaults");
-        [self.navigationController pushViewController:self.mainVC animated:YES];
-        [self.mainVC.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH, 0)];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"moveToPointView" object:nil];
-    }
+    
+    LogBlue(@"NSUserDefaults standardUserDefaults");
+  //  [self.navigationController pushViewController:self.mainVC animated:YES];
+   // [self.mainVC.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH, 0)];
+    
 }
 
 

@@ -42,21 +42,23 @@
         self.ivSplash.image = [UIImage imageNamed:@"splash_1242x2208"];
     }
     
-    [self setResultOfAutoSignInWithSwith:NO];
+    [self setResultOfAutoSignInWithSwith:YES];
     
     if ([self getResultOfAutoSignIn])
     {
         //[self startAutoSignInSession];
         [self reqUserInformation];
+        [self reqMainInformation];
         
+        NSLog(@"autoSignInYEs");
+        //remove later
     }
     else
     {
         //[self startSession];
         [self reqMainInformation];
-        
+        NSLog(@"autoSignInNO");
     }
-
 }
 
 #pragma mark - ARI request

@@ -8,10 +8,14 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "LibraryClass.h"
+
 
 @interface AppDelegate ()
 
-@property (assign, nonatomic) BOOL launchOption ;
+@property (strong, nonatomic) LibraryClass *lib;
+
+
 
 @end
 
@@ -20,19 +24,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    self.lib = [LibraryClass sharedInstance];
+    
     
     if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"])
     {
         LogYellow(@"UIApplicationLaunchOptionsRemoteNotificationKey");
-        self.launchOption = YES;
-
+        self.lib.launchOption = YES;
     }
     else
     {
-        self.launchOption = NO;
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"launchOpion"];
-
         LogYellow(@"no?");
+        self.lib.launchOption = NO;
+        
     }
     // Override point for customization after application launch.
     
@@ -67,18 +71,6 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
     LogRed(@"foreground and userInfo : %@ ", [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
     LogRed(@"info : %@", userInfo);
     
-    
-    
-    if(self.launchOption)
-    {
-        LogBlue(@"inactive");
-        [[NSUserDefaults standardUserDefaults] setBool:self.launchOption forKey:@"launchOption"];
-    }
-    else if(!self.launchOption)
-    {
-        LogBlue(@"active");
-
-    }
 
 }
 

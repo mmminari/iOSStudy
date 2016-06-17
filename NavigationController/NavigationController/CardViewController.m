@@ -53,8 +53,6 @@
 @property (strong, nonatomic) ReportCardLossViewController *reportVC;
 @property (strong, nonatomic) RegCodeViewController *regCodeVC;
 
-
-
 @end
 
 

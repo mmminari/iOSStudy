@@ -148,8 +148,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
     if(![self getResultOfAutoSignIn])
     {
-       // [self.mainViewContainer addSubview:self.logoutVC.view];
-       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
+        [self.mainViewContainer addSubview:self.logoutVC.view];
+        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
     }
 
     self.cardVC.userInfo = self.userInfo;
@@ -169,8 +169,25 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     [self setLayoutAndColor];
     
+    LogRed(@"launchOption : %@", [NSNumber numberWithBool: self.library.launchOption]);
+    if(self.library.launchOption)
+    {
+        [self setContentOffset];
+    }
     
-    
+}
+
+-(void)setContentOffset
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.cvMainView reloadData];
+        [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH,0.0f) animated:YES];
+        [self setLeadingOfPinkIndicatorWithIndex:1];
+        
+        LogRed(@"reloadColletionViews");
+        
+    });
 }
 
 
