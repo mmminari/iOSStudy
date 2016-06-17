@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
 #import "MainInformation.h"
+#import "NotificationClass.h"
 
 
 @interface LibraryClass : NSObject
@@ -20,6 +21,9 @@
 @property (strong, nonatomic) MainInformation *mainInfo;
 
 @property (assign, nonatomic) BOOL launchOption;
+
+@property (strong, nonatomic) NotificationClass *noti;
+
 
 
 -(void)requestMainInformationWithParameter:(id)parameter

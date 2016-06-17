@@ -87,6 +87,7 @@
 		6D51E1301D0E9327004124B8 /* ReportCardLossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E12F1D0E9327004124B8 /* ReportCardLossViewController.m */; };
 		6D51E1331D0E9A10004124B8 /* RegCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */; };
 		6D51E1351D0EB9AB004124B8 /* box_white2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D51E1341D0EB9AB004124B8 /* box_white2@2x.png */; };
+		6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D3D1D13BF5600107817 /* NotificationClass.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -240,6 +241,8 @@
 		6D51E1311D0E9A10004124B8 /* RegCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegCodeViewController.h; sourceTree = "<group>"; };
 		6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegCodeViewController.m; sourceTree = "<group>"; };
 		6D51E1341D0EB9AB004124B8 /* box_white2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box_white2@2x.png"; sourceTree = "<group>"; };
+		6D538D3C1D13BF5600107817 /* NotificationClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationClass.h; sourceTree = "<group>"; };
+		6D538D3D1D13BF5600107817 /* NotificationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationClass.m; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 				6D4AD2F71D01273700CFC443 /* EtcViewController */,
 				6D4B649B1CD333510078969D /* ImageFile */,
 				6D4AD2F61D0126E200CFC443 /* MenuViewController */,
+				6D538D3C1D13BF5600107817 /* NotificationClass.h */,
+				6D538D3D1D13BF5600107817 /* NotificationClass.m */,
 				6D4AD30C1D017B0700CFC443 /* LibraryClass.h */,
 				6D4AD30D1D017B0700CFC443 /* LibraryClass.m */,
 				6D4AD2F81D0128CF00CFC443 /* SplashViewController.h */,
@@ -744,6 +749,7 @@
 				6D247F7C1CE1CBEE00EBE9DB /* MainCollectionCell.m in Sources */,
 				6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
+				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,

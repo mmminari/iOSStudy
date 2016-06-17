@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "WebViewController.h"
 #import "MainViewController.h"
+#import "LibraryClass.h"
 
 
 typedef NS_ENUM(NSInteger, DemoType)
@@ -45,6 +46,15 @@ typedef NS_ENUM(NSInteger, DemoType)
 -(void)viewWillAppear:(BOOL)animated
 {
     LogBlue(@"willAppear");
+    
+    
+    if(self.library.noti.targetView)
+    {
+        LogYellow(@"self.library.noti");
+        [self performSegueWithIdentifier:@"sgDemoToMain" sender:nil];
+        
+    }
+    
     
     LogBlue(@"NSUserDefaults standardUserDefaults");
   //  [self.navigationController pushViewController:self.mainVC animated:YES];

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "LibraryClass.h"
-
+#import "NotificationClass.h"
 
 @interface AppDelegate ()
 
@@ -26,11 +26,14 @@
     
     self.lib = [LibraryClass sharedInstance];
     
+    NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    LogGreen(@"userInfo : %@", userInfo);
     
-    if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"])
+    if(userInfo)
     {
         LogYellow(@"UIApplicationLaunchOptionsRemoteNotificationKey");
         self.lib.launchOption = YES;
+        
     }
     else
     {
@@ -38,6 +41,9 @@
         self.lib.launchOption = NO;
         
     }
+    
+    NotificationClass *noti = [[NotificationClass alloc]initWithUserInfo:userInfo];
+    self.lib.noti = noti;
     // Override point for customization after application launch.
     
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
