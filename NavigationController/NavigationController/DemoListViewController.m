@@ -9,6 +9,7 @@
 #import "DemoListViewController.h"
 #import "ViewController.h"
 #import "WebViewController.h"
+#import "MainViewController.h"
 
 
 typedef NS_ENUM(NSInteger, DemoType)
@@ -22,9 +23,9 @@ typedef NS_ENUM(NSInteger, DemoType)
 @interface DemoListViewController ()
 
 @property (strong, nonatomic) NSArray *list;
-
-
 @property (weak, nonatomic) IBOutlet UITableView *tvList;
+
+@property (strong, nonatomic) MainViewController *mainVC;
 
 @end
 
@@ -35,6 +36,22 @@ typedef NS_ENUM(NSInteger, DemoType)
     [super viewDidLoad];
     
     self.list = [self getMenuListInfo];
+    self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-main"];
+    [self.mainVC viewWillAppear:YES];
+
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    LogBlue(@"willAppear");
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"launchOption"])
+    {
+        LogBlue(@"NSUserDefaults standardUserDefaults");
+        [self.navigationController pushViewController:self.mainVC animated:YES];
+        [self.mainVC.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH, 0)];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"moveToPointView" object:nil];
+    }
 }
 
 
@@ -136,13 +153,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if([[segue identifier] isEqualToString:@"sgMainToCollectionView"])
     {
         
-        
     }
-    
-    
-
 }
-
 
 
 @end

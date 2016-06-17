@@ -17,11 +17,15 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 
+@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
 
 -(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView;
 -(void)touchedShowBarcode;
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;
 -(void)moveToTheTargetViewWithMenuList:(MenuList)list;
+
+
+-(void)viewWillAppear:(BOOL)animated;
 
 @end

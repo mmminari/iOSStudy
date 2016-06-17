@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
 
 @interface AppDelegate ()
+
+@property (assign, nonatomic) BOOL launchOption ;
 
 @end
 
@@ -17,8 +20,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    LogGreen(@"launchOptions : %@",launchOptions);
     
+    if([launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"])
+    {
+        LogYellow(@"UIApplicationLaunchOptionsRemoteNotificationKey");
+        self.launchOption = YES;
+
+    }
+    else
+    {
+        self.launchOption = NO;
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"launchOpion"];
+
+        LogYellow(@"no?");
+    }
     // Override point for customization after application launch.
     
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
@@ -27,6 +42,7 @@
     
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
+    self.oneSignal = [[OneSignal alloc]initWithLaunchOptions:launchOptions appId:@"455bc063-965c-4eb6-86c5-3956b092e444" handleNotification:nil];
     
     return YES;
 }
@@ -38,10 +54,39 @@
     NSString *tokenString = [deviceToken description];
     NSString *deviceTokenString = [tokenString substringWithRange:NSMakeRange(1, tokenString.length-2)];
 
-    
-    
     LogGreen(@"tokenString : %@", deviceTokenString);
     
+}
+
+
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+{
+    LogRed(@"foreground and userInfo : %@ ", [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
+    LogRed(@"info : %@", userInfo);
+    
+    
+    
+    if(self.launchOption)
+    {
+        LogBlue(@"inactive");
+        [[NSUserDefaults standardUserDefaults] setBool:self.launchOption forKey:@"launchOption"];
+    }
+    else if(!self.launchOption)
+    {
+        LogBlue(@"active");
+
+    }
+
+}
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    LogRed(@"didReceiveLocalNotification");
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -60,6 +105,12 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    if(UIApplicationStateInactive)
+    {
+        LogYellow(@"?");
+    }
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -2362,7 +2362,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="880325BA-212D-4C61-97F4-2940B51B8593"/>
+                                <state key="normal" image="31E8700F-44DA-4AA3-8771-53E34BFF294D"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -3540,7 +3540,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="880325BA-212D-4C61-97F4-2940B51B8593" width="21" height="21">
+        <image name="31E8700F-44DA-4AA3-8771-53E34BFF294D" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -99,7 +99,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfHideView;
 @property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *cvMainView;
 
 @property (strong, nonatomic) NSNotificationCenter *notiCenter;
 @property (assign, nonatomic) BOOL flag;
@@ -149,8 +148,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
     if(![self getResultOfAutoSignIn])
     {
-        [self.mainViewContainer addSubview:self.logoutVC.view];
-        [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
+       // [self.mainViewContainer addSubview:self.logoutVC.view];
+       // [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
     }
 
     self.cardVC.userInfo = self.userInfo;
@@ -170,6 +169,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     [self setLayoutAndColor];
     
+    
+    
 }
 
 
@@ -186,15 +187,27 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.notiCenter addObserver:self selector:@selector(reloadColletionViews:) name:@"endUserInfoTransit" object:nil];
         [self.notiCenter addObserver:self selector:@selector(backToLogInView:) name:@"backToLogInView" object:nil];
         [self.notiCenter addObserver:self selector:@selector(backToLogOutView:) name:@"backToLogOutView" object:nil];
-
+        [self.notiCenter addObserver:self selector:@selector(moveToPointView:) name:@"moveToPointView" object:nil];
+        LogBlue(@"noti");
+        
     }
     
     self.flag = NO;
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
 //    [self.notiCenter removeObserver:self];
+}
+
+-(void)moveToPointView:(NSNotification *)noti
+{
+    [self showViewController:self sender:nil];
+    [self.cvMainView setContentOffset:CGPointMake(DEVICE_WIDTH*1,0.0f) animated:YES];
+    
+    LogRed(@"moveToPointView");
+    
 }
 
 -(void)sendData:(NSNotification *)notification
