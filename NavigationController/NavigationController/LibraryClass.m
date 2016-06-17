@@ -15,6 +15,7 @@
 @property (strong, nonatomic) HTTPClient *httpClient;
 
 
+
 @end
 
 
@@ -41,7 +42,7 @@
     if(self = [super init])
     {
         _httpClient = [[HTTPClient alloc]initWithBaseURL];
-        _noti = [[NotificationClass alloc]init];
+        _pushModel = [[PushModel alloc]init];
     }
     
     return self;
@@ -199,5 +200,28 @@
         }
     }];
 }
+
+-(void)registerDeviceTokenWithLaunchOptions:(NSDictionary *)launchOptions
+{
+    [self.pushModel registerDeviceTokenWithLaunchOptions:launchOptions];
+}
+
+-(void)saveDeviceToken:(NSData *)devicdeToken
+{
+    [self.pushModel saveDeviceToken:devicdeToken];
+}
+
+-(NSString *)getDeviceToken
+{
+    NSString *tokenNum = [self.pushModel getDeviceToken];
+    return tokenNum;
+}
+
+-(void)setPayload:(NSDictionary *)userInfo
+{
+    [self.pushModel setPayload:userInfo];
+}
+
+
 
 @end

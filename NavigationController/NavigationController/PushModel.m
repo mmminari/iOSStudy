@@ -8,43 +8,52 @@
 
 #import "PushModel.h"
 #import "UtilityClass.h"
+#import <OneSignal/OneSignal.h>
+
 
 @interface PushModel ()
 
-@property(strong, nonatomic) UtilityClass *util;
+@property (strong, nonatomic) OneSignal *oneSignal;
+
 
 @end
 
 @implementation PushModel
 
--(instancetype)initWithUserInfo:(NSDictionary *)userInfo
+
+
+-(void)registerDeviceTokenWithLaunchOptions:(NSDictionary *)launchOptions
 {
-    if(self = [super init])
-    {
-        LogGreen(@"userInfo %@", userInfo);
-        
-        _pushMessage = [self.util getValueWithKey:@"alert" Dictionary:[self.util getValueWithKey:@"aps" Dictionary:userInfo]];
-        _sound = [self.util getValueWithKey:@"sound" Dictionary:[self.util getValueWithKey:@"aps" Dictionary:userInfo]];
-       // _targetView = [self.util getValueWithKey:@"targetView" Dictionary:[self.util getValueWithKey:@"a" Dictionary:[self.util getValueWithKey:@"custom" Dictionary:userInfo]]];
-        _targetView = [[[userInfo objectForKey:@"custom"]objectForKey:@"a"]objectForKey:@"targetView"];
-        
-        LogYellow(@"targetView %@ %@ ", _targetView, _sound);
-        
-        
-    }
+    self.oneSignal = [[OneSignal alloc]initWithLaunchOptions:launchOptions appId:@"455bc063-965c-4eb6-86c5-3956b092e444" handleNotification:nil];
     
-    return self;
+    LogYellow(@"register");
 }
 
--(instancetype)init
+-(void)saveDeviceToken:(NSData *)deviceToken
 {
-    if(self = [super init])
-    {
-        self.util = [[UtilityClass alloc]init];
-    }
+    NSString *tokenString = [deviceToken description];
+    NSString *deviceTokenString = [tokenString substringWithRange:NSMakeRange(1, tokenString.length-2)];
     
-    return self;
+    [[NSUserDefaults standardUserDefaults]setObject:deviceTokenString forKey:@"deviceToken"];
 }
+
+-(NSString *)getDeviceToken
+{
+    NSString *result = nil;
+    result = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+    
+    return result;
+}
+
+-(void)setPayload:(NSDictionary *)userInfo
+{
+    self.payLoadData = [[Payload alloc]initWithUserInfo:userInfo];
+    NSLog(@"userInfo %@", userInfo);
+    
+    LogYellow(@"savePayload")   ;
+    
+}
+
 
 
 @end

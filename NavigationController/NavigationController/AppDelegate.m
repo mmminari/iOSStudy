@@ -50,7 +50,7 @@
     
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
-    [self.lib.noti registerDeviceTokenWithLaunchOptions:launchOptions];
+    [self.lib registerDeviceTokenWithLaunchOptions:launchOptions];
     
     
     return YES;
@@ -60,7 +60,7 @@
 {
     //device token값 넘기기
     LogGreen( @"data : %@" , deviceToken);
-    [self.lib.noti saveDeviceToken:deviceToken];
+    [self.lib saveDeviceToken:deviceToken];
     
     
 }
@@ -74,7 +74,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
     LogRed(@"foreground and userInfo : %@ ", [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
     LogRed(@"info : %@", userInfo);
     
-    [self.lib.noti setPayload:userInfo];
+    [self.lib setPayload:userInfo];
     
     
 

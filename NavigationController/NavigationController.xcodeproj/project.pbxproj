@@ -89,6 +89,7 @@
 		6D51E1351D0EB9AB004124B8 /* box_white2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D51E1341D0EB9AB004124B8 /* box_white2@2x.png */; };
 		6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D3D1D13BF5600107817 /* NotificationClass.m */; };
 		6D538D411D13DF1100107817 /* PushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D401D13DF1100107817 /* PushModel.m */; };
+		6D538D441D13F23E00107817 /* Payload.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D431D13F23E00107817 /* Payload.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -246,6 +247,8 @@
 		6D538D3D1D13BF5600107817 /* NotificationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationClass.m; sourceTree = "<group>"; };
 		6D538D3F1D13DF1100107817 /* PushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushModel.h; sourceTree = "<group>"; };
 		6D538D401D13DF1100107817 /* PushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushModel.m; sourceTree = "<group>"; };
+		6D538D421D13F23E00107817 /* Payload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payload.h; sourceTree = "<group>"; };
+		6D538D431D13F23E00107817 /* Payload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payload.m; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
@@ -421,7 +424,6 @@
 			children = (
 				6D33AE021CE5662700B2DFE4 /* WebKit.framework */,
 				6D4C8A821CC71FDB006AEEBE /* NavigationController */,
-				BC49EDD9083D3271F754832B /* Pods */,
 				1A25628A862909EAC5C9C857 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -447,6 +449,8 @@
 				6D4AD2F61D0126E200CFC443 /* MenuViewController */,
 				6D538D3C1D13BF5600107817 /* NotificationClass.h */,
 				6D538D3D1D13BF5600107817 /* NotificationClass.m */,
+				6D538D421D13F23E00107817 /* Payload.h */,
+				6D538D431D13F23E00107817 /* Payload.m */,
 				6D538D3F1D13DF1100107817 /* PushModel.h */,
 				6D538D401D13DF1100107817 /* PushModel.m */,
 				6D4AD30C1D017B0700CFC443 /* LibraryClass.h */,
@@ -511,6 +515,7 @@
 				6D4C8A8F1CC71FDB006AEEBE /* Assets.xcassets */,
 				6D4C8A911CC71FDB006AEEBE /* LaunchScreen.storyboard */,
 				6D4C8A941CC71FDB006AEEBE /* Info.plist */,
+				BC49EDD9083D3271F754832B /* Pods */,
 				6D4C8A811CC71FDB006AEEBE /* Products */,
 				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 			);
@@ -532,6 +537,7 @@
 				AB7502B2BD6CDDF7344886CB /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,6 +751,7 @@
 				6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */,
 				6D14701C1CEC6130001529A2 /* ImageDownload.m in Sources */,
 				6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */,
+				6D538D441D13F23E00107817 /* Payload.m in Sources */,
 				6D51E1301D0E9327004124B8 /* ReportCardLossViewController.m in Sources */,
 				6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */,
 				6DAD689C1CEABED500C25969 /* CardCell.m in Sources */,

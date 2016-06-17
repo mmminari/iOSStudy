@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
 #import "MainInformation.h"
-#import "NotificationClass.h"
-
+#import "PushModel.h"
 
 @interface LibraryClass : NSObject
 
@@ -22,7 +21,7 @@
 
 @property (assign, nonatomic) BOOL launchOption;
 
-@property (strong, nonatomic) NotificationClass *noti;
+@property (strong, nonatomic) PushModel *pushModel;
 
 
 
@@ -61,5 +60,13 @@
 -(void)requestReportCardLossWithParameter:(id)parameter
                                   success:(void (^)(id results))success
                                   failure:(void (^)(NSError *error))failure;
+
+-(void)registerDeviceTokenWithLaunchOptions:(NSDictionary *)launchOptions;
+
+-(void)saveDeviceToken:(NSData *)deviceToken;
+
+-(NSString *)getDeviceToken;
+
+-(void)setPayload:(NSDictionary *)userInfo;
 
 @end
