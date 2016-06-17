@@ -8,29 +8,51 @@
 
 #import "NotificationClass.h"
 
+@interface NotificationClass ()
+
+
+@property (strong, nonatomic) OneSignal *oneSignal;
+
+
+@end
+
 @implementation NotificationClass
 
 
--(instancetype)initWithUserInfo:(NSDictionary *)userInfo
+
+-(void)registerDeviceTokenWithLaunchOptions:(NSDictionary *)launchOptions
 {
-    if(self = [super init])
-    {
-        _targetView = [self getValueWithKey:@"targetView" Dictionary:[self getValueWithKey:@"a" Dictionary:[self getValueWithKey:@"custom" Dictionary:userInfo]]];
-        LogYellow(@"targetView %@", _targetView);
-        
-        
-    }
+    self.oneSignal = [[OneSignal alloc]initWithLaunchOptions:launchOptions appId:@"455bc063-965c-4eb6-86c5-3956b092e444" handleNotification:nil];
     
-    return self;
+    LogYellow(@"register");
+}
+
+-(void)saveDeviceToken:(NSData *)deviceToken
+{
+    NSString *tokenString = [deviceToken description];
+    NSString *deviceTokenString = [tokenString substringWithRange:NSMakeRange(1, tokenString.length-2)];
+    
+    [[NSUserDefaults standardUserDefaults]setObject:deviceTokenString forKey:@"deviceToken"];
+}
+
+-(NSString *)getDeviceToken
+{
+    NSString *result = nil;
+    result = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+    
+    return result;
+}
+
+-(void)setPayload:(NSDictionary *)userInfo
+{
+    self.pushModel = [[PushModel alloc]initWithUserInfo:userInfo];
+    NSLog(@"userInfo %@", userInfo);
+    
+    LogYellow(@"savePayload")   ;
+    
 }
 
 
--(NSString *)getDeviceTokenString
-{
-    NSString *string = nil;
-    
-    return string;
-    
-}
+
 
 @end

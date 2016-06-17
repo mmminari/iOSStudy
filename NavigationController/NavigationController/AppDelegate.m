@@ -42,8 +42,6 @@
         
     }
     
-    NotificationClass *noti = [[NotificationClass alloc]initWithUserInfo:userInfo];
-    self.lib.noti = noti;
     // Override point for customization after application launch.
     
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
@@ -52,7 +50,8 @@
     
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     
-    self.oneSignal = [[OneSignal alloc]initWithLaunchOptions:launchOptions appId:@"455bc063-965c-4eb6-86c5-3956b092e444" handleNotification:nil];
+    [self.lib.noti registerDeviceTokenWithLaunchOptions:launchOptions];
+    
     
     return YES;
 }
@@ -61,10 +60,8 @@
 {
     //device token값 넘기기
     LogGreen( @"data : %@" , deviceToken);
-    NSString *tokenString = [deviceToken description];
-    NSString *deviceTokenString = [tokenString substringWithRange:NSMakeRange(1, tokenString.length-2)];
-
-    LogGreen(@"tokenString : %@", deviceTokenString);
+    [self.lib.noti saveDeviceToken:deviceToken];
+    
     
 }
 
@@ -76,6 +73,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
 {
     LogRed(@"foreground and userInfo : %@ ", [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]);
     LogRed(@"info : %@", userInfo);
+    
+    [self.lib.noti setPayload:userInfo];
+    
     
 
 }

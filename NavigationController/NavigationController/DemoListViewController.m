@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     LogBlue(@"willAppear");
     
     
-    if(self.library.noti.targetView)
+    if(self.library.noti.pushModel.targetView)
     {
         LogYellow(@"self.library.noti");
         [self performSegueWithIdentifier:@"sgDemoToMain" sender:nil];

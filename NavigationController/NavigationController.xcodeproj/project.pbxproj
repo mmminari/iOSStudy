@@ -88,6 +88,7 @@
 		6D51E1331D0E9A10004124B8 /* RegCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D51E1321D0E9A10004124B8 /* RegCodeViewController.m */; };
 		6D51E1351D0EB9AB004124B8 /* box_white2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D51E1341D0EB9AB004124B8 /* box_white2@2x.png */; };
 		6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D3D1D13BF5600107817 /* NotificationClass.m */; };
+		6D538D411D13DF1100107817 /* PushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D401D13DF1100107817 /* PushModel.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -243,6 +244,8 @@
 		6D51E1341D0EB9AB004124B8 /* box_white2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "box_white2@2x.png"; sourceTree = "<group>"; };
 		6D538D3C1D13BF5600107817 /* NotificationClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationClass.h; sourceTree = "<group>"; };
 		6D538D3D1D13BF5600107817 /* NotificationClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationClass.m; sourceTree = "<group>"; };
+		6D538D3F1D13DF1100107817 /* PushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushModel.h; sourceTree = "<group>"; };
+		6D538D401D13DF1100107817 /* PushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushModel.m; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				6D4AD2F61D0126E200CFC443 /* MenuViewController */,
 				6D538D3C1D13BF5600107817 /* NotificationClass.h */,
 				6D538D3D1D13BF5600107817 /* NotificationClass.m */,
+				6D538D3F1D13DF1100107817 /* PushModel.h */,
+				6D538D401D13DF1100107817 /* PushModel.m */,
 				6D4AD30C1D017B0700CFC443 /* LibraryClass.h */,
 				6D4AD30D1D017B0700CFC443 /* LibraryClass.m */,
 				6D4AD2F81D0128CF00CFC443 /* SplashViewController.h */,
@@ -733,6 +738,7 @@
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
 				6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */,
+				6D538D411D13DF1100107817 /* PushModel.m in Sources */,
 				6D4E43FC1CF545DB002041F7 /* MenuUserInfoViewController.m in Sources */,
 				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,
 				6D4C8A881CC71FDB006AEEBE /* AppDelegate.m in Sources */,

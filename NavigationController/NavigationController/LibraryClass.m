@@ -41,6 +41,7 @@
     if(self = [super init])
     {
         _httpClient = [[HTTPClient alloc]initWithBaseURL];
+        _noti = [[NotificationClass alloc]init];
     }
     
     return self;
