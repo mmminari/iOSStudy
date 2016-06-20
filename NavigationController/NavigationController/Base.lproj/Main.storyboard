@@ -2211,7 +2211,7 @@
                                 <rect key="frame" x="213" y="308" width="128" height="389"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AUO-af-Vml">
-                                <rect key="frame" x="233" y="358" width="68" height="289"/>
+                                <rect key="frame" x="233" y="358" width="58" height="289"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iQJ-3y-yQn">
                                 <rect key="frame" x="311" y="317" width="21" height="21"/>
@@ -2221,7 +2221,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdt-i1-qJo">
-                                <rect key="frame" x="301" y="358" width="40" height="289"/>
+                                <rect key="frame" x="301" y="492" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2229,27 +2229,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="top" secondItem="AUO-af-Vml" secondAttribute="top" id="0Xw-wI-zh0"/>
                             <constraint firstItem="8cU-2z-G4V" firstAttribute="centerX" secondItem="yhD-LJ-b7O" secondAttribute="centerX" id="1h5-sb-v5v"/>
                             <constraint firstItem="AUO-af-Vml" firstAttribute="top" secondItem="Qee-kh-mcb" secondAttribute="top" constant="50" id="9gf-39-Se9"/>
-                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="trailing" secondItem="Qee-kh-mcb" secondAttribute="trailing" id="9pd-Oa-8xq"/>
                             <constraint firstItem="Mju-BN-1ph" firstAttribute="top" secondItem="IBJ-wv-il9" secondAttribute="bottom" constant="36" id="Btr-EG-4fW"/>
                             <constraint firstItem="Qee-kh-mcb" firstAttribute="leading" secondItem="61D-BE-rci" secondAttribute="leading" constant="200" id="FpZ-hl-J5R"/>
                             <constraint firstAttribute="bottomMargin" secondItem="61D-BE-rci" secondAttribute="bottom" id="G2D-6z-Y8d"/>
                             <constraint firstItem="iQJ-3y-yQn" firstAttribute="top" secondItem="Qee-kh-mcb" secondAttribute="top" constant="9" id="HJu-RG-r8C"/>
                             <constraint firstItem="OET-0a-xDh" firstAttribute="top" secondItem="IBJ-wv-il9" secondAttribute="bottom" constant="36" id="Koz-ho-iEk"/>
-                            <constraint firstItem="AUO-af-Vml" firstAttribute="trailing" secondItem="Qee-kh-mcb" secondAttribute="trailing" constant="-40" id="Kpy-0p-VOv"/>
+                            <constraint firstItem="AUO-af-Vml" firstAttribute="trailing" secondItem="Qee-kh-mcb" secondAttribute="trailing" constant="-50" id="Kpy-0p-VOv"/>
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="top" secondItem="WJU-Ct-oPS" secondAttribute="bottom" constant="22" id="Kvt-Jl-nTL"/>
                             <constraint firstItem="AUO-af-Vml" firstAttribute="leading" secondItem="Qee-kh-mcb" secondAttribute="leading" constant="20" id="LUX-LF-txL"/>
                             <constraint firstAttribute="trailing" secondItem="IBJ-wv-il9" secondAttribute="trailing" constant="21" id="Lom-0J-zMJ"/>
                             <constraint firstItem="Qee-kh-mcb" firstAttribute="bottom" secondItem="61D-BE-rci" secondAttribute="bottom" constant="30" id="Q16-jd-wpS"/>
                             <constraint firstItem="61D-BE-rci" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="13" id="RZt-B2-TSN"/>
-                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="bottom" secondItem="AUO-af-Vml" secondAttribute="bottom" id="RnS-7N-HjN"/>
                             <constraint firstItem="iQJ-3y-yQn" firstAttribute="trailing" secondItem="Qee-kh-mcb" secondAttribute="trailing" constant="-9" id="SHC-A9-2Xh"/>
                             <constraint firstAttribute="trailing" secondItem="aYB-bW-2ih" secondAttribute="trailing" id="SOe-dl-oTH"/>
                             <constraint firstItem="Qee-kh-mcb" firstAttribute="top" secondItem="61D-BE-rci" secondAttribute="top" constant="21" id="WZv-ha-qEo"/>
                             <constraint firstItem="IBJ-wv-il9" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="YJb-8Z-o38"/>
-                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="leading" secondItem="AUO-af-Vml" secondAttribute="trailing" id="Yil-65-hMT"/>
                             <constraint firstItem="aYB-bW-2ih" firstAttribute="top" secondItem="yhD-LJ-b7O" secondAttribute="top" id="gcT-Od-79p"/>
                             <constraint firstItem="8cU-2z-G4V" firstAttribute="top" secondItem="Mju-BN-1ph" secondAttribute="top" id="gvx-Zb-jzk"/>
                             <constraint firstAttribute="trailing" secondItem="OET-0a-xDh" secondAttribute="trailing" constant="21" id="myg-6e-1Hp"/>
@@ -2257,7 +2253,9 @@
                             <constraint firstItem="aYB-bW-2ih" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" id="nGF-Jd-JKt"/>
                             <constraint firstItem="Mju-BN-1ph" firstAttribute="leading" secondItem="yhD-LJ-b7O" secondAttribute="leading" constant="21" id="ohp-nI-f6u"/>
                             <constraint firstItem="AUO-af-Vml" firstAttribute="bottom" secondItem="Qee-kh-mcb" secondAttribute="bottom" constant="-50" id="qMH-ar-GnR"/>
+                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="centerY" secondItem="AUO-af-Vml" secondAttribute="centerY" id="vGk-fd-sIp"/>
                             <constraint firstItem="61D-BE-rci" firstAttribute="top" secondItem="OET-0a-xDh" secondAttribute="bottom" constant="43" id="vPv-Wj-K3E"/>
+                            <constraint firstItem="Xdt-i1-qJo" firstAttribute="centerX" secondItem="AUO-af-Vml" secondAttribute="centerX" constant="60" id="wJN-kJ-TOn"/>
                             <constraint firstItem="Qee-kh-mcb" firstAttribute="trailing" secondItem="61D-BE-rci" secondAttribute="trailing" constant="-21" id="ztZ-rB-wUe"/>
                         </constraints>
                     </view>
@@ -2399,7 +2397,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="121F4591-5E25-47C1-ACFE-82B8F6BEA58C"/>
+                                <state key="normal" image="340BCEF3-0558-4253-BC53-B63281574BF6"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -3591,7 +3589,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="121F4591-5E25-47C1-ACFE-82B8F6BEA58C" width="21" height="21">
+        <image name="340BCEF3-0558-4253-BC53-B63281574BF6" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
