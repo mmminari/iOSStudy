@@ -48,6 +48,27 @@
     return self;
 }
 
+-(UIImage *)genergateBarcodeWithCode:(NSString *)barString
+{
+    UIImage *img = nil;
+    
+    GenerateBarcode *barcodeObj = [[GenerateBarcode alloc]initWithBarcode:barString];
+    img = [barcodeObj generateBarcodeImage];
+    
+    return img;
+    
+}
+
+-(UIImage *)generateVerticalBarcodeImgWithBarcode:(NSString *)barString
+{
+    UIImage *img = nil;
+    
+    GenerateBarcode *barcodeObj = [[GenerateBarcode alloc]initWithBarcode:barString];
+    img = [barcodeObj generateVerticalBarcodeImage];
+    
+    return img;
+    
+}
 
 -(void)requestMainInformationWithParameter:(id)parameter
                            success:(void (^)(id results))success

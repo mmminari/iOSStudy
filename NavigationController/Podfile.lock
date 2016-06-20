@@ -21,13 +21,18 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - OneSignal (1.13.3)
+  - ZXingObjC (3.1.0):
+    - ZXingObjC/All (= 3.1.0)
+  - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - OneSignal
+  - ZXingObjC
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
+  ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.39.0

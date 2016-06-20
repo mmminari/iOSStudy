@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivCard;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBarcode;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBarcodeImg;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbBarcodeNum;
 @property (weak, nonatomic) IBOutlet UILabel *lbShowGrade;
@@ -103,6 +104,9 @@
     self.alcHeightOfIvLabelSep.constant = WRATIO_WIDTH(39.0f);
     
     [self setLayout];
+    
+    self.ivBarcodeImg.image = [self.library genergateBarcodeWithCode:[self.library.userInfo cardNo]];
+    
     
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -221,6 +225,8 @@
     self.alcBottomOfBarImg.constant = WRATIO_WIDTH(-75.0f);
 
 }
+
+
 
 #pragma mark - touched Event
 

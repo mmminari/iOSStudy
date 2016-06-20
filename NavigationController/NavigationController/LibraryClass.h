@@ -6,10 +6,13 @@
 //  Copyright © 2016년 김민아. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 #import "UserInformation.h"
 #import "MainInformation.h"
 #import "PushModel.h"
+#import "GenerateBarcode.h"
+
 
 @interface LibraryClass : NSObject
 
@@ -23,7 +26,8 @@
 
 @property (strong, nonatomic) PushModel *pushModel;
 
-
+-(UIImage *)genergateBarcodeWithCode:(NSString *)barString;
+-(UIImage *)generateVerticalBarcodeImgWithBarcode:(NSString *)barcode;
 
 -(void)requestMainInformationWithParameter:(id)parameter
                                    success:(void (^)(id results))success

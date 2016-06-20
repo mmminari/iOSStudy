@@ -10,8 +10,6 @@
 #import "UserInformation.h"
 #import "MainViewController.h"
 
-
-
 @interface HomeViewController ()
 
 
@@ -25,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *ivTopRight;
 @property (weak, nonatomic) IBOutlet UIImageView *ivNavigationBottomColor;
+@property (weak, nonatomic) IBOutlet UIImageView *ivEnlargeBar;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBarcodeBackground;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBarcode;
+@property (weak, nonatomic) IBOutlet UILabel *lbBarcode;
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivMenuBottomColor;
 
@@ -154,9 +156,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivUser.layer.masksToBounds = YES;
     
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+    self.ivEnlargeBar.image = [UIImage imageNamed:@"btn_card_largeimg_sub"];
+    self.ivBarcodeBackground.backgroundColor = [UIColor whiteColor];
+    self.ivBarcodeBackground.layer.cornerRadius = WRATIO_WIDTH(95.0f)/2;
     
     [self setColor];
     [self setAutoLayout];
+    
 
 
 }
@@ -176,6 +182,21 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.lbAvailablePoint.text = [NSString stringWithFormat:@"%ld", (long)[self.library.userInfo point]];
     [self startDownLoadBanner];
     [self startDownLoadImage];
+    
+    if([self.library.userInfo cardNo])
+    {
+        LogYellow(@"cardno : %@", [self.library.userInfo cardNo]);
+        NSMutableString *cardString = [NSMutableString stringWithString:[self.library.userInfo cardNo]];
+        [cardString insertString:@" " atIndex:4];
+        [cardString insertString:@" " atIndex:9];
+        [cardString insertString:@" "  atIndex:14];
+        self.lbBarcode.text = cardString;
+        
+        //라벨 세로정렬
+        [self.lbBarcode setTransform:CGAffineTransformMakeRotation(-M_PI / 2)];
+        
+        self.ivBarcode.image = [self.library generateVerticalBarcodeImgWithBarcode:[self.library.userInfo cardNo]];
+    }
 
 }
 
