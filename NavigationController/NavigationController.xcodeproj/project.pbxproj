@@ -91,6 +91,8 @@
 		6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D3D1D13BF5600107817 /* NotificationClass.m */; };
 		6D538D411D13DF1100107817 /* PushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D401D13DF1100107817 /* PushModel.m */; };
 		6D538D441D13F23E00107817 /* Payload.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D538D431D13F23E00107817 /* Payload.m */; };
+		6D5744E71D18CBD8000A1945 /* WKWebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */; };
+		6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744EF1D18DFF2000A1945 /* WebViewClass.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -252,6 +254,10 @@
 		6D538D401D13DF1100107817 /* PushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushModel.m; sourceTree = "<group>"; };
 		6D538D421D13F23E00107817 /* Payload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Payload.h; sourceTree = "<group>"; };
 		6D538D431D13F23E00107817 /* Payload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Payload.m; sourceTree = "<group>"; };
+		6D5744E51D18CBD8000A1945 /* WKWebViewClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewClass.h; sourceTree = "<group>"; };
+		6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewClass.m; sourceTree = "<group>"; };
+		6D5744EE1D18DFF2000A1945 /* WebViewClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewClass.h; sourceTree = "<group>"; };
+		6D5744EF1D18DFF2000A1945 /* WebViewClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewClass.m; sourceTree = "<group>"; };
 		6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YHDebugLog.h; sourceTree = "<group>"; };
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
@@ -317,8 +323,6 @@
 			children = (
 				6DB792EB1CF30211008AF993 /* ShowMenuViewController.h */,
 				6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */,
-				6D4AD2F31D002F3C00CFC443 /* MenuWebViewController.h */,
-				6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */,
 				6D18606B1CF3F55E00F8CB6C /* MenuCell.h */,
 				6D18606C1CF3F55E00F8CB6C /* MenuCell.m */,
 				6D4E43EE1CF5459C002041F7 /* MenuEventViewController.h */,
@@ -333,6 +337,12 @@
 				6D4E43F81CF545CB002041F7 /* MenuAgreementViewController.m */,
 				6D4E43FA1CF545DB002041F7 /* MenuUserInfoViewController.h */,
 				6D4E43FB1CF545DB002041F7 /* MenuUserInfoViewController.m */,
+				6D4AD2F31D002F3C00CFC443 /* MenuWebViewController.h */,
+				6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */,
+				6D5744EE1D18DFF2000A1945 /* WebViewClass.h */,
+				6D5744EF1D18DFF2000A1945 /* WebViewClass.m */,
+				6D5744E51D18CBD8000A1945 /* WKWebViewClass.h */,
+				6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */,
 			);
 			name = MenuViewController;
 			sourceTree = "<group>";
@@ -727,6 +737,7 @@
 				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
 				6D4AD2FA1D0128CF00CFC443 /* SplashViewController.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
+				6D5744E71D18CBD8000A1945 /* WKWebViewClass.m in Sources */,
 				6D51E12D1D0E8A3A004124B8 /* ChangePwViewController.m in Sources */,
 				6D51E1331D0E9A10004124B8 /* RegCodeViewController.m in Sources */,
 				6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */,
@@ -769,6 +780,7 @@
 				6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
+				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
