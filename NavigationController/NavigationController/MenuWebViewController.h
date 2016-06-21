@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import <WebKit/WebKit.h>
 
-@interface MenuWebViewController : BaseViewController<UIWebViewDelegate>
+
+@interface MenuWebViewController : BaseViewController<WKUIDelegate, WKNavigationDelegate>
 
 
 @property (strong, nonatomic) NSString *urlString;

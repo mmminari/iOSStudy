@@ -7,10 +7,15 @@
 //
 
 #import "MenuWebViewController.h"
+#import "WebViewClass.h"
 
-@interface MenuWebViewController ()
+@interface MenuWebViewController () //<WKWebViewClassDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *wvMenu;
+@property (strong, nonatomic) WKWebView *wkWebView;
+
+@property (strong, nonatomic) WebViewClass *webView;
+
 
 @end
 
@@ -22,13 +27,44 @@
     [self.navigationController setNavigationBarHidden:YES];
   //  [self urlRequestWithUrl:self.urlString];
     
+    
+    
+    
+}
+
+
+-(WebViewClass *)webView
+{
+    if(!_webView)
+    {
+        _webView = [[WebViewClass alloc]initWithDelegate:self];
+        _webView.scrollView.delegate = self;
+        [self.view addSubview:self.webView];
+        [self.util setContentViewLayoutWithSubView:self.webView withTargetView:self.view];
+        
+    }
+    
+    return _webView;
+}
+
+
+-(void)webViewDidFinish:(WKWebViewClass *)webView
+{
+    [self.webView sendDeviceInfoWithCallScript];
+    
+}
+
+-(void)didReceiveScriptResults:(id)results
+{
+    LogGreen(@"results : %@", results);
+    
 }
 
 -(void)urlRequestWithUrl:(NSString *)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest  *request = [NSURLRequest requestWithURL:url];
-    [self.wvMenu loadRequest:request];
+    [self.webView loadRequest:request];
     
 }
 
