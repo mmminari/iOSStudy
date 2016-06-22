@@ -7,6 +7,8 @@
 //
 
 #import "WKWebViewClass.h"
+#import "AppDelegate.h"
+#import "MenuWebViewController.h"
 
 #define kDefaultHandlerName                                                          @"default_handler"
 
@@ -62,6 +64,37 @@
     
     _webDelegate = delegate;
 }
+
+
+
+-(void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(nonnull NSString *)message initiatedByFrame:(nonnull WKFrameInfo *)frame completionHandler:(nonnull void (^)(void))completionHandler
+{
+    
+
+    LogGreen(@"runJavaScriptAlertPanelWithMessage");
+    
+    [self showAlertMessage:@"1:1문의가 접수되었습니다." completionHandler:completionHandler];
+    
+    
+}
+
+-(void)showAlertMessage:(NSString *)message completionHandler:(void(^)(void))completionHandler
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            completionHandler();
+    }];
+    
+    [alert addAction:action];
+    
+    MenuWebViewController *menuWebVC = (MenuWebViewController *)self.webDelegate;
+    [menuWebVC presentViewController:alert animated:YES completion:nil];
+    
+}
+ 
+
+
 
 #pragma mark - handler
 
