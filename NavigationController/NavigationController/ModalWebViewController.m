@@ -27,18 +27,10 @@
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
     self.naviVC.ivBack.image = [UIImage imageNamed:@"btn_popup_close"];
     self.naviVC.baseVC = self;
-    [self.naviVC.btnDismiss setHidden:NO];
 
 }
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [self urlRequestWithUrl:[self.library.scriptResults url]];
-    self.naviVC.lbTitle.text =[self.library.scriptResults naviTitle];
-    
-    
-}
 
 -(WebViewClass *)webView
 {

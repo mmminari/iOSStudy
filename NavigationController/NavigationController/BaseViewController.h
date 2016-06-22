@@ -17,6 +17,9 @@
 @property (strong, nonatomic) LibraryClass *library;
 
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
+
+- (void)setCustomNavigationBarWithTitle:(NSString *)title;
+
 -(void)setWebViewWithMenuList:(MenuList)list;
 
 -(void)setResultOfAutoSignInWithSwith:(BOOL)swith;

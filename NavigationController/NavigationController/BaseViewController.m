@@ -69,7 +69,6 @@
     
     [self.view addSubview:showVC.view];
     [self.util setContentViewLayoutWithSubView2:showVC.view withTargetView:self.view];
-    
     showVC.lbTitle.text = title;
     showVC.baseVC = self;
 }
@@ -114,6 +113,19 @@
     showVC.lbTitle.text = title;
     showVC.baseVC = self; //각 VC를 baseVC에 담아서 필요할 때 사용.
 
+}
+
+- (void)setCustomNavigationBarWithTitle:(NSString *)title
+{
+    ShowMenuViewController *showVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
+    
+    [self addChildViewController:showVC];
+    
+    [self.view addSubview:showVC.view];
+    [self.util setContentViewLayoutWithSubView2:showVC.view withTargetView:self.view];
+    showVC.ivBack.image = [UIImage imageNamed:@"btn_popup_close"];
+    showVC.lbTitle.text = title;
+    showVC.baseVC = self; //각 VC를 baseVC에 담아서 필요할 때 사용.
 }
 
 -(void)setWebViewWithMenuList:(MenuList)list

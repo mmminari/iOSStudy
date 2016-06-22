@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivBack;
 
 @property (strong, nonatomic) BaseViewController *baseVC;
-@property (weak, nonatomic) IBOutlet UIButton *btnDismiss;
 
 
 @end

@@ -24,6 +24,8 @@
 -(void)touchedShowBarcode;
 -(void)moveToTheTargetViewWithStid:(NSString *)stid MenuList:(MenuList)list;
 -(void)moveToTheTargetViewWithMenuList:(MenuList)list;
+- (void)moveToWebViewWithTitle:(NSString *)webViewTitle isModal:(BOOL)isModal;
+
 
 
 -(void)viewWillAppear:(BOOL)animated;

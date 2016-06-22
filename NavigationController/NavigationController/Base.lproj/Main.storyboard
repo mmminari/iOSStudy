@@ -2397,7 +2397,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="0A29103C-208F-4F2E-8318-8D96A20B5BDA"/>
+                                <state key="normal" image="B0D0F0AA-3931-4523-B825-2C2BD4D8AFB0"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -3355,12 +3355,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M65-bg-z96">
-                                        <rect key="frame" x="0.0" y="22" width="34" height="41"/>
-                                        <connections>
-                                            <action selector="tochedDismissVC:" destination="njy-Mc-VeG" eventType="touchUpInside" id="yhJ-Uz-vyh"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3373,12 +3367,8 @@
                                     <constraint firstAttribute="height" constant="71" id="NGh-Ya-pHZ"/>
                                     <constraint firstItem="lQM-cK-cp4" firstAttribute="bottom" secondItem="5vL-5u-9lb" secondAttribute="bottom" constant="10" id="TXG-Yc-7PD"/>
                                     <constraint firstItem="fNi-wq-DCE" firstAttribute="centerY" secondItem="5vL-5u-9lb" secondAttribute="centerY" id="dhb-La-VYV"/>
-                                    <constraint firstItem="M65-bg-z96" firstAttribute="leading" secondItem="lQM-cK-cp4" secondAttribute="leading" id="eFA-Ts-ObZ"/>
-                                    <constraint firstItem="M65-bg-z96" firstAttribute="bottom" secondItem="lQM-cK-cp4" secondAttribute="bottom" id="eGW-k0-DFR"/>
                                     <constraint firstItem="KHW-U1-yA5" firstAttribute="leading" secondItem="ERz-P5-H8C" secondAttribute="leading" id="fKL-HT-Bzk"/>
                                     <constraint firstItem="lQM-cK-cp4" firstAttribute="top" secondItem="5vL-5u-9lb" secondAttribute="top" constant="-10" id="ir5-4n-Sf1"/>
-                                    <constraint firstItem="M65-bg-z96" firstAttribute="trailing" secondItem="lQM-cK-cp4" secondAttribute="trailing" id="okK-C6-vAN"/>
-                                    <constraint firstItem="M65-bg-z96" firstAttribute="top" secondItem="lQM-cK-cp4" secondAttribute="top" id="wyI-eb-yS3"/>
                                     <constraint firstAttribute="bottom" secondItem="5vL-5u-9lb" secondAttribute="bottom" constant="18" id="yny-Es-AtO"/>
                                 </constraints>
                             </view>
@@ -3392,7 +3382,6 @@
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="lQM-cK-cp4" id="rPL-KT-6Hz"/>
-                        <outlet property="btnDismiss" destination="M65-bg-z96" id="bw7-Mq-X1a"/>
                         <outlet property="ivBack" destination="5vL-5u-9lb" id="syb-uU-AuW"/>
                         <outlet property="ivBottomColor" destination="KHW-U1-yA5" id="NGi-dd-Fg1"/>
                         <outlet property="lbTitle" destination="fNi-wq-DCE" id="9kO-uZ-DKO"/>
@@ -3618,7 +3607,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0A29103C-208F-4F2E-8318-8D96A20B5BDA" width="21" height="21">
+        <image name="B0D0F0AA-3931-4523-B825-2C2BD4D8AFB0" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -17,7 +17,6 @@
 
 @implementation ShowMenuViewController
 
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,19 +25,22 @@
     
     self.ivBack.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-    [self.btnDismiss setHidden:YES];
-    
-    
 }
 
 - (IBAction)touchedGoBack:(id)sender
 {
-    [self.baseVC.navigationController popViewControllerAnimated:YES];
-}
+    //사용자가 아무 액션 없이 back버튼을 눌렀다면 매핑되었던 정보들을 지워주어야 기존의 url로 돌아 갈 수 잇음.
+    self.library.scriptResults = nil;
 
-- (IBAction)tochedDismissVC:(id)sender
-{
-    [self.baseVC dismissViewControllerAnimated:true completion:nil];
+    //present는 navigationController을 이용한 움직이기 때문에 naviController을 상속받는다. modal은 안받기 때문에 이걸로 구분.
+    if(self.baseVC.navigationController)
+    {
+        [self.baseVC.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self.baseVC dismissViewControllerAnimated:true completion:nil];
+    }
 }
 
 @end

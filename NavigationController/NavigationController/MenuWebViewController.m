@@ -10,6 +10,7 @@
 #import "WebViewClass.h"
 #import "ScriptResults.h"
 #import "ModalWebViewController.h"
+#import "ShowMenuViewController.h"
 
 @interface MenuWebViewController () <WKWebViewClassDelegate, UIScrollViewDelegate>
 
@@ -17,8 +18,6 @@
 @property (strong, nonatomic) WKWebView *wkWebView;
 
 @property (strong, nonatomic) WebViewClass *webView;
-@property (strong, nonatomic) ModalWebViewController *modalVC;
-
 
 @end
 
@@ -28,10 +27,14 @@
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-    
-    self.modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-modalWebView"];
-    
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(self.library.scriptResults)
+    {
+        [self urlRequestWithUrl:[self.library.scriptResults url]];
+    }
 }
 
 -(WebViewClass *)webView
@@ -41,8 +44,7 @@
         _webView = [[WebViewClass alloc]initWithDelegate:self];
         _webView.scrollView.delegate = self;
         [self.view addSubview:self.webView];
-        [self.util setContentViewLayoutWithSubView:self.webView withTargetView:self.view];
-        
+        [self.util setContentViewLayoutWithSubView3:self.webView withTargetView:self.view];
     }
     
     return _webView;
@@ -52,21 +54,49 @@
 -(void)webViewDidFinish:(WKWebViewClass *)webView
 {
     [self.webView sendDeviceInfoWithCallScript];
-    
 }
 
 -(void)didReceiveScriptResults:(id)results
 {
     LogGreen(@"results : %@", results);
+    ScriptResults *scriptResults = nil;
+    
     if(results)
     {
-        ScriptResults *scriptResults = [[ScriptResults alloc]initWithScriptResults:results];
+        scriptResults = [[ScriptResults alloc]initWithScriptResults:results];
+        
         self.library.scriptResults = scriptResults ;
     }
     
-    [self.navigationController showDetailViewController:self.modalVC sender:self];
+    MenuWebViewController *menuWebViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuWebView"];
     
+    [menuWebViewController setCustomNavigationBarWithTitle:self.library.scriptResults.naviTitle];
     
+    if ([scriptResults.type isEqualToString:@"modal"])
+    {
+        if ([scriptResults.action isEqualToString:@"open"])
+        {
+            [self.navigationController presentViewController:menuWebViewController animated:YES completion:nil];
+        }
+        else
+        {
+            self.library.scriptResults = nil;
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
+    
+    if ([scriptResults.type isEqualToString:@"navi"])
+    {
+        if ([scriptResults.action isEqualToString:@"open"])
+        {
+            [self.navigationController showViewController:menuWebViewController sender:nil];
+        }
+        else
+        {
+            self.library.scriptResults = nil;
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 -(void)urlRequestWithUrl:(NSString *)urlString

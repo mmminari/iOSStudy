@@ -566,6 +566,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 }
 
+- (void)moveToWebViewWithTitle:(NSString *)webViewTitle isModal:(BOOL)isModal
+{
+    MenuWebViewController *webVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuWebView"];
+}
+
 /*
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
