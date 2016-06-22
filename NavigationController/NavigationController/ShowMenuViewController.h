@@ -14,8 +14,10 @@
 @property (strong, nonatomic) NSString *titleString;
 @property (weak, nonatomic) IBOutlet UILabel *lbTitle;
 @property (weak, nonatomic) IBOutlet UIView *navigationView;
+@property (weak, nonatomic) IBOutlet UIImageView *ivBack;
 
 @property (strong, nonatomic) BaseViewController *baseVC;
+@property (weak, nonatomic) IBOutlet UIButton *btnDismiss;
 
 
 @end

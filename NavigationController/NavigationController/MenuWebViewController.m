@@ -8,13 +8,16 @@
 
 #import "MenuWebViewController.h"
 #import "WebViewClass.h"
+#import "ScriptResults.h"
+#import "ModalWebViewController.h"
 
-@interface MenuWebViewController () //<WKWebViewClassDelegate>
+@interface MenuWebViewController () <WKWebViewClassDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *wvMenu;
 @property (strong, nonatomic) WKWebView *wkWebView;
 
 @property (strong, nonatomic) WebViewClass *webView;
+@property (strong, nonatomic) ModalWebViewController *modalVC;
 
 
 @end
@@ -25,13 +28,11 @@
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-  //  [self urlRequestWithUrl:self.urlString];
     
+    self.modalVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-modalWebView"];
     
-    
-    
-}
 
+}
 
 -(WebViewClass *)webView
 {
@@ -57,6 +58,14 @@
 -(void)didReceiveScriptResults:(id)results
 {
     LogGreen(@"results : %@", results);
+    if(results)
+    {
+        ScriptResults *scriptResults = [[ScriptResults alloc]initWithScriptResults:results];
+        self.library.scriptResults = scriptResults ;
+    }
+    
+    [self.navigationController showDetailViewController:self.modalVC sender:self];
+    
     
 }
 

@@ -10,7 +10,6 @@
 
 @interface ShowMenuViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *ivBack;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBottomColor;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
 
@@ -27,13 +26,19 @@
     
     self.ivBack.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    [self.btnDismiss setHidden:YES];
+    
     
 }
 
-- (IBAction)touchedGoBack:(id)sender {
- 
+- (IBAction)touchedGoBack:(id)sender
+{
     [self.baseVC.navigationController popViewControllerAnimated:YES];
-    
+}
+
+- (IBAction)tochedDismissVC:(id)sender
+{
+    [self.baseVC dismissViewControllerAnimated:true completion:nil];
 }
 
 @end

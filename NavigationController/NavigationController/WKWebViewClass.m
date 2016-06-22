@@ -52,6 +52,36 @@
     
 }
 
+
+#pragma mark - Delegate
+
+-(void)setUpDelegate:(id<WKWebViewClassDelegate, UIScrollViewDelegate>)delegate
+{
+    self.navigationDelegate = self;
+    self.UIDelegate = self;
+    
+    _webDelegate = delegate;
+}
+
+#pragma mark - handler
+
+//2. 다바이스에 있는 쿠키를 헤어데 넣기 3. 헨들러등록
+-(WKWebViewConfiguration *)customConfigurationWithHandlerName:(NSString *)handlerName
+{
+    WKUserScript *cookieScript = [[WKUserScript alloc]initWithSource:[self getInjectionCookie] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
+    
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc]init];
+    WKUserContentController *controller = [[WKUserContentController alloc]init];
+    
+    [controller addScriptMessageHandler:self name:handlerName];
+    [controller addUserScript:cookieScript];
+    
+    configuration.userContentController = controller;
+    
+    return configuration;
+    
+}
+
 - (WKWebViewConfiguration *)defaultConfiguration
 {
     
@@ -72,22 +102,6 @@
 }
 
 
-//2. 다바이스에 있는 쿠키를 헤어데 넣기 3. 헨들러등록
--(WKWebViewConfiguration *)customConfigurationWithHandlerName:(NSString *)handlerName
-{
-    WKUserScript *cookieScript = [[WKUserScript alloc]initWithSource:[self getInjectionCookie] injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    
-    WKWebViewConfiguration *confifuration = [[WKWebViewConfiguration alloc]init];
-    WKUserContentController *controller = [[WKUserContentController alloc]init];
-    
-    [controller addScriptMessageHandler:self name:handlerName];
-    [controller addUserScript:cookieScript];
-    
-    return confifuration;
-    
-}
-
-
 //1. web에 현제 플랫폼 보내기(ios)
 -(void)executeJavaScript:(NSString *)script
 {
@@ -104,13 +118,7 @@
     
 }
 
--(void)setUpDelegate:(id<WKWebViewClassDelegate, UIScrollViewDelegate>)delegate
-{
-    self.navigationDelegate = self;
-    self.UIDelegate = self;
-    
-    _webDelegate = delegate;
-}
+#pragma mark - private method
     
 -(NSString *)getInjectionCookie
 {

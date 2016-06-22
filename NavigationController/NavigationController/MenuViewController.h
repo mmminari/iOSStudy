@@ -10,11 +10,14 @@
 #import "UserInformation.h"
 #import "BaseViewController.h"
 #import "MainViewController.h"
+#import "ScriptResults.h"
 
 @interface MenuViewController : BaseViewController
 
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainViewController *mainVC;
+@property (strong, nonatomic) ScriptResults *scriptResults;
+
 
 @property (weak, nonatomic) IBOutlet UIView *logOutViewContainer;
 

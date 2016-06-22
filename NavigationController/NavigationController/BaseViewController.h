@@ -16,8 +16,6 @@
 @property (assign, nonatomic) MenuList *menuList;
 @property (strong, nonatomic) LibraryClass *library;
 
-
-
 -(void)setTitleOfNavibarWithMenuList:(MenuList)list;
 -(void)setWebViewWithMenuList:(MenuList)list;
 

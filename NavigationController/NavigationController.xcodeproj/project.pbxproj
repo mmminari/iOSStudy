@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D00A7651CEF071F00481C9C /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D00A7641CEF071F00481C9C /* MenuViewController.m */; };
 		6D0D88271D0FF68E0038B718 /* HTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D0D88261D0FF68E0038B718 /* HTTPClient.m */; };
+		6D132B4C1D193B6700E38D10 /* ScriptResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D132B4B1D193B6700E38D10 /* ScriptResults.m */; };
+		6D132B4F1D19424A00E38D10 /* ModalWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D132B4E1D19424A00E38D10 /* ModalWebViewController.m */; };
 		6D14700C1CEC3D74001529A2 /* icon_store_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1470081CEC3D74001529A2 /* icon_store_location@2x.png */; };
 		6D14700D1CEC3D74001529A2 /* icon_store_location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1470091CEC3D74001529A2 /* icon_store_location@3x.png */; };
 		6D14700E1CEC3D74001529A2 /* icon_store_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D14700A1CEC3D74001529A2 /* icon_store_phone@2x.png */; };
@@ -127,6 +129,10 @@
 		6D00A7641CEF071F00481C9C /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		6D0D88251D0FF68E0038B718 /* HTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPClient.h; sourceTree = "<group>"; };
 		6D0D88261D0FF68E0038B718 /* HTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPClient.m; sourceTree = "<group>"; };
+		6D132B4A1D193B6700E38D10 /* ScriptResults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptResults.h; sourceTree = "<group>"; };
+		6D132B4B1D193B6700E38D10 /* ScriptResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptResults.m; sourceTree = "<group>"; };
+		6D132B4D1D19424A00E38D10 /* ModalWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalWebViewController.h; sourceTree = "<group>"; };
+		6D132B4E1D19424A00E38D10 /* ModalWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalWebViewController.m; sourceTree = "<group>"; };
 		6D1470081CEC3D74001529A2 /* icon_store_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_store_location@2x.png"; sourceTree = "<group>"; };
 		6D1470091CEC3D74001529A2 /* icon_store_location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_store_location@3x.png"; sourceTree = "<group>"; };
 		6D14700A1CEC3D74001529A2 /* icon_store_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_store_phone@2x.png"; sourceTree = "<group>"; };
@@ -343,6 +349,8 @@
 				6D5744EF1D18DFF2000A1945 /* WebViewClass.m */,
 				6D5744E51D18CBD8000A1945 /* WKWebViewClass.h */,
 				6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */,
+				6D132B4A1D193B6700E38D10 /* ScriptResults.h */,
+				6D132B4B1D193B6700E38D10 /* ScriptResults.m */,
 			);
 			name = MenuViewController;
 			sourceTree = "<group>";
@@ -533,6 +541,8 @@
 				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 				6D489A8F1D179E8000E3B010 /* GenerateBarcode.h */,
 				6D489A901D179E8000E3B010 /* GenerateBarcode.m */,
+				6D132B4D1D19424A00E38D10 /* ModalWebViewController.h */,
+				6D132B4E1D19424A00E38D10 /* ModalWebViewController.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -744,6 +754,7 @@
 				6D4AD3081D01660F00CFC443 /* LogOutCollectionViewController.m in Sources */,
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
+				6D132B4C1D193B6700E38D10 /* ScriptResults.m in Sources */,
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
 				6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */,
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
@@ -758,6 +769,7 @@
 				6D18606D1CF3F55E00F8CB6C /* MenuCell.m in Sources */,
 				6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */,
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
+				6D132B4F1D19424A00E38D10 /* ModalWebViewController.m in Sources */,
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
 				6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */,
 				6D489A911D179E8000E3B010 /* GenerateBarcode.m in Sources */,
