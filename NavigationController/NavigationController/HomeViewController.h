@@ -11,6 +11,7 @@
 #import "UserInformation.h"
 #import "BaseViewController.h"
 #import "MainInformation.h"
+#import "MainViewController.h"
 
 @interface HomeViewController : BaseViewController
 
@@ -28,6 +29,8 @@
 
 @property(strong, nonatomic) UserInformation *userInfomation;
 @property (strong, nonatomic) MainInformation *mainInfo;
+
+@property (strong, nonatomic) MainViewController *mainVC;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lbMiddleNotice;

@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIvContent;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfContainerView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfIvContent;
 
 @end

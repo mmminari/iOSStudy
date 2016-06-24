@@ -22,9 +22,21 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfInputCode;
 @property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTopLine; //77
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbTitle; //19
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfRegCodeView; //19
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfRegcodeView; //39
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfIvIcon; //19
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBottomIcon; //11
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBottomLine; //26
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alctopOfBtnReg; //26
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnReg; //39
+
 @end
 
 @implementation RegCodeViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +46,7 @@
     self.ivIconBottom.image = [UIImage imageNamed:@"icon_info"];
     
     [self setColorAndFont];
+    [self setLayout];
     
     UIImage *img = [UIImage imageNamed:@"box_white2"];
     
@@ -59,8 +72,6 @@
     return YES;
     
 }
-
-
 
 #pragma mark - User Action
 
@@ -104,6 +115,22 @@
     }];
 }
 
+#pragma mark - private method
+
+-(void)setLayout
+{
+    self.alcTopOfTopLine.constant = HRATIO_HEIGHT(231.0f);
+    self.alcTopOfLbTitle.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfRegCodeView.constant = HRATIO_HEIGHT(57.0f);
+    self.alcHeightOfRegcodeView.constant = HRATIO_HEIGHT(117.0f);
+    self.alcTopOfIvIcon.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfBottomIcon.constant = HRATIO_HEIGHT(33.0f);
+    self.alcTopOfBottomLine.constant = HRATIO_HEIGHT(78.0f);
+    self.alctopOfBtnReg.constant = HRATIO_HEIGHT(78.0f);
+    self.alcHeightOfBtnReg.constant = HRATIO_HEIGHT(117.0f);
+    
+}
+
 -(void)setColorAndFont
 {
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f7f0"];
@@ -126,6 +153,7 @@
     [self.btnReg setTitle:@"등록하기" forState:UIControlStateNormal];
     [self.btnReg setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     [self.btnReg setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
+    [self.btnReg.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)]];
     
 }
 

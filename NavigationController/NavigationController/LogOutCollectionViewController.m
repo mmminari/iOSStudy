@@ -27,9 +27,31 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
 
+//layout
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBottomView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnRegister;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfPageIndicator;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBtnRegistor;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfLbLogIn;
+
+
+
 @end
 
 @implementation LogOutCollectionViewController
+
+
+-(void)setLayout
+{
+    self.alcHeightOfBottomView.constant = HRATIO_HEIGHT(540.0f);
+    self.alcHeightOfBtnRegister.constant = HRATIO_HEIGHT(129.0f);
+    self.alcBottomOfPageIndicator.constant = HRATIO_HEIGHT(70.0f);
+    self.alcBottomOfBtnRegistor.constant = HRATIO_HEIGHT(117.0f);
+    self.alcBottomOfLbLogIn.constant = HRATIO_HEIGHT(66.0f);
+    
+    
+}
 
 -(void)viewDidLoad
 {
@@ -63,10 +85,9 @@
     [addInfo addAttribute:NSForegroundColorAttributeName value:[self.util getColorWithRGBCode:@"f386a1"] range:NSMakeRange(range.location, range.length)];
         
     self.lbLogIn.attributedText = addInfo;
-    
-    
-    
     self.introList = self.introList;
+    
+    [self setLayout];
 
 }
 
@@ -85,7 +106,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     CGFloat width = DEVICE_WIDTH;
-    CGFloat height = DEVICE_HEIGHT - 71.0f;
+    CGFloat height = DEVICE_HEIGHT - WRATIO_WIDTH(213.0f);
     
     return CGSizeMake(width, height);
 }
@@ -179,6 +200,8 @@
         }
 
     }
+    
+    cell.alcBottomOfIvContent.constant = WRATIO_WIDTH(597.0f);
     
     return cell;
 

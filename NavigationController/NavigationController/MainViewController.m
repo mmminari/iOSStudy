@@ -158,6 +158,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.cardVC.mainVC = self;
     self.HomeVC.mainInfo = self.mainInfo;
     self.settingVC.userInfo = self.userInfo;
+    self.HomeVC.mainVC = self;
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
     //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로
     
@@ -166,7 +167,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
    // [self.view insertSubview:self.menuVC.view atIndex:0];
     //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
 
-    [self setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
+    [self.util setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     [self setLayoutAndColor];
     
     LogRed(@"launchOption : %@", [NSNumber numberWithBool: self.library.launchOption]);
@@ -397,26 +398,26 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     if(indexPath.item == 0)
     {
         [cell.contentView addSubview:self.HomeVC.view];
-        [self setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
+        [self.util setContentViewLayoutWithSubView:self.HomeVC.view withTargetView:cell.contentView];
         [self.HomeVC viewWillAppear:YES];
         //각각의 viewcontroller을 subview로 추가해주었기 때문에 업데이트할 속성들을 따로 오버라이딩 하여 호출해주어야 reload됨
     }
     if(indexPath.item == 1)
     {
         [cell.contentView addSubview:self.pointVC.view];
-        [self setContentViewLayoutWithSubView:self.pointVC.view withTargetView:cell.contentView];
+        [self.util setContentViewLayoutWithSubView:self.pointVC.view withTargetView:cell.contentView];
     }
     if(indexPath.item == 2)
     {
         [cell.contentView addSubview:self.cardVC.view];
         self.cardVC.mainVC = self;
-        [self setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
+        [self.util setContentViewLayoutWithSubView:self.cardVC.view withTargetView:cell.contentView];
         [self.cardVC viewWillAppear:YES];
     }
     if(indexPath.item == 3)
     {
         [cell.contentView addSubview:self.storeVC.view];
-        [self setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
+        [self.util setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
     }
 
     return cell;
@@ -487,7 +488,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
                                                                        relatedBy:NSLayoutRelationEqual
                                                                           toItem:targetView attribute:NSLayoutAttributeTop
                                                                       multiplier:1.0f
-                                                                        constant:0.0f];
+                                                                        constant:-20.0f];
     
     NSLayoutConstraint *alcBottomOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                           attribute:NSLayoutAttributeBottom

@@ -126,26 +126,27 @@
     CGFloat imgWidth = [widht floatValue];
     NSLog(@"%f", imgWidth);
     
-    self.rationHeight = (DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
+    self.rationHeight = DEVICE_HEIGHT * imgWidth / DEVICE_WIDTH;//(DEVICE_WIDTH - WRATIO_WIDTH(40.0f)*2) * 3 * imgHeight  / imgWidth ;
+    self.rationHeight = HRATIO_HEIGHT([stInfo imageInfoHeight].floatValue);
     
-    cell.alcHeightOfImg.constant = WRATIO_WIDTH(self.rationHeight);
-    cell.alcHeightOfImg.constant = WRATIO_WIDTH(1139.0f);
-    cell.alcTopOfNameLabel.constant = WRATIO_WIDTH(72.0f);
+    cell.alcHeightOfImg.constant = HRATIO_HEIGHT(imgHeight);
+    //cell.alcHeightOfImg.constant = HRATIO_HEIGHT(1139.0f);
+    cell.alcTopOfNameLabel.constant = HRATIO_HEIGHT(72.0f);
     cell.alcLeadingOfNameLabel.constant = WRATIO_WIDTH(78.0f);
     cell.alcTopOfExplain.constant = WRATIO_WIDTH(34.0f);
     cell.alcLeadingOfExplain.constant = WRATIO_WIDTH(78.0f);
-    cell.alcTopOfDetail.constant = WRATIO_WIDTH(60.0f);
+    cell.alcTopOfDetail.constant = HRATIO_HEIGHT(60.0f);
     cell.alcLeadingOfDetail.constant = WRATIO_WIDTH(78.0f);
-    cell.alcTopOfAddress.constant = WRATIO_WIDTH(60.0f);
+    cell.alcTopOfAddress.constant = HRATIO_HEIGHT(60.0f);
     cell.alcLeadingOfAddress.constant = WRATIO_WIDTH(78.0f);
     cell.alcTopOfPhone.constant = WRATIO_WIDTH(39.0f);
     cell.alcLeadingOfPhone.constant =WRATIO_WIDTH(78.0f);
     cell.alcWidthOfLocImg.constant = WRATIO_WIDTH(57.0f);
     cell.alcWidthOfPhoImg.constant = WRATIO_WIDTH(57.0f);
-    cell.alcHeightOfLocImg.constant = WRATIO_WIDTH(57.0f);
-    cell.alcHeightOfPhoImg.constant = WRATIO_WIDTH(57.0f);
-    cell.alcTopOfLbPhone.constant = WRATIO_WIDTH(12.0f);
-    cell.alcTopOfLbLocation.constant = WRATIO_WIDTH(12.0f);
+    cell.alcHeightOfLocImg.constant = HRATIO_HEIGHT(57.0f);
+    cell.alcHeightOfPhoImg.constant = HRATIO_HEIGHT(57.0f);
+    cell.alcTopOfLbPhone.constant = HRATIO_HEIGHT(1.0f);
+    cell.alcTopOfLbLocation.constant = HRATIO_HEIGHT(12.0f);
 
     NSUInteger count = self.responseArr.count;
     
@@ -215,7 +216,7 @@
     CGFloat heightLocation = [self getHeightOfLabelWithText:[storeInformation address]];
     CGFloat heightPhone = [self getHeightOfLabelWithText:[storeInformation phone]];
     
-    return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + WRATIO_WIDTH(self.rationHeight)  + 70.0f;
+    return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + self.rationHeight + HRATIO_HEIGHT(90.0f);
 }
 
 

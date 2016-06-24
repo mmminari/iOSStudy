@@ -32,6 +32,8 @@
         
         _eventTitle = [[[results objectForKey:@"textEvent"]objectForKey:@"title"]objectForKey:@"ko"];
         _bannerUri = [[[results objectForKey:@"imageEvent"] objectForKey:@"banner"]objectForKey:@"uri"];
+        _bannerUriHeight = [[[[results objectForKey:@"imageEvent"]objectForKey:@"banner"]objectForKey:@"height"]integerValue];
+        NSLog(@"banner Height : %zd", _bannerUriHeight);
     }
     
     

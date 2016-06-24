@@ -167,7 +167,7 @@
                                                                           relatedBy:NSLayoutRelationEqual
                                                                              toItem:nil
                                                                           attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0f
-                                                                           constant:71.0f];
+                                                                           constant:HRATIO_HEIGHT(213.0f)];
     
     NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                            attribute:NSLayoutAttributeLeading
@@ -205,7 +205,7 @@
                                                                           relatedBy:NSLayoutRelationEqual
                                                                              toItem:nil
                                                                           attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0f
-                                                                           constant:DEVICE_HEIGHT-71.0f];
+                                                                           constant:DEVICE_HEIGHT-WRATIO_WIDTH(213.0f)];
     
     NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
                                                                            attribute:NSLayoutAttributeLeading

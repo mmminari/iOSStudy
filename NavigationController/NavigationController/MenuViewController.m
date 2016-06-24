@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfSettingImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfUserImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnLogIn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfLogInOutView;
 
 @property (strong, nonatomic) SettingViewController *settingVC;
 @property (strong, nonatomic) LogInViewController *loginVC;
@@ -67,7 +69,6 @@
     
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
-    self.
     
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
@@ -83,7 +84,7 @@
     self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
     
     self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(102.0f)/2;
+    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(300.0f)/2;
     
     self.ivLine.backgroundColor = [self.util getColorWithRGBCode:@"eeeeee"];
     self.ivIcon.image = [UIImage imageNamed:@"icon_grade_vip"];
@@ -93,16 +94,17 @@
     self.alcHeightOfUserImg.constant = WRATIO_WIDTH(300.0f);
     self.alcWidthOfUserImg.constant = WRATIO_WIDTH(300.0f);
     self.alcTopOfTableView.constant = WRATIO_WIDTH(635.0f);
-    self.alcHeightOfSettingImg.constant = WRATIO_WIDTH(69.0f);
+    self.alcHeightOfSettingImg.constant = HRATIO_HEIGHT(69.0f);
     self.alcWidthOfSettingImg.constant = WRATIO_WIDTH(69.0f);
     self.alcTopOfUserImg.constant = WRATIO_WIDTH(135.0f);
-    self.alcHeightOfIcon.constant = WRATIO_WIDTH(48.0f);
+    self.alcHeightOfIcon.constant = HRATIO_HEIGHT(48.0f);
     self.alcWidthOfIcon.constant = WRATIO_WIDTH(102.0f);
     self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(66.0f);
-    
+    self.alcHeightOfBtnLogIn.constant = HRATIO_HEIGHT(117.0f);
     self.alcWidthOfBtnLogIn.constant = WRATIO_WIDTH(225.0f);
+    self.alcHeightOfLogInOutView.constant = HRATIO_HEIGHT(198.0f);
     self.alcCenterOfLbLogOut.constant = self.alcCenterOfLbLogOut.constant - WRATIO_WIDTH(225.0f) / 2;
-    
+    self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(50.0f);
     
     self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
     self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
@@ -111,6 +113,7 @@
     [self.btnLogIn setTitle:@"로그인" forState:UIControlStateNormal];
     [self.btnLogIn setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     [self.btnLogIn setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
+    [self.btnLogIn.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(50.0f)]];
     self.lbLogOut.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
     self.lbLogOut.textColor = [self.util getColorWithRGBCode:@"424242"];
     
@@ -132,7 +135,6 @@
         else
         {
             self.ivUser.image = image;
-
         }
         
     }];

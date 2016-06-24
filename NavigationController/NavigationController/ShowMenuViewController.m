@@ -12,6 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivBottomColor;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNaviBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomIvIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIvIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIvIcon;
 
 @end
 
@@ -25,6 +29,16 @@
     
     self.ivBack.image = [UIImage imageNamed:@"btn_back"];
     self.ivBottomColor.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
+    
+    self.alcHeightOfNaviBar.constant = HRATIO_HEIGHT(213.0f);
+    self.alcBottomIvIcon.constant = HRATIO_HEIGHT(54.0f);
+    self.lbTitle.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51.0f)];
+    self.alcWidthOfIvIcon.constant = WRATIO_WIDTH(42.0f);
+    self.alcHeightOfIvIcon.constant = WRATIO_WIDTH(63.0f);
+    
+    
+    
+    
 }
 
 - (IBAction)touchedGoBack:(id)sender

@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "UserInformation.h"
-#import "MainViewController.h"
+#import "BarcodeViewController.h"
 
 @interface HomeViewController ()
 
@@ -105,13 +105,29 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivVIP;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcCenterOfUserName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBanner;
 
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
 @property (weak, nonatomic) IBOutlet UIImageView *ivBanner;
 
-@property (strong, nonatomic) MainViewController *mainVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBannerView;
 @property (strong, nonatomic) NSString *bannerUrlString;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBarcodeBackground;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfBarcodeBackground;
+
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBarcodeBack;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBarcodeBack;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfLbCenter;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfBarcodeBack;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBarcodeContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBarcodeContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfBarcodeBackgroundView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidhOfBarcodeContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfBarcodeIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBarcodeIcon;
 
 @end
 
@@ -159,11 +175,21 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivEnlargeBar.image = [UIImage imageNamed:@"btn_card_largeimg_sub"];
     self.ivBarcodeBackground.backgroundColor = [UIColor whiteColor];
     self.ivBarcodeBackground.layer.cornerRadius = WRATIO_WIDTH(95.0f)/2;
+
+    self.alcLeadingOfLbCenter.constant = WRATIO_WIDTH(110.0f);
+    self.alcTopOfBarcodeBack.constant = HRATIO_HEIGHT(120.0f);
+    self.alcLeadingOfBarcodeBack.constant = HRATIO_HEIGHT(75.0f);
+    self.alcTrailingOfBarcodeBack.constant = HRATIO_HEIGHT(-135.0f);
+    
+    self.lbBarcode.font = [UIFont systemFontOfSize:HRATIO_HEIGHT(45.0f)];
+    
+    self.alcTopOfBarcodeContainerView.constant = WRATIO_WIDTH(63.0f);
+    self.alcTrailingOfBarcodeBackgroundView.constant = WRATIO_WIDTH(-63.0f);
+    self.alcWidhOfBarcodeContainerView.constant = WRATIO_WIDTH(350.0f);
+    
     
     [self setColor];
     [self setAutoLayout];
-    
-
 
 }
 
@@ -173,6 +199,9 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     LogBlue(@"title : %@", [self.library.mainInfo eventTitle]);
     
     self.bannerUrlString = [self.library.mainInfo bannerUri];
+    
+    LogYellow(@"banner Height : %zd", [self.library.mainInfo bannerUriHeight]);
+    self.alcHeightOfBanner.constant = HRATIO_HEIGHT([self.library.mainInfo bannerUriHeight]);
     
     self.lbUserEmail.text = [self.library.userInfo userId];
     self.lbUserName.text = [self.library.userInfo userName];
@@ -198,6 +227,13 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         self.ivBarcode.image = [self.library generateVerticalBarcodeImgWithBarcode:[self.library.userInfo cardNo]];
     }
 
+}
+- (IBAction)touchedEnlargeButton:(id)sender
+{
+    BarcodeViewController *barcodeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-barcodeView"];
+    
+    [self.mainVC presentViewController:barcodeVC animated:YES completion:nil];
+    
 }
 
 -(void)startDownLoadImage
@@ -293,7 +329,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcHeightOfUserView.constant = WRATIO_WIDTH(366);
     self.alcWidthOfUserView.constant = WRATIO_WIDTH(579);
     
-    self.alcTopOfUsername.constant = WRATIO_WIDTH(54);
+    self.alcTopOfUsername.constant = WRATIO_WIDTH(50);
     
     self.alcTopOfPointView.constant = WRATIO_WIDTH(108);
     self.alcTrailingOfPointView.constant = WRATIO_WIDTH(63);
@@ -304,7 +340,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.alcHeightOfMiddleLine.constant = WRATIO_WIDTH(366);
     
-    self.alcTopOfCard.constant = WRATIO_WIDTH(129);
+    self.alcTopOfCard.constant = WRATIO_WIDTH(110.0f);
     self.alcLeadingOfCard.constant = WRATIO_WIDTH(39);
     self.alcTrailingOfCard.constant = WRATIO_WIDTH(39);
     
@@ -345,6 +381,10 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.alcCenterOfUserName.constant = self.alcCenterOfUserName.constant- WRATIO_WIDTH(102)/2;
     
     self.lbUserName.preferredMaxLayoutWidth = DEVICE_WIDTH - WRATIO_WIDTH(10)*2 - 1.0f - WRATIO_WIDTH(102);
+    
+    self.alcWidthOfBarcodeIcon.constant = WRATIO_WIDTH(63.0f);
+    self.alcHeightOfBarcodeIcon.constant = WRATIO_WIDTH(63.0f);
+    
     
  
 }

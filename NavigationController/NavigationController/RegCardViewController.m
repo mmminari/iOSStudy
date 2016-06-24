@@ -25,9 +25,38 @@
 @property (weak, nonatomic) IBOutlet UIView *ivTfContainer;
 @property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTopLine;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTfContariner;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfTfContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfIvIcon;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBottomLine;
+
+
+
 @end
 
 @implementation RegCardViewController
+
+
+-(void)setLayout
+{
+    self.alcTopOfTopLine.constant = HRATIO_HEIGHT(231.0f);
+    self.alcTopOfLbTitle.constant = HRATIO_HEIGHT(57.0f);
+    
+    self.alcTopOfTfContariner.constant = HRATIO_HEIGHT(57.0f);
+    self.alcHeightOfTfContainer.constant = HRATIO_HEIGHT(117.0f);
+    self.alcTopOfIvIcon.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfBottomLine.constant = HRATIO_HEIGHT(78.0f);
+    
+    self.lbTitle.font = [UIFont systemFontOfSize:WRATIO_WIDTH(51.0f)];
+    self.lbEx1.font = [UIFont systemFontOfSize:WRATIO_WIDTH(38.0f)];
+    self.lbEx2.font = [UIFont systemFontOfSize:WRATIO_WIDTH(38.0f)];
+    [self.btnReg.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)]];
+    self.tfInputCardNum.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
+
+    
+}
 
 -(void)viewDidLoad
 {
@@ -49,6 +78,8 @@
     
     self.ivTfBackground.image = img;
     self.tfInputCardNum.text = @"A0RE160831071742";
+    
+    [self setLayout];
     
 }
 

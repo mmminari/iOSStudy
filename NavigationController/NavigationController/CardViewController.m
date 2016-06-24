@@ -48,6 +48,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBarImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfBarImg;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfIvCard;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfIvBarcode;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIvBarcode;
 
 @property (strong, nonatomic) RegCardViewController *regVC;
 @property (strong, nonatomic) ChangePwViewController *changeVC;
@@ -213,17 +216,19 @@
 -(void)setLayout
 {
     self.alcWidthOfCardIv.constant = WRATIO_WIDTH(1164.0f);
-    self.alcHeightOfCardIv.constant = WRATIO_WIDTH(728.0f);
-    self.alcTopOfTableView.constant = WRATIO_WIDTH(123.0f);
-    self.alcHeightOfBtn.constant = WRATIO_WIDTH(63.0f);
+    self.alcHeightOfCardIv.constant = HRATIO_HEIGHT(728.0f);
+    self.alcTopOfTableView.constant = HRATIO_HEIGHT(123.0f);
+    self.alcHeightOfBtn.constant = HRATIO_HEIGHT(63.0f);
     self.alcWidthOfBtn.constant  = WRATIO_WIDTH(63.0f);
     self.alcBottomOfBtn.constant = WRATIO_WIDTH(-27.0f);
     self.alcBottomOfBarcode.constant = WRATIO_WIDTH(-42.0f);
-    self.alcTopOfBarImg.constant = WRATIO_WIDTH(415.0f);
+    self.alcTopOfBarImg.constant = HRATIO_HEIGHT(415.0f);
     self.alcLeadingOfBarImg.constant = WRATIO_WIDTH(75.0f);
     self.alcTrailingOfBarImg.constant = WRATIO_WIDTH(-75.0f);
-    self.alcBottomOfBarImg.constant = WRATIO_WIDTH(-75.0f);
-
+    self.alcBottomOfBarImg.constant = HRATIO_HEIGHT(-75.0f);
+    self.alcTopOfIvCard.constant = WRATIO_WIDTH(84.0f);
+    self.alcHeightOfIvBarcode.constant = HRATIO_HEIGHT(117.0f);
+    self.alcTopOfIvBarcode.constant = HRATIO_HEIGHT(42.0f);
 }
 
 

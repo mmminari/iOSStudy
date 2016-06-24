@@ -35,6 +35,27 @@
 @property (weak, nonatomic) IBOutlet UITextField *tfCheckPw;
 @property (weak, nonatomic) IBOutlet UIButton *btnHide;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfTopLine;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbCurrentPw;//19
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfCurrentPwView; //26
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCurrentPwView; //39
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbNewPw;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNewPwView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfNewPwView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbCheckPw;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfCheckPwView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCheckPwView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfIvIcon; //26
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBottomLine; //26
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfBtnChange; //26
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBtnChange;
+
+
 @end
 
 @implementation ChangePwViewController
@@ -62,7 +83,9 @@
     self.tfCheckPw.text = @"2222";
     
     [self setColorAndFont];
+    [self setLayout];
 }
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *) textField
 {
@@ -78,6 +101,8 @@
     return YES;
     
 }
+
+#pragma mark - user action
 
 - (IBAction)touchedHideKeyBoard:(id)sender withTextField:(UITextField *)textField
 {
@@ -124,6 +149,30 @@
     } failure:nil];
 }
 
+#pragma mark - private method
+
+-(void)setLayout
+{
+    self.alcTopOfTopLine.constant = HRATIO_HEIGHT(231.0f);
+    self.alcTopOfLbCurrentPw.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfCurrentPwView.constant = HRATIO_HEIGHT(78.0f);
+    self.alcHeightOfCurrentPwView.constant = HRATIO_HEIGHT(117.0f);
+    
+    self.alcTopOfLbNewPw.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfNewPwView.constant = HRATIO_HEIGHT(78.0f);
+    self.alcHeightOfNewPwView.constant = HRATIO_HEIGHT(117.0f);
+    
+    self.alcTopOfLbCheckPw.constant = HRATIO_HEIGHT(57.0f);
+    self.alcTopOfCheckPwView.constant = HRATIO_HEIGHT(78.0f);
+    self.alcHeightOfCheckPwView.constant = HRATIO_HEIGHT(117.0f);
+    
+    self.alcTopOfIvIcon.constant = HRATIO_HEIGHT(78.0f);
+    self.alcTopOfBottomLine.constant = HRATIO_HEIGHT(78.0f);
+    self.alcTopOfBtnChange.constant = HRATIO_HEIGHT(78.0f);
+    
+    self.alcHeightOfBtnChange.constant = HRATIO_HEIGHT(117.0f);
+    
+}
 
 -(void)setColorAndFont
 {
@@ -159,9 +208,8 @@
     [self.btnChange setTitle:@"변경하기" forState:UIControlStateNormal];
     [self.btnChange setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
     [self.btnChange setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
-    
+    [self.btnChange.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)]];
 
-    
 }
 
 - (void)didReceiveMemoryWarning {
