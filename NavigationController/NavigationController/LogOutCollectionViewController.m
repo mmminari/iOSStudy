@@ -106,9 +106,9 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     CGFloat width = DEVICE_WIDTH;
-    CGFloat height = DEVICE_HEIGHT - WRATIO_WIDTH(213.0f);
+    CGFloat height = DEVICE_HEIGHT - HRATIO_HEIGHT(213.0f);
     
-    return CGSizeMake(width, height);
+    return CGSizeMake(width, height - 1);
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -118,7 +118,7 @@
     
     LogOutCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
-    cell.alcHeightOfContainerView.constant = WRATIO_WIDTH(524.0f);
+    cell.alcHeightOfContainerView.constant = HRATIO_HEIGHT(524.0f);
     cell.contentView.backgroundColor = [UIColor blackColor];
     
     [self startDownloadBackgroundImageWithIndexPath:indexPath];
@@ -201,7 +201,7 @@
 
     }
     
-    cell.alcBottomOfIvContent.constant = WRATIO_WIDTH(597.0f);
+    cell.alcBottomOfIvContent.constant = HRATIO_HEIGHT(597.0f);
     
     return cell;
 
@@ -301,7 +301,7 @@
             {
                 cell.ivContent.image = self.contentArr[indexPath.row];
                 cell.alcWidthOfIvContent.constant = WRATIO_WIDTH([info contentWidth]);
-                cell.alcHeightOfIvContent.constant = WRATIO_WIDTH([info contentHeight]);
+                cell.alcHeightOfIvContent.constant = HRATIO_HEIGHT([info contentHeight]);
                 NSLog(@"width : %f height : %f", WRATIO_WIDTH([info contentWidth]), WRATIO_WIDTH([info contentHeight]));
             }
             @catch (NSException *exception)

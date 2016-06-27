@@ -79,7 +79,6 @@
     [button setBackgroundColor:[UIColor purpleColor]];
     [self.view addSubview:button];
     [button addTarget:self action:@selector(touchedButton:) forControlEvents:UIControlEventTouchUpInside];
-
     
 }
 
@@ -88,7 +87,6 @@
 -(void)touchedButton:(UIButton *)btn
 {
     LogRed(@"button touched!");
-    
 }
 
 - (IBAction)touchedLogOut:(id)sender
@@ -103,9 +101,6 @@
     BOOL result = [self getResultOfAutoSignIn];
     
     LogYellow(@"switch : %@", [NSNumber numberWithBool:result]);
-    
-    
-    
 }
 
 #pragma mark - Session
@@ -219,7 +214,6 @@
     self.IvLine3.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     self.IvLine4.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
     self.IvLine5.backgroundColor = [self.util getColorWithRGBCode:@"e6e6dd"];
-
 }
 
 -(void)setLayout
@@ -237,7 +231,6 @@
     self.alcTopOfLbChangeInfo.constant = WRATIO_WIDTH(47.0f);
     self.alcTopOfLbAutoLogin.constant = WRATIO_WIDTH(47.0f);
     self.alcTopOfLbRelease.constant = WRATIO_WIDTH(47.0f);
-    
 }
 
 

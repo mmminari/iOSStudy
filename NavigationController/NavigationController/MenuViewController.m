@@ -84,7 +84,7 @@
     self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
     
     self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(300.0f)/2;
+    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(102.0f)/2;
     
     self.ivLine.backgroundColor = [self.util getColorWithRGBCode:@"eeeeee"];
     self.ivIcon.image = [UIImage imageNamed:@"icon_grade_vip"];
