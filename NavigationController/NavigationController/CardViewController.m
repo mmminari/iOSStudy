@@ -221,7 +221,7 @@
     self.alcHeightOfBtn.constant = HRATIO_HEIGHT(63.0f);
     self.alcWidthOfBtn.constant  = WRATIO_WIDTH(63.0f);
     self.alcBottomOfBtn.constant = WRATIO_WIDTH(-27.0f);
-    self.alcBottomOfBarcode.constant = WRATIO_WIDTH(-42.0f);
+    self.alcBottomOfBarcode.constant = WRATIO_WIDTH(-30.0f);
     self.alcTopOfBarImg.constant = HRATIO_HEIGHT(415.0f);
     self.alcLeadingOfBarImg.constant = WRATIO_WIDTH(75.0f);
     self.alcTrailingOfBarImg.constant = WRATIO_WIDTH(-75.0f);
