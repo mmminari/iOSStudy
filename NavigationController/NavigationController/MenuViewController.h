@@ -12,7 +12,7 @@
 #import "MainViewController.h"
 #import "ScriptResults.h"
 
-@interface MenuViewController : BaseViewController
+@interface MenuViewController : BaseViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainViewController *mainVC;
@@ -23,6 +23,8 @@
 
 -(void)setMenuLogInLayOut;
 -(void)setMenuLogOutLayOut;
+
+-(void)viewWillAppear:(BOOL)animated;
 
 
 

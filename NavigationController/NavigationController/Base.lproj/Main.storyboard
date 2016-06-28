@@ -2501,7 +2501,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="592014B4-11A1-48B0-94C6-3783F23670B2"/>
+                                <state key="normal" image="E51BF1C9-B0CE-4D89-973E-A5616CF1EE90"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -2817,11 +2817,27 @@
                                             <constraint firstItem="GvJ-rJ-pAu" firstAttribute="leading" secondItem="Ni8-sg-2Oo" secondAttribute="trailing" constant="10" id="t5W-Jg-5lp"/>
                                         </constraints>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gUp-Gt-wzU">
+                                        <rect key="frame" x="192" y="111" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="ekN-DK-6mV"/>
+                                            <constraint firstAttribute="height" constant="34" id="m2Y-PR-oxH"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3t-uX-BOF">
+                                        <rect key="frame" x="192" y="111" width="34" height="34"/>
+                                        <connections>
+                                            <action selector="touchedGoToCameraRoll:" destination="Atf-5e-ZEp" eventType="touchUpInside" id="4KO-fa-qxL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="gUp-Gt-wzU" firstAttribute="trailing" secondItem="mis-MA-xE2" secondAttribute="trailing" id="0sL-e9-i6u"/>
                                     <constraint firstAttribute="trailing" secondItem="7xA-BM-FYq" secondAttribute="trailing" constant="13" id="72H-Ti-T4f"/>
                                     <constraint firstAttribute="trailing" secondItem="pi5-A0-YGE" secondAttribute="trailing" id="7HY-f0-1hC"/>
+                                    <constraint firstItem="X3t-uX-BOF" firstAttribute="top" secondItem="gUp-Gt-wzU" secondAttribute="top" id="8xF-8F-EYU"/>
+                                    <constraint firstItem="X3t-uX-BOF" firstAttribute="bottom" secondItem="gUp-Gt-wzU" secondAttribute="bottom" id="DEI-ZQ-YsU"/>
                                     <constraint firstItem="mis-MA-xE2" firstAttribute="centerX" secondItem="bgd-FY-FWL" secondAttribute="centerX" id="Dp0-XQ-Gpw"/>
                                     <constraint firstItem="tVw-bu-ZyE" firstAttribute="centerY" secondItem="lew-wF-n3a" secondAttribute="centerY" id="Fku-NY-Hbt"/>
                                     <constraint firstItem="pi5-A0-YGE" firstAttribute="top" secondItem="mis-MA-xE2" secondAttribute="bottom" id="FyQ-m2-NJa"/>
@@ -2831,6 +2847,8 @@
                                     <constraint firstItem="nC6-ep-zHV" firstAttribute="top" secondItem="bgd-FY-FWL" secondAttribute="top" constant="211" id="KpD-oN-c4J"/>
                                     <constraint firstItem="YRF-Dr-7qX" firstAttribute="top" secondItem="lew-wF-n3a" secondAttribute="bottom" constant="4" id="LTZ-ry-ilF"/>
                                     <constraint firstItem="Ijc-ku-7Ll" firstAttribute="bottom" secondItem="7xA-BM-FYq" secondAttribute="bottom" constant="5" id="O8G-0B-MfD"/>
+                                    <constraint firstItem="X3t-uX-BOF" firstAttribute="trailing" secondItem="gUp-Gt-wzU" secondAttribute="trailing" id="RQn-fh-pdF"/>
+                                    <constraint firstItem="gUp-Gt-wzU" firstAttribute="bottom" secondItem="mis-MA-xE2" secondAttribute="bottom" id="SYR-ze-1WC"/>
                                     <constraint firstItem="KJY-qb-QaZ" firstAttribute="top" secondItem="nC6-ep-zHV" secondAttribute="bottom" id="TGz-LA-wMW"/>
                                     <constraint firstItem="lew-wF-n3a" firstAttribute="top" secondItem="mis-MA-xE2" secondAttribute="bottom" constant="8" id="WNv-jY-cGb"/>
                                     <constraint firstItem="Ijc-ku-7Ll" firstAttribute="trailing" secondItem="7xA-BM-FYq" secondAttribute="trailing" constant="5" id="YW1-1f-qqA"/>
@@ -2838,6 +2856,7 @@
                                     <constraint firstAttribute="trailing" secondItem="KJY-qb-QaZ" secondAttribute="trailing" id="d6w-wE-3Qh"/>
                                     <constraint firstItem="KJY-qb-QaZ" firstAttribute="leading" secondItem="bgd-FY-FWL" secondAttribute="leading" id="exU-VX-0w0"/>
                                     <constraint firstAttribute="trailing" secondItem="nC6-ep-zHV" secondAttribute="trailing" id="fKZ-Wo-3Op"/>
+                                    <constraint firstItem="X3t-uX-BOF" firstAttribute="leading" secondItem="gUp-Gt-wzU" secondAttribute="leading" id="gSu-kH-tFw"/>
                                     <constraint firstItem="Ijc-ku-7Ll" firstAttribute="top" secondItem="7xA-BM-FYq" secondAttribute="top" constant="-5" id="pfV-LC-eSq"/>
                                     <constraint firstItem="tVw-bu-ZyE" firstAttribute="leading" secondItem="lew-wF-n3a" secondAttribute="trailing" constant="5" id="sBK-ps-lP8"/>
                                     <constraint firstItem="pi5-A0-YGE" firstAttribute="leading" secondItem="bgd-FY-FWL" secondAttribute="leading" id="sqa-uF-657"/>
@@ -2859,6 +2878,7 @@
                         <outlet property="alcCenterOfLbLogOut" destination="WfV-Yj-RzE" id="wlX-lL-Lus"/>
                         <outlet property="alcCenterOfLbName" destination="zwC-fB-YUQ" id="Nel-8N-L8L"/>
                         <outlet property="alcHeightOfBtnLogIn" destination="SPj-Mq-17k" id="l2O-1c-XdJ"/>
+                        <outlet property="alcHeightOfCameraRollImg" destination="m2Y-PR-oxH" id="fW2-vM-3Kw"/>
                         <outlet property="alcHeightOfIcon" destination="poq-mi-dz1" id="k1c-xs-eJ3"/>
                         <outlet property="alcHeightOfLogInOutView" destination="Uot-p0-byE" id="7X0-bA-vjR"/>
                         <outlet property="alcHeightOfSettingImg" destination="dO4-W5-CQK" id="2Le-X7-bF7"/>
@@ -2867,12 +2887,14 @@
                         <outlet property="alcTopOfBtnLogIn" destination="KMQ-se-jc6" id="nI2-9C-kmU"/>
                         <outlet property="alcTopOfTableView" destination="KpD-oN-c4J" id="cjQ-l1-fJm"/>
                         <outlet property="alcWidthOfBtnLogIn" destination="UNK-gJ-6eN" id="GZb-kJ-fHU"/>
+                        <outlet property="alcWidthOfCameraRollImg" destination="ekN-DK-6mV" id="AFL-8Y-BfQ"/>
                         <outlet property="alcWidthOfIcon" destination="SB8-c9-t6B" id="xk0-Gt-caF"/>
                         <outlet property="alcWidthOfMenuView" destination="xrz-tU-Nol" id="6v4-pP-gId"/>
                         <outlet property="alcWidthOfSettingImg" destination="zUy-gj-CjW" id="zcg-wS-ex3"/>
                         <outlet property="alcWidthOfUserImg" destination="0T9-uZ-jiG" id="gxz-Kl-gFe"/>
                         <outlet property="btnLogIn" destination="GvJ-rJ-pAu" id="k0m-FX-dH9"/>
                         <outlet property="btnSetting" destination="Ijc-ku-7Ll" id="qU2-0N-Qiw"/>
+                        <outlet property="ivCameraRoll" destination="gUp-Gt-wzU" id="t1k-L3-oLY"/>
                         <outlet property="ivIcon" destination="tVw-bu-ZyE" id="1ct-Y3-CL8"/>
                         <outlet property="ivLine" destination="nC6-ep-zHV" id="oWF-Za-KNL"/>
                         <outlet property="ivSetting" destination="7xA-BM-FYq" id="s87-h7-L8M"/>
@@ -3721,7 +3743,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="592014B4-11A1-48B0-94C6-3783F23670B2" width="21" height="21">
+        <image name="E51BF1C9-B0CE-4D89-973E-A5616CF1EE90" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

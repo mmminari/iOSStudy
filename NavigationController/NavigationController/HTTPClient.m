@@ -60,6 +60,32 @@
     }];
 }
 
+-(void)UPLOADWithUrlString:(NSString *)URLString
+                      data:(NSData *)data
+                   success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure
+{
+    [self POST:URLString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    {
+        [formData appendPartWithFileData:data name:@"iamge" fileName:@"image.jpg" mimeType:@"image/jpg"];
+
+    }
+       success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject)
+    {
+        if(success)
+        {
+            success(responseObject);
+        }
+    }
+       failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error)
+    {
+        if(failure)
+        {
+            failure(error);
+        }
+    }];
+}
+
 -(void)PUTWithUrlString:(NSString *)urlString parameters:(id)parameters
                 success:(void (^)(id results))success
                 failure:(void (^)(NSError *error))failure

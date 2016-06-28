@@ -70,6 +70,14 @@
     
 }
 
+-(void)requestProfileImageWithSuccess:(void (^)(id results))success
+                                failure:(void (^)(NSError *error))failure
+                              imageInfo:(NSData *)imageData
+{
+    [self.httpClient UPLOADWithUrlString:@"/api/v1/profile" data:imageData success:success failure:failure];
+    
+}
+
 -(void)requestMainInformationWithParameter:(id)parameter
                            success:(void (^)(id results))success
                            failure:(void (^)(NSError *error))failure

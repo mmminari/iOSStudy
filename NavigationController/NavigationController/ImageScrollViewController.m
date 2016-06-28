@@ -10,7 +10,7 @@
 
 @interface ImageScrollViewController ()
 
-@property (retain, nonatomic) IBOutlet UIScrollView *scImage;
+@property (weak, nonatomic) IBOutlet UIScrollView *scImage;
 
 
 @end

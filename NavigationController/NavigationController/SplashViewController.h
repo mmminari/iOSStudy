@@ -11,6 +11,6 @@
 
 @interface SplashViewController : BaseViewController
 
-
+-(void)reqUserInformation;
 
 @end

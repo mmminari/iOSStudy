@@ -206,6 +206,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.notiCenter addObserver:self selector:@selector(backToLogInView:) name:@"backToLogInView" object:nil];
         [self.notiCenter addObserver:self selector:@selector(backToLogOutView:) name:@"backToLogOutView" object:nil];
         [self.notiCenter addObserver:self selector:@selector(moveToPointView:) name:@"moveToPointView" object:nil];
+        [self.notiCenter addObserver:self selector:@selector(reloadUserProfile:) name:@"reloadUserProfile" object:nil];
         LogBlue(@"noti");
         
     }
@@ -217,6 +218,11 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)viewDidDisappear:(BOOL)animated
 {
 //    [self.notiCenter removeObserver:self];
+}
+
+-(void)reloadUserProfile:(NSNotification *)noti
+{
+    [self.splashVC reqUserInformation];
 }
 
 -(void)moveToPointView:(NSNotification *)noti

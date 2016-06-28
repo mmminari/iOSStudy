@@ -125,6 +125,8 @@
 		6DB010811CCA101D00C06A5E /* smtownmembership_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB010801CCA101D00C06A5E /* smtownmembership_logo@3x.png */; };
 		6DB792ED1CF30211008AF993 /* ShowMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */; };
 		6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE6CCD1CF5A7DA0037D4FB /* EventCell.m */; };
+		6DD25A6A1D2215D2004DCEE1 /* btn_profile_modify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD25A681D2215D2004DCEE1 /* btn_profile_modify@2x.png */; };
+		6DD25A6B1D2215D2004DCEE1 /* btn_profile_modify@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DD25A691D2215D2004DCEE1 /* btn_profile_modify@3x.png */; };
 		6DF050731CD9DBC0006C9513 /* UtilityClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050721CD9DBC0006C9513 /* UtilityClass.m */; };
 		6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DF050751CD9F837006C9513 /* BaseViewController.m */; };
 		ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF79B781CC7488300B89C4E /* DemoListViewController.m */; };
@@ -309,6 +311,8 @@
 		6DB792EC1CF30211008AF993 /* ShowMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMenuViewController.m; sourceTree = "<group>"; };
 		6DCE6CCC1CF5A7DA0037D4FB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
 		6DCE6CCD1CF5A7DA0037D4FB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		6DD25A681D2215D2004DCEE1 /* btn_profile_modify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_profile_modify@2x.png"; sourceTree = "<group>"; };
+		6DD25A691D2215D2004DCEE1 /* btn_profile_modify@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_profile_modify@3x.png"; sourceTree = "<group>"; };
 		6DF050711CD9DBC0006C9513 /* UtilityClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilityClass.h; sourceTree = "<group>"; };
 		6DF050721CD9DBC0006C9513 /* UtilityClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilityClass.m; sourceTree = "<group>"; };
 		6DF050741CD9F837006C9513 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -403,6 +407,8 @@
 		6D4B649B1CD333510078969D /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				6DD25A681D2215D2004DCEE1 /* btn_profile_modify@2x.png */,
+				6DD25A691D2215D2004DCEE1 /* btn_profile_modify@3x.png */,
 				6D5DA1191D210A5600D2710D /* sc1.jpg */,
 				6D5DA11A1D210A5600D2710D /* sc2.jpg */,
 				6D5DA11B1D210A5600D2710D /* sc3.jpg */,
@@ -690,6 +696,7 @@
 				6D468FAD1CE5B48900538EE0 /* img_card_sub@2x.png in Resources */,
 				6D4B649A1CD3333B0078969D /* icon_notice_bell@3x.png in Resources */,
 				6D5DA1241D210A5600D2710D /* sc4.jpg in Resources */,
+				6DD25A6A1D2215D2004DCEE1 /* btn_profile_modify@2x.png in Resources */,
 				6D4C8A901CC71FDB006AEEBE /* Assets.xcassets in Resources */,
 				6D464AEF1CD092AF0035FF68 /* img_main_profile@2x.png in Resources */,
 				6D50E0901CF2AA1E003A7EB7 /* img_profile_menu@3x.png in Resources */,
@@ -703,6 +710,7 @@
 				6D5DA1271D210A5600D2710D /* sc7.jpg in Resources */,
 				6D50E08C1CF2A9C3003A7EB7 /* menu_setting@3x.png in Resources */,
 				6D5DA1251D210A5600D2710D /* sc5.jpg in Resources */,
+				6DD25A6B1D2215D2004DCEE1 /* btn_profile_modify@3x.png in Resources */,
 				6D14700C1CEC3D74001529A2 /* icon_store_location@2x.png in Resources */,
 				6D4AD3011D012DF600CFC443 /* splash_750x1334.png in Resources */,
 				6D5DA1221D210A5600D2710D /* sc2.jpg in Resources */,

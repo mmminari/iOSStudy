@@ -50,6 +50,12 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivSetting;
 @property (weak, nonatomic) IBOutlet UIButton *btnSetting;
+@property (weak, nonatomic) IBOutlet UIImageView *ivCameraRoll;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCameraRollImg;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCameraRollImg;
+
+@property (strong, nonnull) UIImage *profileImage;
+
 
 @end
 
@@ -72,50 +78,22 @@
     
     self.ivSetting.image = [UIImage imageNamed:@"menu_setting"];
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+    self.ivIcon.image = [UIImage imageNamed:@"icon_grade_vip"];
+    self.ivCameraRoll.image = [UIImage imageNamed:@"btn_profile_modify"];
+    
+    self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
     
     self.lbUserName.text = [self.library.userInfo userName];
     self.lbUserId.text = [self.library.userInfo userId];
     
-    self.ivUser.layer.cornerRadius = WRATIO_WIDTH(300.0f)/2;
-    self.ivUser.layer.masksToBounds = YES;
-
     [self downLoadImage];
-    
-    self.menuArr = @[@"PUSH 알림", @"이벤트", @"공지사항", @"고객센터", @"이용약관", @"개인정보 취급방침", @"버전정보"];
-    
-    self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(102.0f)/2;
-    
-    self.ivLine.backgroundColor = [self.util getColorWithRGBCode:@"eeeeee"];
-    self.ivIcon.image = [UIImage imageNamed:@"icon_grade_vip"];
+    [self setLayout];
 
-    self.tvMenu.rowHeight = WRATIO_WIDTH(155.0f);
-    self.alcHeightOfTableView.constant = self.tvMenu.rowHeight * self.menuArr.count;
-    self.alcHeightOfUserImg.constant = WRATIO_WIDTH(300.0f);
-    self.alcWidthOfUserImg.constant = WRATIO_WIDTH(300.0f);
-    self.alcTopOfTableView.constant = WRATIO_WIDTH(635.0f);
-    self.alcHeightOfSettingImg.constant = HRATIO_HEIGHT(69.0f);
-    self.alcWidthOfSettingImg.constant = WRATIO_WIDTH(69.0f);
-    self.alcTopOfUserImg.constant = WRATIO_WIDTH(135.0f);
-    self.alcHeightOfIcon.constant = HRATIO_HEIGHT(48.0f);
-    self.alcWidthOfIcon.constant = WRATIO_WIDTH(102.0f);
-    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(66.0f);
-    self.alcHeightOfBtnLogIn.constant = HRATIO_HEIGHT(117.0f);
-    self.alcWidthOfBtnLogIn.constant = WRATIO_WIDTH(225.0f);
-    self.alcHeightOfLogInOutView.constant = HRATIO_HEIGHT(198.0f);
-    self.alcCenterOfLbLogOut.constant = self.alcCenterOfLbLogOut.constant - WRATIO_WIDTH(225.0f) / 2;
-    self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(50.0f);
-    
-    self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
-    self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
-    
-    self.lbLogOut.text = @"로그인이 필요 합니다.";
-    [self.btnLogIn setTitle:@"로그인" forState:UIControlStateNormal];
-    [self.btnLogIn setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
-    [self.btnLogIn setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
-    [self.btnLogIn.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(50.0f)]];
-    self.lbLogOut.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
-    self.lbLogOut.textColor = [self.util getColorWithRGBCode:@"424242"];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self downLoadImage];
     
 }
 
@@ -134,7 +112,10 @@
         }
         else
         {
-            self.ivUser.image = image;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.ivUser.image = image;
+                
+            });
         }
         
     }];
@@ -156,6 +137,13 @@
     [self.mainVC.navigationController pushViewController:self.loginVC animated:YES];
     
 }
+
+- (IBAction)touchedGoToCameraRoll:(id)sender
+{
+    [self startCameraControllerFromViewController:self.mainVC usingDelegate:self];
+    LogYellow(@"startCameraControllerFromViewController");
+}
+
 
 #pragma mark - TableView DataSource
 
@@ -242,7 +230,114 @@
     }
     
     [self.mainVC moveToTheTargetViewWithMenuList:menuList];
+}
+
+#pragma makr - UIImagPickercontroller
+
+//카메라롤 접근~
+-(BOOL)startCameraControllerFromViewController:(UIViewController *)controller usingDelegate:(id <UIImagePickerControllerDelegate, UINavigationControllerDelegate>) delegate
+{
+    /*
+    if(([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) || (delegate == nil) || (controller == nil))
+        return NO;
+    */
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc]init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    cameraUI.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    cameraUI.delegate = delegate;
     
+    [controller presentViewController:cameraUI animated:YES completion:nil];
+    
+    return YES;
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    
+    LogYellow(@"imageinfo : %@", info);
+    
+   // NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    self.profileImage = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+    LogGreen(@"profile image %@", self.profileImage );
+    NSData *data = UIImageJPEGRepresentation(self.profileImage, 1.0);
+    
+    [self.library requestProfileImageWithSuccess:^(id results) {
+        
+        if(results)
+        {
+            LogGreen(@"results %@", [results objectForKey:@"message"]);
+            
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadUserProfile" object:nil];
+
+            }];
+            
+            [alert addAction:action];
+            [self.mainVC presentViewController:alert animated:YES completion:nil];
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    } imageInfo:data];
+
+    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark - private method
+
+-(void)setLayout
+{
+    self.ivUser.layer.cornerRadius = WRATIO_WIDTH(300.0f)/2;
+    self.ivUser.layer.masksToBounds = YES;
+    
+    self.ivCameraRoll.layer.cornerRadius = WRATIO_WIDTH(102.0f)/2 ;
+    self.ivCameraRoll.layer.masksToBounds = YES;
+    
+    self.alcHeightOfCameraRollImg.constant = WRATIO_WIDTH(102.0f);
+    self.alcWidthOfCameraRollImg.constant = WRATIO_WIDTH(102.0f);
+    
+    self.alcWidthOfMenuView.constant = WRATIO_WIDTH(REMAIN_SPACE);
+    self.alcCenterOfLbName.constant = self.alcCenterOfLbName.constant - WRATIO_WIDTH(102.0f)/2;
+    
+    self.ivLine.backgroundColor = [self.util getColorWithRGBCode:@"eeeeee"];
+    
+    self.tvMenu.rowHeight = WRATIO_WIDTH(155.0f);
+    self.alcHeightOfTableView.constant = self.tvMenu.rowHeight * self.menuArr.count;
+    self.alcHeightOfUserImg.constant = WRATIO_WIDTH(300.0f);
+    self.alcWidthOfUserImg.constant = WRATIO_WIDTH(300.0f);
+    self.alcTopOfTableView.constant = WRATIO_WIDTH(635.0f);
+    self.alcHeightOfSettingImg.constant = HRATIO_HEIGHT(69.0f);
+    self.alcWidthOfSettingImg.constant = WRATIO_WIDTH(69.0f);
+    self.alcTopOfUserImg.constant = WRATIO_WIDTH(135.0f);
+    self.alcHeightOfIcon.constant = HRATIO_HEIGHT(48.0f);
+    self.alcWidthOfIcon.constant = WRATIO_WIDTH(102.0f);
+    self.alcTopOfBtnLogIn.constant = WRATIO_WIDTH(66.0f);
+    self.alcHeightOfBtnLogIn.constant = HRATIO_HEIGHT(117.0f);
+    self.alcWidthOfBtnLogIn.constant = WRATIO_WIDTH(225.0f);
+    self.alcHeightOfLogInOutView.constant = HRATIO_HEIGHT(198.0f);
+    self.alcCenterOfLbLogOut.constant = self.alcCenterOfLbLogOut.constant - WRATIO_WIDTH(225.0f) / 2;
+    self.alcTopOfBtnLogIn.constant = HRATIO_HEIGHT(50.0f);
+    
+    self.lbUserName.font = [UIFont systemFontOfSize:WRATIO_WIDTH(47.0f)];
+    self.lbUserId.font = [UIFont systemFontOfSize:WRATIO_WIDTH(40.0f)];
+    
+    self.lbLogOut.text = @"로그인이 필요 합니다.";
+    [self.btnLogIn setTitle:@"로그인" forState:UIControlStateNormal];
+    [self.btnLogIn setTitleColor:[self.util getColorWithRGBCode:@"ffffff"] forState:UIControlStateNormal];
+    [self.btnLogIn setBackgroundColor:[self.util getColorWithRGBCode:@"f386a1"]];
+    [self.btnLogIn.titleLabel setFont:[UIFont systemFontOfSize:WRATIO_WIDTH(50.0f)]];
+    self.lbLogOut.font = [UIFont systemFontOfSize:WRATIO_WIDTH(45.0f)];
+    self.lbLogOut.textColor = [self.util getColorWithRGBCode:@"424242"];
 }
 
 -(void)setMenuLogOutLayOut
@@ -252,6 +347,7 @@
     [self.logOutViewContainer setHidden:NO];
     [self.ivSetting setHidden:YES];
     [self.btnSetting setHidden:YES];
+    [self.ivCameraRoll setHidden:YES];
 }
 
 -(void)setMenuLogInLayOut
@@ -263,6 +359,8 @@
     [self.logOutViewContainer setHidden:YES];
     [self.ivSetting setHidden:NO];
     [self.btnSetting setHidden:NO];
+    [self.ivCameraRoll setHidden:NO];
+
 }
 
 @end
