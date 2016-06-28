@@ -259,6 +259,14 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
 {
     
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    indicator.center = CGPointMake(DEVICE_WIDTH/2, DEVICE_HEIGHT/2);
+    [picker.view addSubview:indicator];
+    [indicator startAnimating];
+    [picker.view setUserInteractionEnabled:NO];
+    [indicator setHidesWhenStopped:YES];
+    
     LogYellow(@"imageinfo : %@", info);
     
    // NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
@@ -268,12 +276,18 @@
     
     [self.library requestProfileImageWithSuccess:^(id results) {
         
+        
         if(results)
         {
+            [indicator stopAnimating];
+            [picker.view setUserInteractionEnabled:YES];
+            
+            [self.mainVC dismissViewControllerAnimated:YES completion:nil];
+
             LogGreen(@"results %@", [results objectForKey:@"message"]);
             
             
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[results objectForKey:@"message"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[self.util getValueWithKey:@"message" Dictionary:results] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadUserProfile" object:nil];
@@ -286,10 +300,13 @@
         
         
     } failure:^(NSError *error) {
+        [indicator stopAnimating];
+        [picker.view setUserInteractionEnabled:YES];
+        LogRed(@"error")    ;
+        
         
     } imageInfo:data];
 
-    [self.mainVC dismissViewControllerAnimated:YES completion:nil];
     
 }
 
