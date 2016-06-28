@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "StoreViewController.h"
 
-
 @interface StoreCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivMain;

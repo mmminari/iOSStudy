@@ -159,6 +159,8 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     
     self.ivUser.image = [UIImage imageNamed:@"img_main_profile"];
     self.ivCard.image = [UIImage imageNamed:@"img_card_main"];
+    self.ivCard.layer.cornerRadius = HRATIO_HEIGHT(130.0f)/2;
+    self.ivCard.layer.masksToBounds = YES;
     
     self.ivTopLogo.image = [UIImage imageNamed:@"top_logo"];
     self.ivTopRight.image = [UIImage imageNamed:@"btn_menu"];
@@ -174,7 +176,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     self.ivEnlargeBar.image = [UIImage imageNamed:@"btn_card_largeimg_sub"];
     self.ivBarcodeBackground.backgroundColor = [UIColor whiteColor];
-    self.ivBarcodeBackground.layer.cornerRadius = WRATIO_WIDTH(95.0f)/2;
+    self.ivBarcodeBackground.layer.cornerRadius = HRATIO_HEIGHT(95.0f)/2;
 
     self.alcLeadingOfLbCenter.constant = WRATIO_WIDTH(110.0f);
     self.alcTopOfBarcodeBack.constant = HRATIO_HEIGHT(120.0f);

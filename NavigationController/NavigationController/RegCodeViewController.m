@@ -101,12 +101,7 @@
         NSDictionary *result = (NSDictionary *)results;
         if([self.util getValueWithKey:@"result" Dictionary:result])
         {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction  *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self showAlertViewWithTitle:[self.util getValueWithKey:@"code" Dictionary:result] message:[self.util getValueWithKey:@"message" Dictionary:result] completion:nil];
         }
         
         

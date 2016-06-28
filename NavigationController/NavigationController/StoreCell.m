@@ -18,6 +18,8 @@
     NSString *format = @"tel://";
     NSString *num = self.lbPhoneNum.text;
     format = [format stringByAppendingString:num];
+    
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"전화걸기" message:num preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)

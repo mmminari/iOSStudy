@@ -47,6 +47,21 @@
 
 }
 
+-(void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message completion:(void(^)(void))completion
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        if(completion)
+        {
+            completion();
+        }
+        LogGreen(@"show aler view message %@", message);
+    }];
+    
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 -(void)setResultOfAutoSignInWithSwith:(BOOL)swith
 {
     [self.autoSignIn setBool:swith forKey:@"isAutoSignIn"];

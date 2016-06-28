@@ -26,5 +26,7 @@
 -(BOOL)getResultOfAutoSignIn;
 
 -(void)setTitleOfNavibarWithIndexPath:(NSIndexPath *)index;
+-(void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message completion:(void(^)(void))completion;
+
 
 @end

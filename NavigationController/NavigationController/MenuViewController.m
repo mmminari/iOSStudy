@@ -282,20 +282,15 @@
             [indicator stopAnimating];
             [picker.view setUserInteractionEnabled:YES];
             
-            [self.mainVC dismissViewControllerAnimated:YES completion:nil];
+            [self.mainVC dismissViewControllerAnimated:YES completion:^{
+                [self showAlertViewWithTitle:nil message:[self.util getValueWithKey:@"message" Dictionary:results] completion:^
+                {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadUserProfile" object:nil];
+                }];
+                
+            }];
 
             LogGreen(@"results %@", [results objectForKey:@"message"]);
-            
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[self.util getValueWithKey:@"message" Dictionary:results] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadUserProfile" object:nil];
-
-            }];
-            
-            [alert addAction:action];
-            [self.mainVC presentViewController:alert animated:YES completion:nil];
         }
         
         
