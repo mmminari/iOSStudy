@@ -118,7 +118,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-
+    
     //side menu show시 화면을 까맣게 보여주는 view
     [self.hideView setHidden:YES];
     self.hideView.backgroundColor = [UIColor blackColor];
@@ -130,7 +130,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.btnStore.tag = ButtonTagNumberStore;
     
     self.flag = YES;
-
+    
     //처음 뷰가 로드 될 때 스토리보드도 로드가 된다. 각 스토리보드에 id값을 주어 각각의 컨트롤러와 연결해줌으로써 뷰를 사용할 수 있다.
     self.logoutVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logoutcollection"];
     self.HomeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mainhomeview"];
@@ -140,18 +140,18 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.menuVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-menuview"];
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
     self.LoginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-logInView"];
-
+    
     self.splashVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-splash"];
     [self.view addSubview:self.splashVC.view];
     [self.util setContentViewLayoutWithSubView:self.splashVC.view withTargetView:self.view];
-
+    
     //스플래시 화면이 떠있는 상태에서 자동로그인 여부로 login화면으로 갈지 logout화면으로 갈지 판별
     if(![self getResultOfAutoSignIn])
     {
         [self.mainViewContainer addSubview:self.logoutVC.view];
         [self.util setContentViewLayoutWithSubView3:self.logoutVC.view withTargetView:self.mainViewContainer];
     }
-
+    
     self.cardVC.userInfo = self.userInfo;
     self.menuVC.userInfo = self.userInfo;
     self.menuVC.mainVC = self;
@@ -159,14 +159,16 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     self.HomeVC.mainInfo = self.mainInfo;
     self.settingVC.userInfo = self.userInfo;
     self.HomeVC.mainVC = self;
+    self.storeVC.mainVC = self;
+    
     //addsubview가 된 뷰에서 화면을 띄우거나 다른 화면으로 전환할 때 메인컨트롤러를 넘겨주어 서브뷰에서도 화면전환을 할 수 있다.
     //서브뷰에서 다른뷰로 정보를 넘길때 필요한 코드는 메인뷰의 prepareForSegue로
     
     [self.view addSubview:self.menuVC.view];
     [self.view sendSubviewToBack:self.menuVC.view];
-   // [self.view insertSubview:self.menuVC.view atIndex:0];
+    // [self.view insertSubview:self.menuVC.view atIndex:0];
     //뷰의 계층관계에서 제일 위나 밑은 index값으로 넣기보다는 back이나 front로 넣는게 좋
-
+    
     [self.util setContentViewLayoutWithSubView:self.menuVC.view withTargetView:self.view];
     [self setLayoutAndColor];
     
@@ -217,7 +219,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-//    [self.notiCenter removeObserver:self];
+    //    [self.notiCenter removeObserver:self];
 }
 
 -(void)reloadUserProfile:(NSNotification *)noti
@@ -258,7 +260,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.menuVC viewWillAppear:YES];
         LogRed(@"reloadColletionViews");
         
-  });
+    });
 }
 
 -(void)backToLogInView:(NSNotification *)noti
@@ -318,7 +320,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 - (IBAction)touchedMenuButton:(UIButton *)sender
 {
     NSInteger index = sender.tag - 1000;
-
+    
     //사용자 버튼 중복터치 방지
     if(index != self.index2)
     {
@@ -326,7 +328,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     }
     
     [self setLeadingOfPinkIndicatorWithIndex:index];
-
+    
     if(sender.tag == ButtonTagNumberPoint)
     {
         [self reloadWkWebView];
@@ -345,7 +347,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     self.alcTrailingOfMainView.constant = 0.0f;
     self.alcLeadingOfMainView.constant  = 0.0f;
-
+    
     [self.hideView setHidden:YES];
     [self setAnimation];
     
@@ -355,7 +357,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 {
     self.alcLeadingOfMainView.constant = - WRATIO_WIDTH(REMAIN_SPACE);
     self.alcTrailingOfMainView.constant = WRATIO_WIDTH(REMAIN_SPACE);
-
+    
     [self.hideView setHidden:NO];
     [self.mainViewContainer bringSubviewToFront:self.hideView];
     [self setAnimation];
@@ -371,7 +373,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [self.view layoutIfNeeded];
         
     } completion:nil];
-
+    
 }
 
 #pragma mark - Collection View
@@ -425,7 +427,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
         [cell.contentView addSubview:self.storeVC.view];
         [self.util setContentViewLayoutWithSubView:self.storeVC.view withTargetView:cell.contentView];
     }
-
+    
     return cell;
     
 }
@@ -453,14 +455,14 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
 -(void)setSwipeAnimationWithIndex:(NSInteger)index
 {
     self.cvMainView.contentOffset = CGPointMake(DEVICE_WIDTH*index,0.0f);
-
+    
     NSTimeInterval animationDuration = 0.3f;
     
     UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
     [UIView animateWithDuration:animationDuration delay:0.0f options:animationOptions animations:^{
         [self.cvMainView layoutIfNeeded];
     } completion:nil];
-
+    
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset
@@ -520,7 +522,7 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     NSArray *cArr = @[alcTopOfSubView, alcBottomOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
     
     [targetView addConstraints:cArr];
-
+    
 }
 
 //segue를 사용하지 않고 storyboardId를 이용해서 뷰 전환
@@ -570,27 +572,27 @@ typedef NS_ENUM(NSInteger, ButtonTagNumber){
     [baseVC setTitleOfNavibarWithMenuList:list];
     [baseVC setWebViewWithMenuList:list];
     [self.navigationController pushViewController:baseVC animated:YES];
-
+    
 }
 
 
 
 /*
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if([[segue identifier] isEqualToString:@"sgMainToBarcode"])
-    {
-        BarcodeViewController *barcVC = [segue destinationViewController];
-        barcVC.barString = [self.userInfo cardNo];
-    }
-    if([[segue identifier] isEqualToString:@"sgMenuToSetting"])
-    {
-        SettingViewController *settingVC = [segue destinationViewController];
-        settingVC.userInfo = self.userInfo;
-    }
-  
-}
-*/
+ -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ if([[segue identifier] isEqualToString:@"sgMainToBarcode"])
+ {
+ BarcodeViewController *barcVC = [segue destinationViewController];
+ barcVC.barString = [self.userInfo cardNo];
+ }
+ if([[segue identifier] isEqualToString:@"sgMenuToSetting"])
+ {
+ SettingViewController *settingVC = [segue destinationViewController];
+ settingVC.userInfo = self.userInfo;
+ }
+ 
+ }
+ */
 
 
 @end

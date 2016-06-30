@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "StoreViewController.h"
+#import "MainViewController.h"
+#import "StoreLocationViewController.h"
 
 @interface StoreCell : UITableViewCell
 
@@ -22,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivPhone;
 
 @property (strong, nonatomic) StoreViewController *storeVC;
+@property (strong, nonatomic) MainViewController *mainVC;
+@property (strong, nonatomic) StoreLocationViewController *mapVC;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNameLabel;

@@ -31,5 +31,13 @@
     [self.storeVC presentViewController:alert animated:YES completion: nil];
 }
 
+- (IBAction)touchedGoToMap:(id)sender
+{
+    [self.mainVC.navigationController showViewController:self.mapVC sender:self];
+    LogYellow(@"mapmap");
+}
+
+
+
 @end
 

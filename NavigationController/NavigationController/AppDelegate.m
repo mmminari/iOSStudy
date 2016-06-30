@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "LibraryClass.h"
 #import "NotificationClass.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface AppDelegate ()
 
@@ -22,7 +23,10 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    
+    [GMSServices provideAPIKey:@"AIzaSyDXBW88wh3Qzs984t19wQl9P90LofXfuwY"];
     
     self.lib = [LibraryClass sharedInstance];
     

@@ -104,6 +104,7 @@
 		6D5DA1261D210A5600D2710D /* sc6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA11E1D210A5600D2710D /* sc6.jpg */; };
 		6D5DA1271D210A5600D2710D /* sc7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA11F1D210A5600D2710D /* sc7.jpg */; };
 		6D5DA1281D210A5600D2710D /* sc8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA1201D210A5600D2710D /* sc8.jpg */; };
+		6D642B151D24AC6600F7A605 /* StoreLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
 		6D9AE0F51CD1F9F700B99E2B /* btn_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F31CD1F9F700B99E2B /* btn_back@3x.png */; };
@@ -286,6 +287,8 @@
 		6D5DA11E1D210A5600D2710D /* sc6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sc6.jpg; sourceTree = "<group>"; };
 		6D5DA11F1D210A5600D2710D /* sc7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sc7.jpg; sourceTree = "<group>"; };
 		6D5DA1201D210A5600D2710D /* sc8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sc8.jpg; sourceTree = "<group>"; };
+		6D642B131D24AC6600F7A605 /* StoreLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreLocationViewController.h; sourceTree = "<group>"; };
+		6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreLocationViewController.m; sourceTree = "<group>"; };
 		6D8AA64D1CD73A080044DF31 /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		6D8AA64E1CD73A080044DF31 /* UserInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformation.m; sourceTree = "<group>"; };
 		6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 				6D4C8A831CC71FDB006AEEBE /* Supporting Files */,
 				6D489A8F1D179E8000E3B010 /* GenerateBarcode.h */,
 				6D489A901D179E8000E3B010 /* GenerateBarcode.m */,
+				6D642B131D24AC6600F7A605 /* StoreLocationViewController.h */,
+				6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -813,6 +818,7 @@
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
 				6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */,
 				6D489A911D179E8000E3B010 /* GenerateBarcode.m in Sources */,
+				6D642B151D24AC6600F7A605 /* StoreLocationViewController.m in Sources */,
 				6D538D411D13DF1100107817 /* PushModel.m in Sources */,
 				6D4E43FC1CF545DB002041F7 /* MenuUserInfoViewController.m in Sources */,
 				6D247F7F1CE1CFEA00EBE9DB /* PointViewController.m in Sources */,

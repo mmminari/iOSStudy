@@ -27,6 +27,9 @@
         _imageInfoUri = [self getValueWithKey:@"uri" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
         _imageInfoHeight = [self getValueWithKey:@"height" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
         _imageInfoWidth = [self getValueWithKey:@"width" Dictionary:[self getValueWithKey:@"imageInfo" Dictionary:results]];
+        
+        _latitude = [[self getValueWithKey:@"latitude" Dictionary:results]floatValue];
+        _longitude = [[self getValueWithKey:@"longitude" Dictionary:results]floatValue];
     }
     
     return self;

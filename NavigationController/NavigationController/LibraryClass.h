@@ -13,6 +13,7 @@
 #import "PushModel.h"
 #import "GenerateBarcode.h"
 #import "ScriptResults.h"
+#import "StoreInformation.h"
 
 @interface LibraryClass : NSObject
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 @property (strong, nonatomic) ScriptResults *scriptResults;
+@property (strong, nonatomic) StoreInformation *storeInfo;
 
 
 @property (assign, nonatomic) BOOL launchOption;

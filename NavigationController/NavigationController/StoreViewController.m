@@ -32,15 +32,15 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
- //   [self startSession];
+    //   [self startSession];
     [self reqStoreInformation];
     
     self.view.backgroundColor = [self.util getColorWithRGBCode:@"f9f9f0"];
-
+    
     self.downloaingDic = [NSMutableDictionary dictionary];
     self.imageArr = [NSMutableArray array];
     self.storeArr = [NSMutableArray array];
-
+    
 }
 
 #pragma mark - set layout
@@ -86,6 +86,9 @@
     
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     cell.storeVC = self;
+    cell.mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mapView"];
+    cell.mainVC = self.mainVC;
+    
     
     if(cell == nil)
     {
@@ -112,12 +115,15 @@
     NSInteger index = indexPath.row;
     
     StoreInformation *stInfo = self.storeArr[index];
-
+    
     cell.lbName.text = [stInfo name];
     cell.lbSaleInfo.text = [stInfo saleInfo];
     cell.lbDetail.text = [stInfo explain];
     cell.lbLocation.text = [stInfo address];
     cell.lbPhoneNum.text = [stInfo phone];
+    
+    cell.mapVC.storeInfo = stInfo;
+    
     
     NSString *height = [stInfo imageInfoHeight];
     CGFloat imgHeight = [height floatValue];
@@ -147,7 +153,7 @@
     cell.alcHeightOfPhoImg.constant = HRATIO_HEIGHT(57.0f);
     cell.alcTopOfLbPhone.constant = HRATIO_HEIGHT(1.0f);
     cell.alcTopOfLbLocation.constant = HRATIO_HEIGHT(12.0f);
-
+    
     NSUInteger count = self.responseArr.count;
     
     if(count > 0)
@@ -164,11 +170,11 @@
         {
             
         }
-
+        
         if(!image)
         {
             [self startImageDownload:urlString forIndexPath:indexPath];
-
+            
             cell.ivMain.image = [UIImage imageNamed:@"loading"];
         }
         else //이미지가 있을때의 처리작업
@@ -211,7 +217,7 @@
     CGFloat heightName = rect.size.height;
     
     CGFloat heightSale = [self getHeightOfLabelWithText:[storeInformation saleInfo]];
-
+    
     CGFloat heightDetail = [self getHeightOfLabelWithText:[storeInformation explain]];
     CGFloat heightLocation = [self getHeightOfLabelWithText:[storeInformation address]];
     CGFloat heightPhone = [self getHeightOfLabelWithText:[storeInformation phone]];
@@ -222,94 +228,94 @@
 
 #pragma mark - session task
 /*
--(void)stratSession
-{
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [NSURL URLWithString:STORE_API];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
-                                      {
-                                          id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                                          
-                                          if ([sentData isKindOfClass:[NSNull class]])
-                                          {
-                                              NSLog(@"error");
-                                          }
-                                          else
-                                          {
-                                              NSDictionary *responseData = sentData;
-                                              self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseData];
-                                              for (NSDictionary *dic in self.responseArr)
-                                              {
-                    
-                                                  StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
-                                                  [self.storeArr addObject:storeInformation];
-
-                                              }
-                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                  [self.tvStore reloadData];
-                                                  
-                                              });
-                                          }
-            
-                                      }];
-    
-    [dataTask resume];
-    
-}
+ -(void)stratSession
+ {
+ NSURLSession *session = [NSURLSession sharedSession];
+ NSURL *url = [NSURL URLWithString:STORE_API];
+ 
+ NSURLRequest *request = [NSURLRequest requestWithURL:url];
+ 
+ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+ {
+ id sentData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+ 
+ if ([sentData isKindOfClass:[NSNull class]])
+ {
+ NSLog(@"error");
+ }
+ else
+ {
+ NSDictionary *responseData = sentData;
+ self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseData];
+ for (NSDictionary *dic in self.responseArr)
+ {
+ 
+ StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+ [self.storeArr addObject:storeInformation];
+ 
+ }
+ dispatch_async(dispatch_get_main_queue(), ^{
+ [self.tvStore reloadData];
+ 
+ });
+ }
+ 
+ }];
+ 
+ [dataTask resume];
+ 
+ }
  */
 
 /*
--(void)startSession
-{
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:STORE_API]];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, NSDictionary *responseObject, NSError *error)
-                                      {
-                                          self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseObject];
-                                          for (NSDictionary *dic in self.responseArr)
-                                          {
-                                              
-                                              StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
-                                              [self.storeArr addObject:storeInformation];
-                                              
-                                          }
-                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                              [self.tvStore reloadData];
-                                              
-                                          });
-                                          
-                                      }];
-    
-    [dataTask resume];
-    
-    
-}
-*/
+ -(void)startSession
+ {
+ NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+ AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+ NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:STORE_API]];
+ 
+ NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, NSDictionary *responseObject, NSError *error)
+ {
+ self.responseArr = [self.util getValueWithKey:@"list" Dictionary:responseObject];
+ for (NSDictionary *dic in self.responseArr)
+ {
+ 
+ StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+ [self.storeArr addObject:storeInformation];
+ 
+ }
+ dispatch_async(dispatch_get_main_queue(), ^{
+ [self.tvStore reloadData];
+ 
+ });
+ 
+ }];
+ 
+ [dataTask resume];
+ 
+ 
+ }
+ */
 
 -(void)reqStoreInformation
 {
     [self.library requestStoreInformationWithParameter:nil success:^(id results)
-    {
-        self.responseArr = [self.util getValueWithKey:@"list" Dictionary:results];
-        for (NSDictionary *dic in self.responseArr)
-        {
-            
-            StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
-            [self.storeArr addObject:storeInformation];
-            
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tvStore reloadData];
-            
-        });
-    } failure:^(NSError *error) {
-        LogGreen(@"error");
-    }];
+     {
+         self.responseArr = [self.util getValueWithKey:@"list" Dictionary:results];
+         for (NSDictionary *dic in self.responseArr)
+         {
+             
+             StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:dic];
+             [self.storeArr addObject:storeInformation];
+             
+         }
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self.tvStore reloadData];
+             
+         });
+     } failure:^(NSError *error) {
+         LogGreen(@"error");
+     }];
 }
 
 
@@ -340,12 +346,12 @@
             [self.downloaingDic removeObjectForKey:indexPath];
             
         }];
-         
-            self.downloaingDic[indexPath] = imageDown;
         
-            [imageDown stardDownload];
+        self.downloaingDic[indexPath] = imageDown;
+        
+        [imageDown stardDownload];
     }
-
+    
 }
 
 -(void)loadImagesOnscreenRows
@@ -366,7 +372,7 @@
             {
                 
             }
-
+            
             if(!image)
             {
                 NSString *url = [self.util getValueWithKey:@"uri" Dictionary:[self.util getValueWithKey:@"imageInfo" Dictionary:[self.responseArr objectAtIndex:indexPath.row]]];
