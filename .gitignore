@@ -13,3 +13,4 @@ xcuserdata
 DerivedData
 *.xcuserstat
 *.DS_Store
+Pods/
