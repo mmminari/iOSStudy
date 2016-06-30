@@ -10,10 +10,11 @@
 #import "StoreCell.h"
 #import "ImageDownload.h"
 #import "StoreInformation.h"
+#import "StoreLocationViewController.h"
 
 #define STORE_API                                               @"http://pointapibeta.smtown.com/api/v1/brand"
 
-@interface StoreViewController ()
+@interface StoreViewController () <StoreCellDelegate>
 
 @property (strong, nonatomic) NSDictionary *responseDic;
 @property (strong, nonatomic) NSArray *responseArr;
@@ -24,6 +25,8 @@
 
 @property (strong, nonatomic) NSMutableArray *storeArr;
 @property (assign, nonatomic) CGFloat rationHeight;
+
+@property (strong, nonatomic) StoreLocationViewController *mapVC;
 
 @end
 
@@ -40,6 +43,8 @@
     self.downloaingDic = [NSMutableDictionary dictionary];
     self.imageArr = [NSMutableArray array];
     self.storeArr = [NSMutableArray array];
+    
+    self.mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mapView"];
     
 }
 
@@ -85,10 +90,11 @@
     static NSString *cellId = @"StoreCell";
     
     StoreCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    /*
     cell.storeVC = self;
     cell.mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mapView"];
     cell.mainVC = self.mainVC;
-    
+     */
     
     if(cell == nil)
     {
@@ -110,6 +116,9 @@
         cell.lbPhoneNum.lineBreakMode = NSLineBreakByWordWrapping;
     }
     
+    cell.index = indexPath.row;
+    cell.delegate = self;
+    
     [self setLayoutwithCell:cell];
     
     NSInteger index = indexPath.row;
@@ -121,9 +130,7 @@
     cell.lbDetail.text = [stInfo explain];
     cell.lbLocation.text = [stInfo address];
     cell.lbPhoneNum.text = [stInfo phone];
-    
-    cell.mapVC.storeInfo = stInfo;
-    
+    //cell.mapVC.storeInfo = stInfo;
     
     NSString *height = [stInfo imageInfoHeight];
     CGFloat imgHeight = [height floatValue];
@@ -225,6 +232,17 @@
     return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + self.rationHeight + HRATIO_HEIGHT(90.0f);
 }
 
+-(void)didtouchGoToButtonWithIndex:(NSInteger)index
+{
+    NSDictionary *storeInfo = [self.responseArr objectAtIndex:index];
+    
+    StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:storeInfo];
+    self.mapVC.storeInfo = storeInformation;
+    
+    [self.mainVC.navigationController showViewController:self.mapVC sender:self];
+    
+    LogGreen(@"didtouchGoToButtonWithIndex %zd", index);
+}
 
 #pragma mark - session task
 /*

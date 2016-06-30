@@ -11,6 +11,13 @@
 #import "MainViewController.h"
 #import "StoreLocationViewController.h"
 
+@protocol StoreCellDelegate <NSObject>
+
+@required
+-(void)didtouchGoToButtonWithIndex:(NSInteger)index;
+
+@end
+
 @interface StoreCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivMain;
@@ -26,6 +33,10 @@
 @property (strong, nonatomic) StoreViewController *storeVC;
 @property (strong, nonatomic) MainViewController *mainVC;
 @property (strong, nonatomic) StoreLocationViewController *mapVC;
+
+@property (weak, nonatomic) id<StoreCellDelegate> delegate;
+@property (assign, nonatomic) NSInteger index;
+
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfImg;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfNameLabel;

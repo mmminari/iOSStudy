@@ -33,8 +33,13 @@
 
 - (IBAction)touchedGoToMap:(id)sender
 {
-    [self.mainVC.navigationController showViewController:self.mapVC sender:self];
-    LogYellow(@"mapmap");
+    if([self.delegate respondsToSelector:@selector(didtouchGoToButtonWithIndex:)])
+    {
+        [self.delegate didtouchGoToButtonWithIndex:self.index];
+    }
+    
+   // [self.mainVC.navigationController showViewController:self.mapVC sender:self];
+    //LogYellow(@"mapmap");
 }
 
 
