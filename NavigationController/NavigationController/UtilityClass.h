@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, CardList)
 
 @interface UtilityClass : UIViewController
 
-
+-(NSString *)getNameOfTheImageWithUrl:(NSString *)urlString;
 -(CGFloat)getScreenWidth;
 -(UIColor *)getColorWithRGBCode:(NSString *)code;
 -(id)getValueWithKey:(NSString *)key Dictionary:(NSDictionary *)dic;

@@ -15,7 +15,13 @@
 
 @implementation UtilityClass
 
-
+-(NSString *)getNameOfTheImageWithUrl:(NSString *)urlString
+{
+    NSArray *queryArr = [urlString componentsSeparatedByString:@"/"];
+    NSString *result = [queryArr lastObject];
+    
+    return result;
+}
 
 -(CGFloat)getScreenWidth
 {

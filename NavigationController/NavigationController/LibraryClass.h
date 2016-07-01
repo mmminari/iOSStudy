@@ -28,8 +28,8 @@
 
 @property (strong, nonatomic) PushModel *pushModel;
 
--(void)setObject:(NSData *)data forKey:(NSString *)key;
--(NSData *)getObjectWithKey:(NSString *)key;
+-(void)setCacheObject:(NSData *)data forKey:(NSString *)key;
+-(UIImage *)getCacheObjectWithKey:(NSString *)key;
 
 
 -(UIImage *)genergateBarcodeWithCode:(NSString *)barString;

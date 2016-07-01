@@ -17,9 +17,7 @@
 
 @end
 
-
 @implementation LibraryClass
-
 
 //싱글톤
 + (instancetype)sharedInstance
@@ -43,20 +41,21 @@
         _httpClient = [[HTTPClient alloc]initWithBaseURL];
         _pushModel = [[PushModel alloc]init];
         _cache = [[NSCache alloc]init];
-        
+        _cache.countLimit = 20;
     }
     
     return self;
 }
 
--(void)setObject:(NSData *)data forKey:(NSString *)key
+-(void)setCacheObject:(NSData *)data forKey:(NSString *)key
 {
-    [self.cache setObject:data forKey:key];
+    UIImage *image = [UIImage imageWithData:data];
+    [self.cache setObject:image forKey:key];
 }
 
--(NSData *)getObjectWithKey:(NSString *)key
+-(UIImage *)getCacheObjectWithKey:(NSString *)key
 {
-    NSData *result = [self.cache objectForKey:key];
+    UIImage *result = [self.cache objectForKey:key];
     
     return result;
 }

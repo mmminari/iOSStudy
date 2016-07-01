@@ -55,6 +55,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfCameraRollImg;
 
 @property (strong, nonnull) UIImage *profileImage;
+@property (strong, nonnull) NSString *imageName;
+
 
 @end
 
@@ -92,6 +94,8 @@
     
     self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     [self setLayout];
+    
+    self.imageName = [self.util getNameOfTheImageWithUrl:[self.library.userInfo profileImg]];
 
 }
 
@@ -122,13 +126,14 @@
             });
             
             NSData *imageData = UIImagePNGRepresentation(image);
+
             //cache에 저장
-            [self.library setObject:imageData forKey:[self getNameOfTheImage]];
+            [self.library setCacheObject:imageData forKey:self.imageName];
             
             //documents에 저장
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentDirectory = [paths objectAtIndex:0];
-            documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, [self getNameOfTheImage]];
+            documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, self.imageName];
             
             BOOL result =  [imageData writeToFile:documentDirectory atomically:YES];
             LogYellow(@"result : %zd", result);
@@ -347,9 +352,9 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths objectAtIndex:0];
-    documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, [self getNameOfTheImage]];
+    documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, self.imageName];
     
-    if([self.library getObjectWithKey:[self getNameOfTheImage]] == nil)
+    if([self.library getCacheObjectWithKey:self.imageName] == nil)
     {
         if([[NSFileManager defaultManager]contentsAtPath:documentDirectory] == nil)
         {
@@ -358,23 +363,15 @@
         else
         {
             self.ivUser.image = [UIImage imageWithData:[[NSFileManager defaultManager]contentsAtPath:documentDirectory]];
-            [self.library setObject:[[NSFileManager defaultManager]contentsAtPath:documentDirectory] forKey:[self getNameOfTheImage]];
+            [self.library setCacheObject:[[NSFileManager defaultManager]contentsAtPath:documentDirectory] forKey:self.imageName];
              
         }
     }
     else
     {
-        self.ivUser.image = [UIImage imageWithData:[self.library getObjectWithKey:[self getNameOfTheImage]]];
+        self.ivUser.image = [self.library getCacheObjectWithKey:self.imageName];
     }
 
-}
-
--(NSString *)getNameOfTheImage
-{
-    NSArray *queryArr = [[self.library.userInfo profileImg] componentsSeparatedByString:@"/"];
-    NSString *result = [queryArr lastObject];
-    
-    return result;
 }
 
 -(void)setLayout
