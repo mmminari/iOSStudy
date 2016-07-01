@@ -43,6 +43,8 @@
     {
         _httpClient = [[HTTPClient alloc]initWithBaseURL];
         _pushModel = [[PushModel alloc]init];
+        _cache = [[NSCache alloc]init];
+        
     }
     
     return self;

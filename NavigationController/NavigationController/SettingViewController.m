@@ -44,6 +44,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLbRelease;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTopOfLine5;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ivUserImg;
 
 @end
 
@@ -79,6 +80,10 @@
     [button setBackgroundColor:[UIColor purpleColor]];
     [self.view addSubview:button];
     [button addTarget:self action:@selector(touchedButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.ivUserImg.image = [UIImage imageWithData:[self.library.cache objectForKey:@"userImg"]];
+    
+    LogGreen(@"iamge : %@", self.library.cache);
     
 }
 

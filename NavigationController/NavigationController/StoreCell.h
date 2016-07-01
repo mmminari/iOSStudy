@@ -14,7 +14,7 @@
 @protocol StoreCellDelegate <NSObject>
 
 @required
--(void)didtouchGoToButtonWithIndex:(NSInteger)index;
+-(void)didTouchGoToButtonWithIndex:(NSInteger)index;
 
 @end
 

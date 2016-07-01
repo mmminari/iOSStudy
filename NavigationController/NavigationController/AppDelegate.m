@@ -80,8 +80,6 @@
         LogGreen(@"data1 : %@, data2 : %@", data1, data2);
     }
     
-    
-    
     return YES;
 }
 

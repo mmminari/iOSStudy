@@ -57,6 +57,8 @@
 @property (strong, nonnull) UIImage *profileImage;
 
 
+
+
 @end
 
 @implementation MenuViewController
@@ -116,12 +118,62 @@
                 self.ivUser.image = image;
                 
             });
+            
+            NSData *imageData = UIImagePNGRepresentation(image);
+            /*
+            NSURL *pathUrl = [self applicationDataDirectory];
+            NSString *urlString = [NSString stringWithFormat:@"%@/Documents/userImg.png", pathUrl];
+            LogYellow(@"path : %@", urlString);
+
+            BOOL result1 = [imageData writeToFile:urlString atomically:YES];
+            LogGreen(@"result1 : %zd", result1)   ;
+            
+            
+            NSURL* url = [[NSBundle mainBundle] URLForResource:@"userImg" withExtension:@"png"];
+            LogGreen(@"userImage.png : %@", url);
+            */
+            
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [paths objectAtIndex:0];
+            documentDirectory= [NSString stringWithFormat:@"%@/userImg.png", documentDirectory];
+            
+            BOOL result =  [imageData writeToFile:documentDirectory atomically:YES];
+            LogYellow(@"result : %zd", result);
+            
+
+            [self.library.cache setObject:imageData forKey:@"userImg"];
+            
+            LogGreen(@"iamge : %@", self.library.cache);
+
+            
+
         }
         
     }];
     
     [dataTask resume];
     
+}
+
+- (NSURL*)applicationDataDirectory
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *urlArr = [manager URLsForDirectory:NSApplicationSupportDirectory
+                                             inDomains:NSUserDomainMask];
+    
+    NSURL* appSupportDir, *appDirectory = nil;
+    
+    if ([urlArr count] >= 1)
+    {
+        appSupportDir = [urlArr objectAtIndex:0];
+        if(appSupportDir)
+        {
+            NSString* appBundleID = [[NSBundle mainBundle] bundleIdentifier];
+            appDirectory = [appSupportDir URLByAppendingPathComponent:appBundleID];
+        }
+    }
+    
+    return appDirectory;
 }
 
 #pragma mark - User Action
@@ -143,7 +195,6 @@
     [self startCameraControllerFromViewController:self.mainVC usingDelegate:self];
     LogYellow(@"startCameraControllerFromViewController");
 }
-
 
 #pragma mark - TableView DataSource
 
@@ -275,7 +326,6 @@
     NSData *data = UIImageJPEGRepresentation(self.profileImage, 1.0);
     
     [self.library requestProfileImageWithSuccess:^(id results) {
-        
         
         if(results)
         {

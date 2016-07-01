@@ -24,6 +24,7 @@
 @property (strong, nonatomic) MainInformation *mainInfo;
 @property (strong, nonatomic) ScriptResults *scriptResults;
 @property (strong, nonatomic) StoreInformation *storeInfo;
+@property (strong, nonatomic) NSCache *cache;
 
 
 @property (assign, nonatomic) BOOL launchOption;

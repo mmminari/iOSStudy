@@ -33,9 +33,9 @@
 
 - (IBAction)touchedGoToMap:(id)sender
 {
-    if([self.delegate respondsToSelector:@selector(didtouchGoToButtonWithIndex:)])
+    if([self.delegate respondsToSelector:@selector(didTouchGoToButtonWithIndex:)])
     {
-        [self.delegate didtouchGoToButtonWithIndex:self.index];
+        [self.delegate didTouchGoToButtonWithIndex:self.index];
     }
     
    // [self.mainVC.navigationController showViewController:self.mapVC sender:self];

@@ -232,12 +232,10 @@
     return heightName + heightSale + heightDetail + heightLocation + heightPhone + WRATIO_WIDTH(314.0f) + self.rationHeight + HRATIO_HEIGHT(90.0f);
 }
 
--(void)didtouchGoToButtonWithIndex:(NSInteger)index
+-(void)didTouchGoToButtonWithIndex:(NSInteger)index
 {
-    NSDictionary *storeInfo = [self.responseArr objectAtIndex:index];
-    
-    StoreInformation *storeInformation = [[StoreInformation alloc] initWithResults:storeInfo];
-    self.mapVC.storeInfo = storeInformation;
+    StoreInformation *stInfo = self.storeArr[index];
+    self.mapVC.storeInfo = stInfo;
     
     [self.mainVC.navigationController showViewController:self.mapVC sender:self];
     
@@ -336,7 +334,6 @@
      }];
 }
 
-
 #pragma mark - image download
 
 -(void)startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexPath
@@ -401,7 +398,6 @@
         }
     }
 }
-
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
