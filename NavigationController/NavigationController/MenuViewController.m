@@ -56,9 +56,6 @@
 
 @property (strong, nonnull) UIImage *profileImage;
 
-
-
-
 @end
 
 @implementation MenuViewController
@@ -73,6 +70,11 @@
     if(![self getResultOfAutoSignIn])
     {
         [self setMenuLogOutLayOut];
+        self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
+    }
+    else
+    {
+        [self checkExistenceOfImage];
     }
     
     self.settingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-settingView"];
@@ -88,14 +90,14 @@
     self.lbUserName.text = [self.library.userInfo userName];
     self.lbUserId.text = [self.library.userInfo userId];
     
-    [self downLoadImage];
+    self.ivUser.image = [UIImage imageNamed:@"img_profile_menu"];
     [self setLayout];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self downLoadImage];
+    [self checkExistenceOfImage];
     
 }
 
@@ -120,33 +122,16 @@
             });
             
             NSData *imageData = UIImagePNGRepresentation(image);
-            /*
-            NSURL *pathUrl = [self applicationDataDirectory];
-            NSString *urlString = [NSString stringWithFormat:@"%@/Documents/userImg.png", pathUrl];
-            LogYellow(@"path : %@", urlString);
-
-            BOOL result1 = [imageData writeToFile:urlString atomically:YES];
-            LogGreen(@"result1 : %zd", result1)   ;
+            //cache에 저장
+            [self.library setObject:imageData forKey:[self getNameOfTheImage]];
             
-            
-            NSURL* url = [[NSBundle mainBundle] URLForResource:@"userImg" withExtension:@"png"];
-            LogGreen(@"userImage.png : %@", url);
-            */
-            
+            //documents에 저장
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *documentDirectory = [paths objectAtIndex:0];
-            documentDirectory= [NSString stringWithFormat:@"%@/userImg.png", documentDirectory];
+            documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, [self getNameOfTheImage]];
             
             BOOL result =  [imageData writeToFile:documentDirectory atomically:YES];
             LogYellow(@"result : %zd", result);
-            
-
-            [self.library.cache setObject:imageData forKey:@"userImg"];
-            
-            LogGreen(@"iamge : %@", self.library.cache);
-
-            
-
         }
         
     }];
@@ -154,7 +139,7 @@
     [dataTask resume];
     
 }
-
+/*
 - (NSURL*)applicationDataDirectory
 {
     NSFileManager *manager = [NSFileManager defaultManager];
@@ -175,6 +160,7 @@
     
     return appDirectory;
 }
+*/
 
 #pragma mark - User Action
 
@@ -356,6 +342,38 @@
 }
 
 #pragma mark - private method
+
+-(void)checkExistenceOfImage
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    documentDirectory= [NSString stringWithFormat:@"%@/%@", documentDirectory, [self getNameOfTheImage]];
+    
+    if([self.library getObjectWithKey:[self getNameOfTheImage]] == nil)
+    {
+        if([[NSFileManager defaultManager]contentsAtPath:documentDirectory] == nil)
+        {
+            [self downLoadImage];
+        }
+        else
+        {
+            self.ivUser.image = [UIImage imageWithData:[[NSFileManager defaultManager]contentsAtPath:documentDirectory]];
+        }
+    }
+    else
+    {
+        self.ivUser.image = [UIImage imageWithData:[self.library getObjectWithKey:[self getNameOfTheImage]]];
+    }
+
+}
+
+-(NSString *)getNameOfTheImage
+{
+    NSArray *queryArr = [[self.library.userInfo profileImg] componentsSeparatedByString:@"/"];
+    NSString *result = [queryArr lastObject];
+    
+    return result;
+}
 
 -(void)setLayout
 {

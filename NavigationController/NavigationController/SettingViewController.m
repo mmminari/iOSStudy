@@ -81,10 +81,8 @@
     [self.view addSubview:button];
     [button addTarget:self action:@selector(touchedButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.ivUserImg.image = [UIImage imageWithData:[self.library.cache objectForKey:@"userImg"]];
-    
-    LogGreen(@"iamge : %@", self.library.cache);
-    
+   // self.ivUserImg.image = [UIImage imageWithData:[self.library getObjectWithKey:@"userImg"]];
+        
 }
 
 #pragma mark - User Action

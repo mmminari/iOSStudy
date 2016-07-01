@@ -13,8 +13,7 @@
 @interface LibraryClass ()
 
 @property (strong, nonatomic) HTTPClient *httpClient;
-
-
+@property (strong, nonatomic) NSCache *cache;
 
 @end
 
@@ -48,6 +47,18 @@
     }
     
     return self;
+}
+
+-(void)setObject:(NSData *)data forKey:(NSString *)key
+{
+    [self.cache setObject:data forKey:key];
+}
+
+-(NSData *)getObjectWithKey:(NSString *)key
+{
+    NSData *result = [self.cache objectForKey:key];
+    
+    return result;
 }
 
 -(UIImage *)genergateBarcodeWithCode:(NSString *)barString

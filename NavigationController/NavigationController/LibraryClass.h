@@ -17,19 +17,20 @@
 
 @interface LibraryClass : NSObject
 
-
 + (instancetype)sharedInstance;
 
 @property (strong, nonatomic) UserInformation *userInfo;
 @property (strong, nonatomic) MainInformation *mainInfo;
 @property (strong, nonatomic) ScriptResults *scriptResults;
 @property (strong, nonatomic) StoreInformation *storeInfo;
-@property (strong, nonatomic) NSCache *cache;
-
 
 @property (assign, nonatomic) BOOL launchOption;
 
 @property (strong, nonatomic) PushModel *pushModel;
+
+-(void)setObject:(NSData *)data forKey:(NSString *)key;
+-(NSData *)getObjectWithKey:(NSString *)key;
+
 
 -(UIImage *)genergateBarcodeWithCode:(NSString *)barString;
 -(UIImage *)generateVerticalBarcodeImgWithBarcode:(NSString *)barcode;
