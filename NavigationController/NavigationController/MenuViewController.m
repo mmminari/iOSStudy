@@ -358,6 +358,8 @@
         else
         {
             self.ivUser.image = [UIImage imageWithData:[[NSFileManager defaultManager]contentsAtPath:documentDirectory]];
+            [self.library setObject:[[NSFileManager defaultManager]contentsAtPath:documentDirectory] forKey:[self getNameOfTheImage]];
+             
         }
     }
     else
