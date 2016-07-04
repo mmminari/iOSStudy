@@ -65,7 +65,6 @@
 -(void)setResultOfAutoSignInWithSwith:(BOOL)swith
 {
     [self.autoSignIn setBool:swith forKey:@"isAutoSignIn"];
-    
 }
 
 -(BOOL)getResultOfAutoSignIn

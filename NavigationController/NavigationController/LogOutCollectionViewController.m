@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbLogIn;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
-
 //layout
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBottomView;
@@ -35,12 +34,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBtnRegistor;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfLbLogIn;
 
-
-
 @end
 
 @implementation LogOutCollectionViewController
-
 
 -(void)setLayout
 {
@@ -117,7 +113,6 @@
     
     cell.alcHeightOfContainerView.constant = HRATIO_HEIGHT(524.0f);
     cell.contentView.backgroundColor = [UIColor blackColor];
-    
 
     IntroInformation *introInfo = self.introList[indexPath.row];
     
@@ -131,9 +126,9 @@
     
     /*
      
-     [self startDownloadBackgroundImageWithIndexPath:indexPath];
-     [self startDownloadContentImageWithIndexPath:indexPath];
-     [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
+    [self startDownloadBackgroundImageWithIndexPath:indexPath];
+    [self startDownloadContentImageWithIndexPath:indexPath];
+    [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
     
     NSInteger countBackground = self.backgroundArr.count;
     NSInteger countContent = self.contentArr.count;
@@ -217,6 +212,8 @@
     return cell;
 
 }
+
+#pragma makr - Download Image
 
 -(void)startDownloadBackgroundImageWithIndexPath:(NSIndexPath *)indexPath
 {
@@ -320,9 +317,7 @@
                 
             }
             [self.contentDic removeObjectForKey:indexPath];
-
         }];
-        
         self.contentDic[indexPath] = imageDown;
         
         [imageDown stardDownload];
@@ -350,7 +345,6 @@
             if(!image)
             {
                 [self startDownloadContentImageWithIndexPath:path];
-                
             }
             
         }
@@ -372,7 +366,6 @@
             if(!image)
             {
                 [self startDownloadBackgroundImageWithIndexPath:path];
-                
             }
           
         }
@@ -395,13 +388,10 @@
             if(!image)
             {
                 [self startDownloadContentBackgroundImageWithIndexPath:path];
-                
             }
-
         }
     }
 }
-
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
