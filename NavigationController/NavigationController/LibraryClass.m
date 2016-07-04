@@ -9,12 +9,11 @@
 #import "LibraryClass.h"
 #import <AFNetworking/AFNetworking.h>
 #import "HTTPClient.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface LibraryClass ()
 
 @property (strong, nonatomic) HTTPClient *httpClient;
-
-
 
 @end
 
@@ -68,6 +67,21 @@
     
     return img;
     
+}
+
+-(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    [imageView sd_setImageWithURL:url placeholderImage:image];
+    
+    if(ani)
+    {
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animation.duration = 2.0;
+        animation.fromValue = [NSNumber numberWithFloat:0.0f];
+        animation.toValue = [NSNumber numberWithFloat:1.0f];
+        [imageView.layer addAnimation:animation forKey:@"animateOpacity"];
+    }
 }
 
 -(void)requestProfileImageWithSuccess:(void (^)(id results))success

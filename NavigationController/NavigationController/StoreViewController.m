@@ -154,6 +154,9 @@
     cell.alcTopOfLbPhone.constant = HRATIO_HEIGHT(1.0f);
     cell.alcTopOfLbLocation.constant = HRATIO_HEIGHT(12.0f);
     
+    [self.library setImageView:cell.ivMain urlString:[stInfo imageInfoUri] placeholderImage:[UIImage imageNamed:@"loading"] animation:NO];
+    /*
+    
     NSUInteger count = self.responseArr.count;
     
     if(count > 0)
@@ -182,6 +185,9 @@
             cell.ivMain.image = image;
         }
     }
+     
+     */
+    
     
     return cell;
     
@@ -385,6 +391,8 @@
 }
 
 
+/*
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (!decelerate)
@@ -397,6 +405,9 @@
 {
     [self loadImagesOnscreenRows];
 }
+ 
+ */
+
 
 
 

@@ -29,9 +29,7 @@
     }
     
     return self;
-    
 }
-
 
 -(instancetype)initWithDelegate:(id<WKWebViewClassDelegate, UIScrollViewDelegate>)delegate
 {
@@ -43,7 +41,6 @@
     return self;
 }
 
-
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     if([self.webDelegate respondsToSelector:@selector(webViewDidFinish:)])
@@ -53,7 +50,6 @@
     
     
 }
-
 
 #pragma mark - Delegate
 
@@ -65,17 +61,11 @@
     _webDelegate = delegate;
 }
 
-
-
 -(void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(nonnull NSString *)message initiatedByFrame:(nonnull WKFrameInfo *)frame completionHandler:(nonnull void (^)(void))completionHandler
 {
-    
-
     LogGreen(@"runJavaScriptAlertPanelWithMessage");
     
     [self showAlertMessage:@"1:1문의가 접수되었습니다." completionHandler:completionHandler];
-    
-    
 }
 
 -(void)showAlertMessage:(NSString *)message completionHandler:(void(^)(void))completionHandler
@@ -92,9 +82,6 @@
     [menuWebVC presentViewController:alert animated:YES completion:nil];
     
 }
- 
-
-
 
 #pragma mark - handler
 
@@ -133,7 +120,6 @@
     
     return configuration;
 }
-
 
 //1. web에 현제 플랫폼 보내기(ios)
 -(void)executeJavaScript:(NSString *)script

@@ -22,6 +22,9 @@ PODS:
     - AFNetworking/NSURLSession
   - GoogleMaps (1.13.2)
   - OneSignal (1.13.3)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
   - ZXingObjC (3.1.0):
     - ZXingObjC/All (= 3.1.0)
   - ZXingObjC/All (3.1.0)
@@ -30,12 +33,14 @@ DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - GoogleMaps
   - OneSignal
+  - SDWebImage
   - ZXingObjC
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 COCOAPODS: 0.39.0

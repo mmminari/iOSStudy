@@ -33,6 +33,8 @@
 -(UIImage *)genergateBarcodeWithCode:(NSString *)barString;
 -(UIImage *)generateVerticalBarcodeImgWithBarcode:(NSString *)barcode;
 
+-(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani;
+
 -(void)requestProfileImageWithSuccess:(void (^)(id results))success
                               failure:(void (^)(NSError *error))failure
                             imageInfo:(NSData *)imageData;

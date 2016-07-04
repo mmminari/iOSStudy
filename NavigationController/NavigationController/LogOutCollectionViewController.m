@@ -49,8 +49,6 @@
     self.alcBottomOfPageIndicator.constant = HRATIO_HEIGHT(70.0f);
     self.alcBottomOfBtnRegistor.constant = HRATIO_HEIGHT(117.0f);
     self.alcBottomOfLbLogIn.constant = HRATIO_HEIGHT(66.0f);
-    
-    
 }
 
 -(void)viewDidLoad
@@ -124,6 +122,14 @@
     [self startDownloadBackgroundImageWithIndexPath:indexPath];
     [self startDownloadContentImageWithIndexPath:indexPath];
     [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
+    
+    IntroInformation *introInfo = self.introList[indexPath.row];
+    
+    [self.library setImageView:cell.ivBackground urlString:[introInfo backgroundUri] placeholderImage:nil animation:YES];
+    [self.library setImageView:cell.ivContent urlString:[introInfo contentUri] placeholderImage:nil animation:YES];
+    [self.library setImageView:cell.ivContentBackground urlString:[introInfo contentBackgroundUri] placeholderImage:nil animation:YES];
+    
+    /*
     
     NSInteger countBackground = self.backgroundArr.count;
     NSInteger countContent = self.contentArr.count;
@@ -200,6 +206,7 @@
         }
 
     }
+    */
     
     cell.alcBottomOfIvContent.constant = HRATIO_HEIGHT(597.0f);
     
@@ -394,11 +401,12 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self loadImageOnVisibleCells];
-
+ //   [self loadImageOnVisibleCells];
     self.pageController.currentPage = [self getIndexOfPage];
     
 }
+
+/*
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
@@ -408,6 +416,7 @@
 
     }
 }
+*/
 
 #pragma makr - private method
 
