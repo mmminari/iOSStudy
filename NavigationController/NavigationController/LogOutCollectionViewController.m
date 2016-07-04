@@ -113,23 +113,27 @@
 {
     static NSString *cellId = @"logOutCollectionCell";
 
-    
     LogOutCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
     cell.alcHeightOfContainerView.constant = HRATIO_HEIGHT(524.0f);
     cell.contentView.backgroundColor = [UIColor blackColor];
     
-    [self startDownloadBackgroundImageWithIndexPath:indexPath];
-    [self startDownloadContentImageWithIndexPath:indexPath];
-    [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
-    
+
     IntroInformation *introInfo = self.introList[indexPath.row];
+    
+    cell.alcWidthOfIvContent.constant = WRATIO_WIDTH([introInfo contentWidth]);
+    cell.alcHeightOfIvContent.constant = HRATIO_HEIGHT([introInfo contentHeight]);
+    NSLog(@"width : %f height : %f", WRATIO_WIDTH([introInfo contentWidth]), WRATIO_WIDTH([introInfo contentHeight]));
     
     [self.library setImageView:cell.ivBackground urlString:[introInfo backgroundUri] placeholderImage:nil animation:YES];
     [self.library setImageView:cell.ivContent urlString:[introInfo contentUri] placeholderImage:nil animation:YES];
     [self.library setImageView:cell.ivContentBackground urlString:[introInfo contentBackgroundUri] placeholderImage:nil animation:YES];
     
     /*
+     
+     [self startDownloadBackgroundImageWithIndexPath:indexPath];
+     [self startDownloadContentImageWithIndexPath:indexPath];
+     [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
     
     NSInteger countBackground = self.backgroundArr.count;
     NSInteger countContent = self.contentArr.count;

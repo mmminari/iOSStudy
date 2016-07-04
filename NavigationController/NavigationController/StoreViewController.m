@@ -89,7 +89,6 @@
     cell.mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mapView"];
     cell.mainVC = self.mainVC;
     
-    
     if(cell == nil)
     {
         cell = [[StoreCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
@@ -123,7 +122,6 @@
     cell.lbPhoneNum.text = [stInfo phone];
     
     cell.mapVC.storeInfo = stInfo;
-    
     
     NSString *height = [stInfo imageInfoHeight];
     CGFloat imgHeight = [height floatValue];
