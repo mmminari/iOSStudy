@@ -12,7 +12,6 @@
 #import "SettingViewController.h"
 #import "LogInViewController.h"
 
-
 @interface MenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivUser;
@@ -102,7 +101,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self checkExistenceOfImage];
-    
 }
 
 -(void)downLoadImage

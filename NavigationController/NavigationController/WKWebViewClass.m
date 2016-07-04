@@ -32,7 +32,6 @@
     
 }
 
-
 -(instancetype)initWithDelegate:(id<WKWebViewClassDelegate, UIScrollViewDelegate>)delegate
 {
     if (self = [super initWithFrame:CGRectZero configuration:[self defaultConfiguration]])
@@ -43,17 +42,13 @@
     return self;
 }
 
-
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     if([self.webDelegate respondsToSelector:@selector(webViewDidFinish:)])
     {
         [self.webDelegate webViewDidFinish:self];
     }
-    
-    
 }
-
 
 #pragma mark - Delegate
 
@@ -65,17 +60,11 @@
     _webDelegate = delegate;
 }
 
-
-
 -(void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(nonnull NSString *)message initiatedByFrame:(nonnull WKFrameInfo *)frame completionHandler:(nonnull void (^)(void))completionHandler
 {
-    
-
     LogGreen(@"runJavaScriptAlertPanelWithMessage");
     
     [self showAlertMessage:@"1:1문의가 접수되었습니다." completionHandler:completionHandler];
-    
-    
 }
 
 -(void)showAlertMessage:(NSString *)message completionHandler:(void(^)(void))completionHandler
@@ -92,9 +81,6 @@
     [menuWebVC presentViewController:alert animated:YES completion:nil];
     
 }
- 
-
-
 
 #pragma mark - handler
 
@@ -145,10 +131,10 @@
 {
     LogGreen(@"success to receive message : %@", message);
     
-    if ([self.webDelegate respondsToSelector:@selector(didReceiveScriptResults:)]) {
+    if ([self.webDelegate respondsToSelector:@selector(didReceiveScriptResults:)])
+    {
         [self.webDelegate didReceiveScriptResults:message.body];
     }
-    
 }
 
 #pragma mark - private method

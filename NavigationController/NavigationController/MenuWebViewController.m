@@ -50,6 +50,7 @@
     return _webView;
 }
 
+#pragma mark - WKWebViewClassDelegate
 
 -(void)webViewDidFinish:(WKWebViewClass *)webView
 {
@@ -98,6 +99,8 @@
         }
     }
 }
+
+#pragma mark - private method
 
 -(void)urlRequestWithUrl:(NSString *)urlString
 {
