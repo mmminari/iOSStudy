@@ -74,7 +74,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     [imageView sd_setImageWithURL:url placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
     {
-        if(cacheType != 2)
+        if(cacheType == SDImageCacheTypeNone)
         {
             if(ani)
             {
@@ -85,7 +85,7 @@
                 [imageView.layer addAnimation:animation forKey:@"animateOpacity"];
             }
         }
-        LogYellow(@"cacheType : %ld", (long)cacheType);
+        LogYellow(@"cacheType : %zd", cacheType);
     }];
 }
 
