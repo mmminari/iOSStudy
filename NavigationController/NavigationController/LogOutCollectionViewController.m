@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbLogIn;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageController;
 
-
 //layout
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfBottomView;
@@ -35,12 +34,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfBtnRegistor;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcBottomOfLbLogIn;
 
-
-
 @end
 
 @implementation LogOutCollectionViewController
-
 
 -(void)setLayout
 {
@@ -49,8 +45,6 @@
     self.alcBottomOfPageIndicator.constant = HRATIO_HEIGHT(70.0f);
     self.alcBottomOfBtnRegistor.constant = HRATIO_HEIGHT(117.0f);
     self.alcBottomOfLbLogIn.constant = HRATIO_HEIGHT(66.0f);
-    
-    
 }
 
 -(void)viewDidLoad
@@ -115,12 +109,23 @@
 {
     static NSString *cellId = @"logOutCollectionCell";
 
-    
     LogOutCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     
     cell.alcHeightOfContainerView.constant = HRATIO_HEIGHT(524.0f);
     cell.contentView.backgroundColor = [UIColor blackColor];
+
+    IntroInformation *introInfo = self.introList[indexPath.row];
     
+    cell.alcWidthOfIvContent.constant = WRATIO_WIDTH([introInfo contentWidth]);
+    cell.alcHeightOfIvContent.constant = HRATIO_HEIGHT([introInfo contentHeight]);
+    NSLog(@"width : %f height : %f", WRATIO_WIDTH([introInfo contentWidth]), WRATIO_WIDTH([introInfo contentHeight]));
+    
+    [self.library setImageView:cell.ivBackground urlString:[introInfo backgroundUri] placeholderImage:nil animation:YES];
+    [self.library setImageView:cell.ivContent urlString:[introInfo contentUri] placeholderImage:nil animation:YES];
+    [self.library setImageView:cell.ivContentBackground urlString:[introInfo contentBackgroundUri] placeholderImage:nil animation:YES];
+    
+    /*
+     
     [self startDownloadBackgroundImageWithIndexPath:indexPath];
     [self startDownloadContentImageWithIndexPath:indexPath];
     [self startDownloadContentBackgroundImageWithIndexPath:indexPath];
@@ -200,12 +205,15 @@
         }
 
     }
+    */
     
     cell.alcBottomOfIvContent.constant = HRATIO_HEIGHT(597.0f);
     
     return cell;
 
 }
+
+#pragma makr - Download Image
 
 -(void)startDownloadBackgroundImageWithIndexPath:(NSIndexPath *)indexPath
 {
@@ -309,9 +317,7 @@
                 
             }
             [self.contentDic removeObjectForKey:indexPath];
-
         }];
-        
         self.contentDic[indexPath] = imageDown;
         
         [imageDown stardDownload];
@@ -339,7 +345,6 @@
             if(!image)
             {
                 [self startDownloadContentImageWithIndexPath:path];
-                
             }
             
         }
@@ -361,7 +366,6 @@
             if(!image)
             {
                 [self startDownloadBackgroundImageWithIndexPath:path];
-                
             }
           
         }
@@ -384,21 +388,19 @@
             if(!image)
             {
                 [self startDownloadContentBackgroundImageWithIndexPath:path];
-                
             }
-
         }
     }
 }
 
-
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self loadImageOnVisibleCells];
-
+ //   [self loadImageOnVisibleCells];
     self.pageController.currentPage = [self getIndexOfPage];
     
 }
+
+/*
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
@@ -408,6 +410,7 @@
 
     }
 }
+*/
 
 #pragma makr - private method
 

@@ -29,7 +29,6 @@
     }
     
     return self;
-    
 }
 
 -(instancetype)initWithDelegate:(id<WKWebViewClassDelegate, UIScrollViewDelegate>)delegate
@@ -119,7 +118,6 @@
     
     return configuration;
 }
-
 
 //1. web에 현제 플랫폼 보내기(ios)
 -(void)executeJavaScript:(NSString *)script

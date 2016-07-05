@@ -236,6 +236,4 @@
     self.alcTopOfLbRelease.constant = WRATIO_WIDTH(47.0f);
 }
 
-
-
 @end

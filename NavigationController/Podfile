@@ -5,3 +5,4 @@ pod 'AFNetworking', '~> 2.6.3’
 pod 'OneSignal'
 pod 'ZXingObjC'
 pod 'GoogleMaps'
+pod 'SDWebImage'
