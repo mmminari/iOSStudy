@@ -95,6 +95,7 @@
 		6D5744E71D18CBD8000A1945 /* WKWebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */; };
 		6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744EF1D18DFF2000A1945 /* WebViewClass.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
+		6D5CA5F41D2B605B00CFA554 /* CalculatePercentageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */; };
 		6D5DA1181D20FEF900D2710D /* ImageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DA1171D20FEF900D2710D /* ImageScrollViewController.m */; };
 		6D5DA1211D210A5600D2710D /* sc1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA1191D210A5600D2710D /* sc1.jpg */; };
 		6D5DA1221D210A5600D2710D /* sc2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA11A1D210A5600D2710D /* sc2.jpg */; };
@@ -277,6 +278,8 @@
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
 		6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroInformation.m; sourceTree = "<group>"; };
+		6D5CA5F21D2B605B00CFA554 /* CalculatePercentageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatePercentageViewController.h; sourceTree = "<group>"; };
+		6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatePercentageViewController.m; sourceTree = "<group>"; };
 		6D5DA1161D20FEF900D2710D /* ImageScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollViewController.h; sourceTree = "<group>"; };
 		6D5DA1171D20FEF900D2710D /* ImageScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollViewController.m; sourceTree = "<group>"; };
 		6D5DA1191D210A5600D2710D /* sc1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sc1.jpg; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				6D489A901D179E8000E3B010 /* GenerateBarcode.m */,
 				6D642B131D24AC6600F7A605 /* StoreLocationViewController.h */,
 				6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */,
+				6D5CA5F21D2B605B00CFA554 /* CalculatePercentageViewController.h */,
+				6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				6D4E43F91CF545CB002041F7 /* MenuAgreementViewController.m in Sources */,
 				6D247F7C1CE1CBEE00EBE9DB /* MainCollectionCell.m in Sources */,
 				6D247F791CE1CB9200EBE9DB /* MainViewController.m in Sources */,
+				6D5CA5F41D2B605B00CFA554 /* CalculatePercentageViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
 				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
