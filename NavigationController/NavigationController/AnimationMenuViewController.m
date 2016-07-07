@@ -40,6 +40,8 @@
     {
         [self openMenu];
     }
+    
+    self.isOpened = !self.ivIcon.highlighted;
 
 }
 
@@ -71,7 +73,8 @@
 {
     self.lbShowMenu.text = self.menuList[indexPath.row];
     [self closeMenu];
-
+    
+    self.isOpened = !self.ivIcon.highlighted;
 }
 
 -(void)closeMenu
@@ -90,22 +93,16 @@
 
 -(void)openMenu
 {
+    self.menuList = [self getList].mutableCopy;
     
-    [self.menuList addObject:@"aㅁa"];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    
-    [self.menuList addObject:@"bㅠb"];
-    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
-    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    
-    [self.menuList addObject:@"cㅇc"];
-    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
-    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    
-    [self.tvMenu reloadData];
-    
-    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
+    NSMutableArray *pathArr = [NSMutableArray new];
+    for (NSInteger i; i < self.menuList.count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [pathArr addObject:indexPath];
+    }
+
+    [self.tvMenu insertRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationBottom];
     
 }
 
