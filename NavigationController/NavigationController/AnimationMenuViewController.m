@@ -26,6 +26,8 @@
 {
     [super viewDidLoad];
     self.menuList = [NSMutableArray new];
+    self.ivIcon.highlighted = NO;
+    
 }
 
 - (IBAction)touchedShowMenu:(id)sender
@@ -41,7 +43,7 @@
         [self openMenu];
     }
     
-    self.isOpened = !self.ivIcon.highlighted;
+    self.isOpened = self.ivIcon.highlighted;
 
 }
 
@@ -74,7 +76,7 @@
     self.lbShowMenu.text = self.menuList[indexPath.row];
     [self closeMenu];
     
-    self.isOpened = !self.ivIcon.highlighted;
+    self.isOpened = self.ivIcon.highlighted;
 }
 
 -(void)closeMenu
