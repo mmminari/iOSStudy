@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeCollectionView,
     DemoTypeScrollView,
     DemoTypeCalculateView,
+    DemoTypeAnimationMenu,
 };
 
 @interface DemoListViewController ()
@@ -100,7 +101,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu"];
     
     return listInfo;
 }
@@ -137,6 +138,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             break;
         case DemoTypeCalculateView:
             result = @"sgMainToCalculView";
+            break;
+        case DemoTypeAnimationMenu:
+            result = @"sgMainToAnimationMenu";
             break;
         default:
             break;

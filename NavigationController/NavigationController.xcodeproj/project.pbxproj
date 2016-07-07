@@ -49,6 +49,10 @@
 		6D4787231CFEC41C001A9A52 /* btn_popup_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4787211CFEC41C001A9A52 /* btn_popup_close@3x.png */; };
 		6D4787261CFED047001A9A52 /* MainInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4787251CFED047001A9A52 /* MainInformation.m */; };
 		6D489A911D179E8000E3B010 /* GenerateBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D489A901D179E8000E3B010 /* GenerateBarcode.m */; };
+		6D4965E91D2E23170072FD3A /* AnimationMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4965E81D2E23170072FD3A /* AnimationMenuViewController.m */; };
+		6D4965EC1D2E23AE0072FD3A /* AnimationMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4965EB1D2E23AE0072FD3A /* AnimationMenuCell.m */; };
+		6D4965EF1D2E2FB60072FD3A /* icon_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4965ED1D2E2FB60072FD3A /* icon_close.png */; };
+		6D4965F01D2E2FB60072FD3A /* icon_open.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4965EE1D2E2FB60072FD3A /* icon_open.png */; };
 		6D4AD2EF1CFFFCA400CFC443 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */; };
 		6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2F11D002B6800CFC443 /* BaseModel.m */; };
 		6D4AD2F51D002F3C00CFC443 /* MenuWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4AD2F41D002F3C00CFC443 /* MenuWebViewController.m */; };
@@ -203,6 +207,12 @@
 		6D4787251CFED047001A9A52 /* MainInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainInformation.m; sourceTree = "<group>"; };
 		6D489A8F1D179E8000E3B010 /* GenerateBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateBarcode.h; sourceTree = "<group>"; };
 		6D489A901D179E8000E3B010 /* GenerateBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateBarcode.m; sourceTree = "<group>"; };
+		6D4965E71D2E23170072FD3A /* AnimationMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMenuViewController.h; sourceTree = "<group>"; };
+		6D4965E81D2E23170072FD3A /* AnimationMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationMenuViewController.m; sourceTree = "<group>"; };
+		6D4965EA1D2E23AE0072FD3A /* AnimationMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationMenuCell.h; sourceTree = "<group>"; };
+		6D4965EB1D2E23AE0072FD3A /* AnimationMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationMenuCell.m; sourceTree = "<group>"; };
+		6D4965ED1D2E2FB60072FD3A /* icon_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_close.png; sourceTree = "<group>"; };
+		6D4965EE1D2E2FB60072FD3A /* icon_open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_open.png; sourceTree = "<group>"; };
 		6D4AD2ED1CFFFCA400CFC443 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		6D4AD2EE1CFFFCA400CFC443 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		6D4AD2F01D002B6800CFC443 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -499,6 +509,8 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6D4965ED1D2E2FB60072FD3A /* icon_close.png */,
+				6D4965EE1D2E2FB60072FD3A /* icon_open.png */,
 				6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */,
 				6D57FDF11D07B9B400AAAC2E /* YHDebugLog.h */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
@@ -583,6 +595,10 @@
 				6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */,
 				6D5CA5F21D2B605B00CFA554 /* CalculatePercentageViewController.h */,
 				6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */,
+				6D4965E71D2E23170072FD3A /* AnimationMenuViewController.h */,
+				6D4965E81D2E23170072FD3A /* AnimationMenuViewController.m */,
+				6D4965EA1D2E23AE0072FD3A /* AnimationMenuCell.h */,
+				6D4965EB1D2E23AE0072FD3A /* AnimationMenuCell.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -702,6 +718,7 @@
 				6D4C8A931CC71FDB006AEEBE /* LaunchScreen.storyboard in Resources */,
 				6D4B64951CD2F7AA0078969D /* btn_menu_go@2x.png in Resources */,
 				6D9AE1041CD2018500B99E2B /* menu_home@2x.png in Resources */,
+				6D4965F01D2E2FB60072FD3A /* icon_open.png in Resources */,
 				6D468FAE1CE5B48900538EE0 /* img_card_sub@3x.png in Resources */,
 				6D468FAD1CE5B48900538EE0 /* img_card_sub@2x.png in Resources */,
 				6D4B649A1CD3333B0078969D /* icon_notice_bell@3x.png in Resources */,
@@ -713,6 +730,7 @@
 				6D14700D1CEC3D74001529A2 /* icon_store_location@3x.png in Resources */,
 				6D4AD3021D012DF600CFC443 /* splash_1242x2208.png in Resources */,
 				6D9AE1021CD2018500B99E2B /* menu_card@2x.png in Resources */,
+				6D4965EF1D2E2FB60072FD3A /* icon_close.png in Resources */,
 				6D4AD2FF1D012DF600CFC443 /* splash_640x960.png in Resources */,
 				6D468FAB1CE5B48900538EE0 /* btn_card_largeimg_sub@2x.png in Resources */,
 				6D50E08B1CF2A9C3003A7EB7 /* menu_setting@2x.png in Resources */,
@@ -805,6 +823,7 @@
 				6D247F731CE16D9700EBE9DB /* SwitchView.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
 				6D132B4C1D193B6700E38D10 /* ScriptResults.m in Sources */,
+				6D4965E91D2E23170072FD3A /* AnimationMenuViewController.m in Sources */,
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
 				6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */,
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
@@ -844,6 +863,7 @@
 				6D5CA5F41D2B605B00CFA554 /* CalculatePercentageViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
+				6D4965EC1D2E23AE0072FD3A /* AnimationMenuCell.m in Sources */,
 				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
