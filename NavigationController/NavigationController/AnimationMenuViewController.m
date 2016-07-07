@@ -36,38 +36,13 @@
 {
     if(self.menuList.count == 0)
     {
-        [self.menuList addObject:@"aㅁa"];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-        
-        [self.menuList addObject:@"bㅠb"];
-        paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
-        [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-        
-        [self.menuList addObject:@"cㅇc"];
-        paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
-        [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+        [self openMenu];
     }
     else
     {
-        [self.menuList removeObject:@"cㅇc"];
-        NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-        
-        [self.menuList removeObject:@"bㅠb"];
-        paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-        
-        [self.menuList removeObject:@"aㅁa"];
-        paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-        [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+        [self closeMenu];
     }
-    
-    [self.tvMenu reloadData];
-    
-    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
-    
-    [self setAnimation];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,32 +73,49 @@
 {
     self.lbShowMenu.text = self.menuList[indexPath.row];
     [self closeMenu];
-    
+
 }
 
 -(void)closeMenu
 {
     self.ivIcon.image = [UIImage imageNamed:@"icon_close"];
+    [self.menuList removeObject:@"cㅇc"];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     
-    self.alcHeightOfTbMenu.constant = 0;
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.duration = 1.0;
-    animation.fromValue = [NSNumber numberWithFloat:1.0f];
-    animation.toValue = [NSNumber numberWithFloat:0.0f];
-    [self.tvMenu.layer addAnimation:animation forKey:@"animateOpacity"];
+    [self.menuList removeObject:@"bㅠb"];
+    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    
+    [self.menuList removeObject:@"aㅁa"];
+    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    
+    [self.tvMenu reloadData];
+    
+    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
+    
     [self setAnimation];
 }
 
 -(void)openMenu
 {
-    self.ivIcon.image = [UIImage imageNamed:@"icon_open"];
+    [self.menuList addObject:@"aㅁa"];
+    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
     
-    self.alcHeightOfTbMenu.constant = 120;
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.duration = 1.0;
-    animation.fromValue = [NSNumber numberWithFloat:0.0f];
-    animation.toValue = [NSNumber numberWithFloat:1.0f];
-    [self.tvMenu.layer addAnimation:animation forKey:@"animateOpacity"];
+    [self.menuList addObject:@"bㅠb"];
+    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
+    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    
+    [self.menuList addObject:@"cㅇc"];
+    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.menuList.count-1 inSection:0]];
+    [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    
+    [self.tvMenu reloadData];
+    
+    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
+    
     [self setAnimation];
 }
 
