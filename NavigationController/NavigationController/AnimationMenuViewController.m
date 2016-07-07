@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ivIcon;
 @property (weak, nonatomic) IBOutlet UITableView *tvMenu;
 @property (weak, nonatomic) IBOutlet UIView *menuView;
+@property (assign, nonatomic) BOOL isOpened;
 
 @end
 
@@ -24,23 +25,20 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.menuList = [NSMutableArray array ];//alloc]initWithArray: @[@"aㅁa", @"bㅠb", @"cㅇc"]];
-    self.ivIcon.image = [UIImage imageNamed:@"icon_close"];
-    
-    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
-    self.lbShowMenu.text = @"aㅁa";
-    
+    self.menuList = [NSMutableArray new];
 }
 
 - (IBAction)touchedShowMenu:(id)sender
 {
-    if(self.menuList.count == 0)
+    self.ivIcon.highlighted = !self.isOpened;
+    
+    if(self.isOpened)
     {
-        [self openMenu];
+        [self closeMenu];
     }
     else
     {
-        [self closeMenu];
+        [self openMenu];
     }
 
 }
@@ -78,28 +76,21 @@
 
 -(void)closeMenu
 {
-    self.ivIcon.image = [UIImage imageNamed:@"icon_close"];
-    [self.menuList removeObject:@"cㅇc"];
-    NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
+    [self.menuList removeAllObjects];
+    NSMutableArray *pathArr = [NSMutableArray new];
+    for (NSInteger i; i < [self getList].count; i++)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [pathArr addObject:indexPath];
+    }
+
+    [self.tvMenu deleteRowsAtIndexPaths:pathArr withRowAnimation:UITableViewRowAnimationBottom];
     
-    [self.menuList removeObject:@"bㅠb"];
-    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    
-    [self.menuList removeObject:@"aㅁa"];
-    paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.tvMenu deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
-    
-    [self.tvMenu reloadData];
-    
-    self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
-    
-    [self setAnimation];
 }
 
 -(void)openMenu
 {
+    
     [self.menuList addObject:@"aㅁa"];
     NSArray *paths = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
     [self.tvMenu insertRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationBottom];
@@ -116,18 +107,12 @@
     
     self.alcHeightOfTbMenu.constant = self.menuList.count * 40.0f;
     
-    [self setAnimation];
 }
 
--(void)setAnimation
+-(NSArray *)getList
 {
-    NSTimeInterval duration = 0.4f;
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    [UIView animateWithDuration:duration delay:0.0f options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-        
-    } completion:nil];
+    NSArray *result = @[@"aa", @"bb", @"cc"];
+    return result;
 }
-
 
 @end
