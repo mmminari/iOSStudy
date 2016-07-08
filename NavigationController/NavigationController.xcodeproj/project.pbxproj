@@ -83,6 +83,10 @@
 		6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E43F51CF545BC002041F7 /* MenuCustomerCenterViewController.m */; };
 		6D4E43F91CF545CB002041F7 /* MenuAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E43F81CF545CB002041F7 /* MenuAgreementViewController.m */; };
 		6D4E43FC1CF545DB002041F7 /* MenuUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E43FB1CF545DB002041F7 /* MenuUserInfoViewController.m */; };
+		6D50DE661D2F3BA9000270CF /* RadioButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D50DE651D2F3BA9000270CF /* RadioButtonViewController.m */; };
+		6D50DE691D2F3BB7000270CF /* RadioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D50DE681D2F3BB7000270CF /* RadioCell.m */; };
+		6D50DE6C1D2F3D13000270CF /* radio_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50DE6A1D2F3D13000270CF /* radio_btn_off.png */; };
+		6D50DE6D1D2F3D13000270CF /* radio_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50DE6B1D2F3D13000270CF /* radio_btn_on.png */; };
 		6D50E08B1CF2A9C3003A7EB7 /* menu_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E0891CF2A9C3003A7EB7 /* menu_setting@2x.png */; };
 		6D50E08C1CF2A9C3003A7EB7 /* menu_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */; };
 		6D50E08F1CF2AA1E003A7EB7 /* img_profile_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */; };
@@ -258,6 +262,12 @@
 		6D4E43F81CF545CB002041F7 /* MenuAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuAgreementViewController.m; sourceTree = "<group>"; };
 		6D4E43FA1CF545DB002041F7 /* MenuUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuUserInfoViewController.h; sourceTree = "<group>"; };
 		6D4E43FB1CF545DB002041F7 /* MenuUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuUserInfoViewController.m; sourceTree = "<group>"; };
+		6D50DE641D2F3BA9000270CF /* RadioButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioButtonViewController.h; sourceTree = "<group>"; };
+		6D50DE651D2F3BA9000270CF /* RadioButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioButtonViewController.m; sourceTree = "<group>"; };
+		6D50DE671D2F3BB7000270CF /* RadioCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCell.h; sourceTree = "<group>"; };
+		6D50DE681D2F3BB7000270CF /* RadioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCell.m; sourceTree = "<group>"; };
+		6D50DE6A1D2F3D13000270CF /* radio_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn_off.png; sourceTree = "<group>"; };
+		6D50DE6B1D2F3D13000270CF /* radio_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn_on.png; sourceTree = "<group>"; };
 		6D50E0891CF2A9C3003A7EB7 /* menu_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@2x.png"; sourceTree = "<group>"; };
 		6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@3x.png"; sourceTree = "<group>"; };
 		6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@2x.png"; sourceTree = "<group>"; };
@@ -544,6 +554,8 @@
 		6D4B649B1CD333510078969D /* ImageFile */ = {
 			isa = PBXGroup;
 			children = (
+				6D50DE6A1D2F3D13000270CF /* radio_btn_off.png */,
+				6D50DE6B1D2F3D13000270CF /* radio_btn_on.png */,
 				6D4965ED1D2E2FB60072FD3A /* icon_close.png */,
 				6D4965EE1D2E2FB60072FD3A /* icon_open.png */,
 				6DD25A681D2215D2004DCEE1 /* btn_profile_modify@2x.png */,
@@ -632,6 +644,7 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6D50DE631D2F3B95000270CF /* RadioButton */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
 				6D4C8A871CC71FDB006AEEBE /* AppDelegate.m */,
 				6D4965F11D2E51FD0072FD3A /* TextAttributedString */,
@@ -660,6 +673,17 @@
 				6D4C8A841CC71FDB006AEEBE /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D50DE631D2F3B95000270CF /* RadioButton */ = {
+			isa = PBXGroup;
+			children = (
+				6D50DE641D2F3BA9000270CF /* RadioButtonViewController.h */,
+				6D50DE651D2F3BA9000270CF /* RadioButtonViewController.m */,
+				6D50DE671D2F3BB7000270CF /* RadioCell.h */,
+				6D50DE681D2F3BB7000270CF /* RadioCell.m */,
+			);
+			name = RadioButton;
 			sourceTree = "<group>";
 		};
 		BC49EDD9083D3271F754832B /* Pods */ = {
@@ -782,6 +806,7 @@
 				6D4AD3021D012DF600CFC443 /* splash_1242x2208.png in Resources */,
 				6D9AE1021CD2018500B99E2B /* menu_card@2x.png in Resources */,
 				6D4965EF1D2E2FB60072FD3A /* icon_close.png in Resources */,
+				6D50DE6D1D2F3D13000270CF /* radio_btn_on.png in Resources */,
 				6D4AD2FF1D012DF600CFC443 /* splash_640x960.png in Resources */,
 				6D468FAB1CE5B48900538EE0 /* btn_card_largeimg_sub@2x.png in Resources */,
 				6D50E08B1CF2A9C3003A7EB7 /* menu_setting@2x.png in Resources */,
@@ -791,6 +816,7 @@
 				6D5DA1251D210A5600D2710D /* sc5.jpg in Resources */,
 				6DD25A6B1D2215D2004DCEE1 /* btn_profile_modify@3x.png in Resources */,
 				6D14700C1CEC3D74001529A2 /* icon_store_location@2x.png in Resources */,
+				6D50DE6C1D2F3D13000270CF /* radio_btn_off.png in Resources */,
 				6D4AD3011D012DF600CFC443 /* splash_750x1334.png in Resources */,
 				6D5DA1221D210A5600D2710D /* sc2.jpg in Resources */,
 				6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */,
@@ -879,6 +905,7 @@
 				6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */,
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
 				6D4AD30E1D017B0700CFC443 /* LibraryClass.m in Sources */,
+				6D50DE661D2F3BA9000270CF /* RadioButtonViewController.m in Sources */,
 				6D5DA1181D20FEF900D2710D /* ImageScrollViewController.m in Sources */,
 				ACF79B791CC7488300B89C4E /* DemoListViewController.m in Sources */,
 				6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */,
@@ -916,6 +943,7 @@
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
 				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
+				6D50DE691D2F3BB7000270CF /* RadioCell.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
 				6D4AD30B1D01672C00CFC443 /* LogOutCollectionCell.m in Sources */,

@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeScrollView,
     DemoTypeCalculateView,
     DemoTypeAnimationMenu,
+    DemoTypeRadioButton,
 };
 
 @interface DemoListViewController ()
@@ -101,7 +102,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton"];
     
     return listInfo;
 }
@@ -141,6 +142,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             break;
         case DemoTypeAnimationMenu:
             result = @"sgMainToAnimationMenu";
+            break;
+        case DemoTypeRadioButton:
+            result = @"sgMainToRadioView";
             break;
         default:
             break;
