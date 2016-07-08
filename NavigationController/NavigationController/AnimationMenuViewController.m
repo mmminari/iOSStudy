@@ -27,6 +27,8 @@
     [super viewDidLoad];
     self.menuList = [NSMutableArray new];
     self.ivIcon.highlighted = NO;
+    self.isOpened = NO;
+    self.lbShowMenu.text = [self getList][0];
     
 }
 
@@ -43,7 +45,7 @@
         [self openMenu];
     }
     
-    self.isOpened = self.ivIcon.highlighted;
+    self.ivIcon.highlighted = self.isOpened;
 
 }
 
@@ -52,11 +54,12 @@
     static NSString *cellId = @"animationCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
     if(cell == nil)
     {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
-        
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.layer.borderWidth = 1.0f;
@@ -76,14 +79,14 @@
     self.lbShowMenu.text = self.menuList[indexPath.row];
     [self closeMenu];
     
-    self.isOpened = self.ivIcon.highlighted;
+    self.ivIcon.highlighted = !self.isOpened;
 }
 
 -(void)closeMenu
 {
     [self.menuList removeAllObjects];
     NSMutableArray *pathArr = [NSMutableArray new];
-    for (NSInteger i; i < [self getList].count; i++)
+    for (NSInteger i = 0; i < [self getList].count; i++)
     {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [pathArr addObject:indexPath];
@@ -98,7 +101,7 @@
     self.menuList = [self getList].mutableCopy;
     
     NSMutableArray *pathArr = [NSMutableArray new];
-    for (NSInteger i; i < self.menuList.count; i++)
+    for (NSInteger i = 0; i < self.menuList.count; i++)
     {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
         [pathArr addObject:indexPath];
