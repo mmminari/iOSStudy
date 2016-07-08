@@ -22,7 +22,7 @@
 {
     [super viewDidLoad];
     self.listArr = @[@"aaaa", @"bbbbb", @"ccccc", @"ddddd", @"eeeee"];
-    self.tvList.allowsMultipleSelection = NO;
+    //self.tvList.allowsMultipleSelection = NO;
     
 
 }
@@ -38,6 +38,7 @@
     }
 
     cell.lbTitle.text = self.listArr[indexPath.row];
+    // cell.ivIcon.highlighted = (self.selectedRow == indexPath.row) ? YES : NO;
 
     return cell;
 }
@@ -50,18 +51,24 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
-    cell.ivIcon.highlighted =YES;
-
+    
+    if(cell.ivIcon.highlighted == YES)
+    {
+        cell.ivIcon.highlighted = NO;
+    }
+    else
+    {
+        cell.ivIcon.highlighted =YES;
+    }
+    
     LogYellow(@"indexNum : %zd, text : %@", indexPath.row, self.listArr[indexPath.row]);
     
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
-
-    cell.ivIcon.highlighted = NO;
-
+    //RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
+    //cell.ivIcon.highlighted = NO;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
