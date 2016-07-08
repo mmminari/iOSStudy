@@ -15,17 +15,18 @@
 @property (weak, nonatomic) IBOutlet UITableView *tvList;
 @property (strong, nonatomic) NSMutableArray *selectedRows;
 @property (assign, nonatomic) NSInteger selectedRow;
+
 @end
 
 @implementation RadioButtonViewController
 
 -(void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.listArr = @[@"aaaa", @"bbbbb", @"ccccc", @"ddddd", @"eeeee"];
     self.selectedRows = [NSMutableArray new];
     self.tvList.allowsMultipleSelection = !self.isSingleSelection;
-    LogGreen(@"isSingle? %zd", self.isSingleSelection);
     
 }
 
@@ -40,9 +41,9 @@
     }
 
     cell.lbTitle.text = self.listArr[indexPath.row];
-    // cell.ivIcon.highlighted = (self.selectedRow == indexPath.row) ? YES : NO;
     
-    cell.ivIcon.highlighted = ([self.selectedRows containsObject:@(indexPath.row)]) ? YES : NO ;
+    // cell.ivIcon.highlighted = (self.selectedRow == indexPath.row) ? YES : NO;
+    //cell.ivIcon.highlighted = ([self.selectedRows containsObject:@(indexPath.row)]) ? YES : NO ;
     
     return cell;
 }
@@ -54,7 +55,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    
     /*
     NSInteger countLimit = 0;
     
@@ -72,6 +72,8 @@
         [self.selectedRows addObject:@(indexPath.row)];
     }
      
+    self.tvList reloadData];
+
      */
 
     RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
@@ -84,11 +86,8 @@
     {
         cell.ivIcon.highlighted =YES;
     }
-    
-  //  [self.tvList reloadData];
-    
+
     LogYellow(@"indexNum : %zd, text : %@", indexPath.row, self.listArr[indexPath.row]);
-    
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
