@@ -87,6 +87,7 @@
 		6D50DE691D2F3BB7000270CF /* RadioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D50DE681D2F3BB7000270CF /* RadioCell.m */; };
 		6D50DE6C1D2F3D13000270CF /* radio_btn_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50DE6A1D2F3D13000270CF /* radio_btn_off.png */; };
 		6D50DE6D1D2F3D13000270CF /* radio_btn_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50DE6B1D2F3D13000270CF /* radio_btn_on.png */; };
+		6D50DE701D2F7B8A000270CF /* ChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D50DE6F1D2F7B8A000270CF /* ChooseViewController.m */; };
 		6D50E08B1CF2A9C3003A7EB7 /* menu_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E0891CF2A9C3003A7EB7 /* menu_setting@2x.png */; };
 		6D50E08C1CF2A9C3003A7EB7 /* menu_setting@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */; };
 		6D50E08F1CF2AA1E003A7EB7 /* img_profile_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */; };
@@ -268,6 +269,8 @@
 		6D50DE681D2F3BB7000270CF /* RadioCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCell.m; sourceTree = "<group>"; };
 		6D50DE6A1D2F3D13000270CF /* radio_btn_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn_off.png; sourceTree = "<group>"; };
 		6D50DE6B1D2F3D13000270CF /* radio_btn_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_btn_on.png; sourceTree = "<group>"; };
+		6D50DE6E1D2F7B8A000270CF /* ChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseViewController.h; sourceTree = "<group>"; };
+		6D50DE6F1D2F7B8A000270CF /* ChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseViewController.m; sourceTree = "<group>"; };
 		6D50E0891CF2A9C3003A7EB7 /* menu_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@2x.png"; sourceTree = "<group>"; };
 		6D50E08A1CF2A9C3003A7EB7 /* menu_setting@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_setting@3x.png"; sourceTree = "<group>"; };
 		6D50E08D1CF2AA1E003A7EB7 /* img_profile_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_profile_menu@2x.png"; sourceTree = "<group>"; };
@@ -682,6 +685,8 @@
 				6D50DE651D2F3BA9000270CF /* RadioButtonViewController.m */,
 				6D50DE671D2F3BB7000270CF /* RadioCell.h */,
 				6D50DE681D2F3BB7000270CF /* RadioCell.m */,
+				6D50DE6E1D2F7B8A000270CF /* ChooseViewController.h */,
+				6D50DE6F1D2F7B8A000270CF /* ChooseViewController.m */,
 			);
 			name = RadioButton;
 			sourceTree = "<group>";
@@ -904,6 +909,7 @@
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
 				6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */,
 				6DF050761CD9F837006C9513 /* BaseViewController.m in Sources */,
+				6D50DE701D2F7B8A000270CF /* ChooseViewController.m in Sources */,
 				6D4AD30E1D017B0700CFC443 /* LibraryClass.m in Sources */,
 				6D50DE661D2F3BA9000270CF /* RadioButtonViewController.m in Sources */,
 				6D5DA1181D20FEF900D2710D /* ImageScrollViewController.m in Sources */,

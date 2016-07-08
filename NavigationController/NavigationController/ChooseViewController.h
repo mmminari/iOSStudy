@@ -1,5 +1,5 @@
 //
-//  RadioButtonViewController.h
+//  ChooseViewController.h
 //  NavigationController
 //
 //  Created by 김민아 on 2016. 7. 8..
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RadioButtonViewController : UIViewController
-
-@property (assign, nonatomic) BOOL isSingleSelection;
+@interface ChooseViewController : UIViewController
 
 @end

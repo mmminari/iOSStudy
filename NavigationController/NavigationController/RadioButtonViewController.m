@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic) NSArray *listArr;
 @property (weak, nonatomic) IBOutlet UITableView *tvList;
-
+@property (strong, nonatomic) NSMutableArray *selectedRows;
+@property (assign, nonatomic) NSInteger selectedRow;
 @end
 
 @implementation RadioButtonViewController
@@ -22,9 +23,10 @@
 {
     [super viewDidLoad];
     self.listArr = @[@"aaaa", @"bbbbb", @"ccccc", @"ddddd", @"eeeee"];
-    //self.tvList.allowsMultipleSelection = NO;
+    self.selectedRows = [NSMutableArray new];
+    self.tvList.allowsMultipleSelection = !self.isSingleSelection;
+    LogGreen(@"isSingle? %zd", self.isSingleSelection);
     
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -39,7 +41,9 @@
 
     cell.lbTitle.text = self.listArr[indexPath.row];
     // cell.ivIcon.highlighted = (self.selectedRow == indexPath.row) ? YES : NO;
-
+    
+    cell.ivIcon.highlighted = ([self.selectedRows containsObject:@(indexPath.row)]) ? YES : NO ;
+    
     return cell;
 }
 
@@ -50,8 +54,28 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
     
+    /*
+    NSInteger countLimit = 0;
+    
+    if(self.isSingleSelection)
+    {
+        countLimit = 1;
+    }
+
+    if([self.selectedRows containsObject:@(indexPath.row)])
+    {
+        [self.selectedRows removeObject:@(indexPath.row)];
+    }
+    else
+    {
+        [self.selectedRows addObject:@(indexPath.row)];
+    }
+     
+     */
+
+    RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
+
     if(cell.ivIcon.highlighted == YES)
     {
         cell.ivIcon.highlighted = NO;
@@ -61,14 +85,17 @@
         cell.ivIcon.highlighted =YES;
     }
     
+  //  [self.tvList reloadData];
+    
     LogYellow(@"indexNum : %zd, text : %@", indexPath.row, self.listArr[indexPath.row]);
     
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    //RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
-    //cell.ivIcon.highlighted = NO;
+    RadioCell *cell = [self.tvList cellForRowAtIndexPath:indexPath];
+    
+    cell.ivIcon.highlighted = !self.isSingleSelection;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
