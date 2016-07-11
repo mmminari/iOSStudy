@@ -12,9 +12,9 @@
 
 -(instancetype)initWithBaseURL
 {
-    if(self = [super initWithBaseURL:[NSURL URLWithString:@"https://pointapibeta.smtown.com"]])
+    if(self = [super initWithBaseURL:[NSURL URLWithString:@"https://pointapibeta.smtown.com"]]) //
     {
-        
+        LogYellow(@"return self");
     }
     
     return self;
@@ -25,8 +25,7 @@
                 success:(void (^)(id results))success
                 failure:(void (^)(NSError *error))failure
 {
-    [self GET:urlString parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-
+    [self GET:urlString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         if(success)
         {
             success(responseObject);
@@ -35,9 +34,7 @@
         if(failure)
         {
             failure(error);
-            LogRed(@"error : %@", error);
         }
-        
     }];
 }
 
@@ -56,7 +53,6 @@
             failure(error);
             LogRed(@"error : %@", error);
         }
-            
     }];
 }
 

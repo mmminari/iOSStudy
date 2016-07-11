@@ -10,10 +10,13 @@
 #import <AFNetworking/AFNetworking.h>
 #import "HTTPClient.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ThumbnailHTTPClient.h"
 
 @interface LibraryClass ()
 
 @property (strong, nonatomic) HTTPClient *httpClient;
+@property (strong, nonatomic) ThumbnailHTTPClient *thumbnailClient;
+
 @property (strong, nonatomic) NSCache *cache;
 
 @end
@@ -43,6 +46,9 @@
         _pushModel = [[PushModel alloc]init];
         _cache = [[NSCache alloc]init];
         _cache.countLimit = 20;
+        
+        _thumbnailClient = [[ThumbnailHTTPClient alloc]initWithBaseURL];
+
     }
     
     return self;
@@ -103,6 +109,23 @@
     }];
 }
 
+-(void)requestThumbnailInformationWithParameter:(id)parameter
+                                        success:(void (^)(id results))success
+                                        failure:(void(^)(NSError *error))failure
+{
+    [self.thumbnailClient GETWithUrlString:@"/services/rest" parameters:parameter success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
 -(void)requestProfileImageWithSuccess:(void (^)(id results))success
                                 failure:(void (^)(NSError *error))failure
                               imageInfo:(NSData *)imageData
@@ -110,6 +133,7 @@
     [self.httpClient UPLOADWithUrlString:@"/api/v1/profile" data:imageData success:success failure:failure];
     
 }
+
 
 -(void)requestMainInformationWithParameter:(id)parameter
                            success:(void (^)(id results))success
@@ -251,6 +275,23 @@
                       failure:(void (^)(NSError *error))failure
 {
     [self.httpClient PATCHWithUrlString:@"/api/v1/cardLoss" parameters:parameter success:^(id results) {
+        if(success)
+        {
+            success(results);
+        }
+    } failure:^(NSError *error) {
+        if(failure)
+        {
+            NSLog(@"%@", error);
+        }
+    }];
+}
+
+- (void)requestFlickrListWithParameters:(id)parameter
+                                success:(void (^)(id results))success
+                                failure:(void (^)(NSError *error))failure
+{
+    [self.httpClient GETWithUrlString:@"/services/rest" parameters:parameter success:^(id results) {
         if(success)
         {
             success(results);

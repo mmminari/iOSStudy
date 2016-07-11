@@ -37,13 +37,11 @@
     {
         LogYellow(@"UIApplicationLaunchOptionsRemoteNotificationKey");
         self.lib.launchOption = YES;
-        
     }
     else
     {
         LogYellow(@"no?");
         self.lib.launchOption = NO;
-        
     }
     
     // Override point for customization after application launch.

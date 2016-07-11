@@ -14,6 +14,8 @@
 #import "GenerateBarcode.h"
 #import "ScriptResults.h"
 #import "StoreInformation.h"
+#import "Photo.h"
+
 
 @interface LibraryClass : NSObject
 
@@ -23,6 +25,10 @@
 @property (strong, nonatomic) MainInformation *mainInfo;
 @property (strong, nonatomic) ScriptResults *scriptResults;
 @property (strong, nonatomic) StoreInformation *storeInfo;
+
+@property (strong, nonatomic) Photo *thumInfo;
+@property (strong, nonatomic) NSMutableArray *thumbImageArr;
+
 
 @property (assign, nonatomic) BOOL launchOption;
 
@@ -36,6 +42,10 @@
 -(UIImage *)generateVerticalBarcodeImgWithBarcode:(NSString *)barcode;
 
 -(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani;
+
+-(void)requestThumbnailInformationWithParameter:(id)parameter
+                                        success:(void (^)(id results))success
+                                        failure:(void(^)(NSError *error))failure;
 
 -(void)requestProfileImageWithSuccess:(void (^)(id results))success
                               failure:(void (^)(NSError *error))failure
@@ -76,6 +86,10 @@
 -(void)requestReportCardLossWithParameter:(id)parameter
                                   success:(void (^)(id results))success
                                   failure:(void (^)(NSError *error))failure;
+
+- (void)requestFlickrListWithParameters:(id)parameter
+                                success:(void (^)(id results))success
+                                failure:(void (^)(NSError *error))failure;
 
 -(void)registerDeviceTokenWithLaunchOptions:(NSDictionary *)launchOptions;
 
