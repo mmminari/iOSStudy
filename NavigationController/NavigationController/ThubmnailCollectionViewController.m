@@ -38,7 +38,7 @@
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
-    self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-WRATIO_WIDTH(213.0f);
+    self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
     self.detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-thumbDetail"];
     [self reqThumbnailInformation];
     
@@ -74,6 +74,8 @@
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
         
         [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:NO];
+        cell.ivThumbnail.contentMode = UIViewContentModeScaleAspectFill;
+
     }
 
     return cell;
