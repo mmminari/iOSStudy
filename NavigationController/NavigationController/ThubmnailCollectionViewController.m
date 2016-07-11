@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *cvThumbnail;
 @property (strong, nonatomic) NSMutableArray *thumbArr;
 @property (strong, nonatomic) DetailThumbnailViewController *detailVC;
+@property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCvContainer;
 
 @end
 
@@ -36,12 +38,8 @@
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
-    
-    [self.util setContentViewLayoutWithSubView3:self.cvThumbnail withTargetView:self.view];
-    
-    
+    self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-WRATIO_WIDTH(213.0f);
     self.detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-thumbDetail"];
-    
     [self reqThumbnailInformation];
     
 }
