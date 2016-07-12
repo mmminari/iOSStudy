@@ -49,7 +49,7 @@
     
 }
 
-#pragma mark - UICollectionView
+#pragma mark - UICollectionViewDelegate
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
