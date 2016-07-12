@@ -45,7 +45,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    CGFloat width = DEVICE_WIDTH / 3;
+    CGFloat width = (DEVICE_WIDTH - 20)/ 3;
     CGFloat height = width;
     
     return CGSizeMake(width, height);
@@ -75,6 +75,8 @@
         cell.ivThumbnail.contentMode = UIViewContentModeScaleAspectFill;
 
     }
+    
+    cell.layoutMargins = UIEdgeInsetsMake(2.5f, 0.0, 2.5f, 5.0f);
 
     return cell;
     
