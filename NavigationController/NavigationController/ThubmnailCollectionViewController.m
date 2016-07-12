@@ -9,15 +9,15 @@
 #import "ThubmnailCollectionViewController.h"
 #import "ShowMenuViewController.h"
 #import "ThumbnailCell.h"
-#import "Photo.h"
 #import "DetailThumbnailViewController.h"
+
+#import "FlickrDataModels.h"
 
 @interface ThubmnailCollectionViewController ()
 
 @property (strong, nonatomic) ShowMenuViewController *naviVC;
 @property (weak, nonatomic) IBOutlet UICollectionView *cvThumbnail;
-@property (strong, nonatomic) NSMutableArray *thumbArr;
-@property (strong, nonatomic) DetailThumbnailViewController *detailVC;
+@property (strong, nonatomic) NSArray *thumbArr;
 @property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCvContainer;
 
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.thumbArr = [NSMutableArray new];
+    self.thumbArr = [NSArray new];
     
     self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.naviVC.view];
@@ -39,12 +39,9 @@
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
-    self.detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-thumbDetail"];
     [self reqThumbnailInformation];
     
 }
-
-
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
@@ -69,6 +66,7 @@
     static NSString *cellId = @"thumbCell";
     
     ThumbnailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    
     if(self.thumbArr.count > 0)
     {
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
@@ -84,10 +82,11 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:self.detailVC animated:YES];
+    DetailThumbnailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-thumbDetail"];
+
+    [self.navigationController pushViewController:detailVC animated:YES];
     
-    
-    self.detailVC.indexNum = indexPath.row;
+    detailVC.photo = self.thumbArr[indexPath.row];
     
 }
 
@@ -103,14 +102,8 @@
     
     [self.library requestThumbnailInformationWithParameter:parameterDic success:^(id results)
     {
-        NSArray *photoArr = [self.util getValueWithKey:@"photo" Dictionary:[self.util getValueWithKey:@"photos" Dictionary:results]];
-        for (NSDictionary *dic in photoArr)
-        {
-            Photo *thumInfo = [[Photo alloc]initWithDictionary:dic];
-            [self.thumbArr addObject:thumInfo];
-        }
-        
-        self.library.thumbImageArr = self.thumbArr;
+        BaseFlickrModel *baseModel = [BaseFlickrModel modelObjectWithDictionary:results];
+        self.thumbArr = baseModel.photos.photo;
         
         [self.cvThumbnail reloadData];
         

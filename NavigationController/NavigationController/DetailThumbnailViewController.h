@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "Photo.h"
 
 @interface DetailThumbnailViewController : BaseViewController
 
 @property (assign, nonatomic) NSInteger indexNum;
+@property (strong, nonatomic) Photo *photo;
 
 
 @end

@@ -26,27 +26,34 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.naviVC.view];
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
     self.naviVC.baseVC = self;
-}
+    self.naviVC.lbTitle.text = [self.photo title];
 
--(void)viewWillAppear:(BOOL)animated
-{
-    LogGreen(@"index num : %zd", self.indexNum);
-    Photo *thumbnail = self.library.thumbImageArr[self.indexNum];
-    
-    self.naviVC.lbTitle.text = [thumbnail title];
-    
-    [self.library setImageView:self.ivDetail urlString:[thumbnail urlM] placeholderImage:nil animation:NO];
+    CGFloat height = [[self.photo heightM]floatValue];
+    CGFloat width = [[self.photo widthM]floatValue];
     
     self.alcWidthOfIv.constant = DEVICE_WIDTH;
-    CGFloat height = [[thumbnail heightM]floatValue];
-    CGFloat width = [[thumbnail widthM]floatValue];
+    self.alcHeightOfIv.constant = [self setHeightWithOrignHeight:height originalWidth:width];
+
     
-    height = height * DEVICE_WIDTH / width;
-    self.alcHeightOfIv.constant = height;
+    [self.library setImageView:self.ivDetail urlString:[self.photo urlM] placeholderImage:nil animation:NO];
+    
+    
 }
+
+
+-(CGFloat)setHeightWithOrignHeight:(CGFloat)height originalWidth:(CGFloat)width
+{
+    height = height * DEVICE_WIDTH / width;
+    
+    return height;
+
+}
+
+
 
 @end

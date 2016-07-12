@@ -48,7 +48,6 @@
 		6D46F75A1D333779008D6D93 /* ThubmnailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46F7591D333779008D6D93 /* ThubmnailCollectionViewController.m */; };
 		6D46F75D1D333C38008D6D93 /* ThumbnailHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46F75C1D333C38008D6D93 /* ThumbnailHTTPClient.m */; };
 		6D46F7601D333FEF008D6D93 /* ThumbnailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46F75F1D333FEF008D6D93 /* ThumbnailCell.m */; };
-		6D46F7651D334701008D6D93 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46F7621D334701008D6D93 /* Photo.m */; };
 		6D46F78F1D338451008D6D93 /* DetailThumbnailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D46F78E1D338451008D6D93 /* DetailThumbnailViewController.m */; };
 		6D4787221CFEC41C001A9A52 /* btn_popup_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4787201CFEC41C001A9A52 /* btn_popup_close@2x.png */; };
 		6D4787231CFEC41C001A9A52 /* btn_popup_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D4787211CFEC41C001A9A52 /* btn_popup_close@3x.png */; };
@@ -134,6 +133,10 @@
 		6D9AE1091CD2018500B99E2B /* top_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0FF1CD2018500B99E2B /* top_logo@3x.png */; };
 		6D9AE10C1CD2025200B99E2B /* btn_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE10A1CD2025200B99E2B /* btn_menu@2x.png */; };
 		6D9AE10D1CD2025200B99E2B /* btn_menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE10B1CD2025200B99E2B /* btn_menu@3x.png */; };
+		6D9B3DFF1D347AD2006F885F /* BaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3DF91D347AD2006F885F /* BaseClass.m */; };
+		6D9B3E001D347AD2006F885F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3DFC1D347AD2006F885F /* Photo.m */; };
+		6D9B3E011D347AD2006F885F /* Photos.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3DFE1D347AD2006F885F /* Photos.m */; };
+		6D9B3E041D347D32006F885F /* BaseFlickrModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D9B3E031D347D32006F885F /* BaseFlickrModel.m */; };
 		6DAD689C1CEABED500C25969 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD689B1CEABED500C25969 /* CardCell.m */; };
 		6DB010771CC9F31C00C06A5E /* IntroUiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */; };
 		6DB0107F1CCA0FE800C06A5E /* SM_logos.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0107E1CCA0FE800C06A5E /* SM_logos.png */; };
@@ -216,8 +219,6 @@
 		6D46F75C1D333C38008D6D93 /* ThumbnailHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailHTTPClient.m; sourceTree = "<group>"; };
 		6D46F75E1D333FEF008D6D93 /* ThumbnailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailCell.h; sourceTree = "<group>"; };
 		6D46F75F1D333FEF008D6D93 /* ThumbnailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailCell.m; sourceTree = "<group>"; };
-		6D46F7611D334701008D6D93 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
-		6D46F7621D334701008D6D93 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		6D46F78D1D338451008D6D93 /* DetailThumbnailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailThumbnailViewController.h; sourceTree = "<group>"; };
 		6D46F78E1D338451008D6D93 /* DetailThumbnailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailThumbnailViewController.m; sourceTree = "<group>"; };
 		6D4787201CFEC41C001A9A52 /* btn_popup_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_popup_close@2x.png"; sourceTree = "<group>"; };
@@ -343,6 +344,15 @@
 		6D9AE0FF1CD2018500B99E2B /* top_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_logo@3x.png"; sourceTree = "<group>"; };
 		6D9AE10A1CD2025200B99E2B /* btn_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_menu@2x.png"; sourceTree = "<group>"; };
 		6D9AE10B1CD2025200B99E2B /* btn_menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_menu@3x.png"; sourceTree = "<group>"; };
+		6D9B3DF81D347AD2006F885F /* BaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseClass.h; sourceTree = "<group>"; };
+		6D9B3DF91D347AD2006F885F /* BaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseClass.m; sourceTree = "<group>"; };
+		6D9B3DFA1D347AD2006F885F /* FlickrDataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrDataModels.h; sourceTree = "<group>"; };
+		6D9B3DFB1D347AD2006F885F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		6D9B3DFC1D347AD2006F885F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		6D9B3DFD1D347AD2006F885F /* Photos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photos.h; sourceTree = "<group>"; };
+		6D9B3DFE1D347AD2006F885F /* Photos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photos.m; sourceTree = "<group>"; };
+		6D9B3E021D347D32006F885F /* BaseFlickrModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFlickrModel.h; sourceTree = "<group>"; };
+		6D9B3E031D347D32006F885F /* BaseFlickrModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFlickrModel.m; sourceTree = "<group>"; };
 		6DAD689B1CEABED500C25969 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
 		6DB010751CC9F31C00C06A5E /* IntroUiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroUiViewController.h; sourceTree = "<group>"; };
 		6DB010761CC9F31C00C06A5E /* IntroUiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroUiViewController.m; sourceTree = "<group>"; };
@@ -388,8 +398,6 @@
 		6D46F7571D3336A5008D6D93 /* Thumbnail Collection */ = {
 			isa = PBXGroup;
 			children = (
-				6D46F7611D334701008D6D93 /* Photo.h */,
-				6D46F7621D334701008D6D93 /* Photo.m */,
 				6D46F7581D333779008D6D93 /* ThubmnailCollectionViewController.h */,
 				6D46F7591D333779008D6D93 /* ThubmnailCollectionViewController.m */,
 				6D46F75B1D333C38008D6D93 /* ThumbnailHTTPClient.h */,
@@ -679,6 +687,7 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6D9B3DF61D347AD2006F885F /* DataModels */,
 				6D4C8A861CC71FDB006AEEBE /* AppDelegate.h */,
 				6D4C8A871CC71FDB006AEEBE /* AppDelegate.m */,
 				6D46F7571D3336A5008D6D93 /* Thumbnail Collection */,
@@ -722,6 +731,30 @@
 				6D50DE6F1D2F7B8A000270CF /* ChooseViewController.m */,
 			);
 			name = RadioButton;
+			sourceTree = "<group>";
+		};
+		6D9B3DF61D347AD2006F885F /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				6D9B3DF71D347AD2006F885F /* Flickr */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		6D9B3DF71D347AD2006F885F /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				6D9B3E021D347D32006F885F /* BaseFlickrModel.h */,
+				6D9B3E031D347D32006F885F /* BaseFlickrModel.m */,
+				6D9B3DF81D347AD2006F885F /* BaseClass.h */,
+				6D9B3DF91D347AD2006F885F /* BaseClass.m */,
+				6D9B3DFA1D347AD2006F885F /* FlickrDataModels.h */,
+				6D9B3DFB1D347AD2006F885F /* Photo.h */,
+				6D9B3DFC1D347AD2006F885F /* Photo.m */,
+				6D9B3DFD1D347AD2006F885F /* Photos.h */,
+				6D9B3DFE1D347AD2006F885F /* Photos.m */,
+			);
+			path = Flickr;
 			sourceTree = "<group>";
 		};
 		BC49EDD9083D3271F754832B /* Pods */ = {
@@ -929,6 +962,8 @@
 				6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */,
 				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
 				6D4AD2FA1D0128CF00CFC443 /* SplashViewController.m in Sources */,
+				6D9B3E011D347AD2006F885F /* Photos.m in Sources */,
+				6D9B3DFF1D347AD2006F885F /* BaseClass.m in Sources */,
 				6D247F701CE16D8C00EBE9DB /* LabelView.m in Sources */,
 				6D5744E71D18CBD8000A1945 /* WKWebViewClass.m in Sources */,
 				6D51E12D1D0E8A3A004124B8 /* ChangePwViewController.m in Sources */,
@@ -952,6 +987,7 @@
 				6D4C8AB41CC76BB9006AEEBE /* WebViewController.m in Sources */,
 				6D4E43F31CF545AA002041F7 /* MenuNoticeViewController.m in Sources */,
 				6D0D88271D0FF68E0038B718 /* HTTPClient.m in Sources */,
+				6D9B3E001D347AD2006F885F /* Photo.m in Sources */,
 				6D00A7651CEF071F00481C9C /* MenuViewController.m in Sources */,
 				6D1470151CEC4DE5001529A2 /* StoreCell.m in Sources */,
 				6D1470121CEC4070001529A2 /* StoreInformation.m in Sources */,
@@ -986,10 +1022,10 @@
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
 				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
 				6D4AD2F21D002B6800CFC443 /* BaseModel.m in Sources */,
-				6D46F7651D334701008D6D93 /* Photo.m in Sources */,
 				6D50DE691D2F3BB7000270CF /* RadioCell.m in Sources */,
 				6D4C8AA11CC72740006AEEBE /* ViewController.m in Sources */,
 				6D4C8A851CC71FDB006AEEBE /* main.m in Sources */,
+				6D9B3E041D347D32006F885F /* BaseFlickrModel.m in Sources */,
 				6D4AD30B1D01672C00CFC443 /* LogOutCollectionCell.m in Sources */,
 				6D3A5FF91CE06B8D009DB0E4 /* CollectionCell.m in Sources */,
 				6D464AE51CD082E20035FF68 /* HomeViewController.m in Sources */,
