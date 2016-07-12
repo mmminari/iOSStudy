@@ -16,19 +16,19 @@
 
 @interface StoreViewController () <StoreCellDelegate>
 
-@property (strong, nonatomic) NSDictionary *responseDic;
-@property (strong, nonatomic) NSArray *responseArr;
 @property (weak, nonatomic) IBOutlet UITableView *tvStore;
 
+
+@property (strong, nonatomic) NSDictionary *responseDic;
+@property (strong, nonatomic) NSArray *responseArr;
 @property (strong, nonatomic) NSMutableArray *imageArr;
 @property (strong, nonatomic) NSMutableDictionary *downloaingDic;
-
 @property (strong, nonatomic) NSMutableArray *storeArr;
 @property (assign, nonatomic) CGFloat rationHeight;
 
 @property (strong, nonatomic) StoreLocationViewController *mapVC;
-
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation StoreViewController
@@ -336,14 +336,9 @@
          
          dispatch_async(dispatch_get_main_queue(), ^{
              [self.tvStore reloadData];
-         });
-         
-         if(self.refreshControl)
-         {
              [self.refreshControl endRefreshing];
-             LogGreen(@"refrechControl endRefreshin");
-         }
-        
+         });
+
      } failure:^(NSError *error) {
          LogGreen(@"error");
      }];
@@ -436,7 +431,7 @@
 -(UIRefreshControl *)makeRefreshController
 {
     self.refreshControl = [[UIRefreshControl alloc]init];
-    [self.refreshControl addTarget:self action:@selector(beginRefreshing:) forControlEvents:UIControlEventAllEvents ];
+    [self.refreshControl addTarget:self action:@selector(beginRefreshing:) forControlEvents:UIControlEventValueChanged ];
     
     return self.refreshControl;
 }
