@@ -51,6 +51,20 @@
     return CGSizeMake(width, height);
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5.0f;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5.0f;
+}
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
@@ -76,7 +90,7 @@
 
     }
     
-    cell.layoutMargins = UIEdgeInsetsMake(2.5f, 0.0, 2.5f, 5.0f);
+ //   cell.layoutMargins = UIEdgeInsetsMake(2.5f, 0.0, 2.5f, 5.0f);
 
     return cell;
     

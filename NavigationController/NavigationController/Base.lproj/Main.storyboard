@@ -2733,7 +2733,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="4BC6B758-23D1-4883-A3FA-A3EE5915BBAE"/>
+                                <state key="normal" image="38E7832E-6C60-4A91-83AC-932E7EEDA3BF"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -4076,7 +4076,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sIJ-M3-6gi">
                                         <rect key="frame" x="5" y="0.0" width="365" height="603"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Twj-5e-noQ">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Twj-5e-noQ">
                                             <size key="itemSize" width="313" height="598"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -4142,7 +4142,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="4BC6B758-23D1-4883-A3FA-A3EE5915BBAE" width="21" height="21">
+        <image name="38E7832E-6C60-4A91-83AC-932E7EEDA3BF" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
