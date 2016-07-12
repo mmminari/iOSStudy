@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCv;
 
 @property (strong, nonatomic) ShowMenuViewController *naviVC;
-@property (strong, nonatomic) NSArray *thumbArr;
+@property (strong, nonatomic) NSMutableArray *thumbArr;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
@@ -38,7 +38,7 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.thumbArr = [NSArray new];
+    self.thumbArr = [NSMutableArray new];
     
     self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.naviVC.view];
@@ -46,7 +46,7 @@
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
-    [self reqThumbnailInformation];
+    [self reqThumbnailInformationWithIsRefresh:NO];
     
     self.alcLeadingOfCv.constant = WRATIO_WIDTH(5.0f);
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(5.0f);
@@ -120,27 +120,54 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     
 }
 
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self reqThumbnailInformationWithIsRefresh:NO];
+    LogYellow(@"page count : %zd",self.thumbArr.count);
+    
+}
 
 #pragma mark - Request
 
--(void)reqThumbnailInformation
+-(void)reqThumbnailInformationWithIsRefresh:(BOOL)isRefresh
 {
+    NSNumber *pageCount = @0;
+    
+    if(isRefresh)
+    {
+        pageCount = @1;
+    }
+    else
+    {
+        pageCount = @(self.thumbArr.count / 30 + 1);
+    }
+        
     NSDictionary *parameterDic = @{ @"method" : @"flickr.photos.getRecent",
                                     @"api_key" : @"a7b7b6ba8cc4213db5f1a773830e07a5",
                                     @"format" : @"json",
                                     @"extras" : @"url_m",
                                     @"nojsoncallback" : @1,
-                                    @"page" : @1,
+                                    @"page" : pageCount,
                                     @"per_page" : @30 };
     
     [self.library requestThumbnailInformationWithParameter:parameterDic success:^(id results)
     {
         BaseFlickrModel *baseModel = [BaseFlickrModel modelObjectWithDictionary:results];
-        self.thumbArr = baseModel.photos.photo;
+        if(isRefresh)
+        {
+            self.thumbArr = (NSMutableArray *)baseModel.photos.photo;
+        }
+        else
+        {
+            [self.thumbArr addObjectsFromArray:baseModel.photos.photo];
+        }
         
-        [self.cvThumbnail reloadData];
-        [self.refreshControl endRefreshing];
-        self.cvThumbnail.userInteractionEnabled = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.cvThumbnail reloadData];
+            [self.refreshControl endRefreshing];
+            self.cvThumbnail.userInteractionEnabled = YES;
+        });
+        
         
     } failure:^(NSError *error)
     {
@@ -163,7 +190,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)beginRefreshing:(UIRefreshControl *)control
 {
-    [self reqThumbnailInformation];
+    [self reqThumbnailInformationWithIsRefresh:YES];
     self.cvThumbnail.userInteractionEnabled = NO;
 }
 
