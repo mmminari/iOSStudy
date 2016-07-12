@@ -28,6 +28,7 @@
 
 @property (strong, nonatomic) StoreLocationViewController *mapVC;
 
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation StoreViewController
@@ -46,6 +47,8 @@
     
     self.mapVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-mapView"];
     
+    [self.tvStore addSubview:[self makeRefreshController]];
+
 }
 
 #pragma mark - set layout
@@ -63,7 +66,6 @@
     cell.lbDetail.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
     cell.lbLocation.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
     cell.lbPhoneNum.textColor = [self.util getColorWithRGBCode:@"6b6a6a"];
-    
 }
 
 #pragma mark - tableview
@@ -331,10 +333,17 @@
              [self.storeArr addObject:storeInformation];
              
          }
+         
          dispatch_async(dispatch_get_main_queue(), ^{
              [self.tvStore reloadData];
-             
          });
+         
+         if(self.refreshControl)
+         {
+             [self.refreshControl endRefreshing];
+             LogGreen(@"refrechControl endRefreshin");
+         }
+        
      } failure:^(NSError *error) {
          LogGreen(@"error");
      }];
@@ -422,6 +431,20 @@
  
  */
 
+#pragma mark - Private Method
+
+-(UIRefreshControl *)makeRefreshController
+{
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(beginRefreshing:) forControlEvents:UIControlEventAllEvents ];
+    
+    return self.refreshControl;
+}
+
+-(void)beginRefreshing:(UIRefreshControl *)control
+{
+    [self reqStoreInformation];
+}
 
 
 
