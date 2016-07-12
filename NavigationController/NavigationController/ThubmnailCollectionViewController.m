@@ -15,13 +15,17 @@
 
 @interface ThubmnailCollectionViewController ()
 
-@property (strong, nonatomic) ShowMenuViewController *naviVC;
 @property (weak, nonatomic) IBOutlet UICollectionView *cvThumbnail;
-@property (strong, nonatomic) NSArray *thumbArr;
 @property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCvContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfCv;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCv;
+
+@property (strong, nonatomic) ShowMenuViewController *naviVC;
+@property (strong, nonatomic) NSArray *thumbArr;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -46,6 +50,8 @@
     
     self.alcLeadingOfCv.constant = WRATIO_WIDTH(5.0f);
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(5.0f);
+    
+    [self.cvThumbnail addSubview:[self makeRefreshControl]];
     
 }
 
@@ -133,6 +139,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         self.thumbArr = baseModel.photos.photo;
         
         [self.cvThumbnail reloadData];
+        [self.refreshControl endRefreshing];
+        self.cvThumbnail.userInteractionEnabled = YES;
         
     } failure:^(NSError *error)
     {
@@ -142,5 +150,21 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     
 }
 
+#pragma mark - Private Method
+
+-(UIRefreshControl *)makeRefreshControl
+{
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(beginRefreshing:) forControlEvents:UIControlEventValueChanged];
+    
+    return self.refreshControl;
+}
+
+
+-(void)beginRefreshing:(UIRefreshControl *)control
+{
+    [self reqThumbnailInformation];
+    self.cvThumbnail.userInteractionEnabled = NO;
+}
 
 @end

@@ -13,10 +13,11 @@
 @interface DetailThumbnailViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivDetail;
-@property (strong, nonatomic) ShowMenuViewController *naviVC;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfIv;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcWidthOfIv;
+
+@property (strong, nonatomic) ShowMenuViewController *naviVC;
 
 @end
 
