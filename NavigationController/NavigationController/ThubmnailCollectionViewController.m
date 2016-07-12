@@ -20,11 +20,14 @@
 @property (strong, nonatomic) NSArray *thumbArr;
 @property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcHeightOfCvContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcLeadingOfCv;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCv;
 
 @end
 
 @implementation ThubmnailCollectionViewController
 
+#pragma mark - View Cycle
 
 -(void)viewDidLoad
 {
@@ -41,11 +44,16 @@
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
     [self reqThumbnailInformation];
     
+    self.alcLeadingOfCv.constant = WRATIO_WIDTH(5.0f);
+    self.alcTrailingOfCv.constant = WRATIO_WIDTH(5.0f);
+    
 }
+
+#pragma mark - UICollectionView
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    CGFloat width = (DEVICE_WIDTH - 20)/ 3;
+    CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(5.0f)*4)/ 3 ;
     CGFloat height = width;
     
     return CGSizeMake(width, height);
@@ -55,14 +63,14 @@
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 5.0f;
+    return WRATIO_WIDTH(5.0f);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 5.0f;
+    return WRATIO_WIDTH(5.0f) / 2;
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -105,6 +113,9 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     detailVC.photo = self.thumbArr[indexPath.row];
     
 }
+
+
+#pragma mark - Request
 
 -(void)reqThumbnailInformation
 {

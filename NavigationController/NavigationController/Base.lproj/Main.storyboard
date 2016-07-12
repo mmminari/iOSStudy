@@ -2733,7 +2733,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="38E7832E-6C60-4A91-83AC-932E7EEDA3BF"/>
+                                <state key="normal" image="E1DE9EAB-7B8F-44DF-AF19-81350002F73E"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -4132,6 +4132,8 @@
                     </view>
                     <connections>
                         <outlet property="alcHeightOfCvContainer" destination="T6w-ZL-JTj" id="ult-K2-4n2"/>
+                        <outlet property="alcLeadingOfCv" destination="JcI-zJ-baU" id="asN-OP-9II"/>
+                        <outlet property="alcTrailingOfCv" destination="sib-k8-ZoQ" id="oh9-Vf-wQ3"/>
                         <outlet property="cvThumbnail" destination="sIJ-M3-6gi" id="Mld-Yf-tlE"/>
                         <outlet property="cvThumbnailContainer" destination="TXH-8W-AZB" id="lb8-0Q-tmF"/>
                     </connections>
@@ -4142,7 +4144,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="38E7832E-6C60-4A91-83AC-932E7EEDA3BF" width="21" height="21">
+        <image name="E1DE9EAB-7B8F-44DF-AF19-81350002F73E" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
