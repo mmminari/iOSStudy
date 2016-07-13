@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *alcTrailingOfCv;
 
 @property (strong, nonatomic) ShowMenuViewController *naviVC;
-@property (strong, nonatomic) NSMutableArray *thumbArr;
+@property (strong, nonatomic) NSArray *thumbArr;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
@@ -38,8 +38,8 @@
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
     
-    self.thumbArr = [NSMutableArray new];
-    
+    self.thumbArr = [NSArray array];
+
     self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.naviVC.view];
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
@@ -48,8 +48,8 @@
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
     [self reqThumbnailInformationWithIsRefresh:NO];
     
-    self.alcLeadingOfCv.constant = WRATIO_WIDTH(5.0f);
-    self.alcTrailingOfCv.constant = WRATIO_WIDTH(5.0f);
+    self.alcLeadingOfCv.constant = WRATIO_WIDTH(15.0f);
+    self.alcTrailingOfCv.constant = WRATIO_WIDTH(15.0f);
     
     [self.cvThumbnail addSubview:[self makeRefreshControl]];
     
@@ -59,7 +59,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(5.0f)*4)/ 3 ;
+    CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(16.0f)*4)/ 3 ;
     CGFloat height = width;
     
     return CGSizeMake(width, height);
@@ -69,14 +69,14 @@
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return WRATIO_WIDTH(5.0f);
+    return WRATIO_WIDTH(15.0f);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewLayout *)collectionViewLayout
 minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return WRATIO_WIDTH(5.0f) / 2;
+    return WRATIO_WIDTH(15.0f);
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -155,11 +155,15 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         BaseFlickrModel *baseModel = [BaseFlickrModel modelObjectWithDictionary:results];
         if(isRefresh)
         {
-            self.thumbArr = (NSMutableArray *)baseModel.photos.photo;
+            self.thumbArr = baseModel.photos.photo;
         }
         else
         {
-            [self.thumbArr addObjectsFromArray:baseModel.photos.photo];
+            NSMutableArray *tempArr = self.thumbArr.mutableCopy;
+            
+            [tempArr addObjectsFromArray:baseModel.photos.photo];
+    
+            self.thumbArr = (NSArray *)tempArr;
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
