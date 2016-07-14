@@ -18,6 +18,7 @@
 @property (strong, nonatomic) ThumbnailHTTPClient *thumbnailClient;
 
 @property (strong, nonatomic) NSCache *cache;
+@property (strong, nonatomic) CAGradientLayer *layer;
 
 @end
 
@@ -98,11 +99,22 @@
         {
             if(ani)
             {
-                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+                /*
+                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
                 animation.duration = 2.0;
                 animation.fromValue = [NSNumber numberWithFloat:0.0f];
                 animation.toValue = [NSNumber numberWithFloat:1.0f];
+                
                 [imageView.layer addAnimation:animation forKey:@"animateOpacity"];
+                
+                */
+                
+                imageView.alpha = 0.0;
+                
+                [UIView beginAnimations:@"fade in" context:nil];
+                [UIView setAnimationDuration:3.0];
+                imageView.alpha = 1.0;
+                [UIView commitAnimations];
             }
         }
         LogYellow(@"cacheType : %zd", cacheType);

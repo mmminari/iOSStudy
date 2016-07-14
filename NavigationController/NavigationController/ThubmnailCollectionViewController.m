@@ -61,7 +61,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
     CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(15.0f)*4)/ 3 ;
-    width = (int)width;
+    width = (NSInteger)width;
     
     CGFloat height = width;
     
@@ -102,7 +102,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     {
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
         
-        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:NO];
+        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES];
         cell.ivThumbnail.contentMode = UIViewContentModeScaleAspectFill;
 
     }
