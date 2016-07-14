@@ -54,7 +54,6 @@
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(15.0f);
     
     [self.cvThumbnail addSubview:[self makeRefreshControl]];
-    
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -108,8 +107,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
     }
     
- //   cell.layoutMargins = UIEdgeInsetsMake(2.5f, 0.0, 2.5f, 5.0f);
-
     return cell;
     
 }
@@ -126,20 +123,16 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    
-    NSMutableArray *cellIndexArr = [NSMutableArray new];
-    
     NSArray *cellArr = [self.cvThumbnail visibleCells];
     
     for (id  cell in cellArr)
     {
         NSInteger cellIndex = [self.cvThumbnail indexPathForCell:cell].row;
-        [cellIndexArr addObject:[NSNumber numberWithInteger:cellIndex]];
-    }
-    
-    if([cellIndexArr containsObject:[NSNumber numberWithInteger:self.thumbArr.count - 1]])
-    {
-        [self reqThumbnailInformationWithIsRefresh:NO];
+        if(cellIndex == self.thumbArr.count - 1 && self.thumbArr.count < 150)
+        {
+            [self reqThumbnailInformationWithIsRefresh:NO];
+            break;
+        }
     }
 }
 
@@ -153,7 +146,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     }
     else
     {
-        self.pageCount = self.pageCount + 1;
+        self.pageCount += self.pageCount ;
     }
         
     NSDictionary *parameterDic = @{ @"method" : @"flickr.photos.getRecent",
