@@ -25,6 +25,7 @@
 @property (strong, nonatomic) ShowMenuViewController *naviVC;
 @property (strong, nonatomic) NSArray *thumbArr;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) NSInteger pageCount;
 
 
 @end
@@ -39,6 +40,7 @@
     [self.navigationController setNavigationBarHidden:YES];
     
     self.thumbArr = [NSArray array];
+    self.pageCount = 1;
 
     self.naviVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-navigation"];
     [self.view addSubview:self.naviVC.view];
@@ -46,7 +48,7 @@
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
-    [self reqThumbnailInformationWithIsRefresh:NO];
+    [self reqThumbnailInformationWithIsRefresh:YES];
     
     self.alcLeadingOfCv.constant = WRATIO_WIDTH(15.0f);
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(15.0f);
@@ -59,7 +61,9 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(16.0f)*4)/ 3 ;
+    CGFloat width = (DEVICE_WIDTH - WRATIO_WIDTH(15.0f)*4)/ 3 ;
+    width = (int)width;
+    
     CGFloat height = width;
     
     return CGSizeMake(width, height);
@@ -122,24 +126,34 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self reqThumbnailInformationWithIsRefresh:NO];
-    LogYellow(@"page count : %zd",self.thumbArr.count);
     
+    NSMutableArray *cellIndexArr = [NSMutableArray new];
+    
+    NSArray *cellArr = [self.cvThumbnail visibleCells];
+    
+    for (id  cell in cellArr)
+    {
+        NSInteger cellIndex = [self.cvThumbnail indexPathForCell:cell].row;
+        [cellIndexArr addObject:[NSNumber numberWithInteger:cellIndex]];
+    }
+    
+    if([cellIndexArr containsObject:[NSNumber numberWithInteger:self.thumbArr.count - 1]])
+    {
+        [self reqThumbnailInformationWithIsRefresh:NO];
+    }
 }
 
 #pragma mark - Request
 
 -(void)reqThumbnailInformationWithIsRefresh:(BOOL)isRefresh
 {
-    NSNumber *pageCount = @0;
-    
     if(isRefresh)
     {
-        pageCount = @1;
+        self.pageCount = 1;
     }
     else
     {
-        pageCount = @(self.thumbArr.count / 30 + 1);
+        self.pageCount = self.pageCount + 1;
     }
         
     NSDictionary *parameterDic = @{ @"method" : @"flickr.photos.getRecent",
@@ -147,7 +161,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
                                     @"format" : @"json",
                                     @"extras" : @"url_m",
                                     @"nojsoncallback" : @1,
-                                    @"page" : pageCount,
+                                    @"page" : [NSNumber numberWithInteger:self.pageCount],
                                     @"per_page" : @30 };
     
     [self.library requestThumbnailInformationWithParameter:parameterDic success:^(id results)
