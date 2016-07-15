@@ -94,31 +94,52 @@
 {
     NSURL *url = [NSURL URLWithString:urlString];
     [imageView sd_setImageWithURL:url placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
-    {
-        if(cacheType == SDImageCacheTypeNone)
-        {
-            if(ani)
-            {
-                /*
-                CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-                animation.duration = 2.0;
-                animation.fromValue = [NSNumber numberWithFloat:0.0f];
-                animation.toValue = [NSNumber numberWithFloat:1.0f];
-                
-                [imageView.layer addAnimation:animation forKey:@"animateOpacity"];
-                
-                */
-                
-                imageView.alpha = 0.0;
-                
-                [UIView beginAnimations:@"fade in" context:nil];
-                [UIView setAnimationDuration:3.0];
-                imageView.alpha = 1.0;
-                [UIView commitAnimations];
-            }
-        }
-        LogYellow(@"cacheType : %zd", cacheType);
-    }];
+     {
+         if(cacheType == SDImageCacheTypeNone)
+         {
+             if(ani)
+             {
+                 /*
+                  CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+                  animation.duration = 2.0;
+                  animation.fromValue = [NSNumber numberWithFloat:0.0f];
+                  animation.toValue = [NSNumber numberWithFloat:1.0f];
+                  [imageView.layer addAnimation:animation forKey:@"animateOpacity"];
+                  */
+                 
+                 [imageView.layer addAnimation:[self fadeOutAnimationForChangeImage] forKey:@"fadeOutAnimationForChangeImage"];
+             }
+             
+         }
+     }];
+}
+
+-(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani completed:(void (^)(id block))completed
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    [imageView sd_setImageWithURL:url placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+     {
+         if(cacheType == SDImageCacheTypeNone)
+         {
+             if(ani)
+             {
+                 [imageView.layer addAnimation:[self fadeOutAnimationForChangeImage] forKey:@"fadeOutAnimationForChangeImage"];
+             }
+         }
+         if(completed)
+         {
+             completed(0);
+         }
+     }];
+}
+- (CATransition *)fadeOutAnimationForChangeImage
+{
+    CATransition *transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    
+    return transition;
 }
 
 -(void)requestThumbnailInformationWithParameter:(id)parameter

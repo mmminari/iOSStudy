@@ -2734,7 +2734,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="CBB64A69-348D-4036-8212-B9DD2DAA98DB"/>
+                                <state key="normal" image="C84F6A4D-3AA3-4657-B53A-153995CE9354"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -4091,19 +4091,40 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="313" height="598"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fjq-hb-W6M">
-                                                            <rect key="frame" x="0.0" y="0.0" width="301" height="510"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fjq-hb-W6M">
+                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="598"/>
                                                         </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn_popup_close.png" translatesAutoresizingMaskIntoConstraints="NO" id="XVT-hu-h47">
+                                                            <rect key="frame" x="292" y="11" width="10" height="10"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="10" id="DOt-4C-ia1"/>
+                                                                <constraint firstAttribute="width" constant="10" id="hAe-ej-fwu"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jq-lY-mPC">
+                                                            <rect key="frame" x="287" y="6" width="20" height="20"/>
+                                                            <connections>
+                                                                <action selector="didTouchDeleteBtn:" destination="W5L-QP-A2a" eventType="touchUpInside" id="TIH-XL-FG1"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstItem="Fjq-hb-W6M" firstAttribute="top" secondItem="W5L-QP-A2a" secondAttribute="top" id="1Xt-Ws-5oJ"/>
+                                                    <constraint firstItem="XVT-hu-h47" firstAttribute="top" secondItem="W5L-QP-A2a" secondAttribute="topMargin" constant="3" id="3tz-ho-NMg"/>
                                                     <constraint firstItem="Fjq-hb-W6M" firstAttribute="leading" secondItem="W5L-QP-A2a" secondAttribute="leading" id="9P2-yG-ezR"/>
                                                     <constraint firstAttribute="trailing" secondItem="Fjq-hb-W6M" secondAttribute="trailing" id="D64-bZ-Nwp"/>
                                                     <constraint firstAttribute="bottom" secondItem="Fjq-hb-W6M" secondAttribute="bottom" id="Fmr-ux-4OX"/>
+                                                    <constraint firstItem="2Jq-lY-mPC" firstAttribute="top" secondItem="XVT-hu-h47" secondAttribute="top" constant="-5" id="Hzz-0Q-hE5"/>
+                                                    <constraint firstItem="2Jq-lY-mPC" firstAttribute="leading" secondItem="XVT-hu-h47" secondAttribute="leading" constant="-5" id="MwH-7v-njm"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="XVT-hu-h47" secondAttribute="trailing" constant="3" id="UjD-Ea-8mw"/>
+                                                    <constraint firstItem="2Jq-lY-mPC" firstAttribute="bottom" secondItem="XVT-hu-h47" secondAttribute="bottom" constant="5" id="kea-mE-sbf"/>
+                                                    <constraint firstItem="2Jq-lY-mPC" firstAttribute="trailing" secondItem="XVT-hu-h47" secondAttribute="trailing" constant="5" id="l4i-lx-Inn"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="btnDelete" destination="2Jq-lY-mPC" id="yNu-0a-loL"/>
+                                                    <outlet property="ivDelete" destination="XVT-hu-h47" id="iIp-7o-J4b"/>
                                                     <outlet property="ivThumbnail" destination="Fjq-hb-W6M" id="Wq3-KW-ry1"/>
                                                 </connections>
                                             </collectionViewCell>
@@ -4145,7 +4166,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CBB64A69-348D-4036-8212-B9DD2DAA98DB" width="21" height="21">
+        <image name="C84F6A4D-3AA3-4657-B53A-153995CE9354" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4226,6 +4247,7 @@ ENYQ3hDrEPAQ8hD0EPkRAREEEQkREREUESYRKREuAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAA
 ETA
 </mutableData>
         </image>
+        <image name="btn_popup_close.png" width="16" height="16"/>
         <image name="icon_close.png" width="43" height="27"/>
         <image name="icon_open.png" width="43" height="27"/>
         <image name="icon_store_location.png" width="19" height="19"/>

@@ -13,7 +13,7 @@
 
 #import "FlickrDataModels.h"
 
-@interface ThubmnailCollectionViewController ()
+@interface ThubmnailCollectionViewController ()<ThumbnailDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvThumbnail;
 @property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
@@ -97,18 +97,27 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     static NSString *cellId = @"thumbCell";
     
     ThumbnailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
+    cell.delegate = self;
+    cell.indexPath = indexPath;
+    
+    LogGreen(@"cell.indexPath : %zd", cell.indexPath.row);
+    
+    [cell.ivDelete setHidden:YES];
+    [cell.btnDelete setHidden:YES];
     
     if(self.thumbArr.count > 0)
     {
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
         
-        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES];
+        //[self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES];
+        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES completed:^(id block) {
+            [cell.ivDelete setHidden:NO];
+            [cell.btnDelete setHidden:NO];
+        }];
         cell.ivThumbnail.contentMode = UIViewContentModeScaleAspectFill;
 
     }
-    
     return cell;
-    
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -118,7 +127,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     [self.navigationController pushViewController:detailVC animated:YES];
     
     detailVC.photo = self.thumbArr[indexPath.row];
-    
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -179,13 +187,27 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
             self.cvThumbnail.userInteractionEnabled = YES;
         });
         
-        
     } failure:^(NSError *error)
     {
         LogRed(@"reqThumb fail");
-        
     }];
+}
+
+#pragma mark - ThumbnailDeletae
+
+-(void)didTouchDeletebuttonWithIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray *tempArr = self.thumbArr.mutableCopy;
+    [tempArr removeObjectAtIndex:indexPath.row];
+    self.thumbArr = (NSArray *)tempArr;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.cvThumbnail deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+       // [self.cvThumbnail reloadData];
+    });
+    
+    LogGreen(@"indexPath : %zd", indexPath.row);
 }
 
 #pragma mark - Private Method
@@ -197,7 +219,6 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     
     return self.refreshControl;
 }
-
 
 -(void)beginRefreshing:(UIRefreshControl *)control
 {

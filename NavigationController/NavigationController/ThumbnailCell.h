@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol ThumbnailDelegate <NSObject>
+
+@required
+-(void)didTouchDeletebuttonWithIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
 @interface ThumbnailCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *ivThumbnail;
+@property (weak, nonatomic) id<ThumbnailDelegate> delegate;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+
+@property (weak, nonatomic) IBOutlet UIImageView *ivDelete;
+@property (weak, nonatomic) IBOutlet UIButton *btnDelete;
 
 @end

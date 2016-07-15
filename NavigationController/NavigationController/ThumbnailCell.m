@@ -10,4 +10,11 @@
 
 @implementation ThumbnailCell
 
+
+- (IBAction)didTouchDeleteBtn:(id)sender
+{
+    [self.delegate didTouchDeletebuttonWithIndexPath:self.indexPath];
+}
+
+
 @end
