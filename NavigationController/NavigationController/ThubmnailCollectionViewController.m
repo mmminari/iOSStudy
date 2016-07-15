@@ -197,15 +197,18 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 
 -(void)didTouchDeletebuttonWithIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *tempArr = self.thumbArr.mutableCopy;
-    [tempArr removeObjectAtIndex:indexPath.row];
-    self.thumbArr = (NSArray *)tempArr;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.cvThumbnail performBatchUpdates:^
+    {
+        NSMutableArray *tempArr = self.thumbArr.mutableCopy;
+        [tempArr removeObjectAtIndex:indexPath.row];
+        self.thumbArr = (NSArray *)tempArr;
         
         [self.cvThumbnail deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-       // [self.cvThumbnail reloadData];
-    });
+
+    } completion:^(BOOL finished)
+    {
+        [self.cvThumbnail reloadData];
+    }];
     
     LogGreen(@"indexPath : %zd", indexPath.row);
 }
