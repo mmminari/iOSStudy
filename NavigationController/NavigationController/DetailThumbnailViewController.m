@@ -23,7 +23,6 @@
 
 @implementation DetailThumbnailViewController
 
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,10 +48,7 @@
     {
         [self.library setImageView:self.ivDetail urlString:[self.photo urlM] placeholderImage:nil animation:NO];
     }
-    
-    
 }
-
 
 -(CGFloat)setHeightWithOrignHeight:(CGFloat)height originalWidth:(CGFloat)width
 {

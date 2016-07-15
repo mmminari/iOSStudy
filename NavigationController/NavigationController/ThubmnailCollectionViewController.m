@@ -56,10 +56,11 @@
     self.alcLeadingOfCv.constant = WRATIO_WIDTH(15.0f);
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(15.0f);
     
+    //cv상단에서 풀다운했을 때 인디케이터 추가
     [self.cvThumbnail addSubview:[self makeRefreshControl]];
 }
 
-#pragma mark - UIImagePickerControllerDelegate
+#pragma mark - NavigationDelegate
 
 -(void)didTouchCameraButton
 {
@@ -67,8 +68,17 @@
     
 }
 
+#pragma mark - UIImagePickerControllerDelegate
+
+
 -(BOOL)startCameraControllerFromViewController:(UIViewController *)controller usingDelegate:(id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate
 {
+    
+    if (([UIImagePickerController isSourceTypeAvailable:
+          UIImagePickerControllerSourceTypeCamera] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+        return NO;
     
     UIImagePickerController *cameraUI = [[UIImagePickerController alloc]init];
     cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -83,13 +93,10 @@
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary<NSString *,
                                id> *)info
-{
-    LogGreen(@"image info : %@", info);
-    Photo *newPhoto = [[Photo alloc]init];
+{    
+    
     UIImage *originalImg = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
-    newPhoto.localPhoto = originalImg;
-    newPhoto.heightM = [NSString stringWithFormat:@"%f",originalImg.size.height] ;
-    newPhoto.widthM = [NSString stringWithFormat:@"%f", originalImg.size.width];
+    Photo *newPhoto = [[Photo alloc]initWithImage:originalImg height:originalImg.size.height width:originalImg.size.width];
     
     [self.cvThumbnail performBatchUpdates:^
      {

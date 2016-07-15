@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSString *widthM;
 @property (nonatomic, strong) UIImage *localPhoto;
 
+- (instancetype)initWithImage:(UIImage *)image height:(CGFloat)height width:(CGFloat)width;
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

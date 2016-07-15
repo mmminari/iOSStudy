@@ -30,23 +30,22 @@ NSString *const kPhotoWidthM = @"width_m";
 
 @implementation Photo
 
-@synthesize secret = _secret;
-@synthesize photoIdentifier = _photoIdentifier;
-@synthesize isfamily = _isfamily;
-@synthesize ispublic = _ispublic;
-@synthesize farm = _farm;
-@synthesize owner = _owner;
-@synthesize server = _server;
-@synthesize urlM = _urlM;
-@synthesize title = _title;
-@synthesize isfriend = _isfriend;
-@synthesize heightM = _heightM;
-@synthesize widthM = _widthM;
-
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
 {
     return [[self alloc] initWithDictionary:dict];
+}
+
+- (instancetype)initWithImage:(UIImage *)image height:(CGFloat)height width:(CGFloat)width
+{
+    if(self = [super init])
+    {
+        _localPhoto = image;
+        _heightM = [NSString stringWithFormat:@"%f", height];
+        _widthM = [NSString stringWithFormat:@"%f", width];
+    }
+    
+    return self;
 }
 
 - (instancetype)initWithDictionary:(NSDictionary *)dict
