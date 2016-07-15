@@ -109,8 +109,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     {
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
         
-        //[self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES];
-        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES completed:^(id block) {
+        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES completed:^(BOOL complete) {
             [cell.ivDelete setHidden:NO];
             [cell.btnDelete setHidden:NO];
         }];
@@ -128,6 +127,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     
     detailVC.photo = self.thumbArr[indexPath.row];
 }
+
+#pragma mark - UIScrollViewDelegate
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

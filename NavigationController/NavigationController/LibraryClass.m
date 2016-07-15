@@ -114,7 +114,7 @@
      }];
 }
 
--(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani completed:(void (^)(id block))completed
+-(void)setImageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)image animation:(BOOL)ani completed:(void (^)(BOOL complete))completed
 {
     NSURL *url = [NSURL URLWithString:urlString];
     [imageView sd_setImageWithURL:url placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
@@ -128,7 +128,7 @@
          }
          if(completed)
          {
-             completed(0);
+             completed(1);
          }
      }];
 }
