@@ -13,7 +13,7 @@
 
 #import "FlickrDataModels.h"
 
-@interface ThubmnailCollectionViewController ()<ThumbnailDelegate>
+@interface ThubmnailCollectionViewController ()<ThumbnailDelegate, NavigationDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvThumbnail;
 @property (weak, nonatomic) IBOutlet UIView *cvThumbnailContainer;
@@ -47,6 +47,9 @@
     [self.util setContentViewLayoutWithSubView2:self.naviVC.view withTargetView:self.view];
     [self.naviVC.ivBack setHidden:YES];
     self.naviVC.lbTitle.text = @"^______^";
+    [self.naviVC.btnCamera setHidden:NO];
+    self.naviVC.delegate = self;
+    
     self.alcHeightOfCvContainer.constant = DEVICE_HEIGHT-HRATIO_HEIGHT(213.0f);
     [self reqThumbnailInformationWithIsRefresh:YES];
     
@@ -54,6 +57,60 @@
     self.alcTrailingOfCv.constant = WRATIO_WIDTH(15.0f);
     
     [self.cvThumbnail addSubview:[self makeRefreshControl]];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+-(void)didTouchCameraButton
+{
+    [self startCameraControllerFromViewController:self usingDelegate:self];
+    
+}
+
+-(BOOL)startCameraControllerFromViewController:(UIViewController *)controller usingDelegate:(id<UIImagePickerControllerDelegate, UINavigationControllerDelegate>)delegate
+{
+    
+    UIImagePickerController *cameraUI = [[UIImagePickerController alloc]init];
+    cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
+    cameraUI.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    cameraUI.delegate = delegate;
+    
+    [controller presentViewController:cameraUI animated:YES completion:nil];
+
+    return YES;
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,
+                               id> *)info
+{
+    LogGreen(@"image info : %@", info);
+    Photo *newPhoto = [[Photo alloc]init];
+    UIImage *originalImg = (UIImage *)[info objectForKey:UIImagePickerControllerOriginalImage];
+    newPhoto.localPhoto = originalImg;
+    newPhoto.heightM = [NSString stringWithFormat:@"%f",originalImg.size.height] ;
+    newPhoto.widthM = [NSString stringWithFormat:@"%f", originalImg.size.width];
+    
+    [self.cvThumbnail performBatchUpdates:^
+     {
+         NSMutableArray *tempArr = self.thumbArr.mutableCopy;
+         [tempArr insertObject:newPhoto atIndex:self.thumbArr.count];
+         
+         //[tempArr addObject:newPhoto];
+         self.thumbArr = (NSArray *)tempArr;
+         LogYellow(@"thumbArr : %zd", self.thumbArr.count);
+
+         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.thumbArr.count -1 inSection:0];
+         
+         LogYellow(@"indexcount : %zd", indexPath.row);
+         [self.cvThumbnail insertItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+        
+     } completion:^(BOOL finished)
+     {
+         [self.cvThumbnail reloadData];
+         [picker dismissViewControllerAnimated:YES completion:nil];
+     }];
+
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -109,12 +166,24 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
     {
         Photo *thumbnailInfo = self.thumbArr[indexPath.row];
         
-        [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES completed:^(BOOL complete) {
+        LogBlue(@"url : %@", [thumbnailInfo urlM]);
+        
+        
+        if([thumbnailInfo urlM] == nil)
+        {
+            cell.ivThumbnail.image = [thumbnailInfo localPhoto];
             [cell.ivDelete setHidden:NO];
             [cell.btnDelete setHidden:NO];
-        }];
+        }
+        else
+        {
+            [self.library setImageView:cell.ivThumbnail urlString:[thumbnailInfo urlM] placeholderImage:nil animation:YES completed:^(BOOL complete) {
+                [cell.ivDelete setHidden:NO];
+                [cell.btnDelete setHidden:NO];
+            }];
+        }
+        
         cell.ivThumbnail.contentMode = UIViewContentModeScaleAspectFill;
-
     }
     return cell;
 }
@@ -139,7 +208,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
         NSInteger cellIndex = [self.cvThumbnail indexPathForCell:cell].row;
         if(cellIndex == self.thumbArr.count - 1 && self.thumbArr.count < 150)
         {
-            [self reqThumbnailInformationWithIsRefresh:NO];
+            //[self reqThumbnailInformationWithIsRefresh:NO];
             break;
         }
     }

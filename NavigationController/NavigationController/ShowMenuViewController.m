@@ -36,9 +36,8 @@
     self.alcWidthOfIvIcon.constant = WRATIO_WIDTH(42.0f);
     self.alcHeightOfIvIcon.constant = WRATIO_WIDTH(63.0f);
     
-    
-    
-    
+    [self.btnCamera setHidden:YES];
+
 }
 
 - (IBAction)touchedGoBack:(id)sender
@@ -55,6 +54,13 @@
     {
         [self.baseVC dismissViewControllerAnimated:true completion:nil];
     }
+}
+
+- (IBAction)touchedCameraButton:(id)sender
+{
+    [self.delegate didTouchCameraButton];
+    
+    LogBlue(@"didTouchCameaButton");
 }
 
 @end

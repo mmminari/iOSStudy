@@ -2734,7 +2734,7 @@
                                     <constraint firstAttribute="height" constant="21" id="3XU-OV-1Gf"/>
                                     <constraint firstAttribute="width" constant="21" id="fVg-Ds-5qF"/>
                                 </constraints>
-                                <state key="normal" image="C84F6A4D-3AA3-4657-B53A-153995CE9354"/>
+                                <state key="normal" image="8BE2613E-4F7B-4A32-BC86-0D6C9CF2DE64"/>
                                 <connections>
                                     <action selector="touchedShowBarcode:" destination="ZYO-m6-6gI" eventType="touchUpInside" id="IEH-ls-0i9"/>
                                 </connections>
@@ -3728,6 +3728,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxw-Xy-62L">
+                                        <rect key="frame" x="560" y="31" width="30" height="30"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="touchedCameraButton:" destination="njy-Mc-VeG" eventType="touchUpInside" id="hvp-rv-lcd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3738,10 +3745,12 @@
                                     <constraint firstAttribute="trailing" secondItem="KHW-U1-yA5" secondAttribute="trailing" id="LAg-yp-F2R"/>
                                     <constraint firstItem="lQM-cK-cp4" firstAttribute="trailing" secondItem="5vL-5u-9lb" secondAttribute="trailing" constant="10" id="MKk-ha-ifS"/>
                                     <constraint firstAttribute="height" constant="71" id="NGh-Ya-pHZ"/>
+                                    <constraint firstItem="Mxw-Xy-62L" firstAttribute="centerY" secondItem="fNi-wq-DCE" secondAttribute="centerY" id="SQJ-zi-WsC"/>
                                     <constraint firstItem="lQM-cK-cp4" firstAttribute="bottom" secondItem="5vL-5u-9lb" secondAttribute="bottom" constant="10" id="TXG-Yc-7PD"/>
                                     <constraint firstItem="fNi-wq-DCE" firstAttribute="centerY" secondItem="5vL-5u-9lb" secondAttribute="centerY" constant="3" id="dhb-La-VYV"/>
                                     <constraint firstItem="KHW-U1-yA5" firstAttribute="leading" secondItem="ERz-P5-H8C" secondAttribute="leading" id="fKL-HT-Bzk"/>
                                     <constraint firstItem="lQM-cK-cp4" firstAttribute="top" secondItem="5vL-5u-9lb" secondAttribute="top" constant="-10" id="ir5-4n-Sf1"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mxw-Xy-62L" secondAttribute="trailing" constant="10" id="jlf-HB-dBd"/>
                                     <constraint firstAttribute="bottom" secondItem="5vL-5u-9lb" secondAttribute="bottom" constant="18" id="yny-Es-AtO"/>
                                 </constraints>
                             </view>
@@ -3759,6 +3768,7 @@
                         <outlet property="alcHeightOfNaviBar" destination="NGh-Ya-pHZ" id="0Ay-UZ-G4M"/>
                         <outlet property="alcWidthOfIvIcon" destination="7i0-Bk-zdO" id="UbJ-67-ZOD"/>
                         <outlet property="btnBack" destination="lQM-cK-cp4" id="rPL-KT-6Hz"/>
+                        <outlet property="btnCamera" destination="Mxw-Xy-62L" id="F0H-Hf-eQc"/>
                         <outlet property="ivBack" destination="5vL-5u-9lb" id="syb-uU-AuW"/>
                         <outlet property="ivBottomColor" destination="KHW-U1-yA5" id="NGi-dd-Fg1"/>
                         <outlet property="lbTitle" destination="fNi-wq-DCE" id="9kO-uZ-DKO"/>
@@ -4166,7 +4176,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C84F6A4D-3AA3-4657-B53A-153995CE9354" width="21" height="21">
+        <image name="8BE2613E-4F7B-4A32-BC86-0D6C9CF2DE64" width="21" height="21">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface ThubmnailCollectionViewController : BaseViewController
+@interface ThubmnailCollectionViewController : BaseViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @end

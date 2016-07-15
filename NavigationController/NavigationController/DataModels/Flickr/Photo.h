@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
+#import <UIKit/UIKit.h>
 
 @interface Photo : NSObject <NSCoding, NSCopying>
 
@@ -23,6 +22,7 @@
 @property (nonatomic, assign) double isfriend;
 @property (nonatomic, strong) NSString *heightM;
 @property (nonatomic, strong) NSString *widthM;
+@property (nonatomic, strong) UIImage *localPhoto;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

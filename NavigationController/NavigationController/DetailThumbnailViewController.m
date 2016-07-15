@@ -40,8 +40,15 @@
     self.alcWidthOfIv.constant = DEVICE_WIDTH;
     self.alcHeightOfIv.constant = [self setHeightWithOrignHeight:height originalWidth:width];
 
-    
-    [self.library setImageView:self.ivDetail urlString:[self.photo urlM] placeholderImage:nil animation:NO];
+    if([self.photo urlM] == nil)
+    {
+        self.ivDetail.image = [self.photo localPhoto];
+        LogYellow(@"height : %@ width : %@", [self.photo heightM], [self.photo widthM]);
+    }
+    else
+    {
+        [self.library setImageView:self.ivDetail urlString:[self.photo urlM] placeholderImage:nil animation:NO];
+    }
     
     
 }
@@ -54,7 +61,6 @@
     return height;
 
 }
-
 
 
 @end
