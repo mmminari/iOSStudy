@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainPageBottomCell" reuseIdentifier="MainPageBottomCell" id="gTV-IL-0wX" customClass="MainPageBottomCell">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihW-Rj-zzS"/>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ihW-Rj-zzS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Htm-RW-l1w"/>
+                <constraint firstAttribute="bottom" secondItem="ihW-Rj-zzS" secondAttribute="bottom" id="pmZ-p5-mN1"/>
+                <constraint firstAttribute="trailing" secondItem="ihW-Rj-zzS" secondAttribute="trailing" id="uyF-i5-h3V"/>
+                <constraint firstItem="ihW-Rj-zzS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wkl-eN-5l7"/>
+            </constraints>
+            <connections>
+                <outlet property="colorView" destination="ihW-Rj-zzS" id="hls-wn-Q18"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

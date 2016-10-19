@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainPageTopCell" reuseIdentifier="MainPageHorizontalCollectionViewCell" id="gTV-IL-0wX" customClass="MainPageHorizontalCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="182" height="213"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="182" height="213"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="42p-Fe-g4X">
+                        <color key="backgroundColor" red="1" green="0.78080391589506171" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="42p-Fe-g4X" secondAttribute="bottom" id="KVW-jj-Lfp"/>
+                <constraint firstAttribute="trailing" secondItem="42p-Fe-g4X" secondAttribute="trailing" id="cu5-zt-EAJ"/>
+                <constraint firstItem="42p-Fe-g4X" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dmG-N1-UE5"/>
+                <constraint firstItem="42p-Fe-g4X" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="p9I-iN-Xdm"/>
+            </constraints>
+            <size key="customSize" width="182" height="213"/>
+            <connections>
+                <outlet property="colorView" destination="42p-Fe-g4X" id="ab0-wf-HUO"/>
+            </connections>
+            <point key="canvasLocation" x="101" y="135.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -11,6 +11,8 @@
 #import "WebViewController.h"
 #import "MainViewController.h"
 #import "LibraryClass.h"
+#import "MainPageCollectionViewController.h"
+#import "DesignPatternViewController.h"
 
 
 typedef NS_ENUM(NSInteger, DemoType)
@@ -24,6 +26,8 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeAnimationMenu,
     DemoTypeRadioButton,
     DemoTypeThumbnail,
+    DemoTypeMainPageCollectionView,
+    DemoTypeDesignPattern,
 };
 
 @interface DemoListViewController ()
@@ -93,17 +97,34 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DemoType demoType = indexPath.row;
     
-    NSString *sgId = [self getSegueIndentifierWithDemoType:demoType];
+    if(demoType == DemoTypeMainPageCollectionView)
+    {
+        MainPageCollectionViewController *mainVC = [[MainPageCollectionViewController alloc]initWithNibName:@"MainPageCollectionViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:mainVC animated:YES];
+    }
+    else if(demoType == DemoTypeDesignPattern)
+    {
+        DesignPatternViewController *patternVC = [[DesignPatternViewController alloc]initWithNibName:@"DesignPatternViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:patternVC animated:YES];
+    }
+    else
+    {
+        NSString *sgId = [self getSegueIndentifierWithDemoType:demoType];
+        
+        NSString *targetViewTitle = [self getTitleWithDemoType:demoType];
+        
+        [self performSegueWithIdentifier:sgId sender:targetViewTitle];
+    }
     
-    NSString *targetViewTitle = [self getTitleWithDemoType:demoType];
-    
-    [self performSegueWithIdentifier:sgId sender:targetViewTitle];
+
 }
 
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection", @"MainPageCollectionViewController", @"DesignPattern"];
     
     return listInfo;
 }
