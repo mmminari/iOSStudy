@@ -61,7 +61,7 @@
     return [persistencyManager getAlbums];
 }
 
-- (void)addAlbum:(Album *)album atIndex:(int)index
+- (void)addAlbum:(Album *)album atIndex:(NSInteger)index
 {
     [persistencyManager adddAlbum:album atIndex:index];
     if(isOnLine)
@@ -92,6 +92,11 @@
     }
      
      */
+    
+}
+
+- (void)deleteAlbumAtIndex:(NSInteger)index
+{
     
 }
 

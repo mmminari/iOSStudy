@@ -17,7 +17,7 @@
     UITableView *dataTable;
     NSArray *allAlbums;
     NSDictionary *currentAlbumData;
-    int currentAlbumIndex;
+    NSInteger currentAlbumIndex;
     HorizontalScroller *scroller;
     
     UIToolbar *toolbar;
@@ -129,7 +129,7 @@
     return currentAlbumIndex;
 }
 
-- (void)showDataForAlbumAtIndex:(int)albumIndex
+- (void)showDataForAlbumAtIndex:(NSInteger)albumIndex
 {
     if(albumIndex < allAlbums.count)
     {

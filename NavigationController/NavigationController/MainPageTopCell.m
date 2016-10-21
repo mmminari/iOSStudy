@@ -33,7 +33,7 @@
 {
     
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height/2;
+    CGFloat height = [UIScreen mainScreen].bounds.size.height;
     
     return CGSizeMake(width, height);
     

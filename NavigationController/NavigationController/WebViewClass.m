@@ -16,7 +16,7 @@
 
 @implementation WebViewClass
 
--(instancetype)initWithDelegate:(id<WKWebViewClassDelegate>)delegate
+-(instancetype)initWithDelegate:(id<WKWebViewClassDelegate,UIScrollViewDelegate>)delegate
 {
     self = [super initWithDelegate:delegate configurationWithHandlerName:kHandlerName];
     

@@ -117,6 +117,11 @@
 		6D5744E71D18CBD8000A1945 /* WKWebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744E61D18CBD8000A1945 /* WKWebViewClass.m */; };
 		6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5744EF1D18DFF2000A1945 /* WebViewClass.m */; };
 		6D57FDF61D080CAC00AAAC2E /* IntroInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */; };
+		6D5A416F1DB8743200ADF86B /* MainPageWaterFallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A416D1DB8743200ADF86B /* MainPageWaterFallCell.m */; };
+		6D5A41701DB8743200ADF86B /* MainPageWaterFallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A416E1DB8743200ADF86B /* MainPageWaterFallCell.xib */; };
+		6D5A417C1DB8A93900ADF86B /* MainPageWaterFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A417A1DB8A93900ADF86B /* MainPageWaterFallLayout.m */; };
+		6D5A417D1DB8A93900ADF86B /* MainPageWaterFallLayout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D5A417B1DB8A93900ADF86B /* MainPageWaterFallLayout.xib */; };
+		6D5A41801DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5A417F1DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.m */; };
 		6D5CA5F41D2B605B00CFA554 /* CalculatePercentageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */; };
 		6D5DA1181D20FEF900D2710D /* ImageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5DA1171D20FEF900D2710D /* ImageScrollViewController.m */; };
 		6D5DA1211D210A5600D2710D /* sc1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA1191D210A5600D2710D /* sc1.jpg */; };
@@ -128,6 +133,7 @@
 		6D5DA1271D210A5600D2710D /* sc7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA11F1D210A5600D2710D /* sc7.jpg */; };
 		6D5DA1281D210A5600D2710D /* sc8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA1201D210A5600D2710D /* sc8.jpg */; };
 		6D642B151D24AC6600F7A605 /* StoreLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */; };
+		6D82911A1DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8291191DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D96FFA61DB0D6C30086B2FE /* FlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D96FFA51DB0D6C30086B2FE /* FlowLayout.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -351,6 +357,14 @@
 		6D57FDF31D07BBDC00AAAC2E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		6D57FDF41D080CAC00AAAC2E /* IntroInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroInformation.h; sourceTree = "<group>"; };
 		6D57FDF51D080CAC00AAAC2E /* IntroInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroInformation.m; sourceTree = "<group>"; };
+		6D5A416C1DB8743200ADF86B /* MainPageWaterFallCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageWaterFallCell.h; sourceTree = "<group>"; };
+		6D5A416D1DB8743200ADF86B /* MainPageWaterFallCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageWaterFallCell.m; sourceTree = "<group>"; };
+		6D5A416E1DB8743200ADF86B /* MainPageWaterFallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPageWaterFallCell.xib; sourceTree = "<group>"; };
+		6D5A41791DB8A93900ADF86B /* MainPageWaterFallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainPageWaterFallLayout.h; sourceTree = "<group>"; };
+		6D5A417A1DB8A93900ADF86B /* MainPageWaterFallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageWaterFallLayout.m; sourceTree = "<group>"; };
+		6D5A417B1DB8A93900ADF86B /* MainPageWaterFallLayout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainPageWaterFallLayout.xib; sourceTree = "<group>"; };
+		6D5A417E1DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallCollectionViewLayout.h; sourceTree = "<group>"; };
+		6D5A417F1DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallCollectionViewLayout.m; sourceTree = "<group>"; };
 		6D5CA5F21D2B605B00CFA554 /* CalculatePercentageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatePercentageViewController.h; sourceTree = "<group>"; };
 		6D5CA5F31D2B605B00CFA554 /* CalculatePercentageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatePercentageViewController.m; sourceTree = "<group>"; };
 		6D5DA1161D20FEF900D2710D /* ImageScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollViewController.h; sourceTree = "<group>"; };
@@ -365,6 +379,8 @@
 		6D5DA1201D210A5600D2710D /* sc8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sc8.jpg; sourceTree = "<group>"; };
 		6D642B131D24AC6600F7A605 /* StoreLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreLocationViewController.h; sourceTree = "<group>"; };
 		6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreLocationViewController.m; sourceTree = "<group>"; };
+		6D8291181DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallDecorationReusableView.h; sourceTree = "<group>"; };
+		6D8291191DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallDecorationReusableView.m; sourceTree = "<group>"; };
 		6D8AA64D1CD73A080044DF31 /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		6D8AA64E1CD73A080044DF31 /* UserInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformation.m; sourceTree = "<group>"; };
 		6D96FFA41DB0D6C30086B2FE /* FlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowLayout.h; sourceTree = "<group>"; };
@@ -843,6 +859,10 @@
 		6D9C10471DAF7827003F71C1 /* MainPageCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				6D8291181DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.h */,
+				6D8291191DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m */,
+				6D5A417E1DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.h */,
+				6D5A417F1DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.m */,
 				6D9C103D1DAF69B0003F71C1 /* MainPageCollectionViewController.h */,
 				6D9C103E1DAF69B0003F71C1 /* MainPageCollectionViewController.m */,
 				6D9C103F1DAF69B0003F71C1 /* MainPageCollectionViewController.xib */,
@@ -860,6 +880,12 @@
 				6D4BB77D1DB46A6D002D6F31 /* MainPageHeaderCell.h */,
 				6D4BB77E1DB46A6D002D6F31 /* MainPageHeaderCell.m */,
 				6D4BB77F1DB46A6D002D6F31 /* MainPageHeaderCell.xib */,
+				6D5A416C1DB8743200ADF86B /* MainPageWaterFallCell.h */,
+				6D5A416D1DB8743200ADF86B /* MainPageWaterFallCell.m */,
+				6D5A416E1DB8743200ADF86B /* MainPageWaterFallCell.xib */,
+				6D5A41791DB8A93900ADF86B /* MainPageWaterFallLayout.h */,
+				6D5A417A1DB8A93900ADF86B /* MainPageWaterFallLayout.m */,
+				6D5A417B1DB8A93900ADF86B /* MainPageWaterFallLayout.xib */,
 			);
 			name = MainPageCollectionView;
 			sourceTree = "<group>";
@@ -903,7 +929,7 @@
 		6D4C8A781CC71FDB006AEEBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "김민아";
 				TargetAttributes = {
 					6D4C8A7F1CC71FDB006AEEBE = {
@@ -953,6 +979,7 @@
 				6D5DA1231D210A5600D2710D /* sc3.jpg in Resources */,
 				6D14700F1CEC3D74001529A2 /* icon_store_phone@3x.png in Resources */,
 				6D4B64961CD2F7AA0078969D /* btn_menu_go@3x.png in Resources */,
+				6D5A417D1DB8A93900ADF86B /* MainPageWaterFallLayout.xib in Resources */,
 				6D50E08F1CF2AA1E003A7EB7 /* img_profile_menu@2x.png in Resources */,
 				6D9AE1051CD2018500B99E2B /* menu_home@3x.png in Resources */,
 				6D9C10461DAF69E8003F71C1 /* MainPageTopCell.xib in Resources */,
@@ -969,6 +996,7 @@
 				6D9AE1001CD2018500B99E2B /* menu_brand@2x.png in Resources */,
 				6D14700E1CEC3D74001529A2 /* icon_store_phone@2x.png in Resources */,
 				6D464AF01CD092AF0035FF68 /* img_main_profile@3x.png in Resources */,
+				6D5A41701DB8743200ADF86B /* MainPageWaterFallCell.xib in Resources */,
 				6D4B64991CD3333B0078969D /* icon_notice_bell@2x.png in Resources */,
 				6D4C8A931CC71FDB006AEEBE /* LaunchScreen.storyboard in Resources */,
 				6D4B64951CD2F7AA0078969D /* btn_menu_go@2x.png in Resources */,
@@ -1074,6 +1102,7 @@
 				6D247F761CE16F2700EBE9DB /* ShowImageView.m in Sources */,
 				6D464AE21CD057630035FF68 /* LogInViewController.m in Sources */,
 				6D247F821CE1CFF300EBE9DB /* CardViewController.m in Sources */,
+				6D5A417C1DB8A93900ADF86B /* MainPageWaterFallLayout.m in Sources */,
 				6D4AD2FA1D0128CF00CFC443 /* SplashViewController.m in Sources */,
 				6D9B3E011D347AD2006F885F /* Photos.m in Sources */,
 				6D9B3DFF1D347AD2006F885F /* BaseClass.m in Sources */,
@@ -1087,6 +1116,7 @@
 				6D46F75D1D333C38008D6D93 /* ThumbnailHTTPClient.m in Sources */,
 				6D46F78F1D338451008D6D93 /* DetailThumbnailViewController.m in Sources */,
 				6D247F6D1CE16D8500EBE9DB /* ButtonView.m in Sources */,
+				6D5A416F1DB8743200ADF86B /* MainPageWaterFallCell.m in Sources */,
 				6D132B4C1D193B6700E38D10 /* ScriptResults.m in Sources */,
 				6D4965E91D2E23170072FD3A /* AnimationMenuViewController.m in Sources */,
 				6D468FB11CE5D55D00538EE0 /* BarcodeViewController.m in Sources */,
@@ -1140,6 +1170,7 @@
 				6D5CA5F41D2B605B00CFA554 /* CalculatePercentageViewController.m in Sources */,
 				6D4E43F01CF5459C002041F7 /* MenuEventViewController.m in Sources */,
 				6D9C10501DAF8AA3003F71C1 /* MainPageBottomCell.m in Sources */,
+				6D82911A1DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m in Sources */,
 				6D538D3E1D13BF5600107817 /* NotificationClass.m in Sources */,
 				6D4BB78B1DB4975E002D6F31 /* AlbumView.m in Sources */,
 				6D5744F01D18DFF2000A1945 /* WebViewClass.m in Sources */,
@@ -1156,6 +1187,7 @@
 				6D464AE51CD082E20035FF68 /* HomeViewController.m in Sources */,
 				6D96FFA61DB0D6C30086B2FE /* FlowLayout.m in Sources */,
 				6D4787261CFED047001A9A52 /* MainInformation.m in Sources */,
+				6D5A41801DB8C5B200ADF86B /* FRGWaterfallCollectionViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1195,8 +1227,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1240,8 +1274,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -20,6 +20,9 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - CHTCollectionViewWaterfallLayout (0.9.4):
+    - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.4)
+  - CHTCollectionViewWaterfallLayout/ObjC (0.9.4)
   - GoogleMaps (1.13.2)
   - OneSignal (1.13.3)
   - SDWebImage (3.8.1):
@@ -31,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
+  - CHTCollectionViewWaterfallLayout
   - GoogleMaps
   - OneSignal
   - SDWebImage
@@ -38,6 +42,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  CHTCollectionViewWaterfallLayout: db74be9135826d285f45ff163fd090e57c99fc50
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91

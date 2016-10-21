@@ -10,12 +10,14 @@
 #import "MainPageTopCell.h"
 #import "MainPageBottomCell.h"
 #import "MainPageHeaderCell.h"
+#import "FRGWaterfallCollectionViewLayout.h"
 
 
-
-@interface MainPageCollectionViewController () < UICollectionViewDelegateFlowLayout>
+@interface MainPageCollectionViewController () < UICollectionViewDataSource, FRGWaterfallCollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvMain;
+@property (nonatomic, strong) NSMutableArray *cellHeights;
+@property (strong, nonatomic) FRGWaterfallCollectionViewLayout *waterfallLayout;
 
 @end
 
@@ -30,22 +32,28 @@
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageBottomCell" bundle:nil] forCellWithReuseIdentifier:@"MainPageBottomCell"];
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageHeaderCell" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MainPageHeaderCell"];
     
+    // 사용할 레이아웃,,,필요한 설정값 입력
+    // 여기서 stickyHeaderView 설정
+    self.waterfallLayout = [[FRGWaterfallCollectionViewLayout alloc]init];
+    
+    self.waterfallLayout.itemWidth = [UIScreen mainScreen].bounds.size.width/2 ;
+    self.waterfallLayout.topInset = 0.0f;
+    self.waterfallLayout.bottomInset = 0.0f;
+    self.waterfallLayout.stickyHeader = YES;
+    self.waterfallLayout.delegate = self;
+    
+    // 원하는 레이아웃을 해당 collectionView에 설정
+    
+    [self.cvMain setCollectionViewLayout:self.waterfallLayout];
+    
+    [self.cvMain reloadData];
+
+    
 }
 
 #pragma mark - Header
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    CGSize result = CGSizeMake(0, 0);
-    
-    if(section == 1)
-    {
-        result = CGSizeMake(0, 50);
-    }
-    
-    return result;
-}
-
+// 해더뷰에 들어갈 cell설정
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
 
@@ -74,17 +82,45 @@
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView
-                  layout:(UICollectionViewLayout *)collectionViewLayout
-  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(FRGWaterfallCollectionViewLayout *)collectionViewLayout
+heightForHeaderAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGFloat height = [UIScreen mainScreen].bounds.size.height/2;
+    NSInteger section = indexPath.section;
     
-    return CGSizeMake(width, height);
+    CGFloat result = 0.0f;
     
+    if(section == 1)
+    {
+        result = 50.0f;
+    }
+    return result;
 }
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(FRGWaterfallCollectionViewLayout *)collectionViewLayout
+ heightForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger section = indexPath.row;
+    
+   // CGFloat result = 0.0f;
+    
+    if(section == 0)
+    {
+        NSLog(@"section0");
+    }
+    else if(section == 1)
+    {
+        NSLog(@"section1");
+        
+    }
+    
+    return [self.cellHeights[indexPath.section + 1 * indexPath.item] floatValue];
+}
+
+#pragma mark - UICollectionView DataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -101,7 +137,7 @@
     }
     else if(section == 1)
     {
-        result = 3;
+        result = 30;
     }
     
     return result;
@@ -111,9 +147,10 @@
 {
     UICollectionViewCell *cell = nil;
     
-    NSInteger row = indexPath.section;
+    NSInteger section = indexPath.section;
     
-    switch (row) {
+    switch (section)
+    {
         case 0:
             cell = [self collectionView:collectionView topCellForItemAtIndexPath:indexPath];
             break;
@@ -124,6 +161,23 @@
         default:
             break;
     }
+    
+    // 섹션에따라 해당 셀의 width설정,,,,하려고 했으나 셀이 재사용되어 스크롤할 때 마다 레이아웃이 바뀜
+    
+    if(section == 0)
+    {
+    //    self.waterfallLayout.itemWidth = [UIScreen mainScreen].bounds.size.width ;
+        self.waterfallLayout.section = 0;
+
+    }
+    else
+    {
+        self.waterfallLayout.section = 1;
+        //self.waterfallLayout.itemWidth = [UIScreen mainScreen].bounds.size.width/2 ;
+
+    }
+    
+    [self.waterfallLayout prepareLayout];
     
     return cell;
 }
@@ -144,17 +198,53 @@
     
     MainPageBottomCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     
-    if(indexPath.row == 0 || indexPath.row == 2)
+    if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 6)
     {
         cell.colorView.backgroundColor = [UIColor blackColor];
     }
-    else if(indexPath.row == 1)
+    else if(indexPath.row == 1 || indexPath.row == 4 || indexPath.row == 7)
     {
         cell.colorView.backgroundColor = [UIColor lightGrayColor];
+
     }
+    else
+    {
+        cell.colorView.backgroundColor = [UIColor redColor];
+    }
+   
+    LogGreen(@"sldjf : %f",indexPath.row/255.0f);
     
+    cell.colorView.backgroundColor = [self randomBackgroundColor];
+    
+
     return cell;
 }
+
+#pragma mark - Private Method
+
+- (NSMutableArray *)cellHeights
+{
+    if (!_cellHeights) {
+        _cellHeights = [NSMutableArray arrayWithCapacity:900];
+        for (NSInteger i = 0; i < 900; i++) {
+            _cellHeights[i] = @(arc4random()%100*2+100);
+        }
+    }
+    return _cellHeights;
+}
+
+- (UIColor *)randomBackgroundColor
+{
+    UIColor *result = nil;
+    
+    CGFloat redValue = (arc4random() % 100) / 255.0f;
+    CGFloat greenValue = (arc4random() % 150) / 255.0f;
+    CGFloat blueValue = (arc4random() % 250) / 255.0f;
+    result = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:0.7];
+    
+    return result;
+}
+
 
 
 @end

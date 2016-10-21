@@ -44,7 +44,7 @@
     return albums;
 }
 
-- (void)adddAlbum:(Album *)album atIndex:(int)index
+- (void)adddAlbum:(Album *)album atIndex:(NSInteger)index
 {
     if(albums.count >= index)
     {
@@ -57,7 +57,7 @@
     
 }
 
-- (void)deleteAlbumAtIndex:(int)index
+- (void)deleteAlbumAtIndex:(NSInteger)index
 {
     [albums removeObjectAtIndex:index];
 }

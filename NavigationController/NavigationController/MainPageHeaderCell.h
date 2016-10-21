@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface MainPageHeaderCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbSection;
 
