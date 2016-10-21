@@ -134,6 +134,8 @@
 		6D5DA1281D210A5600D2710D /* sc8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6D5DA1201D210A5600D2710D /* sc8.jpg */; };
 		6D642B151D24AC6600F7A605 /* StoreLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */; };
 		6D82911A1DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8291191DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m */; };
+		6D8291241DBA100000556928 /* FBWaterfallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8291221DBA100000556928 /* FBWaterfallLayoutViewController.m */; };
+		6D8291251DBA100000556928 /* FBWaterfallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D8291231DBA100000556928 /* FBWaterfallLayoutViewController.xib */; };
 		6D8AA64F1CD73A080044DF31 /* UserInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8AA64E1CD73A080044DF31 /* UserInformation.m */; };
 		6D96FFA61DB0D6C30086B2FE /* FlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D96FFA51DB0D6C30086B2FE /* FlowLayout.m */; };
 		6D9AE0F41CD1F9F700B99E2B /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D9AE0F21CD1F9F700B99E2B /* btn_back@2x.png */; };
@@ -381,6 +383,9 @@
 		6D642B141D24AC6600F7A605 /* StoreLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreLocationViewController.m; sourceTree = "<group>"; };
 		6D8291181DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRGWaterfallDecorationReusableView.h; sourceTree = "<group>"; };
 		6D8291191DB9A2FC00556928 /* FRGWaterfallDecorationReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRGWaterfallDecorationReusableView.m; sourceTree = "<group>"; };
+		6D8291211DBA100000556928 /* FBWaterfallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBWaterfallLayoutViewController.h; sourceTree = "<group>"; };
+		6D8291221DBA100000556928 /* FBWaterfallLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBWaterfallLayoutViewController.m; sourceTree = "<group>"; };
+		6D8291231DBA100000556928 /* FBWaterfallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBWaterfallLayoutViewController.xib; sourceTree = "<group>"; };
 		6D8AA64D1CD73A080044DF31 /* UserInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInformation.h; sourceTree = "<group>"; };
 		6D8AA64E1CD73A080044DF31 /* UserInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInformation.m; sourceTree = "<group>"; };
 		6D96FFA41DB0D6C30086B2FE /* FlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowLayout.h; sourceTree = "<group>"; };
@@ -776,6 +781,7 @@
 		6D4C8A821CC71FDB006AEEBE /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
+				6D82911B1DBA0DCE00556928 /* FanbookWaterFallLayout */,
 				6D4CBE301DB5E93100DC902B /* UIKit Dynamics */,
 				6D4BB7831DB46E2C002D6F31 /* iOS Design Pattern */,
 				6D9C10471DAF7827003F71C1 /* MainPageCollectionView */,
@@ -830,6 +836,16 @@
 				6D50DE6F1D2F7B8A000270CF /* ChooseViewController.m */,
 			);
 			name = RadioButton;
+			sourceTree = "<group>";
+		};
+		6D82911B1DBA0DCE00556928 /* FanbookWaterFallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6D8291211DBA100000556928 /* FBWaterfallLayoutViewController.h */,
+				6D8291221DBA100000556928 /* FBWaterfallLayoutViewController.m */,
+				6D8291231DBA100000556928 /* FBWaterfallLayoutViewController.xib */,
+			);
+			name = FanbookWaterFallLayout;
 			sourceTree = "<group>";
 		};
 		6D9B3DF61D347AD2006F885F /* DataModels */ = {
@@ -999,6 +1015,7 @@
 				6D5A41701DB8743200ADF86B /* MainPageWaterFallCell.xib in Resources */,
 				6D4B64991CD3333B0078969D /* icon_notice_bell@2x.png in Resources */,
 				6D4C8A931CC71FDB006AEEBE /* LaunchScreen.storyboard in Resources */,
+				6D8291251DBA100000556928 /* FBWaterfallLayoutViewController.xib in Resources */,
 				6D4B64951CD2F7AA0078969D /* btn_menu_go@2x.png in Resources */,
 				6D9AE1041CD2018500B99E2B /* menu_home@2x.png in Resources */,
 				6D4965F01D2E2FB60072FD3A /* icon_open.png in Resources */,
@@ -1140,6 +1157,7 @@
 				6DCE6CCE1CF5A7DA0037D4FB /* EventCell.m in Sources */,
 				6D247F851CE1CFFC00EBE9DB /* StoreViewController.m in Sources */,
 				6D4E43F61CF545BC002041F7 /* MenuCustomerCenterViewController.m in Sources */,
+				6D8291241DBA100000556928 /* FBWaterfallLayoutViewController.m in Sources */,
 				6D51E12A1D0E7A42004124B8 /* RegCardViewController.m in Sources */,
 				6D489A911D179E8000E3B010 /* GenerateBarcode.m in Sources */,
 				6D642B151D24AC6600F7A605 /* StoreLocationViewController.m in Sources */,

@@ -13,6 +13,7 @@
 #import "LibraryClass.h"
 #import "MainPageCollectionViewController.h"
 #import "DesignPatternViewController.h"
+#import "FBWaterfallLayoutViewController.h"
 
 
 typedef NS_ENUM(NSInteger, DemoType)
@@ -28,6 +29,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeThumbnail,
     DemoTypeMainPageCollectionView,
     DemoTypeDesignPattern,
+    DemoTypeWaterfallLayout,
 };
 
 @interface DemoListViewController ()
@@ -109,6 +111,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         [self.navigationController pushViewController:patternVC animated:YES];
     }
+    else if(demoType == DemoTypeWaterfallLayout)
+    {
+        FBWaterfallLayoutViewController *waterfallVC = [[FBWaterfallLayoutViewController alloc  ] initWithNibName:@"FBWaterfallLayoutViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:waterfallVC animated:YES];
+    }
     else
     {
         NSString *sgId = [self getSegueIndentifierWithDemoType:demoType];
@@ -124,7 +132,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection", @"MainPageCollectionViewController", @"DesignPattern"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection", @"MainPageCollectionViewController", @"DesignPattern", @"FBWaterfallLayoutViewController"];
     
     return listInfo;
 }
