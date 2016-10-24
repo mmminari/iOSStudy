@@ -15,40 +15,34 @@
 @interface FBWaterfallLayoutViewController () <CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDelegateFlowLayout >
 
 @property (strong, nonatomic) IBOutlet UICollectionView *cvMain;
+@property (strong, nonatomic) UIView *headerView;
+
 @property (nonatomic, strong) NSMutableArray *cellHeights;
 
+@property (weak, nonatomic) IBOutlet CHTCollectionViewWaterfallLayout *waterfallLayout;
 
 
 @end
 
 @implementation FBWaterfallLayoutViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+//static NSString * const reuseIdentifier = @"Cell";
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
     
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageTopCell" bundle:nil] forCellWithReuseIdentifier:@"MainPageTopCell"];
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageBottomCell" bundle:nil] forCellWithReuseIdentifier:@"MainPageBottomCell"];
-    [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageHeaderCell" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MainPageHeaderCell"];
+    [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageHeaderCell" bundle:nil] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:@"MainPageHeaderCell"];
     
-    CHTCollectionViewWaterfallLayout *waterfallLayout = [[CHTCollectionViewWaterfallLayout alloc]init];
-    
-    waterfallLayout.headerHeight = 10.0f;
-    [waterfallLayout registerNib:[UINib nibWithNibName:@"MainPageHeaderCell" bundle:nil]  forDecorationViewOfKind:@"MainPageHeaderCell"];
-    
-    
-    [self.cvMain setCollectionViewLayout:waterfallLayout];
-    
-    
+    self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"MainPageHeaderCell" owner:self options:nil]lastObject];
+    self.headerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, WRATIO_WIDTH(50.0f));
+    MainPageHeaderCell *headerCell = (MainPageHeaderCell *)self.headerView;
+    headerCell.lbSection.text = @"Section 1";
+    [self.view addSubview:self.headerView];
+    [self.headerView setHidden:YES];
+
 }
 
 
@@ -58,7 +52,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     
     
-    NSAssert([kind isEqualToString:UICollectionElementKindSectionHeader], @"Unexpected supplementary element kind");
+    NSAssert([kind isEqualToString:CHTCollectionElementKindSectionHeader], @"Unexpected supplementary element kind");
     UICollectionReusableView* cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                         withReuseIdentifier:@"MainPageHeaderCell"
                                                                                forIndexPath:indexPath];
@@ -71,10 +65,10 @@ static NSString * const reuseIdentifier = @"Cell";
     
     switch (section) {
         case 0:
-            header_view.lbSection.text = @"Section 1";
+            header_view.lbSection.text = @"Section 0";
             break;
         case 1:
-            header_view.lbSection.text = @"Section 2";
+            header_view.lbSection.text = @"Section 1";
             break;
         default:
             break;
@@ -82,49 +76,18 @@ static NSString * const reuseIdentifier = @"Cell";
     return cell;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView
-                   layout:(UICollectionViewLayout *)collectionViewLayout
-heightForHeaderAtIndexPath:(NSIndexPath *)indexPath
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section
 {
-    
-    NSInteger section = indexPath.section;
     
     CGFloat result = 0.0f;
     
     if(section == 1)
     {
-        result = 50.0f;
+        result = WRATIO_WIDTH(50.0f);
     }
     return result;
 }
-
-
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(100, 100);
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView
-                   layout:(UICollectionViewLayout *)collectionViewLayout
- heightForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger section = indexPath.row;
-    
-    // CGFloat result = 0.0f;
-    
-    if(section == 0)
-    {
-        NSLog(@"section0");
-    }
-    else if(section == 1)
-    {
-        NSLog(@"section1");
-        
-    }
-    
-    return [self.cellHeights[indexPath.section + 1 * indexPath.item] floatValue];
-}
-
 
 
 #pragma mark - CHCollectionViewDelegateWaterfallLayout
@@ -147,7 +110,41 @@ heightForHeaderAtIndexPath:(NSIndexPath *)indexPath
     return result;
 }
 
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView
+didEndDisplayingSupplementaryView:(UICollectionReusableView *)view
+      forElementOfKind:(NSString *)elementKind
+           atIndexPath:(NSIndexPath *)indexPath
+{
+    LogGreen(@"hi");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView
+willDisplaySupplementaryView:(UICollectionReusableView *)view
+        forElementKind:(NSString *)elementKind
+           atIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSArray *views = [self.cvMain indexPathsForVisibleItems];
+    
+    if(![views containsObject:[NSIndexPath indexPathForRow:0 inSection:0]])
+    {
+        [self.headerView setHidden:NO];
+    }
+    
+    if([views containsObject:[NSIndexPath indexPathForRow:0 inSection:0]])
+    {
+        [self.headerView setHidden:YES];
+    }
+    
+}
+
+
+#pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -256,6 +253,44 @@ heightForHeaderAtIndexPath:(NSIndexPath *)indexPath
     result = [UIColor colorWithRed:redValue green:greenValue blue:blueValue alpha:0.7];
     
     return result;
+}
+
+-(void)setContentViewLayoutWithSubView:(UIView *)subView withTargetView:(UIView *)targetView
+{
+    subView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSLayoutConstraint *alcTopOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                       attribute:NSLayoutAttributeTop
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:targetView attribute:NSLayoutAttributeTop
+                                                                      multiplier:1.0f
+                                                                        constant:10.0f];
+    
+    NSLayoutConstraint *alcHeightOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                          attribute:NSLayoutAttributeHeight
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:targetView attribute:NSLayoutAttributeBottom
+                                                                         multiplier:1.0f
+                                                                           constant:-10.0f];
+    
+    NSLayoutConstraint *alcLeadingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                           attribute:NSLayoutAttributeLeading
+                                                                           relatedBy:NSLayoutRelationEqual
+                                                                              toItem:targetView attribute:NSLayoutAttributeLeading
+                                                                          multiplier:1.0f
+                                                                            constant:10.0f];
+    
+    NSLayoutConstraint *alcTrailingOfSubView = [NSLayoutConstraint constraintWithItem:subView
+                                                                            attribute:NSLayoutAttributeTrailing
+                                                                            relatedBy:NSLayoutRelationEqual
+                                                                               toItem:targetView attribute:NSLayoutAttributeTrailing
+                                                                           multiplier:1.0f
+                                                                             constant:-10.0f];
+    
+    NSArray *cArr = @[alcTopOfSubView, alcHeightOfSubView, alcLeadingOfSubView, alcTrailingOfSubView];
+    
+    [targetView addConstraints:cArr];
+    
 }
 
 @end

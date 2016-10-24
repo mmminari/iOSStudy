@@ -10,5 +10,6 @@
 #define PrefixHeader_pch
 
 #import "YHDebugLog.h"
+#import "UtilityClass.h"
 
 #endif /* PrefixHeader_pch */
