@@ -27,22 +27,16 @@
                 success:(void (^)(id results))success
                 failure:(void (^)(NSError *error))failure
 {
-    [self GET:urlString parameters:parameters success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-        
+    [self GET:urlString parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if(success)
         {
             success(responseObject);
         }
-    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
         if(failure)
         {
             failure(error);
-            LogRed(@"error : %@", error);
         }
-        
     }];
 }
-
-
-
 @end

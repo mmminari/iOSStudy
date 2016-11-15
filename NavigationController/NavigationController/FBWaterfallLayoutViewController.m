@@ -11,6 +11,9 @@
 #import "MainPageBottomCell.h"
 #import "MainPageHeaderCell.h"
 #import "CHTCollectionViewWaterfallLayout.h"
+#import "HTTPClient.h"
+
+#import "DataModels.h"
 
 @interface FBWaterfallLayoutViewController () <CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDelegateFlowLayout >
 
@@ -20,6 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *cellHeights;
 
 @property (weak, nonatomic) IBOutlet CHTCollectionViewWaterfallLayout *waterfallLayout;
+@property (strong, nonatomic) HTTPClient *httpClient;
 
 
 @end
@@ -36,15 +40,133 @@
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageBottomCell" bundle:nil] forCellWithReuseIdentifier:@"MainPageBottomCell"];
     [self.cvMain registerNib:[UINib nibWithNibName:@"MainPageHeaderCell" bundle:nil] forSupplementaryViewOfKind:CHTCollectionElementKindSectionHeader withReuseIdentifier:@"MainPageHeaderCell"];
     
+    self.httpClient = [[HTTPClient alloc]initWithFanBookBaseURL];
+    
     self.headerView = [[[NSBundle mainBundle] loadNibNamed:@"MainPageHeaderCell" owner:self options:nil]lastObject];
-    self.headerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, WRATIO_WIDTH(50.0f));
+    self.headerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 90.0f);
+    
     MainPageHeaderCell *headerCell = (MainPageHeaderCell *)self.headerView;
     headerCell.lbSection.text = @"Section 1";
     [self.view addSubview:self.headerView];
     [self.headerView setHidden:YES];
+    
+    [self reqLogin];
+    [self reqMainCover];
+    
+    [self stopMainCoverAutoScroll];
+    
+    //[self startMainCoverAutoScroll];
 
 }
 
+#pragma mark - Request
+
+- (void)reqLogin
+{
+    NSDictionary *registerDevice = @{        @"deviceToken" : @"ac6ec6a4152f4357bb735f212e0d4ebd7a19d87b9775ce6df77664f2e965275e",
+                                             @"deviceType" : @"ios",
+                                             @"isPushDebug": @(1),
+                                             @"isPushOn" : @(1),
+                                             @"lang" : @"en",
+                                             @"version" : @(133)
+                                             };
+    
+    NSDictionary *param = @{
+        @"userID":@"yonghwinam@smtown.com",
+        @"userPassword":@"apple0000",
+        @"autoLogin":@"Y",
+        @"registerDevice" : registerDevice,
+        @"deviceType" : @(2),
+        @"lang" : @"en",
+        @"version" : @"133"
+        
+        };
+    
+    LogGreen(@"param : %@", param);
+
+    
+    [self.httpClient POSTWithUrlString:@"/auth" parameters:param success:^(id results) {
+        [self successCompletionOfReqLoginWithResults:results];
+    } failure:^(NSError *error) {
+        LogRed(@"error");
+    }];
+    
+}
+
+- (void)reqMainCover
+{
+    NSDictionary *param = @{ @"userIdx" : @"1035",
+                             @"lang" : @"ko",
+                             @"deviceType" : @"2",
+                             @"lang" : @"ko",
+                             @"version" : @133
+                            };
+    
+    [self.httpClient POSTWithUrlString:@"/main/cover" parameters:param success:^(id results) {
+        [self successCompletionOfReqMainCoverWithResults:results];
+        
+        LogGreen(@"results : %@", results);
+    } failure:^(NSError *error) {
+        LogRed(@"error");
+    }];
+}
+
+#pragma mark - Process
+
+- (void)successCompletionOfReqLoginWithResults:(id)results
+{
+    LogGreen(@"results: %@", results);
+}
+
+- (void)successCompletionOfReqMainCoverWithResults:(id)results
+{
+    FB *result = [[FB alloc]initWithDictionary:results];
+    
+    if(result.code == 0)
+    {
+        LogGreen(@"success");
+    }
+    else
+    {
+        LogRed(@"code message : %@", result.message);
+    }
+}
+
+- (void)startMainCoverAutoScrollWithCell:(MainPageTopCell *)cell
+{
+    //MainPageTopCell *cell = [self mainCoverCell];
+    
+    if ([cell isKindOfClass:[MainPageTopCell class]])
+    {
+        [cell startAutoScroll];
+    }
+    else
+    {
+        LogRed(@"exception : SFBMainCoverContainerCell is null!!");
+    }
+}
+
+- (void)stopMainCoverAutoScroll
+{
+    MainPageTopCell *cell = [self mainCoverCell];
+    
+    if ([cell isKindOfClass:[MainPageTopCell class]])
+    {
+        [cell stopAutoScroll];
+    }
+    else
+    {
+        LogRed(@"exception : SFBMainCoverContainerCell is null!!");
+    }
+}
+
+
+- (MainPageTopCell *)mainCoverCell
+{
+    MainPageTopCell *cell = (MainPageTopCell *)[self.cvMain cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    
+    return cell;
+}
 
 #pragma mark - HeaderView
 
@@ -84,7 +206,7 @@
     
     if(section == 1)
     {
-        result = WRATIO_WIDTH(50.0f);
+        result = 90.0f;//WRATIO_WIDTH(100.0f);
     }
     return result;
 }
@@ -198,6 +320,9 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
     
     MainPageTopCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellID forIndexPath:indexPath];
     
+    cell.mainCoverList = [self mainCoverUrlList];
+    
+    [self startMainCoverAutoScrollWithCell:cell];
     
     return cell;
 }
@@ -230,6 +355,14 @@ willDisplaySupplementaryView:(UICollectionReusableView *)view
 }
 
 #pragma mark - Private Method
+- (NSArray *)mainCoverUrlList
+{
+    NSArray *result = [[NSArray alloc]init];
+    
+    result = @[@"https://fanbook.s3.amazonaws.com/list/2016/8/10/49b5871b0a2840a985adf7222ad33430_1470827924775.png", @"https://fanbook.s3.amazonaws.com/list/2016/8/10/7d9f9b35b24042fc96b134fb9943533f_1470790849116.jpg", @"https://fanbook.s3.amazonaws.com/list/2016/8/9/ae391d7eeeb44ee59da9d9baa8dcb76c_1470775668530.jpg", @"https://fanbook.s3.amazonaws.com/list/2016/8/9/6c853058417a4df3b40623773a8da0f7_1470738328302.jpg"];
+    
+    return result;
+}
 
 - (NSMutableArray *)cellHeights
 {

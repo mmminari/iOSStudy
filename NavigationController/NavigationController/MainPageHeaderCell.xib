@@ -1,37 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainPageHeaderCell" id="gTV-IL-0wX" customClass="MainPageHeaderCell">
-            <rect key="frame" x="0.0" y="0.0" width="184" height="223"/>
+            <rect key="frame" x="0.0" y="0.0" width="397" height="296"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="184" height="223"/>
+                <rect key="frame" x="0.0" y="0.0" width="397" height="296"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hc-BL-q5K">
+                        <rect key="frame" x="178" y="138" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-7E-BBU">
+                        <rect key="frame" x="48" y="118" width="300" height="60"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="Olz-cy-Zl4"/>
+                            <constraint firstAttribute="width" constant="300" id="fBx-Dd-FnS"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="USp-Jc-fu5">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="0.78080391589999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="5hc-BL-q5K" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="EyF-TO-7RK"/>
+                <constraint firstItem="d4G-7E-BBU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LG7-od-xye"/>
+                <constraint firstItem="d4G-7E-BBU" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="NhO-KM-jKb"/>
                 <constraint firstItem="5hc-BL-q5K" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="bfu-FY-5HZ"/>
             </constraints>
-            <size key="customSize" width="184" height="223"/>
+            <size key="customSize" width="397" height="296"/>
             <connections>
+                <outlet property="cvBanner" destination="d4G-7E-BBU" id="25D-Mp-dzU"/>
                 <outlet property="lbSection" destination="5hc-BL-q5K" id="z2o-5X-4d1"/>
             </connections>
-            <point key="canvasLocation" x="160" y="140.5"/>
+            <point key="canvasLocation" x="266.5" y="177"/>
         </collectionViewCell>
     </objects>
 </document>

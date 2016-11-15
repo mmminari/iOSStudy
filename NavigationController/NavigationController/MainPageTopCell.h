@@ -13,4 +13,13 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *cvHorizontal;
 
 
+@property (strong, nonatomic) NSArray *mainCoverList;
+
+
+
+
+- (void)startAutoScroll;
+- (void)stopAutoScroll;
+
+
 @end

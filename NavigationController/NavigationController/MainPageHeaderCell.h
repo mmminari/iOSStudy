@@ -10,6 +10,9 @@
 
 
 @interface MainPageHeaderCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *lbSection;
+@property (strong, nonatomic) NSArray *bannerList;
+
 
 @end

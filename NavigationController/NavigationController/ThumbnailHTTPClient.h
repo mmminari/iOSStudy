@@ -8,7 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface ThumbnailHTTPClient : AFHTTPRequestOperationManager
+@interface ThumbnailHTTPClient : AFHTTPSessionManager
 
 -(instancetype)initWithBaseURL;
 -(void)GETWithUrlString:(NSString *)urlString parameters:(id)parameters

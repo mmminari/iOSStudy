@@ -8,9 +8,10 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-@interface HTTPClient : AFHTTPRequestOperationManager
+@interface HTTPClient : AFHTTPSessionManager
 
 -(instancetype)initWithBaseURL;
+- (instancetype)initWithFanBookBaseURL;
 
 
 -(void)GETWithUrlString:(NSString *)urlString parameters:(id)parameters
