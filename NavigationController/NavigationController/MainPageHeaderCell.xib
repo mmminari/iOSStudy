@@ -38,17 +38,37 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1e-jE-Btg">
+                        <rect key="frame" x="48" y="133" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="touchedPreviousButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gyM-2u-Bqc"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWX-69-4Oe">
+                        <rect key="frame" x="302" y="133" width="46" height="30"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="touchedNextButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zGY-F8-W2z"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="0.78080391589999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="5hc-BL-q5K" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="EyF-TO-7RK"/>
+                <constraint firstItem="p1e-jE-Btg" firstAttribute="centerY" secondItem="d4G-7E-BBU" secondAttribute="centerY" id="GaY-96-h9B"/>
+                <constraint firstItem="p1e-jE-Btg" firstAttribute="leading" secondItem="d4G-7E-BBU" secondAttribute="leading" id="K2H-0X-b5z"/>
                 <constraint firstItem="d4G-7E-BBU" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LG7-od-xye"/>
                 <constraint firstItem="d4G-7E-BBU" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="NhO-KM-jKb"/>
+                <constraint firstItem="PWX-69-4Oe" firstAttribute="trailing" secondItem="d4G-7E-BBU" secondAttribute="trailing" id="Xrs-AS-Uo8"/>
                 <constraint firstItem="5hc-BL-q5K" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="bfu-FY-5HZ"/>
+                <constraint firstItem="PWX-69-4Oe" firstAttribute="centerY" secondItem="d4G-7E-BBU" secondAttribute="centerY" id="r44-Tt-uwy"/>
             </constraints>
             <size key="customSize" width="397" height="296"/>
             <connections>
+                <outlet property="btnNext" destination="PWX-69-4Oe" id="Qwk-Wy-sio"/>
+                <outlet property="btnPrevious" destination="p1e-jE-Btg" id="TeE-U0-guF"/>
                 <outlet property="cvBanner" destination="d4G-7E-BBU" id="25D-Mp-dzU"/>
                 <outlet property="lbSection" destination="5hc-BL-q5K" id="z2o-5X-4d1"/>
             </connections>

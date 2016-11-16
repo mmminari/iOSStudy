@@ -88,7 +88,7 @@
     [self.httpClient POSTWithUrlString:@"/auth" parameters:param success:^(id results) {
         [self successCompletionOfReqLoginWithResults:results];
     } failure:^(NSError *error) {
-        LogRed(@"error");
+        LogRed(@"error %@", error.description);
     }];
     
 }
@@ -107,7 +107,7 @@
         
         LogGreen(@"results : %@", results);
     } failure:^(NSError *error) {
-        LogRed(@"error");
+        LogRed(@"error %@", error.description);
     }];
 }
 

@@ -62,4 +62,11 @@
     
 }
 
+- (void)hideButtonWhileScrolling
+{
+    self.btnNext.hidden = YES;
+    self.btnPrevious.hidden = YES;
+}
+
+
 @end

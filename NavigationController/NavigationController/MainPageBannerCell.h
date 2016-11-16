@@ -25,6 +25,7 @@
 @property (weak, nonatomic)  id<MainPageBannerCellDelegate> delegate;
 
 - (void)hideBannerMoveButtonWithIndex:(NSInteger)index;
+- (void)hideButtonWhileScrolling;
 
 
 @end

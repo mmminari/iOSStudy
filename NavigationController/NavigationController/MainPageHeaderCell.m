@@ -13,8 +13,8 @@
 @interface MainPageHeaderCell () <UICollectionViewDelegate, UICollectionViewDataSource, MainPageBannerCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cvBanner;
-
-
+@property (weak, nonatomic) IBOutlet UIButton *btnPrevious;
+@property (weak, nonatomic) IBOutlet UIButton *btnNext;
 
 @property (strong, nonatomic) LibraryClass *lib;
 
@@ -23,9 +23,9 @@
 
 @implementation MainPageHeaderCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
     
     self.cvBanner.delegate = self;
     self.cvBanner.dataSource = self;
@@ -35,6 +35,9 @@
     self.lib = [LibraryClass sharedInstance];
     
     self.bannerList = [self getBannerList];
+    
+    self.btnPrevious.hidden = YES;
+    self.btnNext.hidden = NO;
     
 }
 
@@ -61,8 +64,8 @@
     
     [self.lib setImageView:cell.ivBanner urlString:self.bannerList[indexPath.row] placeholderImage:nil animation:YES];
     
-    [cell hideBannerMoveButtonWithIndex:indexPath.row];
-
+    [self hideScrollButtonWithIndex:cell.index];
+    
     return cell;
 }
 
@@ -75,6 +78,42 @@
     
 }
 
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+
+
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = [self getIndexForVisibleCell];
+    
+    [self hideScrollButtonWithIndex:index];
+}
+
+#pragma mark - User Action
+- (IBAction)touchedPreviousButton:(UIButton *)sender
+{
+    NSInteger index = [self getIndexForVisibleCell];
+    
+    LogGreen(@"index : %zd", index);
+    
+    [self.cvBanner scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    
+}
+
+- (IBAction)touchedNextButton:(UIButton *)sender
+{
+    NSInteger index = [self getIndexForVisibleCell];
+    
+    LogGreen(@"index : %zd", index);
+    
+    [self.cvBanner scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index+1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    
+}
+
+
 #pragma mark - Private Method
 
 - (NSArray *)getBannerList
@@ -85,6 +124,40 @@
     
     return result;
 }
+
+- (NSInteger)getIndexForVisibleCell
+{
+    NSInteger result = 0;
+    
+    MainPageBannerCell *cell = [[self.cvBanner visibleCells]lastObject];
+    
+    NSIndexPath *indexPath = [self.cvBanner indexPathForCell:cell];
+    
+    result = indexPath.row;
+    
+    return result;
+}
+
+- (void)hideScrollButtonWithIndex:(NSInteger)index
+{
+    if(index == 0)
+    {
+        self.btnPrevious.hidden = YES;
+        self.btnNext.hidden = NO;
+    }
+    else if(index == self.bannerList.count -1)
+    {
+        self.btnPrevious.hidden = NO;
+        self.btnNext.hidden = YES;
+    }
+    else
+    {
+        self.btnPrevious.hidden = NO;
+        self.btnNext.hidden = NO;
+    }
+
+}
+
 
 #pragma mark - MainPageBannerCellDelegate
 

@@ -50,8 +50,12 @@ typedef NS_ENUM(NSInteger, DemoType)
     self.list = [self getMenuListInfo];
     self.mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"stid-main"];
     [self.mainVC viewWillAppear:YES];
-
     
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(300, 0, 50, 50)];
+    view.backgroundColor = [UIColor purpleColor];
+    view.userInteractionEnabled = YES;
+    [self.view addSubview:view];
+   
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -66,6 +70,31 @@ typedef NS_ENUM(NSInteger, DemoType)
     
     LogBlue(@"NSUserDefaults standardUserDefaults");
     
+    
+    
+}
+
+#pragma mark - UITouch
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch * touch =[[event allTouches] anyObject];
+
+    LogGreen(@"touchCount : %zd", touch.tapCount);
+    
+    NSInteger touchCount = touch.tapCount;
+    
+    if(touchCount == 5)
+    {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"touched 5 times" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 

@@ -22,39 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="293" height="160"/>
                         <color key="backgroundColor" red="0.020531925154320986" green="0.24012586805555555" blue="1" alpha="0.57709451687116564" colorSpace="calibratedRGB"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDn-YF-Rs9">
-                        <rect key="frame" x="0.0" y="63" width="30" height="35"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                        <state key="normal" title="&lt;"/>
-                        <connections>
-                            <action selector="didTouchPreviousButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gfQ-GX-dtN"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCd-XI-TfX">
-                        <rect key="frame" x="263" y="63" width="30" height="35"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                        <state key="normal" title="&gt;"/>
-                        <connections>
-                            <action selector="didTouchNextButton:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Aps-p7-32P"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" red="1" green="0.24012586805555555" blue="1" alpha="0.57709451687116564" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="IgJ-EG-Up6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0LF-5P-6x3"/>
-                <constraint firstItem="XCd-XI-TfX" firstAttribute="centerY" secondItem="IgJ-EG-Up6" secondAttribute="centerY" id="Cqj-ON-AWR"/>
-                <constraint firstItem="lDn-YF-Rs9" firstAttribute="leading" secondItem="IgJ-EG-Up6" secondAttribute="leading" id="Iqf-Jn-wRo"/>
                 <constraint firstAttribute="trailing" secondItem="IgJ-EG-Up6" secondAttribute="trailing" id="LAy-eR-sdr"/>
                 <constraint firstAttribute="bottom" secondItem="IgJ-EG-Up6" secondAttribute="bottom" id="T8Y-VF-xQK"/>
-                <constraint firstItem="XCd-XI-TfX" firstAttribute="trailing" secondItem="IgJ-EG-Up6" secondAttribute="trailing" id="aMp-8j-Kjw"/>
                 <constraint firstItem="IgJ-EG-Up6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rju-Zj-jtI"/>
-                <constraint firstItem="lDn-YF-Rs9" firstAttribute="centerY" secondItem="IgJ-EG-Up6" secondAttribute="centerY" id="vnK-j4-ow5"/>
             </constraints>
             <size key="customSize" width="293" height="160"/>
             <connections>
-                <outlet property="btnNext" destination="XCd-XI-TfX" id="2FO-uk-Xf2"/>
-                <outlet property="btnPrevious" destination="lDn-YF-Rs9" id="saB-jX-bU1"/>
                 <outlet property="ivBanner" destination="IgJ-EG-Up6" id="tzi-ia-ynb"/>
             </connections>
             <point key="canvasLocation" x="155.5" y="109"/>

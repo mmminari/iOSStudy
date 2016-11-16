@@ -1066,6 +1066,7 @@
 				TargetAttributes = {
 					6D4C8A7F1CC71FDB006AEEBE = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = A87J69XM38;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1482,7 +1483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A87J69XM38;
 				GCC_PREFIX_HEADER = "${SRCROOT}/${PROJECT_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = NavigationController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1500,7 +1501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A87J69XM38;
 				GCC_PREFIX_HEADER = "${SRCROOT}/${PROJECT_NAME}/PrefixHeader.pch";
 				INFOPLIST_FILE = NavigationController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
