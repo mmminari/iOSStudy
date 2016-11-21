@@ -38,14 +38,16 @@
 
 - (void)startAnimation
 {
+
     [UIView animateWithDuration:0.4f animations:^{
         
         self.alcLeadingOfLbEpName.constant = 10.0f;
         self.lbEpName.alpha = 1.0f;
-        
         [self layoutIfNeeded];
         
     }];
+    
+
 }
 
 @end

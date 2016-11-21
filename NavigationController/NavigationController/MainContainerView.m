@@ -65,7 +65,13 @@
                 
                 if(i == 0)
                 {
-                    [epView startAnimation];
+
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [epView startAnimation];
+
+                    });
                 }
             }];
             
@@ -74,7 +80,6 @@
             [epView initLayout];
             
             LogGreen(@"epView.tag : %zd", epView.tag);
-            
         }
         
         
@@ -94,8 +99,11 @@
     
     EpisodeView *epView = (EpisodeView *)[self viewWithTag:tagNum];
     
-    [epView startAnimation];
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [epView startAnimation];
+        
+    });
     
 }
 
