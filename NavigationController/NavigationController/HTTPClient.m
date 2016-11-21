@@ -12,11 +12,10 @@
 
 -(instancetype)initWithBaseURL
 {
-  //  if(self = [super initWithBaseURL:[NSURL URLWithString:@"https://apidev.fanbook.me"]])
 
     if(self = [super initWithBaseURL:[NSURL URLWithString:@"https://pointapibeta.smtown.com"]])
     {
-        LogYellow(@"return self");
+        LogYellow(@"initWithBaseURL");
     }
     
     return self;
@@ -27,11 +26,23 @@
 {
     if(self = [super initWithBaseURL:[NSURL URLWithString:@"https://apidev.fanbook.me"]])
     {
-        LogYellow(@"return self");
+        LogYellow(@"initWithFanBookBaseURL");
     }
     
     return self;
 }
+
+- (instancetype)initWithSUMBaseURL
+{
+    if(self == [super initWithBaseURL:[NSURL URLWithString:@"http://betajapan.sumstore.com"]])
+    {
+        LogYellow(@"initWithSUMBaseURL");
+    }
+    
+    return self;
+}
+
+
 
 -(void)GETWithUrlString:(NSString *)urlString parameters:(id)parameters
                 success:(void (^)(id results))success

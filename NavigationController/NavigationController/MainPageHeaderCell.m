@@ -36,8 +36,17 @@
     
     self.bannerList = [self getBannerList];
     
-    self.btnPrevious.hidden = YES;
-    self.btnNext.hidden = NO;
+    if(self.bannerList.count == 1)
+    {
+        self.btnNext.hidden = YES;
+        self.btnPrevious.hidden = YES;
+    }
+    else
+    {
+        self.btnPrevious.hidden = YES;
+        self.btnNext.hidden = NO;
+    }
+
     
 }
 
@@ -64,8 +73,6 @@
     
     [self.lib setImageView:cell.ivBanner urlString:self.bannerList[indexPath.row] placeholderImage:nil animation:YES];
     
-    [self hideScrollButtonWithIndex:cell.index];
-    
     return cell;
 }
 
@@ -90,6 +97,7 @@
     NSInteger index = [self getIndexForVisibleCell];
     
     [self hideScrollButtonWithIndex:index];
+
 }
 
 #pragma mark - User Action
@@ -97,9 +105,9 @@
 {
     NSInteger index = [self getIndexForVisibleCell];
     
-    LogGreen(@"index : %zd", index);
-    
     [self.cvBanner scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index-1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    
+    [self hideScrollButtonWithIndex:index-1];
     
 }
 
@@ -107,9 +115,9 @@
 {
     NSInteger index = [self getIndexForVisibleCell];
     
-    LogGreen(@"index : %zd", index);
-    
     [self.cvBanner scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index+1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    
+    [self hideScrollButtonWithIndex:index+1];
     
 }
 
@@ -120,7 +128,9 @@
 {
     NSArray *result = [NSArray array];
     
-    result = @[@"https://fanbookfile.s3.amazonaws.com/banner/2016/11/11/m_banner_lay_cbx_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/pc_exc_banner_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/m_banner_e.jpg"];
+    result = @[@"https://fanbookfile.s3.amazonaws.com/banner/2016/11/11/m_banner_lay_cbx_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/pc_exc_banner_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/m_banner_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/pc_exc_banner_e.jpg", @"https://fanbookfile.s3.amazonaws.com/banner/2016/10/11/m_banner_e.jpg"];
+    
+    //result = @[@"https://fanbookfile.s3.amazonaws.com/banner/2016/11/11/m_banner_lay_cbx_e.jpg"];
     
     return result;
 }
@@ -129,33 +139,48 @@
 {
     NSInteger result = 0;
     
-    MainPageBannerCell *cell = [[self.cvBanner visibleCells]lastObject];
+    NSArray *cells = [self.cvBanner visibleCells];
+    
+    MainPageBannerCell *cell = [cells lastObject];
+    
+    LogGreen(@"cells count : %zd", cells.count);
     
     NSIndexPath *indexPath = [self.cvBanner indexPathForCell:cell];
     
-    result = indexPath.row;
+    if(cells.count != 1)
+    {
+        result = self.bannerList.count * 2;
+    }
+    else
+    {
+        result = indexPath.row;
+    }
     
     return result;
 }
 
 - (void)hideScrollButtonWithIndex:(NSInteger)index
 {
-    if(index == 0)
+    if(index != self.bannerList.count * 2)
     {
-        self.btnPrevious.hidden = YES;
-        self.btnNext.hidden = NO;
+        if(index == 0)
+        {
+            self.btnPrevious.hidden = YES;
+            self.btnNext.hidden = NO;
+        }
+        else if(index == self.bannerList.count -1)
+        {
+            self.btnPrevious.hidden = NO;
+            self.btnNext.hidden = YES;
+        }
+        else
+        {
+            self.btnPrevious.hidden = NO;
+            self.btnNext.hidden = NO;
+        }
     }
-    else if(index == self.bannerList.count -1)
-    {
-        self.btnPrevious.hidden = NO;
-        self.btnNext.hidden = YES;
-    }
-    else
-    {
-        self.btnPrevious.hidden = NO;
-        self.btnNext.hidden = NO;
-    }
-
+    
+    LogGreen(@"  hideScrollButtonWithIndex %zd", index);
 }
 
 

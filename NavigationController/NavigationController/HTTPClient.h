@@ -10,8 +10,9 @@
 
 @interface HTTPClient : AFHTTPSessionManager
 
--(instancetype)initWithBaseURL;
+- (instancetype)initWithBaseURL;
 - (instancetype)initWithFanBookBaseURL;
+- (instancetype)initWithSUMBaseURL;
 
 
 -(void)GETWithUrlString:(NSString *)urlString parameters:(id)parameters

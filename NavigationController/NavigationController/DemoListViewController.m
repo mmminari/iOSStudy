@@ -14,6 +14,7 @@
 #import "MainPageCollectionViewController.h"
 #import "DesignPatternViewController.h"
 #import "FBWaterfallLayoutViewController.h"
+#import "SUMMainViewController.h"
 
 
 typedef NS_ENUM(NSInteger, DemoType)
@@ -30,6 +31,7 @@ typedef NS_ENUM(NSInteger, DemoType)
     DemoTypeMainPageCollectionView,
     DemoTypeDesignPattern,
     DemoTypeWaterfallLayout,
+    DemoTypeSUMMainView,
 };
 
 @interface DemoListViewController ()
@@ -146,6 +148,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         [self.navigationController pushViewController:waterfallVC animated:YES];
     }
+    else if(demoType == DemoTypeSUMMainView)
+    {
+        SUMMainViewController *mainVC = [[SUMMainViewController alloc]initWithNibName:@"SUMMainViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:mainVC animated:YES];
+    }
     else
     {
         NSString *sgId = [self getSegueIndentifierWithDemoType:demoType];
@@ -161,7 +169,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - Private Method
 - (NSArray *)getMenuListInfo
 {
-    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection", @"MainPageCollectionViewController", @"DesignPattern", @"FBWaterfallLayoutViewController"];
+    NSArray *listInfo = @[@"TextAttributedString",@"WebView",@"IntroUiView",@"CollectionView", @"ScrollView", @"CalculatePercentageView",@"AnimationMenu", @"RadioButton", @"ThumbnailCollection", @"MainPageCollectionViewController", @"DesignPattern", @"FBWaterfallLayoutViewController", @"DemoTypeSUMMainView"];
     
     return listInfo;
 }
